@@ -29,4 +29,8 @@ cask "virtualbox-extension-pack"
 cask "visual-studio-code"
 cask "vmware-fusion"
 cask "zoomus"
+mas "Microsoft OneNote", id: 784801555
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Archiver", id: 619437121
+mas "System Monitor", id: 423368786
 mas "Xcode", id: 497799835
