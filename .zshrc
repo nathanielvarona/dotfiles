@@ -67,3 +67,7 @@ PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 export LDFLAGS="-L/usr/local/opt/readline/lib"
 export CPPFLAGS="-I/usr/local/opt/readline/include"
+
+[ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
