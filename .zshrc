@@ -63,11 +63,28 @@ ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
 export HOMEBREW_EDITOR=code
 
+alias zsh_history="fc -il 1"
+
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 export LDFLAGS="-L/usr/local/opt/readline/lib"
 export CPPFLAGS="-I/usr/local/opt/readline/include"
 
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+
+# Pyenv Initialization
+export PYENV_ROOT=$HOME/.pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
 [ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
