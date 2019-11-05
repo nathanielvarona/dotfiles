@@ -93,3 +93,9 @@ export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
 
 nvm use --delete-prefix default --silent
+
+meld_clean () {
+    rm -rf ~/.local/share/meld
+    rm -rf ~/Library/Preferences/org.gnome.meld.plist
+    rm -rf ~/Library/Saved\ Application\ State/org.gnome.meld.savedState
+}
