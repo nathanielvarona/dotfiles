@@ -88,3 +88,8 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+# Node Version Manager
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+nvm use --delete-prefix default --silent

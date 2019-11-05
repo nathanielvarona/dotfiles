@@ -16,6 +16,7 @@ brew "ctop"
 brew "dvm"
 brew "gnupg"
 brew "mas"
+brew "nvm"
 brew "openssl"
 brew "pass"
 brew "pinentry-mac"
@@ -32,18 +33,22 @@ cask "font-hack-nerd-font"
 cask "google-chrome"
 cask "iterm2"
 cask "logitech-options"
+cask "mpv"
 cask "pgadmin4"
 cask "skype"
 cask "sourcetree"
 cask "station"
+cask "termhere"
 cask "upwork"
 cask "virtualbox"
 cask "virtualbox-extension-pack"
 cask "visual-studio-code"
+cask "vlc"
 cask "vmware-fusion"
 cask "zoomus"
 mas "Archiver", id: 619437121
 mas "Microsoft OneNote", id: 784801555
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "Skitch", id: 425955336
 mas "System Monitor", id: 423368786
 mas "Xcode", id: 497799835
