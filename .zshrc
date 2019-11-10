@@ -99,3 +99,6 @@ meld_clean () {
     rm -rf ~/Library/Preferences/org.gnome.meld.plist
     rm -rf ~/Library/Saved\ Application\ State/org.gnome.meld.savedState
 }
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
