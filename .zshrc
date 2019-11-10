@@ -1,6 +1,9 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
+LS_COLORS="${LSCOLORS}"
+
 if [[ -a ~/.secrets ]]; then
     source ~/.secrets
 fi
