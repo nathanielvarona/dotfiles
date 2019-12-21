@@ -8,7 +8,9 @@ if [[ -a ~/.secrets ]]; then
     source ~/.secrets
 fi
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
+    FPATH=$FPATH:/usr/local/share/zsh/site-functions
+fi
 
 source <(antibody init)
 
@@ -18,12 +20,10 @@ antibody bundle "
     robbyrussell/oh-my-zsh path:plugins/gnu-utils
     robbyrussell/oh-my-zsh path:plugins/common-aliases
     robbyrussell/oh-my-zsh path:plugins/asdf
-    robbyrussell/oh-my-zsh path:plugins/git
     robbyrussell/oh-my-zsh path:plugins/docker
     robbyrussell/oh-my-zsh path:plugins/docker-compose
     robbyrussell/oh-my-zsh path:plugins/helm
     robbyrussell/oh-my-zsh path:plugins/kubectl
-    robbyrussell/oh-my-zsh path:plugins/aws
 "
 
 antibody bundle romkatv/powerlevel10k
