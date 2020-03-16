@@ -67,6 +67,7 @@ ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 export HOMEBREW_EDITOR=code
 
 alias zsh_history="fc -il 1"
+alias meld=/Applications/Meld.app/Contents/MacOS/Meld
 
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
@@ -105,3 +106,12 @@ meld_clean () {
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+# added by travis gem
+[ -f /Users/nathanielvarona/.travis/travis.sh ] && source /Users/nathanielvarona/.travis/travis.sh
+
+# export GOENV_ROOT="$HOME/.goenv"
+# export PATH="$GOENV_ROOT/bin:$PATH"
+# eval "$(goenv init -)"
+# export PATH="$GOROOT/bin:$PATH"
+# export PATH="$PATH:$GOPATH/bin"
