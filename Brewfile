@@ -19,8 +19,11 @@ brew "ansible"
 brew "asdf"
 brew "awscli"
 brew "axel"
+brew "bat"
 brew "ctop"
 brew "dive"
+brew "docker-machine"
+brew "doctl"
 brew "dvm"
 brew "exiftool"
 brew "ffmpeg"
@@ -47,8 +50,10 @@ brew "redis"
 brew "speedtest-cli"
 brew "stern"
 brew "stunnel"
+brew "transmission-cli"
 brew "travis"
 brew "watch"
+brew "wget"
 brew "zlib"
 brew "amar1729/formulae/browserpass"
 brew "boz/repo/kail"
@@ -60,6 +65,7 @@ brew "shopify/shopify/themekit"
 cask "airdroid"
 cask "coconutbattery"
 cask "dash"
+cask "disk-inventory-x"
 cask "docker"
 cask "drawio"
 cask "firefox"
@@ -71,7 +77,9 @@ cask "google-chrome"
 cask "google-photos-backup-and-sync"
 cask "grammarly"
 cask "iterm2"
+cask "lens"
 cask "logitech-options"
+cask "microsoft-edge"
 cask "mpv"
 cask "multipass"
 cask "mysqlworkbench"
@@ -93,8 +101,12 @@ cask "vlc"
 cask "vmware-fusion"
 cask "zoomus"
 mas "Archiver", id: 619437121
+mas "iStat Menus", id: 1319778037
+mas "Keynote", id: 409183694
+mas "Messenger", id: 1480068668
 mas "Microsoft OneNote", id: 784801555
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "SHAREit", id: 1040029915
 mas "Skitch", id: 425955336
 mas "System Monitor", id: 423368786
 mas "Xcode", id: 497799835

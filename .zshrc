@@ -69,6 +69,7 @@ export HOMEBREW_EDITOR=code
 alias zsh_history="fc -il 1"
 alias meld=/Applications/Meld.app/Contents/MacOS/Meld
 
+PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 export LDFLAGS="-L/usr/local/opt/readline/lib"
