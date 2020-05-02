@@ -43,7 +43,7 @@ POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
 POWERLEVEL9K_STATUS_VERBOSE=false
 
 # Prompt Figures
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs nvm rvm pyenv aws kubecontext docker_machine background_jobs command_execution_time time status)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs nvm rvm pyenv go_version aws kubecontext docker_machine background_jobs command_execution_time time status)
 
 # Truncating Long Directories
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
@@ -95,7 +95,8 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 nvm use --delete-prefix default --silent
 
@@ -116,3 +117,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # eval "$(goenv init -)"
 # export PATH="$GOROOT/bin:$PATH"
 # export PATH="$PATH:$GOPATH/bin"
+
+export PATH="/usr/local/sbin:$PATH"
