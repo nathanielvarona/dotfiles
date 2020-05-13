@@ -112,6 +112,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # added by travis gem
 [ -f /Users/nathanielvarona/.travis/travis.sh ] && source /Users/nathanielvarona/.travis/travis.sh
 
+export PATH="$HOME/go/bin:$PATH"
+
 # export GOENV_ROOT="$HOME/.goenv"
 # export PATH="$GOENV_ROOT/bin:$PATH"
 # eval "$(goenv init -)"
@@ -119,3 +121,12 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # export PATH="$PATH:$GOPATH/bin"
 
 export PATH="/usr/local/sbin:$PATH"
+
+# Pipe Highlight to less
+export LESSOPEN="| $(which highlight) %s --out-format xterm256 -l --force -s solarized-light --no-trailing-nl"
+export LESS=" -R"
+alias less='less -m -N -g -i -J --line-numbers --underline-special'
+alias more='less'
+
+# Use "highlight" in place of "cat"
+alias cath="highlight --out-format xterm256 --force -s moria --no-trailing-nl"
