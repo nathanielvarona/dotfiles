@@ -12,7 +12,6 @@ tap "gofireflyio/aiac"
 tap "hashicorp/tap"
 tap "heroku/brew"
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
@@ -258,6 +257,7 @@ mas "Archiver", id: 619437121
 mas "iMovie", id: 408981434
 mas "iStat Menus", id: 1319778037
 mas "Keynote", id: 409183694
+mas "LetsView", id: 1478202069
 mas "Microsoft OneNote", id: 784801555
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "SHAREit", id: 1040029915
