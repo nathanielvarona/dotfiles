@@ -50,9 +50,6 @@ POWERLEVEL9K_STATUS_VERBOSE=false
 # Prompt Figures
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir direnv vcs nvm rbenv pyenv anaconda goenv go_version asdf aws kubecontext docker_machine background_jobs command_execution_time status)
 
-# Gemset
-# POWERLEVEL9K_RVM_SHOW_GEMSET=true
-
 # Truncating Long Directories
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 # POWERLEVEL9K_SHORTEN_DELIMITER=""
@@ -142,12 +139,6 @@ export PATH="~/Projects/contribute/git-fuzzy/bin:$PATH"
 # Created by `userpath` on 2021-02-03 02:02:40
 export PATH="$PATH:~/.local/bin"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
-
-# RVM for ZSH
-# [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
 # ASDF
 export ASDF_DIR='/usr/local/opt/asdf/libexec'
 . /usr/local/opt/asdf/libexec/asdf.sh
@@ -155,10 +146,6 @@ export ASDF_DIR='/usr/local/opt/asdf/libexec'
 # DIRENV
 eval "$(direnv hook zsh)"
 
-# Fix RVM Gemset Bundle Issue
-# export LD_LIBRARY_PATH=$(brew --prefix openssl)/lib
-# export CPATH=$(brew --prefix openssl)/include
-# export PKG_CONFIG_PATH=$(brew --prefix openssl)/lib/pkgconfig
 
 PATH="~/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="~/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
