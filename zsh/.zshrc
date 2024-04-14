@@ -48,7 +48,7 @@ POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
 POWERLEVEL9K_STATUS_VERBOSE=false
 
 # Prompt Figures
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir direnv vcs nvm rbenv pyenv anaconda goenv go_version asdf aws kubecontext docker_machine background_jobs command_execution_time status)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir direnv vcs fnm rbenv pyenv anaconda goenv go_version asdf aws kubecontext docker_machine background_jobs command_execution_time status)
 
 # Truncating Long Directories
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
@@ -100,15 +100,6 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-# Node Version Manager
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-#[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#nvm use --delete-prefix default --silent
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # added by travis gem
@@ -146,7 +137,6 @@ export ASDF_DIR='/usr/local/opt/asdf/libexec'
 # DIRENV
 eval "$(direnv hook zsh)"
 
-
 PATH="~/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="~/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="~/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
@@ -155,7 +145,6 @@ PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
 
 # RBENV
 eval "$(rbenv init - zsh)"
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -171,8 +160,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="~/Library/Caches/fnm_multishells/4007_1683517959636/bin":$PATH
 export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
