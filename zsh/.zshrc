@@ -11,9 +11,13 @@ if [[ -a ~/.secrets ]]; then
     source ~/.secrets
 fi
 
-if [[ -a ~/.lotto ]]; then
-    source ~/.lotto
-fi
+# Define the directory to search (change as needed)
+source_dir=~/.scripts/
+
+# Loop through all files ending with *.source.sh recursively
+for source_file in $(find "$source_dir" -type f -name "*.source.sh" -print); do
+    source "$source_file"
+done
 
 if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
     FPATH=$FPATH:/usr/local/share/zsh/site-functions
