@@ -1,30 +1,36 @@
 # EditorConfig is awesome: http://EditorConfig.org
-# top-most EditorConfig file
-root = true
 
-# Unix-style newlines at the bottom of every file
 [*]
+indent_style = space
+indent_size = 2
 end_of_line = lf
 charset = utf-8
 
-# Tab indentation
-indent_style = space
-
-# Make sure every file has a blank line at the end
+trim_trailing_whitespace = true
 insert_final_newline = true
 
-# Remove any whitespace characters preceding newline characters
+[**.{md,rst}]
+trim_trailing_whitespace = false
+
+[.git*]
+indent_size = tab
+indent_style = tab
+
+[{**.*sh,test/run,**.bats}]
+indent_size = tab
+indent_style = tab
+
+shell_variant      = bash
+binary_next_line   = true  # like -bn
+switch_case_indent = true  # like -ci
+space_redirects    = true  # like -sr
+keep_padding       = false # like -kp
+end_of_line        = lf
+charset            = utf-8
 trim_trailing_whitespace = true
+insert_final_newline = true
 
-# Give operators breathing room, but not brackets
-spaces_around_operators = true
-spaces_around_brackets = false
-
-# JavaScript-specific settings
-[.js]
-quote_type = single
-curly_bracket_next_line = false
-
-# HTML-specific settings
-[.html]
-quote_type = double
+[**.bats]
+indent_size = tab
+indent_style = tab
+shell_variant	= bats
