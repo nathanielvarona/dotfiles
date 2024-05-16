@@ -28,6 +28,9 @@ source <(antidote init)
 # antidote bundle < ~/.zsh_plugins.txt
 antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 
+# plugins=(
+#   poetry
+# )
 
 export HISTFILE=~/.zsh_history
 export HISTFILESIZE=1000000000
