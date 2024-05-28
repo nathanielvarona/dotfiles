@@ -1,11 +1,186 @@
-autoload -Uz compinit
-compinit
+LANG=en_US.UTF-8
+LC_ALL=en_US.UTF-8
 
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
+LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
 LS_COLORS="${LSCOLORS}"
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+if [[ -f "`which brew`" ]] then
+    # If you're using macOS, you'll want this enabled
+    eval "$(`which brew` shellenv)"
+fi
+
+# Set the directory we want to store zinit and plugins
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+# Download Zinit, if it's not there yet
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+# Source/Load zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Add in Powerlevel10k
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Add in zsh plugins
+zinit light zsh-users/zsh-history-substring-search
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light Aloxaf/fzf-tab
+
+# A CLI interface to git that relies heavily on fzf
+zinit ice as"program" pick"bin/git-fuzzy"
+zinit light bigH/git-fuzzy
+
+# Add in snippets
+zinit snippet OMZP::aws
+zinit snippet OMZP::git
+zinit snippet OMZP::kubectl
+
+# OMZ Shorthand Syntax
+zinit snippet OMZ::plugins/extract
+zinit snippet OMZ::plugins/gnu-utils
+zinit snippet OMZ::plugins/common-aliases
+
+# Other Plugins
+zinit load agkozak/zsh-z # jump around
+
+# Command-line fuzzy finder written in Go
+source <(fzf --zsh)
+source <(zoxide init --cmd cd zsh)
+
+# History
+HISTFILE=~/.zsh_history
+HISTFILESIZE=1000000000
+HISTSIZE=1000000000
+setopt INC_APPEND_HISTORY
+HISTTIMEFORMAT="[%F %T] "
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+
+# Additional completion definitions for zs
+if type brew &>/dev/null
+then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+    autoload -Uz compinit
+    compinit
+fi
+
+# ZSH-HISTORY-SUBSTRING-SEARCH Plugin
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+
+# ZSH-AUTOSUGGESTIONS Plugin
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
+
+# ZSH_HIGHLIGHT_HIGHLIGHTERS
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
+ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
+
+source <(fnm env)
+source <(podman completion zsh)
+
+# GNU Utils
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+PATH="/usr/local/opt/inetutils/libexec/gnubin:$PATH"
+PATH="$PATH:~/.local/bin"
+
+PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+LDFLAGS="-L/usr/local/opt/readline/lib"
+CPPFLAGS="-I/usr/local/opt/readline/include"
+
+PATH="/usr/local/opt/openssl/bin:$PATH"
+LDFLAGS="-L/usr/local/opt/openssl/lib"
+CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+LDFLAGS="-L/usr/local/opt/zlib/lib"
+CPPFLAGS="-I/usr/local/opt/zlib/include"
+PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+
+HOMEBREW_EDITOR=code
+
+# Alias
+alias zsh_history="fc -il 1"
+alias meld=/Applications/Meld.app/Contents/MacOS/Meld
+# Use "highlight" in place of "cat"
+alias cath="highlight --out-format xterm256 --force -s moria --no-trailing-nl"
+alias ls='ls --color'
+
+# RBENV
+eval "$(rbenv init - zsh)"
+
+# DIRENV
+eval "$(direnv hook zsh)"
+
+# ASDF
+ASDF_DIR='/usr/local/opt/asdf/libexec'
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+# Pyenv Initialization
+# PYENV_ROOT=$HOME/.pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# eval "$(pyenv init -)"
+
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+[ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
+
+PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
+PATH="$HOME/go/bin:$PATH"
+
+# GOENV_ROOT="$HOME/.goenv"
+# PATH="$GOENV_ROOT/bin:$PATH"
+# eval "$(goenv init -)"
+# PATH="$GOROOT/bin:$PATH"
+# PATH="$PATH:$GOPATH/bin"
+
+PATH="/usr/local/sbin:$PATH"
+
+# Pipe Highlight to less
+# LESSOPEN="| $(which highlight) %s --out-format xterm256 -l --force -s solarized-light --no-trailing-nl"
+# LESS=" -R"
+# alias less='less -m -N -g -i -J --line-numbers --underline-special'
+# alias more='less'
+
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+    else
+        PATH="/usr/local/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 if [[ -a ~/.secrets ]]; then
     source ~/.secrets
@@ -18,173 +193,3 @@ source_dir=~/.scripts/
 for source_file in $(find "$source_dir" -type f -name "*.source.sh" -print); do
     source "$source_file"
 done
-
-if (( ! ${fpath[(I)/usr/local/share/zsh/site-functions]} )); then
-    FPATH=$FPATH:/usr/local/share/zsh/site-functions
-fi
-
-source /usr/local/opt/antidote/share/antidote/antidote.zsh
-source <(antidote init)
-# antidote bundle < ~/.zsh_plugins.txt
-antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
-
-# plugins=(
-#   poetry
-# )
-
-export HISTFILE=~/.zsh_history
-export HISTFILESIZE=1000000000
-export HISTSIZE=1000000000
-setopt INC_APPEND_HISTORY
-export HISTTIMEFORMAT="[%F %T] "
-setopt EXTENDED_HISTORY
-setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-
-# Prompt Mode
-POWERLEVEL9K_MODE="nerdfont-complete"
-POWERLEVEL9K_DISABLE_RPROMPT=true
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX=' ❱ '
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=''
-POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
-POWERLEVEL9K_STATUS_VERBOSE=false
-
-# Prompt Figures
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir direnv vcs fnm rbenv pyenv anaconda goenv go_version asdf aws kubecontext docker_machine background_jobs command_execution_time status)
-
-# Truncating Long Directories
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-# POWERLEVEL9K_SHORTEN_DELIMITER=""
-# POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-
-# ZSH-HISTORY-SUBSTRING-SEARCH Plugin
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
-
-# ZSH-AUTOSUGGESTIONS Plugin
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
-
-# ZSH_HIGHLIGHT_HIGHLIGHTERS
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
-ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
-
-export HOMEBREW_EDITOR=code
-
-alias zsh_history="fc -il 1"
-alias meld=/Applications/Meld.app/Contents/MacOS/Meld
-
-export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-
-export LDFLAGS="-L/usr/local/opt/readline/lib"
-export CPPFLAGS="-I/usr/local/opt/readline/include"
-
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
-
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
-export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
-
-# Pyenv Initialization
-# export PYENV_ROOT=$HOME/.pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-# eval "$(pyenv init -)"
-
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
-[ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
-
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-
-export PATH="$HOME/go/bin:$PATH"
-
-# export GOENV_ROOT="$HOME/.goenv"
-# export PATH="$GOENV_ROOT/bin:$PATH"
-# eval "$(goenv init -)"
-# export PATH="$GOROOT/bin:$PATH"
-# export PATH="$PATH:$GOPATH/bin"
-
-export PATH="/usr/local/sbin:$PATH"
-
-# Pipe Highlight to less
-# export LESSOPEN="| $(which highlight) %s --out-format xterm256 -l --force -s solarized-light --no-trailing-nl"
-# export LESS=" -R"
-# alias less='less -m -N -g -i -J --line-numbers --underline-special'
-# alias more='less'
-
-# Use "highlight" in place of "cat"
-alias cath="highlight --out-format xterm256 --force -s moria --no-trailing-nl"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="~/Projects/contribute/git-fuzzy/bin:$PATH"
-
-# Created by `userpath` on 2021-02-03 02:02:40
-export PATH="$PATH:~/.local/bin"
-
-# ASDF
-export ASDF_DIR='/usr/local/opt/asdf/libexec'
-. /usr/local/opt/asdf/libexec/asdf.sh
-
-# DIRENV
-eval "$(direnv hook zsh)"
-
-PATH="~/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="~/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="~/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"~/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
-
-# RBENV
-eval "$(rbenv init - zsh)"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-export PATH="~/Library/Caches/fnm_multishells/4007_1683517959636/bin":$PATH
-export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
-export FNM_MULTISHELL_PATH="~/Library/Caches/fnm_multishells/4007_1683517959636"
-export FNM_VERSION_FILE_STRATEGY="local"
-export FNM_DIR="~/Library/Application Support/fnm"
-export FNM_LOGLEVEL="info"
-export FNM_ARCH="x64"
-autoload -U add-zsh-hook
-_fnm_autoload_hook () {
-    if [[ -f .node-version || -f .nvmrc ]]; then
-    fnm use --silent-if-unchanged
-fi
-
-}
-
-add-zsh-hook chpwd _fnm_autoload_hook \
-    && _fnm_autoload_hook
-
-rehash
-
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/inetutils/libexec/gnubin:$PATH"
-
-source <(podman completion zsh)
