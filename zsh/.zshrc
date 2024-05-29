@@ -120,8 +120,6 @@ HOMEBREW_EDITOR=code
 # Alias
 alias zsh_history="fc -il 1"
 alias meld=/Applications/Meld.app/Contents/MacOS/Meld
-# Use "highlight" in place of "cat"
-alias cath="highlight --out-format xterm256 --force -s moria --no-trailing-nl"
 alias ls='ls --color'
 
 # RBENV
@@ -161,14 +159,25 @@ PATH="$HOME/go/bin:$PATH"
 
 PATH="/usr/local/sbin:$PATH"
 
+# Define the highlight command
+HIGHLIGHT_CMD=( $(which highlight) --out-format xterm256 --line-numbers --force --style moria --no-trailing-nl )
+
+# Use "highlight" in place of "cat"
+cath() {
+    if [ $# -eq 0 ]; then
+        echo "Usage: cath <file>"
+    else
+        ${HIGHLIGHT_CMD[@]} "$@"
+    fi
+}
+
 # Pipe Highlight to less
-# LESSOPEN="| $(which highlight) %s --out-format xterm256 -l --force -s solarized-light --no-trailing-nl"
-# LESS=" -R"
-# alias less='less -m -N -g -i -J --line-numbers --underline-special'
-# alias more='less'
+export LESSOPEN="| ${HIGHLIGHT_CMD[@]} %s"
+export LESS=" -R"
+alias less='less -m -N -g -i -J --line-numbers --underline-special'
+alias more='less'
 
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
-
 
 if [[ -a ~/.secrets ]]; then
     source ~/.secrets
