@@ -62,8 +62,8 @@ source <(zoxide init --cmd cd zsh)
 HISTFILE=~/.zsh_history
 HISTFILESIZE=1000000000
 HISTSIZE=1000000000
-setopt INC_APPEND_HISTORY
 HISTTIMEFORMAT="[%F %T] "
+setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -72,7 +72,6 @@ setopt HIST_IGNORE_ALL_DUPS
 if type brew &>/dev/null
 then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
     autoload -Uz compinit
     compinit
 fi
@@ -161,21 +160,16 @@ PATH="/usr/local/sbin:$PATH"
 
 # Define the highlight command
 HIGHLIGHT_CMD=( $(which highlight) --out-format xterm256 --line-numbers --force --style moria )
-
 # Use "highlight" in place of "cat"
 cath() {
-    if [ $# -eq 0 ]; then
-        echo "Usage: cath <file>"
-    else
-        ${HIGHLIGHT_CMD[@]} "$@"
-    fi
+    ${HIGHLIGHT_CMD[@]} "$@"
 }
 
-# Pipe Highlight to less
+# Use "less" in place of "more"
+# Set less default options as environment variable
+export LESS="--RAW-CONTROL-CHARS --long-prompt --line-numbers --hilite-search --ignore-case --status-column --underline-special"
+# Pipe highlight to less
 export LESSOPEN="| ${HIGHLIGHT_CMD[@]} %s"
-export LESS=" -R"
-alias less='less --long-prompt --line-numbers --hilite-search --ignore-case --status-column --underline-special'
-alias more='less'
 
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
@@ -206,3 +200,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# fabric is an open-source framework for augmenting humans using AI.
+if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then
+    . "$HOME/.config/fabric/fabric-bootstrap.inc"
+fi
