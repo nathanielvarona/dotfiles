@@ -160,7 +160,7 @@ PATH="$HOME/go/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 
 # Define the highlight command
-HIGHLIGHT_CMD=( $(which highlight) --out-format xterm256 --line-numbers --force --style moria --no-trailing-nl )
+HIGHLIGHT_CMD=( $(which highlight) --out-format xterm256 --line-numbers --force --style moria )
 
 # Use "highlight" in place of "cat"
 cath() {
@@ -174,7 +174,7 @@ cath() {
 # Pipe Highlight to less
 export LESSOPEN="| ${HIGHLIGHT_CMD[@]} %s"
 export LESS=" -R"
-alias less='less -m -N -g -i -J --line-numbers --underline-special'
+alias less='less --long-prompt --line-numbers --hilite-search --ignore-case --status-column --underline-special'
 alias more='less'
 
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
