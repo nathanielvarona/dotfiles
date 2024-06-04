@@ -95,10 +95,12 @@ ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 source <(fnm env)
 source <(podman completion zsh)
 
+# User Path
+PATH="$PATH:$HOME/.local/bin"
+
 # GNU Utils
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/inetutils/libexec/gnubin:$PATH"
-PATH="$PATH:~/.local/bin"
 
 PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -132,10 +134,9 @@ ASDF_DIR='/usr/local/opt/asdf/libexec'
 . /usr/local/opt/asdf/libexec/asdf.sh
 
 # Pyenv Initialization
-# PYENV_ROOT=$HOME/.pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-# eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 

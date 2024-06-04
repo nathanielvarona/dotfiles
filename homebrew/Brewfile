@@ -118,6 +118,7 @@ brew "ripgrep"
 brew "nb"
 brew "node@18"
 brew "nss"
+brew "nvtop"
 brew "ollama", restart_service: true
 brew "openvpn"
 brew "pass"
