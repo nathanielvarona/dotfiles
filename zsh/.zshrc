@@ -116,6 +116,14 @@ LDFLAGS="-L/usr/local/opt/zlib/lib"
 CPPFLAGS="-I/usr/local/opt/zlib/include"
 PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
+## LLVM
+# export PATH="/usr/local/opt/llvm/bin:$PATH"
+# export LDFLAGS="-L/usr/local/opt/llvm/lib"
+# export CPPFLAGS="-I/usr/local/opt/llvm/include"
+
+PATH="/usr/local/opt/ccache/libexec:$PATH"
+
+
 HOMEBREW_EDITOR=code
 
 # Alias
