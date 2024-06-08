@@ -20,8 +20,8 @@ indent_size = tab
 indent_style = tab
 
 [{**.*sh,test/run,**.bats}]
-indent_size = tab
-indent_style = tab
+indent_size = 2
+indent_style = space
 
 shell_variant      = bash
 binary_next_line   = true  # like -bn

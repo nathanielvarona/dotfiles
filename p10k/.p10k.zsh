@@ -9,25 +9,25 @@ POWERLEVEL9K_STATUS_VERBOSE=false
 
 # Prompt Figures
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-	os_icon
-	dir
-	direnv
-	vcs
-	fnm
-	rbenv
-	pyenv
-	virtualenv
-	anaconda
-	goenv
-	go_version
-	asdf
-	aws
-	kubecontext
-	docker_machine
-	background_jobs
-	command_execution_time
-	status
-	)
+  os_icon
+  dir
+  direnv
+  vcs
+  fnm
+  rbenv
+  pyenv
+  virtualenv
+  anaconda
+  goenv
+  go_version
+  asdf
+  aws
+  kubecontext
+  docker_machine
+  background_jobs
+  command_execution_time
+  status
+)
 
 # Truncating Long Directories
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
