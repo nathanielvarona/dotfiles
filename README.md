@@ -8,6 +8,21 @@ My Dotfiles Collection
 * Organized into directories for simplicity and ease of use
 * Managed using GNU `stow` to symlink dotfiles to my home directory `$HOME` or `~/`
 
+## Quick Setup
+
+```bash
+# Clone the Dotfiles
+git clone https://github.com/nathanielvarona/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+
+# Stow Packages
+stow */
+
+# Unstow Packages
+stow --delete */
+```
+
+
 ## Contributing
 
 ### Linting and File Formatting

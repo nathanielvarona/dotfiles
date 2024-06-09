@@ -1,9 +1,11 @@
+#!/bin/bash
+
 # Function to initialize a Ruby project with rbenv and gemset
-init_ruby_gemset_project() {
+initialize_ruby_gemset() {
   # Check if arguments are provided
   if [ -z "$1" ] || [ -z "$2" ]; then
     echo "Error: Please provide the Ruby version and gemset name as arguments"
-    echo "Usage: init_ruby_gemset_project <ruby_version> <gemset_name>"
+    echo "Usage: $(basename "$0") <ruby_version> <gemset_name>"
     return 1
   fi
 
@@ -35,5 +37,8 @@ init_ruby_gemset_project() {
 
   # Provide next steps
   echo "You can now install your Gem packages"
-  echo "Example: bundle install <package>"
+  echo "Example: gem install <package>"
 }
+
+# Call the function
+initialize_ruby_gemset "$@"

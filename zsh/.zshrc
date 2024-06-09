@@ -187,12 +187,13 @@ if [[ -a ~/.secrets ]]; then
 fi
 
 # Define the directory to search (change as needed)
-source_dir=~/.scripts/
-
+# source_dir=~/.scripts/
 # Loop through all files ending with *.source.sh recursively
-for source_file in $(find "$source_dir" -type f -name "*.source.sh" -print); do
-    source "$source_file"
-done
+# for source_file in $(find "$source_dir" -type f -name "*.source.sh" -print); do
+#     source "$source_file"
+# done
+
+export PATH="$PATH:$HOME/.scripts/bin"
 
 # Generated using `/usr/local/anaconda3/bin/conda init zsh`
 # >>> conda initialize >>>

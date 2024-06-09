@@ -1,7 +1,9 @@
+#!/bin/bash
+
 # Function to generate Lotto numbers
-lotto() {
+lotto_draw() {
   if [ "$#" -lt 2 ] || [ "$#" -gt 3 ]; then
-    echo "Usage: lotto <selected_numbers> <total_selections> [combinations]"
+    echo "Usage: $(basename "$0") <selected_numbers> <total_selections> [combinations]"
     return 1
   fi
 
@@ -27,3 +29,5 @@ lotto() {
     echo "Combination $i: ${numbers[*]}"
   done
 }
+
+lotto_draw "$@"

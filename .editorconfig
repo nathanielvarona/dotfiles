@@ -2,7 +2,7 @@
 
 [*]
 indent_style = space
-indent_size = 4
+indent_size = 2
 end_of_line = lf
 charset = utf-8
 
@@ -13,14 +13,13 @@ insert_final_newline = true
 trim_trailing_whitespace = false
 
 [**.{yml,yaml}]
-indent_size = 2
+indent_style = space
 
 [.git*]
 indent_size = tab
 indent_style = tab
 
 [{**.*sh,test/run,**.bats}]
-indent_size = 2
 indent_style = space
 
 shell_variant      = bash
