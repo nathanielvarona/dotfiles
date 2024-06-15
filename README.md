@@ -15,11 +15,14 @@ My Dotfiles Collection
 git clone https://github.com/nathanielvarona/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 
-# Stow Packages
-stow */
+# Stow Package(s)
+stow <PACKAGE NAME>
 
-# Unstow Packages
-stow --delete */
+# Restow Package(s)
+stow -R <PACKAGE NAME>
+
+# Unstow Package(s)
+stow -D <PACKAGE NAME>
 ```
 
 

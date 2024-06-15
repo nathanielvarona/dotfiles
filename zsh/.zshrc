@@ -7,13 +7,13 @@ LS_COLORS="${LSCOLORS}"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\%(:-%n).zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\%(:-%n).zsh"
 fi
 
-if [[ -f "`which brew`" ]] then
-    # If you're using macOS, you'll want this enabled
-    eval "$(`which brew` shellenv)"
+if [[ -f "$(which brew)" ]]; then
+  # If you're using macOS, you'll want this enabled
+  eval "$($(which brew) shellenv)"
 fi
 
 # Set the directory we want to store zinit and plugins
@@ -25,7 +25,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -69,11 +70,10 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 
 # Additional completion definitions for zsh
-if type brew &>/dev/null
-then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-    autoload -Uz compinit
-    compinit
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  autoload -Uz compinit
+  compinit
 fi
 
 # ZSH-HISTORY-SUBSTRING-SEARCH Plugin
@@ -88,7 +88,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 
 # ZSH_HIGHLIGHT_HIGHLIGHTERS
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
+ZSH_HIGHLIGHT_STYLES[suffix\-alias]=fg=green,underline
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
 ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
@@ -123,7 +123,6 @@ PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
 PATH="/usr/local/opt/ccache/libexec:$PATH"
 
-
 HOMEBREW_EDITOR=code
 
 # Alias
@@ -146,7 +145,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+if which pyenv-virtualenv-init >/dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 [ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
 
@@ -168,10 +167,10 @@ PATH="$HOME/go/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 
 # Define the highlight command
-HIGHLIGHT_CMD=( $(which highlight) --out-format xterm256 --line-numbers --force --style moria )
+HIGHLIGHT_CMD=($(which highlight) --out-format xterm256 --line-numbers --force --style moria)
 # Use "highlight" in place of "cat"
 cath() {
-    ${HIGHLIGHT_CMD[@]} "$@"
+  ${HIGHLIGHT_CMD[@]} "$@"
 }
 
 # Use "less" in place of "more"
@@ -182,15 +181,15 @@ export LESSOPEN="| ${HIGHLIGHT_CMD[@]} %s"
 
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
-if [[ -a ~/.secrets ]]; then
-    source ~/.secrets
+if [[ -e ~/.secrets ]]; then
+  source ~/.secrets
 fi
 
 # Define the directory to search (change as needed)
 source_dir=~/.scripts/source/
 # Loop through all files ending with *.source.sh recursively
 for source_file in $(find "$source_dir" -type f -name "*.source.sh" -print); do
-    source "$source_file"
+  source "$source_file"
 done
 
 export PATH="$PATH:$HOME/.scripts/bin"
@@ -198,20 +197,32 @@ export PATH="$PATH:$HOME/.scripts/bin"
 # Generated using `/usr/local/anaconda3/bin/conda init zsh`
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+  eval "$__conda_setup"
 else
-    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/anaconda3/bin:$PATH"
-    fi
+  if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+    . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+  else
+    export PATH="/usr/local/anaconda3/bin:$PATH"
+  fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
 # fabric is an open-source framework for augmenting humans using AI.
 if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then
-    . "$HOME/.config/fabric/fabric-bootstrap.inc"
+  . "$HOME/.config/fabric/fabric-bootstrap.inc"
 fi
+
+# Additional completion definitions for zsh
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
+if [[ -e "$HOME/.zsh_completions" ]]; then
+  FPATH="$HOME/.zsh_completions:${FPATH}"
+fi
+
+# Reload Completion
+autoload -Uz compinit && compinit
