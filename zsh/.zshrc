@@ -1,8 +1,7 @@
-LANG=en_US.UTF-8
-LC_ALL=en_US.UTF-8
-
-LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
-LS_COLORS="${LSCOLORS}"
+# Load Default Formats
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -11,10 +10,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\%(:-%n).zsh" ]]; 
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\%(:-%n).zsh"
 fi
 
-if [[ -f "$(which brew)" ]]; then
+# Homebrew Intialization
+if [[ -f "/usr/local/bin/brew" ]]; then
   # If you're using macOS, you'll want this enabled
-  eval "$($(which brew) shellenv)"
+  eval "$(/usr/local/bin/brew shellenv)"
 fi
+export HOMEBREW_EDITOR="code"
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -60,114 +61,117 @@ source <(fzf --zsh)
 source <(zoxide init --cmd cd zsh)
 
 # History
-HISTFILE=~/.zsh_history
-HISTFILESIZE=1000000000
-HISTSIZE=1000000000
-HISTTIMEFORMAT="[%F %T] "
+export HISTFILE=~/.zsh_history
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+export HISTTIMEFORMAT="[%F %T] "
 setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 
-# Additional completion definitions for zsh
-if type brew &>/dev/null; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-  autoload -Uz compinit
-  compinit
-fi
-
 # ZSH-HISTORY-SUBSTRING-SEARCH Plugin
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=0
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=0
+export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=0
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=0
 
 # ZSH-AUTOSUGGESTIONS Plugin
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 
 # ZSH_HIGHLIGHT_HIGHLIGHTERS
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-ZSH_HIGHLIGHT_STYLES[suffix\-alias]=fg=green,underline
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
-ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+export ZSH_HIGHLIGHT_STYLES[suffix\-alias]=fg=green,underline
+export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
+export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
-source <(fnm env)
-source <(podman completion zsh)
+# User Binaries Path
+export PATH="$PATH:$HOME/.local/bin"
 
-# User Path
-PATH="$PATH:$HOME/.local/bin"
+# GNU Bins
+export PATH="/usr/local/opt/inetutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
-# GNU Utils
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-PATH="/usr/local/opt/inetutils/libexec/gnubin:$PATH"
+###
+# If other project sources require these libraries as dependencies for builds.
+###
 
-PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+# Readline
+# export LDFLAGS="-L/usr/local/opt/readline/lib"
+# export CPPFLAGS="-I/usr/local/opt/readline/include"
 
-LDFLAGS="-L/usr/local/opt/readline/lib"
-CPPFLAGS="-I/usr/local/opt/readline/include"
+# OpenSSL
+# PATH="/usr/local/opt/openssl/bin:$PATH"
+# export LDFLAGS="-L/usr/local/opt/openssl/lib"
+# export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
-PATH="/usr/local/opt/openssl/bin:$PATH"
-LDFLAGS="-L/usr/local/opt/openssl/lib"
-CPPFLAGS="-I/usr/local/opt/openssl/include"
-
-LDFLAGS="-L/usr/local/opt/zlib/lib"
-CPPFLAGS="-I/usr/local/opt/zlib/include"
-PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+# Zlib
+# export LDFLAGS="-L/usr/local/opt/zlib/lib"
+# export CPPFLAGS="-I/usr/local/opt/zlib/include"
+# # For pkg-config to find zlib
+# export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
 ## LLVM
 # export PATH="/usr/local/opt/llvm/bin:$PATH"
 # export LDFLAGS="-L/usr/local/opt/llvm/lib"
 # export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
-PATH="/usr/local/opt/ccache/libexec:$PATH"
+# Object-file caching compiler wrapper
+export PATH="/usr/local/opt/ccache/libexec:$PATH"
 
-HOMEBREW_EDITOR=code
+# Alias (`ls` with colors)
+LS_COLORS="${LSCOLORS}"
+alias ls="ls --color"
 
-# Alias
+# Alias (others)
 alias zsh_history="fc -il 1"
-alias meld=/Applications/Meld.app/Contents/MacOS/Meld
-alias ls='ls --color'
+alias meld="/Applications/Meld.app/Contents/MacOS/Meld"
 
-# RBENV
+# Node Version Manager
+source <(fnm env)
+
+# Ruby Version Manager
 eval "$(rbenv init - zsh)"
 
-# DIRENV
-eval "$(direnv hook zsh)"
+# Python: Anacoda Initialization
+eval "$(/usr/local/anaconda3/bin/conda shell.zsh hook)"
 
-# ASDF
-ASDF_DIR='/usr/local/opt/asdf/libexec'
-. /usr/local/opt/asdf/libexec/asdf.sh
-
-# Pyenv Initialization
+# Python Version Manager
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
 if which pyenv-virtualenv-init >/dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+# Go Version Manager
+eval "$(goenv init -)"
+
+# Perl Initialization
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+
+# Directory Enviornment Varaibles `reads .envrc or .env`
+eval "$(direnv hook zsh)"
+
+# ASDF Tools Version Manager
+export ASDF_DIR='/usr/local/opt/asdf/libexec'
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+# Docker Client Version Manager
 [ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
 
-PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+# Kubernetes Plugin Manager
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+# iTerm2 Shell Integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # added by travis gem
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
-PATH="$HOME/go/bin:$PATH"
-
-# GOENV_ROOT="$HOME/.goenv"
-# PATH="$GOENV_ROOT/bin:$PATH"
-# eval "$(goenv init -)"
-# PATH="$GOROOT/bin:$PATH"
-# PATH="$PATH:$GOPATH/bin"
-
-PATH="/usr/local/sbin:$PATH"
-
 # Define the highlight command
-HIGHLIGHT_CMD=($(which highlight) --out-format xterm256 --line-numbers --force --style moria)
+export HIGHLIGHT_CMD=($(which highlight) --out-format xterm256 --line-numbers --force --style moria)
 # Use "highlight" in place of "cat"
 cath() {
   ${HIGHLIGHT_CMD[@]} "$@"
@@ -175,12 +179,11 @@ cath() {
 
 # Use "less" in place of "more"
 # Set less default options as environment variable
-export LESS="--RAW-CONTROL-CHARS --long-prompt --line-numbers --hilite-search --ignore-case --status-column --underline-special"
+export LESS="--raw-control-chars --long-prompt --line-numbers --hilite-search --ignore-case --status-column --underline-special"
 # Pipe highlight to less
 export LESSOPEN="| ${HIGHLIGHT_CMD[@]} %s"
 
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
-
+# CLI Environment Variable Secrets (such as API Keys, Secrets, Tokens)
 if [[ -e ~/.secrets ]]; then
   source ~/.secrets
 fi
@@ -191,38 +194,26 @@ source_dir=~/.scripts/source/
 for source_file in $(find "$source_dir" -type f -name "*.source.sh" -print); do
   source "$source_file"
 done
-
 export PATH="$PATH:$HOME/.scripts/bin"
-
-# Generated using `/usr/local/anaconda3/bin/conda init zsh`
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
-  eval "$__conda_setup"
-else
-  if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-    . "/usr/local/anaconda3/etc/profile.d/conda.sh"
-  else
-    export PATH="/usr/local/anaconda3/bin:$PATH"
-  fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # fabric is an open-source framework for augmenting humans using AI.
 if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then
   . "$HOME/.config/fabric/fabric-bootstrap.inc"
 fi
 
-# Additional completion definitions for zsh
+# Zsh Custom Completion
+if [[ -e "$HOME/.zsh_custom_completions" ]]; then
+  FPATH="$HOME/.zsh_custom_completions:${FPATH}"
+fi
+
+# Additional completion definitions for zsh (Mostly Homebrew Installed Packages)
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-if [[ -e "$HOME/.zsh_completions" ]]; then
-  FPATH="$HOME/.zsh_completions:${FPATH}"
-fi
-
 # Reload Completion
-autoload -Uz compinit && compinit
+autoload -U +X compinit
+compinit
+
+# Pritunl Client Completion
+source <(pritunl-client completion zsh)
