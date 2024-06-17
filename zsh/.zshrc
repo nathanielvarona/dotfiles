@@ -145,11 +145,15 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init >/dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+# Go Environment System Default Override
+export GOPATH="$HOME/.go"
+
 # Go Version Manager
 eval "$(goenv init -)"
 
 # Perl Initialization
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+# PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5" cpan local::lib
+eval "$(perl -I$HOME/.perl5/lib/perl5 -Mlocal::lib=$HOME/.perl5)"
 
 # Directory Enviornment Varaibles `reads .envrc or .env`
 eval "$(direnv hook zsh)"
