@@ -11,19 +11,22 @@ POWERLEVEL9K_STATUS_VERBOSE=false
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   os_icon
   dir
-  direnv
   vcs
+  direnv
+  asdf
   fnm
   rbenv
   pyenv
   virtualenv
   anaconda
-  goenv
   go_version
+  goenv
+  rust_version
   terraform
   terraform_version
-  asdf
   aws
+  gcloud
+  google_app_cred
   kubecontext
   docker_machine
   background_jobs
