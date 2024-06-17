@@ -37,4 +37,4 @@ To ensure consistency and cleanliness, I use:
 
 Usage
 * Run `editorconfig-checker` to check for EditorConfig errors
-* Run `shfmt --indent 2 -w ./scripts/.scripts/<path-to>/<script>.source.sh` to format shell scripts
+* Run `shfmt --indent 2 -w ./<path>/<to>/<script>.sh` to format shell scripts
