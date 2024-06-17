@@ -27,6 +27,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   aws
   gcloud
   google_app_cred
+  azure
   kubecontext
   docker_machine
   background_jobs
