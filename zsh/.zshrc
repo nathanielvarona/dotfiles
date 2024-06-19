@@ -15,7 +15,6 @@ if [[ -r "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 fi
 
 # Homebrew Intialization
-export HOMEBREW_EDITOR="code"
 eval "$(/usr/local/bin/brew shellenv)"
 
 # Source/Load zinit
@@ -132,7 +131,7 @@ source <(fnm env)
 # Ruby Version Manager
 eval "$(rbenv init - zsh)"
 
-# Python: Anacoda Initialization
+# Anacoda Initialization (Python)
 eval "$(/usr/local/anaconda3/bin/conda shell.zsh hook)"
 
 # Python Version Manager
@@ -181,7 +180,6 @@ cath() {
 
 # Use "less" in place of "more"
 # Set less default options as environment variable
-
 export LESS="--raw-control-chars --long-prompt --line-numbers --hilite-search --ignore-case --status-column --underline-special"
 # Pipe highlight to less
 export LESSOPEN="| ${HIGHLIGHT_CMD[@]} %s"
