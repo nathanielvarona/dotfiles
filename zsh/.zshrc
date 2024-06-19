@@ -81,14 +81,14 @@ export ZSH_HIGHLIGHT_STYLES[suffix\-alias]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
-# User Binaries Path
-export PATH="$PATH:$HOME/.local/bin"
-
 # GNU Bins
 export PATH="/usr/local/opt/inetutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+
+# Object-file caching compiler wrapper
+export PATH="/usr/local/opt/ccache/libexec:$PATH"
 
 ###
 # If other project sources require these libraries as dependencies for builds.
@@ -113,9 +113,6 @@ export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 # export PATH="/usr/local/opt/llvm/bin:$PATH"
 # export LDFLAGS="-L/usr/local/opt/llvm/lib"
 # export CPPFLAGS="-I/usr/local/opt/llvm/include"
-
-# Object-file caching compiler wrapper
-export PATH="/usr/local/opt/ccache/libexec:$PATH"
 
 # Alias (`ls` with colors)
 export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
@@ -183,6 +180,9 @@ cath() {
 export LESS="--raw-control-chars --long-prompt --line-numbers --hilite-search --ignore-case --status-column --underline-special"
 # Pipe highlight to less
 export LESSOPEN="| ${HIGHLIGHT_CMD[@]} %s"
+
+# User Binaries Path
+export PATH="$PATH:$HOME/.local/bin"
 
 # Define the directory to search (change as needed)
 source_dir=~/.scripts/source/
