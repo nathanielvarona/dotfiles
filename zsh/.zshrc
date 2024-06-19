@@ -1,13 +1,17 @@
 # Load Default Formats
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
+
+# Personal Environment Variables (such as API Keys, Secrets, Tokens)
+if [[ -e ~/.secrets ]]; then
+  source ~/.secrets
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\%(:-%n).zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\%(:-%n).zsh"
+if [[ -r "${HOME}/.cache}/p10k-instant-prompt-\%(:-%n).zsh" ]]; then
+  source "${HOME}/.cache}/p10k-instant-prompt-\%(:-%n).zsh"
 fi
 
 # Homebrew Intialization
@@ -17,13 +21,8 @@ if [[ -f "/usr/local/bin/brew" ]]; then
 fi
 export HOMEBREW_EDITOR="code"
 
-# Set the directory we want to store zinit and plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-# Download Zinit, if it's not there yet
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 # Source/Load zinit
-source "${ZINIT_HOME}/zinit.zsh"
+source /usr/local/opt/zinit/zinit.zsh
 
 # Add in Powerlevel10k
 zinit ice depth=1
@@ -123,7 +122,7 @@ export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/ccache/libexec:$PATH"
 
 # Alias (`ls` with colors)
-LS_COLORS="${LSCOLORS}"
+export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
 alias ls="ls --color"
 
 # Alias (others)
@@ -175,7 +174,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 # Define the highlight command
-export HIGHLIGHT_CMD=($(which highlight) --out-format xterm256 --line-numbers --force --style moria)
+export HIGHLIGHT_CMD=(/usr/local/bin/highlight --out-format xterm256 --line-numbers --force --style moria)
 # Use "highlight" in place of "cat"
 cath() {
   ${HIGHLIGHT_CMD[@]} "$@"
@@ -183,14 +182,10 @@ cath() {
 
 # Use "less" in place of "more"
 # Set less default options as environment variable
+
 export LESS="--raw-control-chars --long-prompt --line-numbers --hilite-search --ignore-case --status-column --underline-special"
 # Pipe highlight to less
 export LESSOPEN="| ${HIGHLIGHT_CMD[@]} %s"
-
-# CLI Environment Variable Secrets (such as API Keys, Secrets, Tokens)
-if [[ -e ~/.secrets ]]; then
-  source ~/.secrets
-fi
 
 # Define the directory to search (change as needed)
 source_dir=~/.scripts/source/
