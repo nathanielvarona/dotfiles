@@ -10,16 +10,13 @@ fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${HOME}/.cache}/p10k-instant-prompt-\%(:-%n).zsh" ]]; then
-  source "${HOME}/.cache}/p10k-instant-prompt-\%(:-%n).zsh"
+if [[ -r "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Homebrew Intialization
-if [[ -f "/usr/local/bin/brew" ]]; then
-  # If you're using macOS, you'll want this enabled
-  eval "$(/usr/local/bin/brew shellenv)"
-fi
 export HOMEBREW_EDITOR="code"
+eval "$(/usr/local/bin/brew shellenv)"
 
 # Source/Load zinit
 source /usr/local/opt/zinit/zinit.zsh
@@ -142,7 +139,9 @@ eval "$(/usr/local/anaconda3/bin/conda shell.zsh hook)"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-if which pyenv-virtualenv-init >/dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+if which pyenv-virtualenv-init >/dev/null; then
+  eval "$(pyenv virtualenv-init -)"
+fi
 
 # Go Environment System Default Override
 export GOPATH="$HOME/.go"
