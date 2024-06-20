@@ -14,7 +14,10 @@ if [[ -r "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Homebrew Intialization
+# iTerm2 Shell Integration
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Homebrew Initialization
 eval "$(/usr/local/bin/brew shellenv)"
 
 # Source/Load zinit
@@ -161,12 +164,6 @@ export ASDF_DIR='/usr/local/opt/asdf/libexec'
 
 # Kubernetes Plugin Manager
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-# iTerm2 Shell Integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 # Define the highlight command
 export HIGHLIGHT_CMD=(/usr/local/bin/highlight --out-format xterm256 --line-numbers --force --style moria)
