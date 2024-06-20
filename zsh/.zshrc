@@ -1,8 +1,8 @@
-# Load Default Formats
+# Use Default Locale Settings
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Personal Environment Variables (such as API Keys, Secrets, Tokens)
+# Personal Environment Variables (such as Vendor Keys/Credentials and/or API Secrets/Tokens)
 if [[ -e ~/.secrets ]]; then
   source ~/.secrets
 fi
@@ -20,7 +20,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Homebrew Initialization
 eval "$(/usr/local/bin/brew shellenv)"
 
-# Source/Load zinit
+# Zinit Initialization
 source /usr/local/opt/zinit/zinit.zsh
 
 # Add in Powerlevel10k
@@ -131,7 +131,7 @@ source <(fnm env)
 # Ruby Version Manager
 eval "$(rbenv init - zsh)"
 
-# Anacoda Initialization (Python)
+# Anaconda Initialization (Python)
 eval "$(/usr/local/anaconda3/bin/conda shell.zsh hook)"
 
 # Python Version Manager
