@@ -41,15 +41,16 @@ open_webui() {
       echo -e "${YELLOW}\nOpen WebUI container already started${RESET}\n"
     else
       # Run the container and capture the container ID from the stdout output
-      container_id=$(docker run \
-        --detach \
-        --publish 3000:8080 \
-        --add-host=host.docker.internal:host-gateway \
-        --volume ~/.open-webui:/app/backend/data \
-        --name $container_name \
-        --restart always \
-        ghcr.io/open-webui/open-webui:main
-        )
+      container_id=$(
+        docker run \
+          --detach \
+          --publish 3000:8080 \
+          --add-host=host.docker.internal:host-gateway \
+          --volume ~/.open-webui:/app/backend/data \
+          --name $container_name \
+          --restart always \
+          ghcr.io/open-webui/open-webui:main
+      )
       # Display success message with the container ID
       echo -e "\nOpen WebUI container started successfully with ID: ${GREEN}$container_id${RESET}\n"
     fi
