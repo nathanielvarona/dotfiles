@@ -40,6 +40,9 @@ open_webui() {
       # Display message if the container is already running
       echo -e "${YELLOW}\nOpen WebUI container already started${RESET}\n"
     else
+      if [ -n "$(docker ps -a -q -f name=$container_name)" ]; then
+        echo -e "\nRemoving existing container: ${RED}$(docker rm $container_name)${RESET}"
+      fi
       # Run the container and capture the container ID from the stdout output
       container_id=$(
         docker run \
@@ -51,21 +54,30 @@ open_webui() {
           --restart always \
           ghcr.io/open-webui/open-webui:main
       )
-      # Display success message with the container ID
-      echo -e "\nOpen WebUI container started successfully with ID: ${GREEN}$container_id${RESET}\n"
+      if [ -n "$container_id" ]; then
+        # Display success message with the container ID
+        echo -e "\nOpen WebUI container started successfully with ID: ${GREEN}$container_id${RESET}\n"
+      else
+        echo -e "${YELLOW}\nError: Failed to start container${RESET}\n"
+      fi
     fi
     ;;
   # Force remove the Open WebUI container
   stop)
-    # Check if the container exists before attempting to remove it
+    # Check if the container exists and is running before attempting to stop it
     if [ -n "$(docker ps -q -f name=$container_name)" ]; then
-      # Display message for stopping and removing the container
+      # Display message for stopping the container
       echo -e "\nStopping: ${YELLOW}$(docker stop $container_name)${RESET}"
-      echo -e "Removing: ${RED}$(docker rm $container_name)${RESET}\n"
     else
-      # Display error message if the container is not found
-      echo -e "${YELLOW}\nError: Container '$container_name' not found${RESET}\n"
+      if [ -n "$(docker ps -a -q -f name=$container_name)" ]; then
+        echo -e "${YELLOW}\nContainer '$container_name' is already stopped${RESET}\n"
+      else
+        # Display error message if the container is not found
+        echo -e "${YELLOW}\nError: Container '$container_name' not found${RESET}\n"
+      fi
     fi
+    # Remove the container
+    echo -e "Removing: ${RED}$(docker rm $container_name)${RESET}\n"
     ;;
   # Display the status of the Open WebUI container
   status)
