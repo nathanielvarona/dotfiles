@@ -1,1 +1,15 @@
+\.git
+\.gitignore
+\.gitmodules
+
+\.legacy
+\.vscode
+
+\.editorconfig
+\.stow-local-ignore
+
+\.DS_Store
+
 ^/README.*
+^/Brewfile
+^/cpanfile

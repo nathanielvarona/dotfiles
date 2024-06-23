@@ -15,16 +15,15 @@ My Dotfiles Collection
 git clone https://github.com/nathanielvarona/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 
-# Stow Package(s)
-stow <PACKAGE NAME>
+# Stow
+stow --stow .
 
-# Restow Package(s)
-stow -R <PACKAGE NAME>
+# Unstow
+stow --delete .
 
-# Unstow Package(s)
-stow -D <PACKAGE NAME>
+# Restow (like Unstow followed by Stow)
+stow --restow .
 ```
-
 
 ## Contributing
 
@@ -35,6 +34,7 @@ To ensure consistency and cleanliness, I use:
 * `editorconfig-checker` for EditorConfig validation
 * `shfmt` for shell script formatting
 
-Usage
+Linting Usage
+
 * Run `editorconfig-checker` to check for EditorConfig errors
 * Run `shfmt --indent 2 -w ./<path>/<to>/<script>.sh` to format shell scripts
