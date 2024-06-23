@@ -125,6 +125,10 @@ alias ls="ls --color"
 alias zsh_history="fc -il 1"
 alias meld="/Applications/Meld.app/Contents/MacOS/Meld"
 
+# ASDF Tools Version Manager
+export ASDF_DIR='/usr/local/opt/asdf/libexec'
+. /usr/local/opt/asdf/libexec/asdf.sh
+
 # Node Version Manager
 source <(fnm env)
 
@@ -146,12 +150,11 @@ fi
 # PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5" cpan local::lib
 eval "$(perl -I$HOME/.perl5/lib/perl5 -Mlocal::lib=$HOME/.perl5)"
 
+# ASDF GOROOT
+. ~/.asdf/plugins/golang/set-env.zsh
+
 # Directory Enviornment Varaibles `reads .envrc or .env`
 eval "$(direnv hook zsh)"
-
-# ASDF Tools Version Manager
-export ASDF_DIR='/usr/local/opt/asdf/libexec'
-. /usr/local/opt/asdf/libexec/asdf.sh
 
 # Docker Client Version Manager
 [ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
