@@ -1,0 +1,13 @@
+--dir=~/.dotfiles
+--target=~
+--ignore='~'
+--ignore=\.git
+--ignore=\.gitignore
+--ignore=\.DS_Store
+--ignore=\.legacy
+--ignore=\.vscode
+--ignore=\.stowrc
+--ignore=\.editorconfig
+--ignore=README.*
+--ignore=Brewfile
+--ignore=cpanfile

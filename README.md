@@ -16,14 +16,17 @@ git clone https://github.com/nathanielvarona/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 
 # Stow
-stow --stow .
+stow --stow --verbose .
 
 # Unstow
-stow --delete .
+stow --delete --verbose .
 
 # Restow (like Unstow followed by Stow)
-stow --restow .
+stow --restow --verbose .
 ```
+
+> [!TIP]
+> Use the GNU `stow` option `--simulate` to simulate changes.
 
 ## Contributing
 
@@ -37,4 +40,4 @@ To ensure consistency and cleanliness, I use:
 Linting Usage
 
 * Run `editorconfig-checker` to check for EditorConfig errors
-* Run `shfmt --indent 2 -w ./<path>/<to>/<script>.sh` to format shell scripts
+* Run `shfmt --indent 2 --write ./<path>/<to>/<script>.sh` to format shell scripts
