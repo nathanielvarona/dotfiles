@@ -29,10 +29,37 @@ stow --restow --verbose .
 
 ## Before Committing
 
-### Backup the List of Brew Packages
+### Homebrew Packages
+
+Dump List of Packages to Brewfile
 
 ```bash
 brew bundle dump --force --no-lock
+```
+
+Install Packages from the Brewfile
+
+```bash
+brew bundle install
+```
+
+### ASDF Plugins
+
+Dump List of Plugins
+
+```bash
+asdf plugin list > asdf_plugins.list
+```
+
+Install Plugins from List File
+
+```bash
+while read -r plugin_name; do
+  asdf plugin add "$plugin_name"
+  if [[ $? -ne 0 ]]; then
+    echo "Error adding plugin: $plugin_name"
+  fi
+done < asdf_plugins.list
 ```
 
 ### Shell Scripts Linting and Formatting
