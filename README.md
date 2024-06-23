@@ -5,15 +5,14 @@ My Dotfiles Collection
 ## Features
 
 * A collection of dotfiles for easy setup and configuration of my development environment
-* Organized into directories for simplicity and ease of use
 * Managed using GNU `stow` to symlink dotfiles to my home directory `$HOME` or `~/`
 
 ## Quick Setup
 
 ```bash
 # Clone the Dotfiles
-git clone https://github.com/nathanielvarona/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+git clone https://github.com/nathanielvarona/dotfiles.git \
+  ~/.dotfiles && cd ~/.dotfiles
 
 # Stow
 stow --stow --verbose .
@@ -26,18 +25,19 @@ stow --restow --verbose .
 ```
 
 > [!TIP]
-> Use the GNU `stow` option `--simulate` to simulate changes.
+> Use the GNU `stow` option `--simulate` for dry run and evalute possible changes before the real one.
 
-## Contributing
+## Before Committing
 
-### Linting and File Formatting
+### Backup the List of Brew Packages
 
-To ensure consistency and cleanliness, I use:
+```bash
+brew bundle dump --force --no-lock
+```
 
-* `editorconfig-checker` for EditorConfig validation
-* `shfmt` for shell script formatting
+### Shell Scripts Linting and Formatting
 
-Linting Usage
+To ensure consistency and cleanliness, use:
 
 * Run `editorconfig-checker` to check for EditorConfig errors
 * Run `shfmt --indent 2 --write ./<path>/<to>/<script>.sh` to format shell scripts
