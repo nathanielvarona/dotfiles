@@ -1,4 +1,4 @@
-# Install using the command:
-# egrep -v '^(;|#|//)' ./cpanfile | xargs cpan install
+# Requirement: `cpan App::cpanminus`
+# Installation : `cpanm --installdeps .`
 
-Graph::Easy
+requires 'Graph::Easy', '0.76';
