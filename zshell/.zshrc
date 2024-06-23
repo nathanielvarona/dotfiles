@@ -194,9 +194,9 @@ if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then
   . "$HOME/.config/fabric/fabric-bootstrap.inc"
 fi
 
-# Zsh Custom Completion
-if [[ -e "$HOME/.zsh_custom_completions" ]]; then
-  FPATH="$HOME/.zsh_custom_completions:${FPATH}"
+# Custom Completion
+if [[ -e "$HOME/.completion" ]]; then
+  FPATH="$HOME/.completion:${FPATH}"
 fi
 
 # Additional completion definitions for zsh (Mostly Homebrew Installed Packages)
