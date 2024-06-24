@@ -11,3 +11,4 @@
 --ignore=README.*
 --ignore=Brewfile
 --ignore=cpanfile
+--ignore=asdf_plugins.list

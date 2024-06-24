@@ -150,8 +150,9 @@ fi
 # PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5" cpan local::lib
 eval "$(perl -I$HOME/.perl5/lib/perl5 -Mlocal::lib=$HOME/.perl5)"
 
-# ASDF GOROOT
-. ~/.asdf/plugins/golang/set-env.zsh
+# Go System Installed
+export GOPATH="$HOME/.go"
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # Directory Enviornment Varaibles `reads .envrc or .env`
 eval "$(direnv hook zsh)"
@@ -163,7 +164,7 @@ eval "$(direnv hook zsh)"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Define the highlight command
-export HIGHLIGHT_CMD=(/usr/local/bin/highlight --out-format xterm256 --line-numbers --force --style moria)
+export HIGHLIGHT_CMD=(/usr/local/bin/highlight --out-format xterm256 --line-numbers --force --style moria --replace-tabs 2)
 # Use "highlight" in place of "cat"
 cath() {
   ${HIGHLIGHT_CMD[@]} "$@"
