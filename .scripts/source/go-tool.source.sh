@@ -3,12 +3,14 @@
 # Define the go-tool function
 function go-tool() {
   # Define local variables
+  local action="$1"
   local go_version="$2"
 
   # Define a nested function to display Go environment details
   go_env_details() {
+    # Display Go environment details
     echo "Go Environment Details:"
-    echo "------------------------------------------ "
+    echo "------------------------------------------"
     echo "Go Root:    $(go env GOROOT)"
     echo "Go Binary:  $(which go)"
     echo "Go Version: $(go version)"
@@ -43,14 +45,12 @@ function go-tool() {
     fi
   }
 
-  # Handle the main logic based on the first argument
-  case "$1" in
+  # Handle the main logic based on the action
+  case "$action" in
   install)
     # Install a Go version
-    echo "Installing Go Version"
-    # Install the requested Go version
+    echo "Installing Go Version $go_version..."
     go install golang.org/dl/go$go_version@latest
-    # Download the Go version regardless of existing installation
     go$go_version download
     ;;
   use)
@@ -77,19 +77,29 @@ function go-tool() {
   list)
     # List installed Go versions
     if [ -f "/usr/local/bin/go" ]; then
-      echo "system"
+      echo "system ($(/usr/local/bin/go version | cut -d ' ' -f 3 | sed 's/^go//'))"
     fi
     for file in $HOME/sdk/go*; do
       echo $(basename $file | sed 's/^go//')
     done
     ;;
+  list-all)
+    # List all available Go versions
+    git ls-remote --tags https://github.com/golang/go "go*" |
+      awk -F/go '{ print $2 }' |
+      uniq |
+      sort -t. -k 1,1 -k 2,2n -k 3,3n -k 4,4n -k 5,5n |
+      grep -v '^1\($\|\.0\|\.0\.[0-9]\|\.1\|\.1rc[0-9]\|\.1\.[0-9]\|.2\|\.2rc[0-9]\|\.2\.1\|.8.5rc5\)$' |
+      tr '\n' '\n'
+    ;;
   *)
     # Display usage instructions if the input is invalid
-    echo "Usage: go-tool <install|use|uninstall|list> <version|system>"
+    echo "Usage: go-tool <install|use|uninstall|list|list-all> <version|system>"
     echo "  install: Install a Go version"
     echo "  use: Switch to a Go version"
     echo "  uninstall: Uninstall a Go version"
     echo "  list: List installed Go versions"
+    echo "  list-all: List all available Go versions"
     ;;
   esac
 }
