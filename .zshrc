@@ -10,9 +10,10 @@ fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# If enabled and causing issues, try this command: `rm -Rf ~/.cache/p10k-* && rm -f ~/.zcompdump; compinit`
+# if [[ -r "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # iTerm2 Shell Integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
