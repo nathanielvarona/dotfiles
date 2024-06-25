@@ -7,20 +7,142 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "nightly": {
+    "enabled": true,
+    "channel": "stable"
+  },
   "theme": "Ayu Dark",
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "tab_size": 2,
+  "cursor_blink": true,
+  "buffer_font_family": "Ubuntu",
+  "preferred_line_length": 80,
+  "buffer_line_height": "comfortable",
+  "ui_font_family": "Ubuntu",
+  "formatter": "prettier",
+  "autosave": "on_focus_change",
+  "autosave_delay": 1500,
+  "autosave_on_focus_change": true,
+  "autosave_on_window_change": true,
+  "autosave_on_build": true,
+  "autosave_on_build_delay": 1500,
+  "autosave_on_build_events": ["build", "run", "debug"],
+  "autosave_on_build_events_delay": 1500,
+  "vim_mode": false,
+  "confirm_quit": false,
+  "hover_popover_enabled": true,
+  "show_copilot_suggestions": true,
+  "inlay_hints": {
+    "enabled": true,
+    "typeHints": true,
+    "parameterHints": true,
+    "chainingHints": true
+  },
   "terminal": {
     "alternate_scroll": "off",
     "blinking": "terminal_controlled",
     "copy_on_select": false,
     "env": {},
     "font_family": "Hack Nerd Font",
-    "font_features": null,
+    "font_features": {},
     "font_size": 16,
     "option_as_meta": false,
     "shell": "system",
     "working_directory": "current_project_directory"
+  },
+  "git": {
+    "enabled": true,
+    "autoFetch": true,
+    "autoFetchInterval": 300,
+    "autoFetchOnFocus": true,
+    "autoFetchOnWindowChange": true,
+    "autoFetchOnBuild": true,
+    "git_status": true,
+    "autoFetchOnBuildEvents": ["build", "run", "debug"],
+    "autoFetchOnBuildEventsDelay": 1500,
+    "autoFetchOnBuildDelay": 1500,
+    "git_gutter": "tracked_files"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "avoid",
+    "proseWrap": "preserve",
+    "endOfLine": "lf"
+  },
+  "linter": {
+    "eslint": {
+      "enabled": true
+    },
+    "flake8": { // Python linter
+      "enabled": true
+    },
+    "gocritic": { // Go linter
+      "enabled": true
+    }
+  },
+  "bracket_pairing": "always",
+  "eslint": {
+    "enabled": true,
+    "autoFixOnSave": true,
+    "autoFixOnFormat": true,
+    "autoFixOnFormatDelay": 1500
+  },
+  "languages": {
+    "JavaScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+        "source.fixAll.eslint": true
+      }
+    },
+    "TSX": {
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+        "source.fixAll.eslint": true
+      }
+    }
+  },
+  "hints": {
+      "assignVariableTypes": true,
+      "compositeLiteralFields": true,
+      "compositeLiteralTypes": true,
+      "constantValues": true,
+      "functionTypeParameters": true,
+      "parameterNames": true,
+      "rangeVariableTypes": true
+  },
+  "lsp": {
+    "typescript-language-server": {
+      "initialization_options": {
+        "preferences": {
+          "includeInlayParameterNameHints": "all",
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": true,
+          "includeInlayFunctionParameterTypeHints": true,
+          "includeInlayVariableTypeHints": true,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": true,
+          "includeInlayFunctionLikeReturnTypeHints": true,
+          "includeInlayEnumMemberValueHints": true
+        }
+      }
+    },
+    "pyls": { // Name of the Python language server
+      "enabled": true
+    },
+    "gopls": { // Name of the Go language server
+      "enabled": true
+    }
   }
 }
