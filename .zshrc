@@ -151,6 +151,9 @@ eval "$(perl -I$HOME/.perl5/lib/perl5 -Mlocal::lib=$HOME/.perl5)"
 # Go Binary Path
 export PATH="$HOME/go/bin:$PATH"
 
+# User Binaries Path
+export PATH="$HOME/.local/bin:$PATH"
+
 # Directory Enviornment Varaibles `reads .envrc or .env`
 eval "$(direnv hook zsh)"
 
@@ -159,9 +162,6 @@ eval "$(direnv hook zsh)"
 
 # Kubernetes Plugin Manager
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-# User Binaries Path
-export PATH="$HOME/.local/bin:$PATH"
 
 # Define the directory to search (change as needed)
 source_dir=~/.scripts/autoload
