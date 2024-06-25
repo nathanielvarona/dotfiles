@@ -15,9 +15,6 @@ fi
 #   source "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
-# iTerm2 Shell Integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 # Homebrew Initialization
 eval "$(/usr/local/bin/brew shellenv)"
 
