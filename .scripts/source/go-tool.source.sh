@@ -11,22 +11,29 @@ function go-tool() {
     # Display Go environment details
     echo "Go Environment Details:"
     echo "------------------------------------------"
-    echo "Go Root:    $(go env GOROOT)"
-    echo "Go Binary:  $(which go)"
-    echo "Go Version: $(go version)"
-    echo "Go Path:    $(go env GOPATH)"
-    echo "Go OS/Arch: $(go env GOOS)/$(go env GOARCH)"
+    echo "Go Root:    $(go env GOROOT)"                # Display Go root directory
+    echo "Go Binary:  $(which go)"                     # Display Go binary location
+    echo "Go Version: $(go version)"                   # Display Go version
+    echo "Go Path:    $(go env GOPATH)"                # Display Go path
+    echo "Go OS/Arch: $(go env GOOS)/$(go env GOARCH)" # Display Go OS and architecture
     echo "-------------------------------------------"
+  }
+
+  # Define a nested function to remove the "go" alias
+  unalias_go() {
+    # Check if the "go" alias exists
+    if alias go >/dev/null 2>&1; then
+      # Remove the "go" alias
+      unalias go
+    fi
   }
 
   # Define a nested function to switch Go versions
   switch_go_version() {
     # Check if the requested version is "system"
     if [ $go_version == "system" ]; then
-      # If the "go" alias exists, remove it
-      if alias go >/dev/null 2>&1; then
-        unalias go
-      fi
+      # Remove the "go" alias
+      unalias_go
       # Display Go environment details
       go_env_details
     else
@@ -34,6 +41,8 @@ function go-tool() {
       local go_version_bin=$(which go$go_version)
       # Check if the binary exists
       if [ -f "$go_version_bin" ]; then
+        # Remove the "go" alias
+        unalias_go
         # Define an alias for the Go version
         alias go=$go_version_bin
         # Display Go environment details
