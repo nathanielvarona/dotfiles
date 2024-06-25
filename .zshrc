@@ -148,9 +148,8 @@ fi
 # PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5" cpan local::lib
 eval "$(perl -I$HOME/.perl5/lib/perl5 -Mlocal::lib=$HOME/.perl5)"
 
-# Go System Installed
-export GOPATH="$HOME/.go"
-export PATH=$PATH:$(go env GOPATH)/bin
+# Go Binary Path
+export PATH="$HOME/go/bin:$PATH"
 
 # Directory Enviornment Varaibles `reads .envrc or .env`
 eval "$(direnv hook zsh)"
@@ -162,12 +161,12 @@ eval "$(direnv hook zsh)"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # User Binaries Path
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Define the directory to search (change as needed)
-source_dir=~/.scripts/source/
+source_dir=~/.scripts/autoload
 # Loop through all files ending with *.source.sh recursively
-for source_file in $(find "$source_dir" -type f -name "*.source.sh" -print); do
+for source_file in $(find "$source_dir" -type l -name "*.source.sh" -print); do
   source "$source_file"
 done
 export PATH="$PATH:$HOME/.scripts/bin"
