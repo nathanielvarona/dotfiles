@@ -82,14 +82,14 @@ export ZSH_HIGHLIGHT_STYLES[suffix\-alias]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
-# GNU Bins
-export PATH="/usr/local/opt/inetutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
-
 # Object-file caching compiler wrapper
 export PATH="/usr/local/opt/ccache/libexec:$PATH"
+
+# GNU Bins
+# export PATH="/usr/local/opt/inetutils/libexec/gnubin:$PATH"
+# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+# export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+# export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 
 ###
 # If other project sources require these libraries as dependencies for builds.
@@ -134,6 +134,7 @@ source <(fnm env)
 eval "$(rbenv init - zsh)"
 
 # Anaconda Initialization (Python)
+export CONDA_AUTO_ACTIVATE_BASE=false
 eval "$(/usr/local/anaconda3/bin/conda shell.zsh hook)"
 
 # Python Version Manager

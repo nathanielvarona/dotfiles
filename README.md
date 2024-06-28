@@ -34,7 +34,7 @@ stow --restow --verbose .
 Dump List of Packages to Brewfile
 
 ```bash
-brew bundle dump --force --no-lock
+brew bundle dump --no-lock --describe --force
 ```
 
 Install Packages from the Brewfile
@@ -60,6 +60,20 @@ while read -r plugin_name; do
     echo "Error adding plugin: $plugin_name"
   fi
 done < asdf_plugins.list
+```
+
+### Export Ollama Models
+
+Dump Model List
+
+```bash
+ollama list | awk 'NR>1 { print $1 }' > ollama_models.list
+```
+
+Pull models from the List
+
+```bash
+egrep -v '^(;|#|//)' ./ollama_models.list | xargs ollama pull
 ```
 
 ### Shell Scripts Linting and Formatting

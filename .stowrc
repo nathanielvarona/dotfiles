@@ -12,3 +12,4 @@
 --ignore=Brewfile
 --ignore=cpanfile
 --ignore=asdf_plugins.list
+--ignore=ollama_models.list

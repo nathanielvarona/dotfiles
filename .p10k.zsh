@@ -19,8 +19,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   pyenv
   virtualenv
   anaconda
-  # go_version
-  # goenv
+  go_version
   rust_version
   terraform
   terraform_version
