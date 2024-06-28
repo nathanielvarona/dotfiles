@@ -76,6 +76,14 @@ Pull models from the List
 egrep -v '^(;|#|//)' ./ollama_models.list | xargs ollama pull
 ```
 
+### GNU Pretty Good Privacy (PGP) package and Password manager
+
+#### Passphrase entry dialog utilizing the Assuan protocol
+
+```bash
+defaults write org.gpgtools.pinentry-mac UseKeychain -bool NO
+```
+
 ### Shell Scripts Linting and Formatting
 
 To ensure consistency and cleanliness, use:
