@@ -1,6 +1,12 @@
 tap "amar1729/formulae"
 tap "homebrew/bundle"
 tap "homebrew/services"
+# Asciicast to GIF converter
+brew "agg"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
+# Record and share terminal sessions
+brew "asciinema"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
@@ -13,10 +19,14 @@ brew "ctop"
 brew "direnv"
 # Docker Version Manager
 brew "dvm"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # Fast and simple Node.js version manager
 brew "fnm"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GIF image/animation creator/editor
+brew "gifsicle"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
@@ -28,11 +38,9 @@ brew "inetutils"
 # Mac App Store command-line interface
 brew "mas"
 # Create, run, and share large language models (LLMs)
-brew "ollama", restart_service: true
+brew "ollama"
 # Password manager
 brew "pass"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Python version management
@@ -112,5 +120,4 @@ vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
 vscode "oderwat.indent-rainbow"
-vscode "pkief.material-icon-theme"
 vscode "stuart.unique-window-colors"

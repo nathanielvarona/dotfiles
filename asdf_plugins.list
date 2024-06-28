@@ -1,7 +1,6 @@
-aws-sam-cli
-bazel
-eksctl
-golang
+# aws-sam-cli
+# bazel
+# eksctl
 helm-ct
 helm
 helmfile
@@ -12,7 +11,6 @@ kubectl
 kubeval
 minikube
 packer
-poetry
-skaffold
+# skaffold
 terraform
-terragrunt
+# terragrunt

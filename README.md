@@ -54,12 +54,7 @@ asdf plugin list > asdf_plugins.list
 Install Plugins from List File
 
 ```bash
-while read -r plugin_name; do
-  asdf plugin add "$plugin_name"
-  if [[ $? -ne 0 ]]; then
-    echo "Error adding plugin: $plugin_name"
-  fi
-done < asdf_plugins.list
+egrep -v '^(;|#|//)' asdf_plugins.list | xargs -I {} asdf plugin add {} 
 ```
 
 ### Export Ollama Models
@@ -73,7 +68,7 @@ ollama list | awk 'NR>1 { print $1 }' > ollama_models.list
 Pull models from the List
 
 ```bash
-egrep -v '^(;|#|//)' ./ollama_models.list | xargs ollama pull
+egrep -v '^(;|#|//)' ./ollama_models.list | xargs -I {} ollama pull {}
 ```
 
 ### GNU Pretty Good Privacy (PGP) package and Password manager
@@ -87,7 +82,7 @@ defaults write org.gpgtools.pinentry-mac UseKeychain -bool NO
 Python Poetry Packages
 
 ```bash
-egrep -v '^(;|#|//)' ./pipx_packages.list | xargs pipx install
+egrep -v '^(;|#|//)' ./pipx_packages.list | xargs -I {} pipx install {}
 ```
 
 ### Shell Scripts Linting and Formatting
