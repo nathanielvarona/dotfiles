@@ -84,6 +84,12 @@ egrep -v '^(;|#|//)' ./ollama_models.list | xargs ollama pull
 defaults write org.gpgtools.pinentry-mac UseKeychain -bool NO
 ```
 
+Python Poetry Packages
+
+```bash
+egrep -v '^(;|#|//)' ./pipx_packages.list | xargs pipx install
+```
+
 ### Shell Scripts Linting and Formatting
 
 To ensure consistency and cleanliness, use:

@@ -1,0 +1,2 @@
+poetry
+git+https://github.com/danielmiessler/fabric
