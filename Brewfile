@@ -7,6 +7,8 @@ brew "coreutils"
 brew "asdf"
 # Object-file caching compiler wrapper
 brew "ccache"
+# Top-like interface for container metrics
+brew "ctop"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Docker Version Manager
@@ -43,6 +45,10 @@ brew "python@3.10"
 brew "python@3.11"
 # Ruby version manager
 brew "rbenv"
+# Makes shims aware of bundle install paths
+brew "rbenv-bundler"
+# Adds basic gemset support to rbenv
+brew "rbenv-gemset"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Tools for the WireGuard secure network tunnel
@@ -51,19 +57,29 @@ brew "wireguard-tools"
 brew "zinit"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Additional completion definitions for zsh
+brew "zsh-completions"
 # Host application for browser extension providing access to your password store
 brew "amar1729/formulae/browserpass"
 # Prefer the tty when using pinentry, fallback to GUI
 brew "amar1729/formulae/pinentry-prefer-tty"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Distribution of the Python and R programming languages for scientific computing
 cask "anaconda"
 # App to build and share containerised applications and microservices
 cask "docker"
-cask "font-hack-nerd-font"
+cask "font-meslo-lg-nerd-font"
+# Update maps and software, sync with Garmin Connect and register your device
+cask "garmin-express"
+# Hosts file editor/manager
+cask "gas-mask"
 # Menu bar app to monitor graphics card usage
 cask "gfxcardstatus"
 # Web browser
 cask "google-chrome"
+# Grammarly for desktop
+cask "grammarly-desktop"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Menu bar manager
@@ -82,6 +98,8 @@ cask "sourcetree"
 cask "visual-studio-code"
 # Create, manage, and run virtual machines
 cask "vmware-fusion"
+# Multiplayer code editor
+cask "zed"
 mas "iStat Menus", id: 1319778037
 mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835
