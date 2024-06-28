@@ -44,6 +44,8 @@ brew "k9s"
 brew "mas"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
+# Drop-in replacement for Terraform. Infrastructure as Code Tool
+brew "opentofu"
 # Password manager
 brew "pass"
 # Execute binaries from Python packages in isolated environments
@@ -159,6 +161,9 @@ vscode "file-icons.file-icons"
 vscode "github.github-vscode-theme"
 vscode "golang.go"
 vscode "gruntfuggly.activitusbar"
+vscode "hashicorp.terraform"
+vscode "mechatroner.rainbow-csv"
+vscode "ms-azuretools.vscode-docker"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
