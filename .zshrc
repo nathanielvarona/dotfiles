@@ -11,9 +11,9 @@ fi
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 # If enabled and causing issues, try this command: `rm -Rf ~/.cache/p10k-* && rm -f ~/.zcompdump; compinit`
-# if [[ -r "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+if [[ -r "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Homebrew Initialization
 eval "$(/usr/local/bin/brew shellenv)"
