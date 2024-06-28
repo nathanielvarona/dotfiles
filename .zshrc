@@ -193,3 +193,8 @@ compinit
 
 # Pritunl Client Completion
 source <(pritunl-client completion zsh)
+
+# Ngrok Completion
+if command -v ngrok &>/dev/null; then
+  eval "$(ngrok completion)"
+fi

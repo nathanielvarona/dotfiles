@@ -62,8 +62,20 @@ brew "rbenv"
 brew "rbenv-bundler"
 # Adds basic gemset support to rbenv
 brew "rbenv-gemset"
+# Utility that provides fast incremental file transfer
+brew "rsync"
+# Autoformat shell script source code
+brew "shfmt"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Terminal multiplexer
+brew "tmux"
+# CLI tool that moves files or folder to the trash
+brew "trash"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
+# Internet file retriever
+brew "wget"
 # Tools for the WireGuard secure network tunnel
 brew "wireguard-tools"
 # Flexible and fast Zsh plugin manager
@@ -80,8 +92,12 @@ brew "amar1729/formulae/pinentry-prefer-tty"
 cask "alacritty"
 # Distribution of the Python and R programming languages for scientific computing
 cask "anaconda"
+# Voice and text chat software
+cask "discord"
 # App to build and share containerised applications and microservices
 cask "docker"
+# Online diagram software
+cask "drawio"
 cask "font-meslo-lg-nerd-font"
 # Update maps and software, sync with Garmin Connect and register your device
 cask "garmin-express"
@@ -107,6 +123,8 @@ cask "logi-options-plus"
 cask "meld"
 # Native desktop app for Messenger (formerly Facebook Messenger)
 cask "messenger"
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok"
 # Open source build of Lens Kubernetes IDE
 cask "openlens"
 # Collaboration platform for API development
@@ -127,6 +145,8 @@ cask "teamviewer"
 cask "visual-studio-code"
 # Create, manage, and run virtual machines
 cask "vmware-fusion"
+# Native desktop client for WhatsApp
+cask "whatsapp"
 # Multiplayer code editor
 cask "zed"
 # Video communication and virtual meeting platform
