@@ -1,6 +1,7 @@
 tap "amar1729/formulae"
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "localsend/localsend"
 # Asciicast to GIF converter
 brew "agg"
 # Interpreted, interactive, object-oriented programming language
@@ -13,6 +14,8 @@ brew "coreutils"
 brew "asdf"
 # Object-file caching compiler wrapper
 brew "ccache"
+# Zsh completion for conda
+brew "conda-zsh-completion"
 # Top-like interface for container metrics
 brew "ctop"
 # Load/unload environment variables based on $PWD
@@ -35,6 +38,8 @@ brew "go"
 brew "highlight"
 # GNU utilities for networking
 brew "inetutils"
+# Kubernetes CLI To Manage Your Clusters In Style!
+brew "k9s"
 # Mac App Store command-line interface
 brew "mas"
 # Create, run, and share large language models (LLMs)
@@ -94,20 +99,38 @@ cask "iterm2"
 cask "jordanbaird-ice"
 # Displays all connected LG monitor information
 cask "lg-onscreen-control"
+# An open source cross-platform alternative to AirDrop
+cask "localsend"
 # Software for Logitech devices
 cask "logi-options-plus"
 # Visual diff and merge tool
 cask "meld"
+# Native desktop app for Messenger (formerly Facebook Messenger)
+cask "messenger"
+# Open source build of Lens Kubernetes IDE
+cask "openlens"
+# Collaboration platform for API development
+cask "postman"
 # OpenVPN client
 cask "pritunl"
+# Video chat, voice call and instant messaging application
+cask "skype"
+# Team communication and collaboration software
+cask "slack"
 # Graphical client for Git version control
 cask "sourcetree"
+# Music streaming service
+cask "spotify"
+# Remote access and connectivity software focused on security
+cask "teamviewer"
 # Open-source code editor
 cask "visual-studio-code"
 # Create, manage, and run virtual machines
 cask "vmware-fusion"
 # Multiplayer code editor
 cask "zed"
+# Video communication and virtual meeting platform
+cask "zoom"
 mas "iStat Menus", id: 1319778037
 mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835
