@@ -1,6 +1,7 @@
+argocd
 # aws-sam-cli
 # bazel
-# eksctl
+eksctl
 helm-ct
 helm
 helmfile

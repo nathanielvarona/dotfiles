@@ -54,7 +54,8 @@ asdf plugin list > asdf_plugins.list
 Install Plugins from List File
 
 ```bash
-egrep -v '^(;|#|//)' asdf_plugins.list | xargs -I {} asdf plugin add {} 
+egrep -v '^(;|#|//)' asdf_plugins.list | 
+  xargs -I {} asdf plugin add {} 
 ```
 
 ### Export Ollama Models
@@ -62,13 +63,15 @@ egrep -v '^(;|#|//)' asdf_plugins.list | xargs -I {} asdf plugin add {}
 Dump Model List
 
 ```bash
-ollama list | awk 'NR>1 { print $1 }' > ollama_models.list
+ollama list | 
+  awk 'NR>1 { print $1 }' > ollama_models.list
 ```
 
 Pull models from the List
 
 ```bash
-egrep -v '^(;|#|//)' ./ollama_models.list | xargs -I {} ollama pull {}
+egrep -v '^(;|#|//)' ./ollama_models.list | 
+  xargs -I {} ollama pull {}
 ```
 
 ### GNU Pretty Good Privacy (PGP) package and Password manager
@@ -76,13 +79,28 @@ egrep -v '^(;|#|//)' ./ollama_models.list | xargs -I {} ollama pull {}
 #### Passphrase entry dialog utilizing the Assuan protocol
 
 ```bash
-defaults write org.gpgtools.pinentry-mac UseKeychain -bool NO
+defaults write org.gpgtools.common UseKeychain false
 ```
 
 Python Poetry Packages
 
 ```bash
-egrep -v '^(;|#|//)' ./pipx_packages.list | xargs -I {} pipx install {}
+egrep -v '^(;|#|//)' ./pipx_packages.list | 
+  xargs -I {} pipx install {}
+```
+
+### Perl CPAN Packages
+
+#### Requirement
+
+```bash
+cpan App::cpanminus
+```
+
+#### Installation
+
+```bash
+cpanm --installdeps .
 ```
 
 ### Shell Scripts Linting and Formatting
