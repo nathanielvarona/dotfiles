@@ -35,14 +35,14 @@ stow --restow --verbose .
 
 ```bash
 brew bundle dump --no-lock --describe \
-  --force --file ./packages/Brewfile
+  --force --file ./Brewfile
 ```
 
 #### Install Packages
 
 ```bash
 brew bundle install \
-  --file ./packages/Brewfile
+  --file ./Brewfile
 ```
 
 ### ASDF Plugins
@@ -50,13 +50,13 @@ brew bundle install \
 #### Dump List of Plugins
 
 ```bash
-asdf plugin list > ./packages/asdf-plugins
+asdf plugin list > ./asdf-plugins
 ```
 
 #### Installation
 
 ```bash
-egrep -v '^(;|#|//)' ./packages/asdf-plugins | 
+egrep -v '^(;|#|//)' ./asdf-plugins | 
   xargs -I {} asdf plugin add {}
 ```
 
@@ -65,7 +65,7 @@ egrep -v '^(;|#|//)' ./packages/asdf-plugins |
 #### Installation
 
 ```bash
-egrep -v '^(;|#|//)' ./packages/pipx-apps | 
+egrep -v '^(;|#|//)' ./pipx-apps | 
   xargs -I {} pipx install {}
 ```
 
@@ -80,7 +80,7 @@ cpan App::cpanminus
 #### Installation
 
 ```bash
-cpanm --installdeps ./packages/
+cpanm --installdeps ./
 ```
 
 ### Ollama Models
@@ -89,13 +89,13 @@ Dump Model List
 
 ```bash
 ollama list | 
-  awk 'NR>1 { print $1 }' > ./packages/ollama-models
+  awk 'NR>1 { print $1 }' > ./ollama-models
 ```
 
 Pull Models
 
 ```bash
-egrep -v '^(;|#|//)' ./packages/ollama-models |
+egrep -v '^(;|#|//)' ./ollama-models |
   xargs -I {} ollama pull {}
 ```
 
@@ -108,7 +108,7 @@ while IFS= read -r model_name; do
   repo_id="${model_name%% *}"
   filename="${model_name#* }"
   huggingface-cli download "$repo_id" "$filename"
-done < <(egrep -v '^(;|#|//)' ./packages/hugging-face-models)
+done < <(egrep -v '^(;|#|//)' ./hugging-face-models)
 ```
 
 ### GNU Pretty Good Privacy (PGP) package and Password manager
