@@ -41,7 +41,8 @@ brew bundle dump --no-lock --describe \
 #### Install Packages
 
 ```bash
-brew bundle install
+brew bundle install \
+  --file ./packages/Brewfile
 ```
 
 ### ASDF Plugins
@@ -91,11 +92,11 @@ ollama list |
   awk 'NR>1 { print $1 }' > ./packages/ollama-models
 ```
 
-Pull models from the List
+Pull Models
 
 ```bash
-egrep -v '^(;|#|//)' ./packages/ollama-models | 
-  xargs ollama pull
+egrep -v '^(;|#|//)' ./packages/ollama-models |
+  xargs -I {} ollama pull {}
 ```
 
 ### Hugging Face Models
@@ -103,8 +104,11 @@ egrep -v '^(;|#|//)' ./packages/ollama-models |
 Download Models
 
 ```bash
-egrep -v '^(;|#|//)' ./packages/hugging-face-models |
-  xargs huggingface-cli download
+while IFS= read -r model_name; do
+  repo_id="${model_name%% *}"
+  filename="${model_name#* }"
+  huggingface-cli download "$repo_id" "$filename"
+done < <(egrep -v '^(;|#|//)' ./packages/hugging-face-models)
 ```
 
 ### GNU Pretty Good Privacy (PGP) package and Password manager

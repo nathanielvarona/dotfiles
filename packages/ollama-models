@@ -1,11 +1,12 @@
-# mistral:7b
-llama3:8b
-# starcoder2:3b
-# medllama2:latest
-# meditron:latest
-# llama3:70b
-# gemma:7b
+# codellama:7b
+# codegemma:7b
 # gemma:2b
-# codellama:latest
-# codegemma:latest
-# llama2:latest
+# gemma:7b
+gemma2:9b
+# llama2:7b
+llama3:8b
+mistral:7b
+# medllama2:7b
+# meditron:7b
+qwen2:7b
+# starcoder2:3b
