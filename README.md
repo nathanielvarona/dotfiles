@@ -27,18 +27,18 @@ stow --restow --verbose .
 > [!TIP]
 > Use the GNU `stow` option `--simulate` for dry run and evalute possible changes before the real one.
 
-## Before Committing
+## Packages Installation
 
 ### Homebrew Packages
 
-Dump List of Packages to Brewfile
+#### Dump List of Packages
 
 ```bash
 brew bundle dump --no-lock --describe \
   --force --file ./packages/Brewfile
 ```
 
-Install Packages from the Brewfile
+#### Install Packages
 
 ```bash
 brew bundle install
@@ -46,44 +46,22 @@ brew bundle install
 
 ### ASDF Plugins
 
-Dump List of Plugins
+#### Dump List of Plugins
 
 ```bash
 asdf plugin list > ./packages/asdf-plugins
 ```
 
-Install Plugins from List File
+#### Installation
 
 ```bash
 egrep -v '^(;|#|//)' ./packages/asdf-plugins | 
-  xargs -I {} asdf plugin add {} 
+  xargs -I {} asdf plugin add {}
 ```
 
-### Export Ollama Models
+### Poetry Apps (Python Packages)
 
-Dump Model List
-
-```bash
-ollama list | 
-  awk 'NR>1 { print $1 }' > ./packages/ollama-models
-```
-
-Pull models from the List
-
-```bash
-egrep -v '^(;|#|//)' ./packages/ollama-models | 
-  xargs -I {} ollama pull {}
-```
-
-### GNU Pretty Good Privacy (PGP) package and Password manager
-
-#### Passphrase entry dialog utilizing the Assuan protocol
-
-```bash
-defaults write org.gpgtools.common UseKeychain false
-```
-
-Python Poetry Packages
+#### Installation
 
 ```bash
 egrep -v '^(;|#|//)' ./packages/pipx-apps | 
@@ -102,6 +80,39 @@ cpan App::cpanminus
 
 ```bash
 cpanm --installdeps ./packages/
+```
+
+### Ollama Models
+
+Dump Model List
+
+```bash
+ollama list | 
+  awk 'NR>1 { print $1 }' > ./packages/ollama-models
+```
+
+Pull models from the List
+
+```bash
+egrep -v '^(;|#|//)' ./packages/ollama-models | 
+  xargs ollama pull
+```
+
+### Hugging Face Models
+
+Download Models
+
+```bash
+egrep -v '^(;|#|//)' ./packages/hugging-face-models |
+  xargs huggingface-cli download
+```
+
+### GNU Pretty Good Privacy (PGP) package and Password manager
+
+#### Passphrase entry dialog utilizing the Assuan protocol
+
+```bash
+defaults write org.gpgtools.common UseKeychain false
 ```
 
 ### Shell Scripts Linting and Formatting
