@@ -34,7 +34,8 @@ stow --restow --verbose .
 Dump List of Packages to Brewfile
 
 ```bash
-brew bundle dump --no-lock --describe --force
+brew bundle dump --no-lock --describe \
+  --force --file ./packages/Brewfile
 ```
 
 Install Packages from the Brewfile
@@ -48,13 +49,13 @@ brew bundle install
 Dump List of Plugins
 
 ```bash
-asdf plugin list > asdf_plugins.list
+asdf plugin list > ./packages/asdf-plugins
 ```
 
 Install Plugins from List File
 
 ```bash
-egrep -v '^(;|#|//)' asdf_plugins.list | 
+egrep -v '^(;|#|//)' ./packages/asdf-plugins | 
   xargs -I {} asdf plugin add {} 
 ```
 
@@ -64,13 +65,13 @@ Dump Model List
 
 ```bash
 ollama list | 
-  awk 'NR>1 { print $1 }' > ollama_models.list
+  awk 'NR>1 { print $1 }' > ./packages/ollama-models
 ```
 
 Pull models from the List
 
 ```bash
-egrep -v '^(;|#|//)' ./ollama_models.list | 
+egrep -v '^(;|#|//)' ./packages/ollama-models | 
   xargs -I {} ollama pull {}
 ```
 
@@ -85,7 +86,7 @@ defaults write org.gpgtools.common UseKeychain false
 Python Poetry Packages
 
 ```bash
-egrep -v '^(;|#|//)' ./pipx_packages.list | 
+egrep -v '^(;|#|//)' ./packages/pipx-apps | 
   xargs -I {} pipx install {}
 ```
 
@@ -100,7 +101,7 @@ cpan App::cpanminus
 #### Installation
 
 ```bash
-cpanm --installdeps .
+cpanm --installdeps ./packages/
 ```
 
 ### Shell Scripts Linting and Formatting

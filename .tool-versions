@@ -11,3 +11,4 @@ kubeval 0.16.0
 minikube 1.33.1
 packer 1.11.0
 terraform 1.9.0
+tilt 0.33.9

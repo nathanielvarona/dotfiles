@@ -22,6 +22,10 @@ brew "ctop"
 brew "direnv"
 # Docker Version Manager
 brew "dvm"
+# Maintain consistent coding style between multiple editors
+brew "editorconfig"
+# Tool to verify that your files are in harmony with your .editorconfig
+brew "editorconfig-checker"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Fast and simple Node.js version manager

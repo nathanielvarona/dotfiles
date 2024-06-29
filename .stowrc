@@ -1,6 +1,8 @@
 --dir=~/.dotfiles
 --target=~
 --ignore='~'
+--ignore=README.*
+--ignore=packages
 --ignore=\.git
 --ignore=\.gitignore
 --ignore=\.DS_Store
@@ -8,9 +10,3 @@
 --ignore=\.vscode
 --ignore=\.stowrc
 --ignore=\.editorconfig
---ignore=README.*
---ignore=Brewfile
---ignore=cpanfile
---ignore=asdf_plugins.list
---ignore=ollama_models.list
---ignore=pipx_packages.list

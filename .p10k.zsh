@@ -22,7 +22,6 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   go_version
   rust_version
   terraform
-  terraform_version
   aws
   gcloud
   google_app_cred
