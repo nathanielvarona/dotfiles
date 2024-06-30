@@ -106,6 +106,8 @@ brew "amar1729/formulae/pinentry-prefer-tty"
 cask "alacritty"
 # Distribution of the Python and R programming languages for scientific computing
 cask "anaconda"
+# Allows connection to a computer remotely
+cask "anydesk"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerised applications and microservices
