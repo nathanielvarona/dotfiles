@@ -4,6 +4,7 @@ export HIGHLIGHT_CMD=(/usr/local/bin/highlight --out-format xterm256 --line-numb
 cath() {
   ${HIGHLIGHT_CMD[@]} "$@"
 }
+# Use `less` or `bat` instead of dealing with more text data.
 
 # Use "less" in place of "more"
 # Set less default options as environment variable

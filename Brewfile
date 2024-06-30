@@ -12,6 +12,8 @@ brew "asciinema"
 brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Object-file caching compiler wrapper
 brew "ccache"
 # Zsh completion for conda
@@ -179,3 +181,4 @@ vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
 vscode "oderwat.indent-rainbow"
 vscode "stuart.unique-window-colors"
+vscode "tamasfe.even-better-toml"
