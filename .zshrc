@@ -116,8 +116,15 @@ export PATH="/usr/local/opt/ccache/libexec:$PATH"
 # export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
 # Alias (`ls` with colors)
-export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
-alias ls="ls --color"
+# export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
+# alias ls="ls --color"
+
+# LSD (LSDeluxe)
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
 # Alias (others)
 alias zsh_history="fc -il 1"

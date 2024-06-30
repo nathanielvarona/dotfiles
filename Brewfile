@@ -46,6 +46,8 @@ brew "huggingface-cli"
 brew "inetutils"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
+# Clone of ls with colorful output, file type icons, and more
+brew "lsd"
 # Mac App Store command-line interface
 brew "mas"
 # Create, run, and share large language models (LLMs)
@@ -72,6 +74,8 @@ brew "rbenv-bundler"
 brew "rbenv-gemset"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Safe, concurrent, practical language
+brew "rust"
 # Autoformat shell script source code
 brew "shfmt"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
