@@ -1,0 +1,17 @@
+{
+    "workbench.colorTheme": "GitHub Dark Default",
+    "workbench.preferredDarkColorTheme": "GitHub Dark Default",
+    "workbench.preferredLightColorTheme": "GitHub Light Default",
+    "workbench.preferredHighContrastColorTheme": "GitHub Dark High Contrast",
+    "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
+    "workbench.startupEditor": "none",
+    "workbench.iconTheme": "file-icons",
+    "workbench.activityBar.location": "hidden",
+    "window.autoDetectColorScheme": true,
+    "explorer.compactFolders": false,
+    "git.autofetch": true,
+    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'MesloLGL Nerd Font'",
+    "editor.fontSize": 14,
+    "terminal.integrated.fontFamily": "'MesloLGL Nerd Font'",
+    "terminal.integrated.fontSize": 14
+}
