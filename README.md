@@ -125,3 +125,11 @@ To ensure consistency and cleanliness, use:
 
 * Run `editorconfig-checker` to check for EditorConfig errors
 * Run `shfmt --indent 2 --write ./<path>/<to>/<script>.sh` to format shell scripts
+
+## Troubleshooting
+
+### Clearout the Completation Cache from ZSH
+
+```bash
+rm -f $HOME/.zcompdump
+```

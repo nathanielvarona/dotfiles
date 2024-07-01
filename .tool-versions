@@ -1,4 +1,5 @@
 argocd 2.11.3
+awscli 2.17.5
 eksctl 0.183.0
 helm-ct 3.11.0
 helm 3.15.2

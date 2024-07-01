@@ -92,8 +92,6 @@ brew "watch"
 brew "wget"
 # Tools for the WireGuard secure network tunnel
 brew "wireguard-tools"
-# Flexible and fast Zsh plugin manager
-brew "zinit"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Additional completion definitions for zsh
@@ -178,9 +176,11 @@ vscode "gruntfuggly.activitusbar"
 vscode "hashicorp.terraform"
 vscode "mechatroner.rainbow-csv"
 vscode "ms-azuretools.vscode-docker"
+vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
 vscode "oderwat.indent-rainbow"
+vscode "redhat.vscode-yaml"
 vscode "stuart.unique-window-colors"
 vscode "tamasfe.even-better-toml"

@@ -10,16 +10,18 @@ fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-# If enabled and causing issues, try this command: `rm -Rf ~/.cache/p10k-* && rm -f ~/.zcompdump; compinit`
-if [[ -r "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${HOME}/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Homebrew Initialization
 eval "$(/usr/local/bin/brew shellenv)"
 
-# Zinit Initialization
-source /usr/local/opt/zinit/zinit.zsh
+# Zinit Setup and Initialization
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in Powerlevel10k
 zinit ice depth=1
@@ -39,12 +41,8 @@ zinit light Aloxaf/fzf-tab
 zinit ice as"program" pick"bin/git-fuzzy"
 zinit light bigH/git-fuzzy
 
-# Add in snippets
-zinit snippet OMZP::aws
-zinit snippet OMZP::git
-zinit snippet OMZP::kubectl
-
-# OMZ Shorthand Syntax
+# OMZ Plugins
+zinit snippet OMZ::plugins/git
 zinit snippet OMZ::plugins/extract
 zinit snippet OMZ::plugins/gnu-utils
 zinit snippet OMZ::plugins/common-aliases
@@ -121,10 +119,6 @@ export PATH="/usr/local/opt/ccache/libexec:$PATH"
 
 # LSD (LSDeluxe)
 alias ls='lsd'
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
 
 # Alias (others)
 alias zsh_history="fc -il 1"
@@ -184,9 +178,19 @@ if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then
   . "$HOME/.config/fabric/fabric-bootstrap.inc"
 fi
 
-# Custom Completion
-if [[ -e "$HOME/.completions" ]]; then
-  FPATH="$HOME/.completions:${FPATH}"
+# Poetry Apps (Python Packages) Completion
+if ! [[ -e "$HOME/.zfunc/_poetry" ]]; then
+  poetry completions zsh > $HOME/.zfunc/_poetry
+fi
+
+# Ollama CLI Completion
+if ! [[ -e "$HOME/.zfunc/_ollama.zsh" ]]; then
+  curl -sSL -o $HOME/.zfunc/_ollama.zsh https://gist.githubusercontent.com/nathanielvarona/72d827ae3b90c71a655e8a7b33154e8a/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh
+fi
+
+# Completion for Apps called from the Completion Function
+if [[ -e "$HOME/.zfunc" ]]; then
+  FPATH="$HOME/.zfunc:${FPATH}"
 fi
 
 # Additional completion definitions for zsh (Mostly Homebrew Installed Packages)
@@ -194,12 +198,22 @@ if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-# Reload Completion
-autoload -U +X compinit
-compinit
+# Autoload Completion
+autoload -U +X bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
 
 # Pritunl Client Completion
 source <(pritunl-client completion zsh)
+
+# ASDF Plugins/Apps Completions
+# Note: Make sure the ASDF plugin has a version set to Global
+source <(minikube completion zsh)
+source <(kubectl completion zsh)
+source <(helm completion zsh)
+source <(kind completion zsh)
+source <(argocd completion zsh)
+complete -o nospace -C terraform terraform
+complete -o nospace -C aws_completer aws
 
 # Ngrok Completion
 if command -v ngrok &>/dev/null; then
