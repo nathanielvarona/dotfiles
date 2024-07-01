@@ -133,8 +133,6 @@ cask "lg-onscreen-control"
 cask "localsend"
 # Software for Logitech devices
 cask "logi-options-plus"
-# Visual diff and merge tool
-cask "meld"
 # Native desktop app for Messenger (formerly Facebook Messenger)
 cask "messenger"
 # Reverse proxy, secure introspectable tunnels to localhost
