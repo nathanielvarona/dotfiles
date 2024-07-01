@@ -93,25 +93,52 @@ export PATH="/usr/local/opt/ccache/libexec:$PATH"
 # If other project sources require these libraries as dependencies for builds.
 ###
 
-# Readline
-# export LDFLAGS="-L/usr/local/opt/readline/lib"
-# export CPPFLAGS="-I/usr/local/opt/readline/include"
-
 # OpenSSL
-# PATH="/usr/local/opt/openssl/bin:$PATH"
-# export LDFLAGS="-L/usr/local/opt/openssl/lib"
-# export CPPFLAGS="-I/usr/local/opt/openssl/include"
+# export PATH="/usr/local/opt/openssl/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/openssl/include $CPPFLAGS"
+
+# Readline
+# For compilers to find readline you may need to set:
+export LDFLAGS="-L/usr/local/opt/readline/lib"
+export CPPFLAGS="-I/usr/local/opt/readline/include"
+# For pkg-config to find readline you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+
+# SQLite
+# If you need to have sqlite first in your PATH, run:
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+# For compilers to find sqlite you may need to set:
+export LDFLAGS="-L/usr/local/opt/sqlite/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/sqlite/include $CPPFLAGS"
+# For pkg-config to find sqlite you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
 
 # Zlib
-# export LDFLAGS="-L/usr/local/opt/zlib/lib"
-# export CPPFLAGS="-I/usr/local/opt/zlib/include"
-# # For pkg-config to find zlib
+# For compilers to find zlib you may need to set:
+export LDFLAGS="-L/usr/local/opt/zlib/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/zlib/include $CPPFLAGS"
+# For pkg-config to find zlib
 # export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
-## LLVM
-# export PATH="/usr/local/opt/llvm/bin:$PATH"
-# export LDFLAGS="-L/usr/local/opt/llvm/lib"
-# export CPPFLAGS="-I/usr/local/opt/llvm/include"
+# LLVM
+# If you need to have llvm first in your PATH, run:
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+# To use the bundled libc++ please add the following LDFLAGS:
+# export LDFLAGS="-L/usr/local/opt/llvm/lib/c++ -Wl,-rpath,/usr/local/opt/llvm/lib/c++ $LDFLAGS"
+# For compilers to find llvm you may need to set:
+export LDFLAGS="-L/usr/local/opt/llvm/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/llvm/include $CPPFLAGS"
+
+## GCC and G++
+#
+# Using Apple clang version (from Xcode)
+# export CC=`which gcc`
+# export CXX=`which g++`
+#
+# Using LLVM (from Homebrew) with ccache (Object-file caching compiler wrapper)
+export CC="ccache clang"
+export CXX="ccache clang++"
 
 # Alias (`ls` with colors)
 # export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"

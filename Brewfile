@@ -64,10 +64,6 @@ brew "pipx"
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Ruby version manager
 brew "rbenv"
 # Makes shims aware of bundle install paths
@@ -82,6 +78,8 @@ brew "rust"
 brew "shfmt"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Tool Command Language
+brew "tcl-tk"
 # Terminal multiplexer
 brew "tmux"
 # CLI tool that moves files or folder to the trash
@@ -92,6 +90,8 @@ brew "watch"
 brew "wget"
 # Tools for the WireGuard secure network tunnel
 brew "wireguard-tools"
+# General-purpose lossless data-compression library
+brew "zlib"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Additional completion definitions for zsh

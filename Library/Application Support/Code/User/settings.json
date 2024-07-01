@@ -13,5 +13,6 @@
     "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'MesloLGL Nerd Font'",
     "editor.fontSize": 14,
     "terminal.integrated.fontFamily": "'MesloLGL Nerd Font'",
-    "terminal.integrated.fontSize": 14
+    "terminal.integrated.fontSize": 14,
+    "redhat.telemetry.enabled": false
 }

@@ -16,3 +16,4 @@
 --ignore=hugging-face-models
 --ignore=ollama-models
 --ignore=pipx-apps
+--ignore=pyenv-versions

@@ -119,6 +119,15 @@ done < <(egrep -v '^(;|#|//)' ./hugging-face-models)
 defaults write org.gpgtools.common UseKeychain false
 ```
 
+### Pyenv Python Versions (Python Version Manager)
+
+Build and Install Python Versions from Source
+
+```bash
+egrep -v '^(;|#|//)' ./pyenv-versions |
+  xargs -I {} pyenv install {}
+```
+
 ### Shell Scripts Linting and Formatting
 
 To ensure consistency and cleanliness, use:
