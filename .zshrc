@@ -185,7 +185,8 @@ fi
 
 # Ollama CLI Completion
 if ! [[ -e "$HOME/.zfunc/_ollama.zsh" ]]; then
-  curl -sSL -o $HOME/.zfunc/_ollama.zsh https://gist.githubusercontent.com/nathanielvarona/72d827ae3b90c71a655e8a7b33154e8a/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh
+  curl -sSL -o $HOME/.zfunc/_ollama.zsh \
+    https://gist.githubusercontent.com/nathanielvarona/72d827ae3b90c71a655e8a7b33154e8a/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh
 fi
 
 # Completion for Apps called from the Completion Function
@@ -206,13 +207,20 @@ autoload -Uz compinit && compinit
 source <(pritunl-client completion zsh)
 
 # ASDF Plugins/Apps Completions
-# Note: Make sure the ASDF plugin has a version set to Global
+# Note: The asdf plugin must be either installed and added to your $PATH or accessible through the ASDF Shim.
 source <(minikube completion zsh)
 source <(kubectl completion zsh)
 source <(helm completion zsh)
 source <(kind completion zsh)
 source <(argocd completion zsh)
+source <(kustomize completion zsh)
+source <(tilt completion zsh)
+source <(eksctl completion zsh)
+source <(kompose completion zsh)
+source <(helmfile completion zsh)
+source <(ct completion zsh) # helm-ct
 complete -o nospace -C terraform terraform
+complete -o nospace -C packer packer
 complete -o nospace -C aws_completer aws
 
 # Ngrok Completion

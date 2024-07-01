@@ -11,6 +11,7 @@ kompose
 kubeconform
 kubectl
 kubeval
+kustomize
 minikube
 packer
 # skaffold
