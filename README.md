@@ -60,7 +60,16 @@ egrep -v '^(;|#|//)' ./asdf-plugins |
   xargs -I {} asdf plugin add {}
 ```
 
-### Poetry Apps (Python Packages)
+### Pyenv Versions (Python Version Manager)
+
+Build and Install Python Versions from Source
+
+```bash
+egrep -v '^(;|#|//)' ./pyenv-versions |
+  xargs -I {} pyenv install {}
+```
+
+### Pipx Apps (Python Apps)
 
 #### Installation
 
@@ -119,15 +128,6 @@ done < <(egrep -v '^(;|#|//)' ./hugging-face-models)
 defaults write org.gpgtools.common UseKeychain false
 ```
 
-### Pyenv Python Versions (Python Version Manager)
-
-Build and Install Python Versions from Source
-
-```bash
-egrep -v '^(;|#|//)' ./pyenv-versions |
-  xargs -I {} pyenv install {}
-```
-
 ### Shell Scripts Linting and Formatting
 
 To ensure consistency and cleanliness, use:
@@ -140,5 +140,13 @@ To ensure consistency and cleanliness, use:
 ### Clearout the Completation Cache from ZSH
 
 ```bash
-rm -f $HOME/.zcompdump
+rm -f $HOME/.zcompdump && exec $SHELL -l
+```
+
+### Nuke Zinit
+
+Total Reset the Zinit Configuration for Rebuild
+
+```
+rm -Rf $HOME/.local/share/zinit $HOME/.cache/zinit
 ```

@@ -7,6 +7,7 @@ if [[ -e ~/.secrets ]]; then
   source ~/.secrets
 fi
 
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -22,6 +23,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
+
+[[ ! -d $ZSH_CACHE_DIR/completions ]] && mkdir -p $ZSH_CACHE_DIR/completions
 
 # Add in Powerlevel10k
 zinit ice depth=1
@@ -155,11 +158,20 @@ alias meld="/Applications/Meld.app/Contents/MacOS/Meld"
 export ASDF_DIR='/usr/local/opt/asdf/libexec'
 . /usr/local/opt/asdf/libexec/asdf.sh
 
+# ASDF Plugins/Apps
+# With OhMyZsh
+zinit snippet OMZ::plugins/argocd
+zinit snippet OMZ::plugins/helm
+zinit snippet OMZ::plugins/kind
+zinit snippet OMZ::plugins/kubectl
+zinit snippet OMZ::plugins/minikube
+
 # Node Version Manager
 source <(fnm env)
 
 # Ruby Version Manager
-eval "$(rbenv init - zsh)"
+# eval "$(rbenv init - zsh)"
+zinit snippet OMZ::plugins/rbenv
 
 # Anaconda Initialization (Python)
 export CONDA_AUTO_ACTIVATE_BASE=false
@@ -173,6 +185,13 @@ if which pyenv-virtualenv-init >/dev/null; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+# Poetry Apps (Python Packages)
+# if ! [[ -e "$ZSH_CACHE_DIR/completions/_poetry" ]]; then
+#   poetry completions zsh > $ZSH_CACHE_DIR/completions/_poetry
+# fi
+# With OhMyZsh
+zinit snippet OMZ::plugins/poetry
+
 # Perl Initialization
 # PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5" cpan local::lib
 eval "$(perl -I$HOME/.perl5/lib/perl5 -Mlocal::lib=$HOME/.perl5)"
@@ -184,13 +203,25 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Directory Enviornment Varaibles `reads .envrc or .env`
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
+# With OhMyZsh
+zinit snippet OMZ::plugins/direnv
+
 
 # Docker Client Version Manager
 [ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
 
 # Kubernetes Plugin Manager
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# Ollama CLI Completion
+# Note: This is Temporary until Ollam implement a Completion Generator Feature from the CLI
+if ! [[ -e "$ZSH_CACHE_DIR/completions/_ollama.zsh" ]]; then
+  curl -sSL -o $ZSH_CACHE_DIR/completions/_ollama.zsh \
+    https://gist.githubusercontent.com/nathanielvarona/72d827ae3b90c71a655e8a7b33154e8a/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh
+fi
+
+zinit snippet OMZ::plugins/dash
 
 # Define the directory to search (change as needed)
 source_dir=~/.scripts/autoload
@@ -205,20 +236,9 @@ if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then
   . "$HOME/.config/fabric/fabric-bootstrap.inc"
 fi
 
-# Poetry Apps (Python Packages) Completion
-if ! [[ -e "$HOME/.zfunc/_poetry" ]]; then
-  poetry completions zsh > $HOME/.zfunc/_poetry
-fi
-
-# Ollama CLI Completion
-if ! [[ -e "$HOME/.zfunc/_ollama.zsh" ]]; then
-  curl -sSL -o $HOME/.zfunc/_ollama.zsh \
-    https://gist.githubusercontent.com/nathanielvarona/72d827ae3b90c71a655e8a7b33154e8a/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh
-fi
-
-# Completion for Apps called from the Completion Function
-if [[ -e "$HOME/.zfunc" ]]; then
-  FPATH="$HOME/.zfunc:${FPATH}"
+# # Completion for Apps called from the Completion Function including OhMyZsh
+if [[ -e "$ZSH_CACHE_DIR/completions" ]]; then
+  FPATH="$ZSH_CACHE_DIR/completions:${FPATH}"
 fi
 
 # Additional completion definitions for zsh (Mostly Homebrew Installed Packages)
@@ -235,15 +255,15 @@ source <(pritunl-client completion zsh)
 
 # ASDF Plugins/Apps Completions
 # Note: The asdf plugin must be either installed and added to your $PATH or accessible through the ASDF Shim.
-source <(minikube completion zsh)
-source <(kubectl completion zsh)
-source <(helm completion zsh)
-source <(kind completion zsh)
-source <(argocd completion zsh)
-source <(kustomize completion zsh)
-source <(tilt completion zsh)
+# source <(argocd completion zsh)
 source <(eksctl completion zsh)
+# source <(helm completion zsh)
+# source <(kind completion zsh)
 source <(kompose completion zsh)
+# source <(kubectl completion zsh)
+source <(kustomize completion zsh)
+# source <(minikube completion zsh)
+source <(tilt completion zsh)
 source <(helmfile completion zsh)
 source <(ct completion zsh) # helm-ct
 complete -o nospace -C terraform terraform
