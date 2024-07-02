@@ -6,6 +6,8 @@ My Dotfiles Collection
 
 * A collection of dotfiles for easy setup and configuration of my development environment
 * Managed using GNU `stow` to symlink dotfiles to my home directory `~/` or `$HOME`
+* Handy scripts for installing packages and development toolings
+
 
 ## Quick Setup
 
@@ -31,14 +33,14 @@ stow --restow --verbose .
 
 ### Homebrew Packages
 
-#### Dump List of Packages
+Dump List of Packages
 
 ```bash
 brew bundle dump --no-lock --describe \
   --force --file ./Brewfile
 ```
 
-#### Install Packages
+Install Packages
 
 ```bash
 brew bundle install \
@@ -47,13 +49,13 @@ brew bundle install \
 
 ### ASDF Plugins
 
-#### Dump List of Plugins
+Dump List of Plugins
 
 ```bash
 asdf plugin list > ./asdf-plugins
 ```
 
-#### Installation
+Installation of Plugins
 
 ```bash
 egrep -v '^(;|#|//)' ./asdf-plugins | 
@@ -71,7 +73,7 @@ egrep -v '^(;|#|//)' ./pyenv-versions |
 
 ### Pipx Apps (Python Apps)
 
-#### Installation
+Installation of Python Apps
 
 ```bash
 egrep -v '^(;|#|//)' ./pipx-apps | 
@@ -80,13 +82,13 @@ egrep -v '^(;|#|//)' ./pipx-apps |
 
 ### Perl CPAN Packages
 
-#### Requirement
+Install CPAN Tooling called CPANM
 
 ```bash
 cpan App::cpanminus
 ```
 
-#### Installation
+Use CPANM to Install Module/Tool from the `cpanfile`
 
 ```bash
 cpanm --installdeps ./
@@ -99,6 +101,18 @@ Install Krew Plugins
 ```bash
 egrep -v '^(;|#|//)' ./krew-plugins | 
   xargs -I {} kubectl krew install {}
+```
+
+### Helm Repos
+
+Add the Helm Repositories
+
+```bash
+while IFS= read -r helm_name; do
+  name="${helm_name%% *}"
+  url="${helm_name#* }"
+  helm repo add "$name" "$url"
+done < <(egrep -v '^(;|#|//)' ./helm-repos)
 ```
 
 ### Ollama Models
@@ -131,7 +145,7 @@ done < <(egrep -v '^(;|#|//)' ./hugging-face-models)
 
 ### GNU Pretty Good Privacy (PGP) package and Password manager
 
-#### Passphrase entry dialog utilizing the Assuan protocol
+Passphrase entry dialog utilizing the Assuan protocol
 
 ```bash
 defaults write org.gpgtools.common UseKeychain false
@@ -146,19 +160,19 @@ To ensure consistency and cleanliness, use:
 
 ## Troubleshooting
 
-### Clearout the Powerlevel10k instant prompt Cache
+Clearout the Powerlevel10k instant prompt Cache
 
 ```bash
 rm -Rf $HOME/.cache/p10k-*
 ```
 
-### Clearout the Completation Cache from ZSH
+Clearout the Completation Cache from ZSH
 
 ```bash
 rm -f $HOME/.zcompdump && exec $SHELL -l
 ```
 
-### Nuke Zinit (Total Reset the Zinit Configuration for Rebuild)
+Nuke Zinit (Total Reset the Zinit Configuration for Rebuild)
 
 ```
 rm -Rf $HOME/.local/share/zinit $HOME/.cache/zinit

@@ -18,3 +18,4 @@
 --ignore=pipx-apps
 --ignore=pyenv-versions
 --ignore=krew-plugins
+--ignore=helm-repos

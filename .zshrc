@@ -83,10 +83,9 @@ export ZSH_HIGHLIGHT_STYLES[suffix\-alias]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
-# Object-file caching compiler wrapper
-export PATH="/usr/local/opt/ccache/libexec:$PATH"
-
 # GNU Bins
+# NOTE: Some were internally loaded in the $PATH if without conflicts
+#
 # export PATH="/usr/local/opt/inetutils/libexec/gnubin:$PATH"
 # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -95,6 +94,9 @@ export PATH="/usr/local/opt/ccache/libexec:$PATH"
 ###
 # If other project sources require these libraries as dependencies for builds.
 ###
+
+# Object-file caching compiler wrapper
+export PATH="/usr/local/opt/ccache/libexec:$PATH"
 
 # OpenSSL
 # export PATH="/usr/local/opt/openssl/bin:$PATH"
@@ -133,13 +135,13 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib $LDFLAGS"
 export CPPFLAGS="-I/usr/local/opt/llvm/include $CPPFLAGS"
 
-## GCC and G++
+# C and C++ Compilers with `ccache` an Object-file caching compiler wrapper
 #
-# Using Apple clang version (from Xcode)
-# export CC=`which gcc`
-# export CXX=`which g++`
+# Apple `clang` (from Xcode Developer Toolchains)
+# export CC="ccache gcc"
+# export CXX="ccache g++"
 #
-# Using LLVM (from Homebrew) with ccache (Object-file caching compiler wrapper)
+# Homebrew `clang` (from LLVM)
 export CC="ccache clang"
 export CXX="ccache clang++"
 
@@ -209,7 +211,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # With OhMyZsh
 zinit snippet OMZ::plugins/direnv
 
-
 # Docker Client Version Manager
 [ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
 
@@ -217,7 +218,7 @@ zinit snippet OMZ::plugins/direnv
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Ollama CLI Completion
-# Note: This is Temporary until Ollam implement a Completion Generator Feature from the CLI
+# NOTE: This is Temporary until Ollam implement a Completion Generator Feature from the CLI
 if ! [[ -e "$ZSH_CACHE_DIR/completions/_ollama.zsh" ]]; then
   curl -sSL -o $ZSH_CACHE_DIR/completions/_ollama.zsh \
     https://gist.githubusercontent.com/nathanielvarona/72d827ae3b90c71a655e8a7b33154e8a/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh
@@ -239,17 +240,19 @@ if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then
   . "$HOME/.config/fabric/fabric-bootstrap.inc"
 fi
 
-# # Completion for Apps called from the Completion Function including OhMyZsh
+# Completion for Zinit OMZ Plugins
 if [[ -e "$ZSH_CACHE_DIR/completions" ]]; then
   FPATH="$ZSH_CACHE_DIR/completions:${FPATH}"
 fi
 
-# Additional completion definitions for zsh (Mostly Homebrew Installed Packages)
+# Additional completion definitions for Zsh (Mostly Homebrew Installed Packages)
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-# ASDF Plugin without Completion Generator, however with pre-generated completion file.
+# ASDF Plugin without Completion Generator, with only pre-generated completion file
+#
+# For `kubectx` completion, this directory also includes `kubens` completion
 if [[ -e "`asdf where kubectx`/completion" ]]; then
   FPATH="`asdf where kubectx`/completion:${FPATH}"
 fi
@@ -262,7 +265,8 @@ autoload -Uz compinit && compinit
 source <(pritunl-client completion zsh)
 
 # ASDF Plugins/Apps Completions
-# Note: The asdf plugin must be either installed and added to your $PATH or accessible through the ASDF Shim.
+# IMPORTANT: The asdf plugin must be either installed and added to your $PATH or accessible through the ASDF Shim.
+# NOTE: Some where commented as its already loaded from the Zinit OMZ Plugin
 # source <(argocd completion zsh)
 source <(eksctl completion zsh)
 # source <(helm completion zsh)
