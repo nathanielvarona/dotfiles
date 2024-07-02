@@ -5,7 +5,7 @@ My Dotfiles Collection
 ## Features
 
 * A collection of dotfiles for easy setup and configuration of my development environment
-* Managed using GNU `stow` to symlink dotfiles to my home directory `$HOME` or `~/`
+* Managed using GNU `stow` to symlink dotfiles to my home directory `~/` or `$HOME`
 
 ## Quick Setup
 
@@ -92,6 +92,15 @@ cpan App::cpanminus
 cpanm --installdeps ./
 ```
 
+### Krew Plugins
+
+Install Krew Plugins
+
+```bash
+egrep -v '^(;|#|//)' ./krew-plugins | 
+  xargs -I {} kubectl krew install {}
+```
+
 ### Ollama Models
 
 Dump Model List
@@ -137,15 +146,19 @@ To ensure consistency and cleanliness, use:
 
 ## Troubleshooting
 
+### Clearout the Powerlevel10k instant prompt Cache
+
+```bash
+rm -Rf $HOME/.cache/p10k-*
+```
+
 ### Clearout the Completation Cache from ZSH
 
 ```bash
 rm -f $HOME/.zcompdump && exec $SHELL -l
 ```
 
-### Nuke Zinit
-
-Total Reset the Zinit Configuration for Rebuild
+### Nuke Zinit (Total Reset the Zinit Configuration for Rebuild)
 
 ```
 rm -Rf $HOME/.local/share/zinit $HOME/.cache/zinit

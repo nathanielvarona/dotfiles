@@ -24,7 +24,7 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-[[ ! -d $ZSH_CACHE_DIR/completions ]] && mkdir -p $ZSH_CACHE_DIR/completions
+[[ ! -e $ZSH_CACHE_DIR/completions ]] && mkdir -p $ZSH_CACHE_DIR/completions
 
 # Add in Powerlevel10k
 zinit ice depth=1
@@ -164,6 +164,7 @@ zinit snippet OMZ::plugins/argocd
 zinit snippet OMZ::plugins/helm
 zinit snippet OMZ::plugins/kind
 zinit snippet OMZ::plugins/kubectl
+zinit snippet OMZ::plugins/kubectx
 zinit snippet OMZ::plugins/minikube
 
 # Node Version Manager
@@ -244,6 +245,11 @@ fi
 # Additional completion definitions for zsh (Mostly Homebrew Installed Packages)
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
+# ASDF Plugin without Completion Generator, however with pre-generated completion file.
+if [[ -e "`asdf where kubectx`/completion" ]]; then
+  FPATH="`asdf where kubectx`/completion:${FPATH}"
 fi
 
 # Autoload Completion

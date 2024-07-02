@@ -8,8 +8,10 @@ helm
 helmfile
 kind
 kompose
+krew
 kubeconform
 kubectl
+kubectx
 kubeval
 kustomize
 minikube
