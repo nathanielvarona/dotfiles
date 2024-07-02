@@ -182,9 +182,10 @@ eval "$(/usr/local/anaconda3/bin/conda shell.zsh hook)"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-if which pyenv-virtualenv-init >/dev/null; then
-  eval "$(pyenv virtualenv-init -)"
-fi
+# if which pyenv-virtualenv-init >/dev/null; then
+#   eval "$(pyenv virtualenv-init -)"
+# fi
+zinit snippet OMZ::plugins/pyenv
 
 # Poetry Apps (Python Packages)
 # if ! [[ -e "$ZSH_CACHE_DIR/completions/_poetry" ]]; then
@@ -222,6 +223,7 @@ if ! [[ -e "$ZSH_CACHE_DIR/completions/_ollama.zsh" ]]; then
     https://gist.githubusercontent.com/nathanielvarona/72d827ae3b90c71a655e8a7b33154e8a/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh
 fi
 
+# API documentation browser and code snippet manager
 zinit snippet OMZ::plugins/dash
 
 # Define the directory to search (change as needed)

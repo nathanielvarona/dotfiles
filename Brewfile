@@ -106,6 +106,8 @@ cask "alacritty"
 cask "anaconda"
 # Allows connection to a computer remotely
 cask "anydesk"
+# API documentation browser and code snippet manager
+cask "dash@6"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerised applications and microservices
