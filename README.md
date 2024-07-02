@@ -8,6 +8,15 @@ My Dotfiles Collection
 * Managed using GNU `stow` to symlink dotfiles to my home directory `~/` or `$HOME`
 * Handy scripts for installing packages and development toolings
 
+## Demos
+
+### Zinit Initial Load
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./docs/imgs/zinit-dark.gif">
+  <img alt="Pritunl Slack Slash Commands Screenshot" src="./docs/imgs/zinit-light.gif">
+</picture>
+
 
 ## Quick Setup
 
