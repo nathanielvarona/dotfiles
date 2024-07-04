@@ -12,11 +12,12 @@ My Dotfiles Collection
 
 ### Zinit Initial Load
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./docs/imgs/zinit-dark.gif">
-  <img alt="Pritunl Slack Slash Commands Screenshot" src="./docs/imgs/zinit-light.gif">
-</picture>
-
+<a href="https://asciinema.org/a/666761?autoplay=1&loop=1">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/imgs/zinit-dark.gif" />
+    <img alt="Zinit Initial Load" src="./docs/imgs/zinit-light.gif" />
+  </picture>
+</a>
 
 ## Quick Setup
 
