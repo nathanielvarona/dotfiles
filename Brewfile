@@ -32,6 +32,8 @@ brew "editorconfig-checker"
 brew "ffmpeg"
 # Fast and simple Node.js version manager
 brew "fnm"
+# Terminal JSON viewer
+brew "fx"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # GIF image/animation creator/editor
@@ -46,6 +48,8 @@ brew "highlight"
 brew "huggingface-cli"
 # GNU utilities for networking
 brew "inetutils"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
 # Clone of ls with colorful output, file type icons, and more
@@ -114,6 +118,7 @@ cask "discord"
 cask "docker"
 # Online diagram software
 cask "drawio"
+cask "font-fira-code-nerd-font"
 cask "font-meslo-lg-nerd-font"
 # Update maps and software, sync with Garmin Connect and register your device
 cask "garmin-express"
@@ -165,6 +170,7 @@ cask "whatsapp"
 cask "zed"
 # Video communication and virtual meeting platform
 cask "zoom"
+mas "Enchanted", id: 6474268307
 mas "iStat Menus", id: 1319778037
 mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835
@@ -180,6 +186,7 @@ vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "ms-vscode-remote.remote-containers"
 vscode "oderwat.indent-rainbow"
 vscode "redhat.vscode-yaml"
 vscode "stuart.unique-window-colors"

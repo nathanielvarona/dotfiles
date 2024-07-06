@@ -6,3 +6,4 @@ resource-capacity
 tail
 view-secret
 # view-utilization
+kubescape
