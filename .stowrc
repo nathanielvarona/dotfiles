@@ -2,7 +2,7 @@
 --target=~
 --ignore='~'
 --ignore=README.*
---ignore=docs
+--ignore=doc
 --ignore=\.git
 --ignore=\.gitignore
 --ignore=\.DS_Store
