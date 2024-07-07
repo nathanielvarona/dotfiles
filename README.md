@@ -43,13 +43,6 @@ stow --restow --verbose .
 
 ### Homebrew Packages
 
-Dump List of Packages
-
-```bash
-brew bundle dump --no-lock --describe \
-  --force --file ./Brewfile
-```
-
 Install Packages
 
 ```bash
@@ -57,13 +50,20 @@ brew bundle install \
   --file ./Brewfile
 ```
 
+> [!NOTE]
+> Brewfile includes `Formulae`, `Casks`, `Mac App Store (MAS)`, and `VSCode Extensions`. 
+
+<details>
+  <summary>Dump Existing Packages to File</summary>
+
+  ```bash
+  brew bundle dump --no-lock --describe \
+    --force --file ./Brewfile
+  ```
+
+</details>
+
 ### ASDF Plugins
-
-Dump List of Plugins
-
-```bash
-asdf plugin list > ./asdf-plugins
-```
 
 Installation of Plugins
 
@@ -71,6 +71,15 @@ Installation of Plugins
 egrep -v '^(;|#|//)' ./asdf-plugins | 
   xargs -I {} asdf plugin add {}
 ```
+
+<details>
+  <summary>Dump Existing Plugins to File</summary>
+
+  ```bash
+  asdf plugin list > ./asdf-plugins
+  ```
+
+</details>
 
 ### Pyenv Versions (Python Version Manager)
 
@@ -81,7 +90,16 @@ egrep -v '^(;|#|//)' ./pyenv-versions |
   xargs -I {} pyenv install {}
 ```
 
-### Pipx Apps (Python Apps)
+<details>
+  <summary>Dump Existing Versions to File</summary>
+
+  ```bash
+  pyenv versions --bare --skip-aliases --skip-envs > ./pyenv-versions
+  ```
+
+</details>
+
+### pipx Apps (Python Applications in Isolated Environments)
 
 Installation of Python Apps
 
@@ -90,39 +108,64 @@ egrep -v '^(;|#|//)' ./pipx-apps |
   xargs -I {} pipx install {}
 ```
 
-### Perl CPAN Packages
+<details>
+  <summary>Dump Existing Apps to File</summary>
 
-Install CPAN Tooling called CPANM
+  ```bash
+  pipx list --short > ./pipx-apps
+  ```
 
-```bash
-cpan App::cpanminus
-```
+</details>
 
-Use CPANM to Install Module/Tool from the `cpanfile`
-
-```bash
-cpanm --installdeps ./
-```
 
 ### Krew Plugins
 
 Install Krew Plugins
 
 ```bash
-egrep -v '^(;|#|//)' ./krew-plugins | 
-  xargs -I {} kubectl krew install {}
+awk 'NR > 1 {print $1}' ./krew-plugins | 
+  xargs -I {} krew install {}
 ```
+
+<details>
+  <summary>Dump Existing Plugins to File</summary>
+
+  ```bash
+  krew list > ./krew-plugins
+  ```
+
+</details>
 
 ### Helm Repos
 
 Add the Helm Repositories
 
 ```bash
-while IFS= read -r helm_name; do
-  name="${helm_name%% *}"
-  url="${helm_name#* }"
-  helm repo add "$name" "$url"
-done < <(egrep -v '^(;|#|//)' ./helm-repos)
+awk 'NR > 1 {split($0, ri, " "); print ri[1] " " ri[2]}' ./helm-repos | 
+  xargs -n 2 helm repo add
+```
+
+<details>
+  <summary>Dump Existing Repositories to File</summary>
+
+  ```bash
+  helm repo list > ./helm-repos
+  ```
+
+</details>
+
+### Perl Packages
+
+Install CPANM using CPAN
+
+```bash
+cpan App::cpanminus
+```
+
+Use the CPANM to Install Module/Tool from the `cpanfile`
+
+```bash
+cpanm --installdeps ./
 ```
 
 ### Ollama Models

@@ -1,9 +1,8 @@
 ingress-nginx
-# konfig
-modify-secrets
+konfig
+kubescape
 neat
 resource-capacity
 tail
 view-secret
-# view-utilization
-kubescape
+view-utilization
