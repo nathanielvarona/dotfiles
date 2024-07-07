@@ -1,2 +1,2 @@
-runwayml/stable-diffusion-v1-5 v1-5-pruned.ckpt
-segmind/SSD-1B SSD-1B-A1111.safetensors
+runwayml/stable-diffusion-v1-5  v1-5-pruned.ckpt
+segmind/SSD-1B                  SSD-1B-A1111.safetensors
