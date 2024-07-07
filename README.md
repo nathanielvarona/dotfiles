@@ -14,8 +14,8 @@ My Dotfiles Collection
 
 <a href="https://asciinema.org/a/666761?autoplay=1&loop=1">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./docs/imgs/zinit-dark.gif" />
-    <img alt="Zinit Initial Load" src="./docs/imgs/zinit-light.gif" />
+    <source media="(prefers-color-scheme: dark)" srcset="./doc/img/demo/zinit-dark.gif" />
+    <img alt="Zinit Initial Load" src="./doc/img/demo/zinit-light.gif" />
   </picture>
 </a>
 
