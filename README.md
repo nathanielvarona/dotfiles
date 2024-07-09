@@ -24,7 +24,10 @@ My Dotfiles Collection
 ```bash
 # Clone the Dotfiles
 git clone https://github.com/nathanielvarona/dotfiles.git \
-  ~/.dotfiles && cd ~/.dotfiles
+  ~/.dotfiles
+
+# Change Directory
+cd ~/.dotfiles
 
 # Stow
 stow --stow --verbose .
@@ -104,8 +107,9 @@ egrep -v '^(;|#|//)' ./pyenv-versions |
 Installation of Python Apps
 
 ```bash
-egrep -v '^(;|#|//)' ./pipx-apps | 
-  xargs -I {} pipx install {}
+awk '{print $1}' ./pipx-apps | 
+  egrep -v '^(;|#|//)' | 
+    xargs -I {} pipx install {}
 ```
 
 <details>
@@ -124,7 +128,8 @@ Install Krew Plugins
 
 ```bash
 awk 'NR > 1 {print $1}' ./krew-plugins | 
-  xargs -I {} krew install {}
+  egrep -v '^(;|#|//)' | 
+    xargs -I {} krew install {}
 ```
 
 <details>
@@ -142,7 +147,8 @@ Add the Helm Repositories
 
 ```bash
 awk 'NR > 1 {split($0, ri, " "); print ri[1] " " ri[2]}' ./helm-repos | 
-  xargs -n 2 helm repo add
+  egrep -v '^(;|#|//)' | 
+    xargs -n 2 helm repo add
 ```
 
 <details>

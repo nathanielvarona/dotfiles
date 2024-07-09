@@ -2,7 +2,8 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Personal Environment Variables (such as Vendor Keys/Credentials and/or API Secrets/Tokens)
+# Personal Environment Variables
+# Such as Vendor Keys/Credentials and/or API Secrets/Tokens
 if [[ -e ~/.secrets ]]; then
   source ~/.secrets
 fi
