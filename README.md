@@ -180,7 +180,7 @@ Dump Model List
 
 ```bash
 ollama list | 
-  awk 'NR>1 { print $1 }' > ./ollama-models
+  awk 'NR > 1 { print $1 }' > ./ollama-models
 ```
 
 Pull Models
@@ -199,7 +199,7 @@ while IFS= read -r model_name; do
   repo_id="$(echo ${model_name%% *} | tr -d '[:blank:]')"
   filename="$( echo ${model_name#* } | tr -d '[:blank:]')"
   huggingface-cli download "$repo_id" "$filename"
-done < <(egrep -v '^(;|#|//)' ./hugging-face-models)
+done < <(awk 'NR > 1' ./hugging-face-models | egrep -v '^(;|#|//)')
 ```
 
 ### GNU Pretty Good Privacy (PGP) package and Password manager
