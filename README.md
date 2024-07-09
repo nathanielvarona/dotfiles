@@ -196,8 +196,8 @@ Download Models
 
 ```bash
 while IFS= read -r model_name; do
-  repo_id="${model_name%% *}"
-  filename="${model_name#* }"
+  repo_id="$(echo ${model_name%% *} | tr -d '[:blank:]')"
+  filename="$( echo ${model_name#* } | tr -d '[:blank:]')"
   huggingface-cli download "$repo_id" "$filename"
 done < <(egrep -v '^(;|#|//)' ./hugging-face-models)
 ```
