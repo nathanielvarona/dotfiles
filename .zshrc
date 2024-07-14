@@ -51,12 +51,23 @@ zinit snippet OMZ::plugins/extract
 zinit snippet OMZ::plugins/gnu-utils
 zinit snippet OMZ::plugins/common-aliases
 
-# Other Plugins
-zinit load agkozak/zsh-z # jump around
+# Jump Around
+zinit load agkozak/zsh-z
 
 # Command-line fuzzy finder written in Go
 source <(fzf --zsh)
 source <(zoxide init --cmd cd zsh)
+
+# Atuin
+export ATUIN_NOBIND="true"
+# eval "$(atuin init zsh)"
+zinit load atuinsh/atuin
+
+bindkey '^r' atuin-search
+
+# bind to the up key, which depends on terminal mode
+bindkey '^[[A' atuin-up-search
+bindkey '^[OA' atuin-up-search
 
 # History
 export HISTFILE=~/.zsh_history
@@ -69,8 +80,8 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 
 # ZSH-HISTORY-SUBSTRING-SEARCH Plugin
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=0
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=0
@@ -119,6 +130,13 @@ export LDFLAGS="-L/usr/local/opt/sqlite/lib $LDFLAGS"
 export CPPFLAGS="-I/usr/local/opt/sqlite/include $CPPFLAGS"
 # For pkg-config to find sqlite you may need to set:
 # export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
+
+# For compilers to find postgresql@16 you may need to set:
+export LDFLAGS="-L/usr/local/opt/postgresql@16/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/postgresql@16/include $CPPFLAGS"
+
+# For pkg-config to find postgresql@16 you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/postgresql@16/lib/pkgconfig"
 
 # Zlib
 # For compilers to find zlib you may need to set:
@@ -206,6 +224,10 @@ export PATH="$HOME/go/bin:$PATH"
 
 # User Binaries Path
 export PATH="$HOME/.local/bin:$PATH"
+
+# Homebrew keg-only packages
+# postgresql@16
+export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
 
 # Directory Enviornment Varaibles `reads .envrc or .env`
 # eval "$(direnv hook zsh)"

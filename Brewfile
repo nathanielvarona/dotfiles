@@ -12,6 +12,8 @@ brew "asciinema"
 brew "coreutils"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# Improved shell history for zsh, bash, fish and nushell
+brew "atuin"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Object-file caching compiler wrapper
@@ -64,6 +66,10 @@ brew "opentofu"
 brew "pass"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Object-relational database system
+brew "postgresql@16"
+# Password generator
+brew "pwgen"
 # Python version management
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
@@ -78,6 +84,8 @@ brew "rbenv-gemset"
 brew "rsync"
 # Safe, concurrent, practical language
 brew "rust"
+# Generate passwords using SecurityFoundation framework
+brew "sf-pwgen"
 # Autoformat shell script source code
 brew "shfmt"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -146,6 +154,8 @@ cask "messenger"
 cask "ngrok"
 # Open source build of Lens Kubernetes IDE
 cask "openlens"
+# Administration and development platform for PostgreSQL
+cask "pgadmin4"
 # Collaboration platform for API development
 cask "postman"
 # OpenVPN client

@@ -10,6 +10,7 @@
 --ignore=\.vscode
 --ignore=\.stowrc
 --ignore=\.editorconfig
+--ignore=\.secrets.dist
 --ignore=asdf-plugins
 --ignore=Brewfile
 --ignore=cpanfile
