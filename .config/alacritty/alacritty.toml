@@ -1,4 +1,10 @@
-import = ["~/.config/alacritty/github_dark_tritanopia.toml", "~/.config/alacritty/fonts.toml"]
+import = [
+  "~/.config/alacritty/fonts.toml",
+  # "~/.config/alacritty/themes/afterfglow.toml",
+    "~/.config/alacritty/themes/alabaster_dark.toml",
+  # "~/.config/alacritty/themes/ayu_dark.toml",
+  # "~/.config/alacritty/themes/github_dark_tritanopia.toml"
+]
 
 live_config_reload = true
 
