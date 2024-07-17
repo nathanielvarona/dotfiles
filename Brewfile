@@ -179,6 +179,8 @@ cask "teamviewer"
 cask "visual-studio-code"
 # Create, manage, and run virtual machines
 cask "vmware-fusion"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
+cask "wezterm"
 # Native desktop client for WhatsApp
 cask "whatsapp"
 # Multiplayer code editor
@@ -207,6 +209,7 @@ vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode.makefile-tools"
 vscode "oderwat.indent-rainbow"
 vscode "redhat.vscode-yaml"
+vscode "streetsidesoftware.code-spell-checker"
 vscode "stuart.unique-window-colors"
 vscode "tamasfe.even-better-toml"
 vscode "tilt-dev.tiltfile"

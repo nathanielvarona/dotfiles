@@ -21,15 +21,15 @@ shape = "Block"
 save_to_clipboard = true
 
 [window]
-decorations = "Full"
-dynamic_title = true
+decorations = "Buttonless"
+dynamic_title = false
 opacity = 1.0
 dynamic_padding = true
 option_as_alt = "Both"
 
 [window.padding]
-x = 15
-y = 15
+x = 5
+y = 5
 
 [scrolling]
 history = 10000
