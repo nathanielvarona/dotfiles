@@ -46,6 +46,8 @@ brew "gnupg"
 brew "go"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
+# Improved top (interactive process viewer)
+brew "htop"
 # Client library for huggingface.co hub
 brew "huggingface-cli"
 # GNU utilities for networking
