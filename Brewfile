@@ -60,6 +60,8 @@ brew "k9s"
 brew "lsd"
 # Mac App Store command-line interface
 brew "mas"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
 # Drop-in replacement for Terraform. Infrastructure as Code Tool
@@ -139,6 +141,8 @@ cask "garmin-express"
 cask "gas-mask"
 # Menu bar app to monitor graphics card usage
 cask "gfxcardstatus"
+# Cross-platform Git credential storage for multiple hosting providers
+cask "git-credential-manager"
 # Web browser
 cask "google-chrome"
 # Grammarly for desktop
