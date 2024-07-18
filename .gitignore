@@ -1,4 +1,6 @@
 .develop
 .vscode
 .secrets
+.gitconfig-personal
+.gitconfig-work
 .DS_Store

@@ -222,6 +222,7 @@ zinit snippet OMZ::plugins/poetry
 # Perl Initialization
 # PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5" cpan local::lib
 eval "$(perl -I$HOME/.perl5/lib/perl5 -Mlocal::lib=$HOME/.perl5)"
+export PERL5LIB="/Library/Developer/CommandLineTools/usr/share/git-core/perl:$PERL5LIB"
 
 # Go Binary Path
 export PATH="$HOME/go/bin:$PATH"
@@ -266,6 +267,9 @@ export PATH="$PATH:$HOME/.scripts/bin"
 if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then
   . "$HOME/.config/fabric/fabric-bootstrap.inc"
 fi
+
+# Git Scripts
+export PATH="$PATH:$HOME/Projects/contribute/git-scripts"
 
 # Completion for Zinit OMZ Plugins
 if [[ -e "$ZSH_CACHE_DIR/completions" ]]; then

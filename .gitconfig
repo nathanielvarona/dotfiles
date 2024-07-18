@@ -1,0 +1,64 @@
+[includeIf "gitdir:~/.dotfiles/"]
+	path = ~/.gitconfig-personal
+[includeIf "gitdir:~/Projects/personal/"]
+	path = ~/.gitconfig-personal
+[includeIf "gitdir:~/Projects/contribute/"]
+	path = ~/.gitconfig-personal
+
+[includeIf "gitdir:~/Projects/work/"]
+	path = ~/.gitconfig-work
+
+[core]
+	excludesfile = ~/.gitignore_global
+
+[diff]
+	submodule = log
+	tool = meld
+	guitool = meld
+[difftool]
+	prompt = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[difftool "meld"]
+	trustExitCode = true
+	cmd = open -W -a /Applications/Meld.app/Contents/MacOS/Meld --args \"$LOCAL\" \"$REMOTE\"
+
+[merge]
+	tool = meld
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[mergetool "meld"]
+	trustExitCode = true
+	cmd = open -W -a /Applications/Meld.app/Contents/MacOS/Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
+[mergetool]
+	prompt = false
+
+[commit]
+	template = ~/.stCommitMsg
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[status]
+	submoduleSummary = true
+
+[alias]
+	spush = push --recurse-submodules=on-demand
+	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	tlog = !"git lg1"
+	tree = forest --pretty=format:\"%C(red)%h %C(magenta)(%ar) %C(blue)%an %C(reset)%s\" --style=15 --reverse
+
+# [url "git@github.com:"]
+# 	insteadOf = https://github.com/
+
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+
+[credential "https://dev.azure.com"]
+	useHttpPath = true
