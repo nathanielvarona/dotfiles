@@ -8,8 +8,8 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 -- config.color_scheme = 'ayu'
-config.color_scheme = 'Brogrammer'
--- config.color_scheme = 'GitHub Dark'
+-- config.color_scheme = 'Brogrammer'
+config.color_scheme = 'GitHub Dark'
 -- config.color_scheme = 'Glacier'
 -- config.color_scheme = 'Gotham (terminal.sexy)'
 -- config.color_scheme = 'Vacuous 2 (terminal.sexy)'
