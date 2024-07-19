@@ -134,7 +134,6 @@ export CPPFLAGS="-I/usr/local/opt/sqlite/include $CPPFLAGS"
 # For compilers to find postgresql@16 you may need to set:
 export LDFLAGS="-L/usr/local/opt/postgresql@16/lib $LDFLAGS"
 export CPPFLAGS="-I/usr/local/opt/postgresql@16/include $CPPFLAGS"
-
 # For pkg-config to find postgresql@16 you may need to set:
 # export PKG_CONFIG_PATH="/usr/local/opt/postgresql@16/lib/pkgconfig"
 
