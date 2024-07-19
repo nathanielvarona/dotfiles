@@ -1,7 +1,3 @@
-tap "amar1729/formulae"
-tap "homebrew/bundle"
-tap "homebrew/services"
-tap "localsend/localsend"
 # Asciicast to GIF converter
 brew "agg"
 # Interpreted, interactive, object-oriented programming language
@@ -56,6 +52,8 @@ brew "inetutils"
 brew "jq"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
+# Simple terminal UI for git commands
+brew "lazygit"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Mac App Store command-line interface
@@ -120,102 +118,3 @@ brew "zsh-completions"
 brew "amar1729/formulae/browserpass"
 # Prefer the tty when using pinentry, fallback to GUI
 brew "amar1729/formulae/pinentry-prefer-tty"
-# GPU-accelerated terminal emulator
-cask "alacritty"
-# Distribution of the Python and R programming languages for scientific computing
-cask "anaconda"
-# Allows connection to a computer remotely
-cask "anydesk"
-# API documentation browser and code snippet manager
-cask "dash@6"
-# Voice and text chat software
-cask "discord"
-# App to build and share containerised applications and microservices
-cask "docker"
-# Online diagram software
-cask "drawio"
-cask "font-meslo-lg-nerd-font"
-# Update maps and software, sync with Garmin Connect and register your device
-cask "garmin-express"
-# Hosts file editor/manager
-cask "gas-mask"
-# Menu bar app to monitor graphics card usage
-cask "gfxcardstatus"
-# Cross-platform Git credential storage for multiple hosting providers
-cask "git-credential-manager"
-# Web browser
-cask "google-chrome"
-# Grammarly for desktop
-cask "grammarly-desktop"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
-# Menu bar manager
-cask "jordanbaird-ice"
-# GPU-based terminal emulator
-cask "kitty"
-# Displays all connected LG monitor information
-cask "lg-onscreen-control"
-# An open source cross-platform alternative to AirDrop
-cask "localsend"
-# Software for Logitech devices
-cask "logi-options-plus"
-# Native desktop app for Messenger (formerly Facebook Messenger)
-cask "messenger"
-# Reverse proxy, secure introspectable tunnels to localhost
-cask "ngrok"
-# Open source build of Lens Kubernetes IDE
-cask "openlens"
-# Administration and development platform for PostgreSQL
-cask "pgadmin4"
-# Collaboration platform for API development
-cask "postman"
-# OpenVPN client
-cask "pritunl"
-# Video chat, voice call and instant messaging application
-cask "skype"
-# Team communication and collaboration software
-cask "slack"
-# Graphical client for Git version control
-cask "sourcetree"
-# Music streaming service
-cask "spotify"
-# Remote access and connectivity software focused on security
-cask "teamviewer"
-# Open-source code editor
-cask "visual-studio-code"
-# Create, manage, and run virtual machines
-cask "vmware-fusion"
-# GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm"
-# Native desktop client for WhatsApp
-cask "whatsapp"
-# Multiplayer code editor
-cask "zed"
-# Video communication and virtual meeting platform
-cask "zoom"
-mas "Enchanted", id: 6474268307
-mas "iStat Menus", id: 1319778037
-mas "WireGuard", id: 1451685025
-mas "Xcode", id: 497799835
-vscode "editorconfig.editorconfig"
-vscode "file-icons.file-icons"
-vscode "github.github-vscode-theme"
-vscode "github.vscode-github-actions"
-vscode "golang.go"
-vscode "gruntfuggly.activitusbar"
-vscode "hashicorp.terraform"
-vscode "kdl-org.kdl"
-vscode "mechatroner.rainbow-csv"
-vscode "ms-azuretools.vscode-docker"
-vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
-vscode "ms-python.debugpy"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "ms-vscode-remote.remote-containers"
-vscode "ms-vscode.makefile-tools"
-vscode "oderwat.indent-rainbow"
-vscode "redhat.vscode-yaml"
-vscode "streetsidesoftware.code-spell-checker"
-vscode "stuart.unique-window-colors"
-vscode "tamasfe.even-better-toml"
-vscode "tilt-dev.tiltfile"

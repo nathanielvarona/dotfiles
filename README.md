@@ -46,22 +46,58 @@ stow --restow --verbose .
 
 ### Homebrew Packages
 
+> [!NOTE]
+> Brewfiles are organized into different dependency files `Taps`, `Formulae`, `Casks`, `Mac App Store (MAS)`, and `VSCode Extensions`. 
+
 Install Packages
 
+1. Taps (Sources)
+
 ```bash
-brew bundle install \
-  --file ./Brewfile
+brew bundle install --no-lock \
+  --file ./taps.Brewfile
 ```
 
-> [!NOTE]
-> Brewfile includes `Formulae`, `Casks`, `Mac App Store (MAS)`, and `VSCode Extensions`. 
+2. Brews (Formulae)
+
+```bash
+brew bundle install --no-lock \
+  --file ./formulae.Brewfile
+```
+
+3. Casks (GUI macOS applications)
+
+```bash
+brew bundle install --no-lock \
+  --file ./casks.Brewfile
+```
+
+4. MAS (Mac App Store)
+
+```bash
+brew bundle install --no-lock \
+  --file ./mas.Brewfile
+```
+
+5. VSCode (Extensions)
+
+```bash
+brew bundle install --no-lock \
+  --file ./vscode.Brewfile
+```
 
 <details>
   <summary>Dump Existing Packages to File</summary>
 
   ```bash
-  brew bundle dump --no-lock --describe \
-    --force --file ./Brewfile
+  make brewfile
+
+  # Specific Brew Dependency Dumps
+  make brewfile-taps
+  make brewfile-formulae
+  make brewfile-casks
+  make brewfile-mas
+  make brewfile-vscode
   ```
 
 </details>
