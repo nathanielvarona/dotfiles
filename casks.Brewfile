@@ -10,7 +10,9 @@ cask "discord"
 cask "docker"
 # Online diagram software
 cask "drawio"
-cask "font-meslo-lg-nerd-font"
+cask "font-jetbrains-mono"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-symbols-only-nerd-font"
 # Update maps and software, sync with Garmin Connect and register your device
 cask "garmin-express"
 # Hosts file editor/manager

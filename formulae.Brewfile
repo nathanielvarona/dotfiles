@@ -98,16 +98,12 @@ brew "tcl-tk"
 brew "tmux"
 # CLI tool that moves files or folder to the trash
 brew "trash"
-# Generator for LS_COLORS with support for multiple color themes
-brew "vivid"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
 brew "wget"
 # Tools for the WireGuard secure network tunnel
 brew "wireguard-tools"
-# Pluggable terminal workspace, with terminal multiplexer as the base feature
-brew "zellij"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Shell extension to navigate your filesystem faster

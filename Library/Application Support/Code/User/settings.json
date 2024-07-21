@@ -10,9 +10,9 @@
     "window.autoDetectColorScheme": true,
     "explorer.compactFolders": false,
     "git.autofetch": true,
-    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'MesloLGS Nerd Font'",
+    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'Symbols Nerd Font'",
     "editor.fontSize": 14,
-    "terminal.integrated.fontFamily": "'MesloLGS Nerd Font'",
+    "terminal.integrated.fontFamily": "'JetBrains Mono NL', 'Symbols Nerd Font'",
     "terminal.integrated.fontSize": 14,
     "redhat.telemetry.enabled": false,
     "terminal.integrated.macOptionIsMeta": true

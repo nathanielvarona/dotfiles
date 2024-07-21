@@ -166,7 +166,8 @@ export CXX="ccache clang++"
 # ls colors
 # export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
 # export LS_COLORS=${LSCOLORS}
-export LS_COLORS=$(vivid generate zenburn)
+# WARNING: Vivid is not working Properly on macOS Terminal
+# export LS_COLORS="$(vivid generate zenburn)"
 
 # Alias (`ls` with colors)
 # alias ls="ls --color"
