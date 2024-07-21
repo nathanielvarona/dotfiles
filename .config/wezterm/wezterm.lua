@@ -12,19 +12,25 @@ config.color_scheme = "GitHub Dark"
 config.initial_cols = 100
 config.initial_rows = 30
 
-config.font = wezterm.font_with_fallback({ "JetBrains Mono NL" })
+config.font = wezterm.font_with_fallback({
+  { family = "JetBrains Mono NL", scale = 1 },
+  { family = "Symbols Nerd Font Mono", scale = 0.9 },
+})
+
 config.font_size = 14.0
 
 config.background = {
   {
     source = {
-      Color = '#000000'
+      Color = "#000000",
     },
     width = "100%",
     height = "100%",
     -- opacity = 0.75
   },
 }
+
+config.window_close_confirmation = "AlwaysPrompt"
 
 -- Hide Tabs
 -- config.enable_tab_bar = false
@@ -41,7 +47,10 @@ config.window_frame = {
   -- Whatever font is selected here, it will have the
   -- main font setting appended to it to pick up any
   -- fallback fonts you may have used there.
-  font = wezterm.font { family = "'Meslo LG S DZ'", weight = 'Bold' },
+  font = wezterm.font_with_fallback({
+    { family = "JetBrains Mono NL", scale = 1, weight = "Bold" },
+    { family = "Symbols Nerd Font Mono", scale = 0.9, weight = "Bold" },
+  }),
 
   -- The size of the font in the tab bar.
   -- Default to 10.0 on Windows but 12.0 on other systems
@@ -55,35 +64,35 @@ config.window_frame = {
   -- the window is not focused
   -- inactive_titlebar_bg = '#333333',
 
-  inactive_titlebar_bg = '#353535',
-  active_titlebar_bg = '#2b2042',
-  inactive_titlebar_fg = '#cccccc',
-  active_titlebar_fg = '#ffffff',
-  inactive_titlebar_border_bottom = '#2b2042',
-  active_titlebar_border_bottom = '#2b2042',
-  button_fg = '#cccccc',
-  button_bg = '#2b2042',
-  button_hover_fg = '#ffffff',
-  button_hover_bg = '#3b3052',
+  inactive_titlebar_bg = "#353535",
+  active_titlebar_bg = "#2b2042",
+  inactive_titlebar_fg = "#cccccc",
+  active_titlebar_fg = "#ffffff",
+  inactive_titlebar_border_bottom = "#2b2042",
+  active_titlebar_border_bottom = "#2b2042",
+  button_fg = "#cccccc",
+  button_bg = "#2b2042",
+  button_hover_fg = "#ffffff",
+  button_hover_bg = "#3b3052",
 }
 
 config.colors = {
   tab_bar = {
     -- The color of the strip that goes along the top of the window
     -- (does not apply when fancy tab bar is in use)
-    background = '#0b0022',
+    background = "#0b0022",
 
     -- The active tab is the one that has focus in the window
     active_tab = {
       -- The color of the background area for the tab
-      bg_color = '#1b1032',
+      bg_color = "#1b1032",
       -- The color of the text for the tab
-      fg_color = '#c0c0c0',
+      fg_color = "#c0c0c0",
 
       -- Specify whether you want "Half", "Normal" or "Bold" intensity for the
       -- label shown for this tab.
       -- The default is "Normal"
-      intensity = 'Normal',
+      intensity = "Normal",
 
       -- Specify whether you want "None", "Single" or "Double" underline for
       -- label shown for this tab.
@@ -101,8 +110,8 @@ config.colors = {
 
     -- Inactive tabs are the tabs that do not have focus
     inactive_tab = {
-      bg_color = '#2b2042',
-      fg_color = '#808080',
+      bg_color = "#2b2042",
+      fg_color = "#808080",
       -- The same options that were listed under the `active_tab` section above
       -- can also be used for `inactive_tab`.
     },
@@ -110,8 +119,8 @@ config.colors = {
     -- You can configure some alternate styling when the mouse pointer
     -- moves over inactive tabs
     inactive_tab_hover = {
-      bg_color = '#3b3052',
-      fg_color = '#909090',
+      bg_color = "#3b3052",
+      fg_color = "#909090",
       -- italic = true,
 
       -- The same options that were listed under the `active_tab` section above
@@ -120,8 +129,8 @@ config.colors = {
 
     -- The new tab button that let you create new tabs
     new_tab = {
-      bg_color = '#3b3052',
-      fg_color = '#909090',
+      bg_color = "#3b3052",
+      fg_color = "#909090",
 
       -- The same options that were listed under the `active_tab` section above
       -- can also be used for `new_tab`.
@@ -130,8 +139,8 @@ config.colors = {
     -- You can configure some alternate styling when the mouse pointer
     -- moves over the new tab button
     new_tab_hover = {
-      bg_color = '#1b1032',
-      fg_color = '#808080',
+      bg_color = "#1b1032",
+      fg_color = "#808080",
       -- italic = true,
 
       -- The same options that were listed under the `active_tab` section above
@@ -157,8 +166,8 @@ config.keys = {
 
   -- Toggles full screen mode for the current window
   {
-    key = 'n',
-    mods = 'SHIFT|CTRL',
+    key = "n",
+    mods = "SHIFT|CTRL",
     action = wezterm.action.ToggleFullScreen,
   },
 }
