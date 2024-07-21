@@ -1,5 +1,3 @@
-# GPU-accelerated terminal emulator
-cask "alacritty"
 # Distribution of the Python and R programming languages for scientific computing
 cask "anaconda"
 # Allows connection to a computer remotely
@@ -25,12 +23,8 @@ cask "git-credential-manager"
 cask "google-chrome"
 # Grammarly for desktop
 cask "grammarly-desktop"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
 # Menu bar manager
 cask "jordanbaird-ice"
-# GPU-based terminal emulator
-cask "kitty"
 # Displays all connected LG monitor information
 cask "lg-onscreen-control"
 # An open source cross-platform alternative to AirDrop
