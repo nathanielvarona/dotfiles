@@ -98,12 +98,16 @@ brew "tcl-tk"
 brew "tmux"
 # CLI tool that moves files or folder to the trash
 brew "trash"
+# Language for application scale JavaScript development
+brew "typescript"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
 brew "wget"
 # Tools for the WireGuard secure network tunnel
 brew "wireguard-tools"
+# JavaScript package manager
+brew "yarn"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Shell extension to navigate your filesystem faster
