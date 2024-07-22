@@ -76,8 +76,19 @@ config.window_frame = {
   button_hover_bg = "#3b3052",
 }
 
+config.window_padding = {
+  left = 2,
+  right = 2,
+  top = 0,
+  bottom = 2,
+}
+
+config.show_tab_index_in_tab_bar = true
+config.tab_and_split_indices_are_zero_based = true
+
 config.colors = {
   tab_bar = {
+
     -- The color of the strip that goes along the top of the window
     -- (does not apply when fancy tab bar is in use)
     background = "#0b0022",
