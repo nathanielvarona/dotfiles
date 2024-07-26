@@ -35,6 +35,8 @@ cask "logi-options-plus"
 cask "messenger"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # Open source build of Lens Kubernetes IDE
 cask "openlens"
 # Administration and development platform for PostgreSQL
