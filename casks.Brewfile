@@ -17,8 +17,6 @@ cask "font-symbols-only-nerd-font"
 cask "garmin-express"
 # Hosts file editor/manager
 cask "gas-mask"
-# Menu bar app to monitor graphics card usage
-cask "gfxcardstatus"
 # Cross-platform Git credential storage for multiple hosting providers
 cask "git-credential-manager"
 # Web browser
