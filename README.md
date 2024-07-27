@@ -278,3 +278,17 @@ Reset LazyVim (NeoVim) Cache
 ```bash
 rm -Rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 ```
+
+## Tooling History
+
+For toolings that I actively use and being deleted or archived.
+
+
+Tools | Status | Description | Change or Actively Use
+---------|----------|---------|----
+iterm, alacritty, kitty | ❌ Delete | Less Customizable| wezterm
+zellij | ❌ Delete | Prefer Native Terminal Multiplexer | tmux
+oh-my-zsh (zsh framework), zplug, antigen, antibody, antidote | ❌ Delete | Prefer Actively Maintain | zinit
+rvm | ❌ Delete | Compiling Issues | rbenv
+nvm | ❌ Delete | Compiling Issues | fnm
+pyenv | ✅ Active | Used for Some Cases | Standard Library (venv) and Poetry
