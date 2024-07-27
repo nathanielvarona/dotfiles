@@ -284,12 +284,12 @@ rm -Rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 For toolings that I actively use and being deleted or archived.
 
 
-Tools                                                                 | Status    | Description                        | Actively Use, and Future Changes
-----------------------------------------------------------------------|-----------|------------------------------------|------------------------------------------
-iTerm, Alacritty, Kitty                                               | ❌ Deleted | Less Customizable                  | Wezterm
-Zellij                                                                | ❌ Deleted | Prefer Native Terminal Multiplexer | Tmux
-Oh My Zsh (Vanilla ZSH Framework), zplug, Antigen, Antibody, antidote | ❌ Delete  | Prefer Actively Maintain           | Zinit
-RVM                                                                   | ❌ Deleted | Compiling Issues                   | rbenv
-NVM                                                                   | ❌ Deleted | Compiling Issues                   | fnm
-PyEnv                                                                 | ✅ Active  | Used for Some Cases                | Poetry and venv (Python Standard Library)
-vscode                                                                | ✅ Active  | Mastering Vim Motion and Plugins   | NeoVim (LazyVim)
+Tools                                                                          | Status    | Description                                        | Actively Use, and Future Changes
+-------------------------------------------------------------------------------|-----------|----------------------------------------------------|----------------------------------------------
+`iTerm2`, `Alacritty`, `Kitty`                                                 | ❌ Deleted | Less Customizable                                  | `Wezterm`
+`Zellij`                                                                       | ❌ Deleted | Prefer Native Terminal Multiplexer                 | `Tmux`
+`Oh My Zsh` (ZSH Config Framework), `zplug`, `Antigen`, `Antibody`, `antidote` | ❌ Delete  | Prefer Actively Maintain                           | `Zinit`
+`RVM`                                                                          | ❌ Deleted | Compiling Issues                                   | `rbenv`
+`NVM`                                                                          | ❌ Deleted | Compiling Issues                                   | `fnm`
+`Pyenv`                                                                        | ✅ Active  | Use for Some Cases                                 | `Poetry` and `venv` (Python Standard Library)
+`VSCode`                                                                       | ✅ Active  | Use while mastering Vim Motion and Desired Plugins | `NeoVim` (with `LazyVim` Framework)
