@@ -269,6 +269,12 @@ rm -f $HOME/.zcompdump && exec $SHELL -l
 
 Nuke Zinit (Total Reset the Zinit Configuration for Rebuild)
 
-```
+```bash
 rm -Rf $HOME/.local/share/zinit $HOME/.cache/zinit
+```
+
+Reset LazyVim (NeoVim) Cache
+
+```bash
+rm -Rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 ```
