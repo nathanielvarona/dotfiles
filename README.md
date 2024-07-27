@@ -284,11 +284,12 @@ rm -Rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 For toolings that I actively use and being deleted or archived.
 
 
-Tools | Status | Description | Change or Actively Use
----------|----------|---------|----
-iterm, alacritty, kitty | ❌ Delete | Less Customizable| wezterm
-zellij | ❌ Delete | Prefer Native Terminal Multiplexer | tmux
-oh-my-zsh (zsh framework), zplug, antigen, antibody, antidote | ❌ Delete | Prefer Actively Maintain | zinit
-rvm | ❌ Delete | Compiling Issues | rbenv
-nvm | ❌ Delete | Compiling Issues | fnm
-pyenv | ✅ Active | Used for Some Cases | Standard Library (venv) and Poetry
+Tools                                                                 | Status    | Description                        | Actively Use, and Future Changes
+----------------------------------------------------------------------|-----------|------------------------------------|------------------------------------------
+iTerm, Alacritty, Kitty                                               | ❌ Deleted | Less Customizable                  | Wezterm
+Zellij                                                                | ❌ Deleted | Prefer Native Terminal Multiplexer | Tmux
+Oh My Zsh (Vanilla ZSH Framework), zplug, Antigen, Antibody, antidote | ❌ Delete  | Prefer Actively Maintain           | Zinit
+RVM                                                                   | ❌ Deleted | Compiling Issues                   | rbenv
+NVM                                                                   | ❌ Deleted | Compiling Issues                   | fnm
+PyEnv                                                                 | ✅ Active  | Used for Some Cases                | Poetry and venv (Python Standard Library)
+vscode                                                                | ✅ Active  | Mastering Vim Motion and Plugins   | NeoVim (LazyVim)
