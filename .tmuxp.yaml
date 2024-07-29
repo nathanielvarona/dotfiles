@@ -2,10 +2,11 @@ before_script: wezterm cli set-tab-title dotfiles
 session_name: dotfiles
 windows:
   - window_name: editor
+    focus: true
     layout: main-horizontal
     options:
-       main-pane-height: 80%
+      main-pane-height: 80%
     panes:
-      - nvim .
-      -
-
+      - shell_command: nvim .
+        focus: true
+      - shell_command: ls -a
