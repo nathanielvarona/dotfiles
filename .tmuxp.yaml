@@ -1,0 +1,7 @@
+session_name: dotfiles
+windows:
+  - window_name: editor
+    panes:
+      - nvim .
+      -
+

@@ -96,6 +96,8 @@ brew "stow"
 brew "tcl-tk"
 # Terminal multiplexer
 brew "tmux"
+# Tmux session manager. Built on libtmux
+brew "tmuxp"
 # CLI tool that moves files or folder to the trash
 brew "trash"
 # Language for application scale JavaScript development

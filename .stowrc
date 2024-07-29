@@ -12,6 +12,7 @@
 --ignore=\.editorconfig
 --ignore=\.secrets.dist
 --ignore=\.Brewfile
+--ignore=\.tmuxp.yaml
 --ignore=asdf-plugins
 --ignore=cpanfile
 --ignore=hugging-face-models
