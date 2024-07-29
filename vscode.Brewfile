@@ -1,3 +1,4 @@
+vscode "bierner.markdown-emoji"
 vscode "darkriszty.markdown-table-prettify"
 vscode "editorconfig.editorconfig"
 vscode "file-icons.file-icons"
