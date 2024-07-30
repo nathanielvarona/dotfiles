@@ -179,6 +179,9 @@ alias ls='lsd'
 alias zsh_history="fc -il 1"
 alias meld="/Applications/Meld.app/Contents/MacOS/Meld"
 
+# LazyGit
+alias lg='lazygit'
+
 # ASDF Tools Version Manager
 export ASDF_DIR='/usr/local/opt/asdf/libexec'
 . /usr/local/opt/asdf/libexec/asdf.sh
