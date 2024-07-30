@@ -1,6 +1,4 @@
---dir=~/.dotfiles
 --target=~
---ignore='~'
 --ignore=README.*
 --ignore=doc
 --ignore=\.git

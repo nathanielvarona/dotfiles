@@ -24,10 +24,7 @@ My Dotfiles Collection
 ```bash
 # Clone the Dotfiles
 git clone https://github.com/nathanielvarona/dotfiles.git \
-  ~/.dotfiles
-
-# Change Directory
-cd ~/.dotfiles
+  dotfiles && cd dotfiles
 
 # Stow
 stow --stow --verbose .
