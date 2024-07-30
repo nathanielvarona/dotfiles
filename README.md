@@ -4,9 +4,9 @@ My Dotfiles Collection
 
 ## Features
 
-* A collection of dotfiles for easy setup and configuration of my development environment
-* Managed using GNU `stow` to symlink dotfiles to my home directory `~/` or `$HOME`
-* Handy scripts for installing packages and development toolings
+- A collection of dotfiles for easy setup and configuration of my development environment
+- Managed using GNU `stow` to symlink dotfiles to my home directory `~/` or `$HOME`
+- Handy scripts for installing packages and development toolings
 
 ## Demos
 
@@ -44,7 +44,7 @@ stow --restow --verbose .
 ### Homebrew Packages
 
 > [!NOTE]
-> Brewfiles are organized into different dependency files `Taps`, `Formulae`, `Casks`, `Mac App Store (MAS)`, and `VSCode Extensions`. 
+> Brewfiles are organized into different dependency files `Taps`, `Formulae`, `Casks`, `Mac App Store (MAS)`, and `VSCode Extensions`.
 
 Install Packages
 
@@ -86,16 +86,16 @@ brew bundle install --no-lock \
 <details>
   <summary>Dump Existing Packages to File</summary>
 
-  ```bash
-  make brewfile
+```bash
+make brewfile
 
-  # Specific Brew Dependency Dumps
-  make brewfile-taps
-  make brewfile-formulae
-  make brewfile-casks
-  make brewfile-mas
-  make brewfile-vscode
-  ```
+# Specific Brew Dependency Dumps
+make brewfile-taps
+make brewfile-formulae
+make brewfile-casks
+make brewfile-mas
+make brewfile-vscode
+```
 
 </details>
 
@@ -104,16 +104,16 @@ brew bundle install --no-lock \
 Installation of Plugins
 
 ```bash
-egrep -v '^(;|#|//)' ./asdf-plugins | 
+egrep -v '^(;|#|//)' ./asdf-plugins |
   xargs -I {} asdf plugin add {}
 ```
 
 <details>
   <summary>Dump Existing Plugins to File</summary>
 
-  ```bash
-  asdf plugin list > ./asdf-plugins
-  ```
+```bash
+asdf plugin list > ./asdf-plugins
+```
 
 </details>
 
@@ -129,9 +129,9 @@ egrep -v '^(;|#|//)' ./pyenv-versions |
 <details>
   <summary>Dump Existing Versions to File</summary>
 
-  ```bash
-  pyenv versions --bare --skip-aliases --skip-envs > ./pyenv-versions
-  ```
+```bash
+pyenv versions --bare --skip-aliases --skip-envs > ./pyenv-versions
+```
 
 </details>
 
@@ -140,37 +140,36 @@ egrep -v '^(;|#|//)' ./pyenv-versions |
 Installation of Python Apps
 
 ```bash
-awk '{print $1}' ./pipx-apps | 
-  egrep -v '^(;|#|//)' | 
+awk '{print $1}' ./pipx-apps |
+  egrep -v '^(;|#|//)' |
     xargs -I {} pipx install {}
 ```
 
 <details>
   <summary>Dump Existing Apps to File</summary>
 
-  ```bash
-  pipx list --short > ./pipx-apps
-  ```
+```bash
+pipx list --short > ./pipx-apps
+```
 
 </details>
-
 
 ### Krew Plugins
 
 Install Krew Plugins
 
 ```bash
-awk 'NR > 1 {print $1}' ./krew-plugins | 
-  egrep -v '^(;|#|//)' | 
+awk 'NR > 1 {print $1}' ./krew-plugins |
+  egrep -v '^(;|#|//)' |
     xargs -I {} krew install {}
 ```
 
 <details>
   <summary>Dump Existing Plugins to File</summary>
 
-  ```bash
-  krew list > ./krew-plugins
-  ```
+```bash
+krew list > ./krew-plugins
+```
 
 </details>
 
@@ -179,17 +178,17 @@ awk 'NR > 1 {print $1}' ./krew-plugins |
 Add the Helm Repositories
 
 ```bash
-awk 'NR > 1 {split($0, ri, " "); print ri[1] " " ri[2]}' ./helm-repos | 
-  egrep -v '^(;|#|//)' | 
+awk 'NR > 1 {split($0, ri, " "); print ri[1] " " ri[2]}' ./helm-repos |
+  egrep -v '^(;|#|//)' |
     xargs -n 2 helm repo add
 ```
 
 <details>
   <summary>Dump Existing Repositories to File</summary>
 
-  ```bash
-  helm repo list > ./helm-repos
-  ```
+```bash
+helm repo list > ./helm-repos
+```
 
 </details>
 
@@ -212,7 +211,7 @@ cpanm --installdeps ./
 Dump Model List
 
 ```bash
-ollama list | 
+ollama list |
   awk 'NR > 1 { print $1 }' > ./ollama-models
 ```
 
@@ -247,8 +246,8 @@ defaults write org.gpgtools.common UseKeychain false
 
 To ensure consistency and cleanliness, use:
 
-* Run `editorconfig-checker` to check for EditorConfig errors
-* Run `shfmt --indent 2 --write ./<path>/<to>/<script>.sh` to format shell scripts
+- Run `editorconfig-checker` to check for EditorConfig errors
+- Run `shfmt --indent 2 --write ./<path>/<to>/<script>.sh` to format shell scripts
 
 ## Troubleshooting
 
@@ -280,13 +279,12 @@ rm -Rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 
 For toolings that I actively use and being deleted or archived.
 
-
-Tools                                                                          | Status    | Description                                        | Actively Use, and Future Changes
--------------------------------------------------------------------------------|-----------|----------------------------------------------------|----------------------------------------------
-`iTerm2`, `Alacritty`, `Kitty`                                                 | ❌ Deleted | Less Customizable                                  | `Wezterm`
-`Zellij`                                                                       | ❌ Deleted | Prefer Native Terminal Multiplexer                 | `Tmux`
-`Oh My Zsh` (ZSH Config Framework), `zplug`, `Antigen`, `Antibody`, `antidote` | ❌ Delete  | Prefer Actively Maintain                           | `Zinit`
-`RVM`                                                                          | ❌ Deleted | Compiling Issues                                   | `rbenv`
-`NVM`                                                                          | ❌ Deleted | Compiling Issues                                   | `fnm`
-`Pyenv`                                                                        | ✅ Active  | Use for Some Cases                                 | `Poetry` and `venv` (Python Standard Library)
-`VSCode`                                                                       | ✅ Active  | Use while mastering Vim Motion and Desired Plugins | `NeoVim` (with `LazyVim` Framework)
+| Tools                                                                          | Status     | Description                                        | Actively Use, and Future Changes              |
+| ------------------------------------------------------------------------------ | ---------- | -------------------------------------------------- | --------------------------------------------- |
+| `iTerm2`, `Alacritty`, `Kitty`                                                 | ❌ Deleted | Less Customizable                                  | `Wezterm`                                     |
+| `Zellij`                                                                       | ❌ Deleted | Prefer Native Terminal Multiplexer                 | `Tmux`                                        |
+| `Oh My Zsh` (ZSH Config Framework), `zplug`, `Antigen`, `Antibody`, `antidote` | ❌ Delete  | Prefer Actively Maintain                           | `Zinit`                                       |
+| `RVM`                                                                          | ❌ Deleted | Compiling Issues                                   | `rbenv`                                       |
+| `NVM`                                                                          | ❌ Deleted | Compiling Issues                                   | `fnm`                                         |
+| `Pyenv`                                                                        | ✅ Active  | Use for Some Cases                                 | `Poetry` and `venv` (Python Standard Library) |
+| `VSCode`                                                                       | ✅ Active  | Use while mastering Vim Motion and Desired Plugins | `NeoVim` (with `LazyVim` Framework)           |
