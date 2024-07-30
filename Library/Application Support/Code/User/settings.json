@@ -21,4 +21,5 @@
       "$home/Projects"
     ],
     "projectManager.sortList": "Recent",
+    "editor.minimap.enabled": false,
 }
