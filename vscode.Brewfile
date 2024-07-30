@@ -1,3 +1,4 @@
+vscode "alefragnani.project-manager"
 vscode "bierner.markdown-emoji"
 vscode "darkriszty.markdown-table-prettify"
 vscode "editorconfig.editorconfig"

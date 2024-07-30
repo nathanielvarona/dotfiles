@@ -16,5 +16,9 @@
     "terminal.integrated.fontSize": 14,
     "redhat.telemetry.enabled": false,
     "terminal.integrated.macOptionIsMeta": true,
-    "go.toolsManagement.autoUpdate": true
+    "go.toolsManagement.autoUpdate": true,
+    "projectManager.git.baseFolders": [
+      "$home/Projects"
+    ],
+    "projectManager.sortList": "Recent",
 }

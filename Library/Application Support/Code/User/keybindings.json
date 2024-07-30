@@ -1,0 +1,6 @@
+[
+  {
+    "command": "projectManager.listGitProjects#sideBarGit",
+    "key": "cmd+o"
+  },
+]
