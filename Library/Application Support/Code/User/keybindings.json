@@ -1,6 +1,72 @@
 [
   {
-    "command": "projectManager.listGitProjects#sideBarGit",
-    "key": "cmd+o"
+    "key": "cmd+o",
+    "command": "projectManager.listGitProjects#sideBarGit"
   },
+  {
+    "key": "ctrl+e",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+e",
+    "when": "editorTextFocus",
+    "command": "workbench.files.action.focusFilesExplorer"
+  },
+  {
+    "key": "a",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "r",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "renameFile"
+  },
+  {
+    "key": "c",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "filesExplorer.copy"
+  },
+  {
+    "key": "p",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "filesExplorer.paste"
+  },
+  {
+    "key": "d",
+    "when": "filesExplorerFocus && !inputFocus",
+    "command": "deleteFile"
+  },
+  {
+    "key": "ctrl+n",
+    "when": "editorFocus",
+    "command": "editor.action.addSelectionToNextFindMatch"
+  },
+  {
+    "key": "ctrl+n",
+    "when": "editorFocus",
+    "command": "editor.action.addSelectionToNextFindMatch"
+  },
+  {
+    "key": "cmd+s",
+    "command": "-workbench.action.files.save"
+  },
+  {
+    "key": "cmd+s",
+    "command": "saveAll"
+  },
+  {
+    "key": "cmd+z",
+    "command": "-undo"
+  },
+  {
+    "key": "ctrl+`",
+    "when": "terminal.active",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+\\",
+    "when": "terminal.active",
+    "command": "workbench.action.terminal.toggleTerminal"
+  }
 ]

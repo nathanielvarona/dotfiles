@@ -1,26 +1,73 @@
 {
-    "workbench.colorTheme": "GitHub Dark Default",
-    "workbench.preferredDarkColorTheme": "GitHub Dark Default",
-    "workbench.preferredLightColorTheme": "GitHub Light Default",
-    "workbench.preferredHighContrastColorTheme": "GitHub Dark High Contrast",
-    "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
-    "workbench.startupEditor": "readme",
-    "workbench.iconTheme": "file-icons",
-    "workbench.activityBar.location": "hidden",
-    "window.autoDetectColorScheme": true,
-    "explorer.compactFolders": false,
-    "git.autofetch": true,
-    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'Symbols Nerd Font'",
-    "editor.fontSize": 14,
-    "editor.fontLigatures": false,
-    "editor.minimap.enabled": false,
-    "terminal.integrated.fontFamily": "'JetBrains Mono NL', 'Symbols Nerd Font'",
-    "terminal.integrated.fontSize": 14,
-    "redhat.telemetry.enabled": false,
-    "terminal.integrated.macOptionIsMeta": true,
-    "go.toolsManagement.autoUpdate": true,
-    "projectManager.git.baseFolders": [
-      "$home/Projects"
-    ],
-    "projectManager.sortList": "Recent",
+  "workbench.colorTheme": "GitHub Dark Default",
+  "workbench.preferredDarkColorTheme": "GitHub Dark Default",
+  "workbench.preferredLightColorTheme": "GitHub Light Default",
+  "workbench.preferredHighContrastColorTheme": "GitHub Dark High Contrast",
+  "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
+  "workbench.startupEditor": "readme",
+  "workbench.iconTheme": "file-icons",
+  // "workbench.settings.editor": "json", // For VSCode Settings Editing in JSON
+  "workbench.activityBar.location": "hidden",
+  "window.autoDetectColorScheme": true,
+  "explorer.compactFolders": false,
+  "git.autofetch": true,
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'Symbols Nerd Font'",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": false,
+  "editor.minimap.enabled": false,
+  "terminal.integrated.fontFamily": "'JetBrains Mono NL', 'Symbols Nerd Font'",
+  "terminal.integrated.fontSize": 14,
+  "redhat.telemetry.enabled": false,
+  "terminal.integrated.macOptionIsMeta": true,
+  "go.toolsManagement.autoUpdate": true,
+  "projectManager.git.baseFolders": ["$home/Projects"],
+  "projectManager.sortList": "Recent",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "vim.useSystemClipboard": false,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["leader", "w"], // Save
+      "commands": [":w!"]
+    },
+    {
+      "before": ["leader", "q"], // Quit without Saving
+      "commands": [":q!"]
+    },
+    {
+      "before": ["leader", "x"], // Quit and Save
+      "commands": [":x!"]
+    },
+    {
+      "after": ["g", "g", "V", "G"], // Select All
+      "before": ["<c-a>"]
+    },
+    {
+      "before": ["[", "d"], // Move to Previous Diagnostic
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "d"], // Move to Next Diagnostic
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["<leader>", "c", "a"], // Show Available Fix
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["H"], // Go to Beginning of the Line
+      "after": ["^"]
+    },
+    {
+      "before": ["L"], // Go to End of the Line
+      "after": ["$"]
+    }
+  ]
 }
