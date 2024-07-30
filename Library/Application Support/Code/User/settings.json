@@ -4,7 +4,7 @@
     "workbench.preferredLightColorTheme": "GitHub Light Default",
     "workbench.preferredHighContrastColorTheme": "GitHub Dark High Contrast",
     "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
-    "workbench.startupEditor": "none",
+    "workbench.startupEditor": "readme",
     "workbench.iconTheme": "file-icons",
     "workbench.activityBar.location": "hidden",
     "window.autoDetectColorScheme": true,
@@ -12,6 +12,8 @@
     "git.autofetch": true,
     "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'Symbols Nerd Font'",
     "editor.fontSize": 14,
+    "editor.fontLigatures": false,
+    "editor.minimap.enabled": false,
     "terminal.integrated.fontFamily": "'JetBrains Mono NL', 'Symbols Nerd Font'",
     "terminal.integrated.fontSize": 14,
     "redhat.telemetry.enabled": false,
@@ -21,5 +23,4 @@
       "$home/Projects"
     ],
     "projectManager.sortList": "Recent",
-    "editor.minimap.enabled": false,
 }
