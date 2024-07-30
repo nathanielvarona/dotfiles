@@ -9,8 +9,13 @@ local config = wezterm.config_builder()
 -- For example, changing the color scheme:
 config.color_scheme = "GitHub Dark"
 
+-- Intended for Recommended Asciinema Demo
 config.initial_cols = 100
 config.initial_rows = 30
+
+-- Intended for Recommended Asciinema with Editors and Multiplexers
+-- config.initial_cols = 172
+-- config.initial_rows = 45
 
 config.font = wezterm.font_with_fallback({
   { family = "JetBrains Mono NL", scale = 1 },
