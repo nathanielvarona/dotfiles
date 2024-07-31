@@ -6,7 +6,7 @@
   "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
   "workbench.startupEditor": "readme",
   "workbench.iconTheme": "file-icons",
-  // "workbench.settings.editor": "json", // For VSCode Settings Editing in JSON
+  // "workbench.settings.editor": "json",
   "workbench.activityBar.location": "hidden",
   "window.autoDetectColorScheme": true,
   "explorer.compactFolders": false,
@@ -30,44 +30,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "vim.useSystemClipboard": false,
-  "vim.leader": "<space>",
-  "vim.normalModeKeyBindings": [
-    {
-      "before": ["leader", "w"], // Save
-      "commands": [":w!"]
-    },
-    {
-      "before": ["leader", "q"], // Quit without Saving
-      "commands": [":q!"]
-    },
-    {
-      "before": ["leader", "x"], // Quit and Save
-      "commands": [":x!"]
-    },
-    {
-      "after": ["g", "g", "V", "G"], // Select All
-      "before": ["<c-a>"]
-    },
-    {
-      "before": ["[", "d"], // Move to Previous Diagnostic
-      "commands": ["editor.action.marker.prev"]
-    },
-    {
-      "before": ["]", "d"], // Move to Next Diagnostic
-      "commands": ["editor.action.marker.next"]
-    },
-    {
-      "before": ["<leader>", "c", "a"], // Show Available Fix
-      "commands": ["editor.action.quickFix"]
-    },
-    {
-      "before": ["H"], // Go to Beginning of the Line
-      "after": ["^"]
-    },
-    {
-      "before": ["L"], // Go to End of the Line
-      "after": ["$"]
-    }
-  ]
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.lua"
 }

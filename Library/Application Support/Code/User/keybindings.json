@@ -1,64 +1,23 @@
 [
+  // Open Projects
   {
     "key": "cmd+o",
     "command": "projectManager.listGitProjects#sideBarGit"
   },
+
+  // Explorer Keybinding like `Neo-tree.nvim`
   {
     "key": "ctrl+e",
-    "command": "workbench.action.toggleSidebarVisibility"
+    "command": "workbench.view.explorer",
+    "when": "!explorerViewletVisible"
   },
   {
     "key": "ctrl+e",
-    "when": "editorTextFocus",
-    "command": "workbench.files.action.focusFilesExplorer"
+    "command": "workbench.action.closeSidebar",
+    "when": "explorerViewletVisible"
   },
-  {
-    "key": "a",
-    "when": "filesExplorerFocus && !inputFocus",
-    "command": "explorer.newFile"
-  },
-  {
-    "key": "r",
-    "when": "filesExplorerFocus && !inputFocus",
-    "command": "renameFile"
-  },
-  {
-    "key": "c",
-    "when": "filesExplorerFocus && !inputFocus",
-    "command": "filesExplorer.copy"
-  },
-  {
-    "key": "p",
-    "when": "filesExplorerFocus && !inputFocus",
-    "command": "filesExplorer.paste"
-  },
-  {
-    "key": "d",
-    "when": "filesExplorerFocus && !inputFocus",
-    "command": "deleteFile"
-  },
-  {
-    "key": "ctrl+n",
-    "when": "editorFocus",
-    "command": "editor.action.addSelectionToNextFindMatch"
-  },
-  {
-    "key": "ctrl+n",
-    "when": "editorFocus",
-    "command": "editor.action.addSelectionToNextFindMatch"
-  },
-  {
-    "key": "cmd+s",
-    "command": "-workbench.action.files.save"
-  },
-  {
-    "key": "cmd+s",
-    "command": "saveAll"
-  },
-  {
-    "key": "cmd+z",
-    "command": "-undo"
-  },
+
+  // VSCode Terminal
   {
     "key": "ctrl+`",
     "when": "terminal.active",
