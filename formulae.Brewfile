@@ -46,6 +46,8 @@ brew "highlight"
 brew "htop"
 # Client library for huggingface.co hub
 brew "huggingface-cli"
+# Command-line benchmarking tool
+brew "hyperfine"
 # GNU utilities for networking
 brew "inetutils"
 # Lightweight and flexible command-line JSON processor
