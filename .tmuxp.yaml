@@ -1,3 +1,4 @@
+# Use Command `tmuxp load .`
 before_script: wezterm cli set-tab-title dotfiles
 session_name: dotfiles
 windows:
@@ -10,3 +11,10 @@ windows:
       - shell_command: nvim .
         focus: true
       - shell_command: ls -a
+  - window_name: lazygit
+    layout: main-horizontal
+    options:
+      main-pane-height: 80%
+    panes:
+      - shell_command: lazygit
+      - shell_command: git version
