@@ -90,12 +90,15 @@ if ! which atuin &> /dev/null; then return 1; fi
     # local atuin_opts="--cmd-only --limit ${ATUIN_LIMIT:-5000}"
     local atuin_opts="--cmd-only"
     local fzf_opts=(
-      --height=${FZF_TMUX_HEIGHT:-80%}
+      --height=${FZF_TMUX_HEIGHT:-100%}
       --tac
       "-n2..,.."
       --tiebreak=index
       "--query=${LBUFFER}"
       "+m"
+      '--preview=echo {}'
+      "--preview-window=down:3:hidden:wrap"
+      "--bind=?:toggle-preview"
       "--bind=ctrl-d:reload(atuin search $atuin_opts -c $PWD),ctrl-r:reload(atuin search $atuin_opts)"
     )
 
