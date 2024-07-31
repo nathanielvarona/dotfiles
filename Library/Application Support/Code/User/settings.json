@@ -30,6 +30,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua",
+    "editor.formatOnSave": true
+  },
   "shellformat.path": "/usr/local/bin/shfmt",
   "shellformat.flag": "--indent 2",
   "extensions.experimental.affinity": {
