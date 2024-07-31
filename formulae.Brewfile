@@ -26,6 +26,8 @@ brew "dvm"
 brew "editorconfig"
 # Tool to verify that your files are in harmony with your .editorconfig
 brew "editorconfig-checker"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Fast and simple Node.js version manager
@@ -84,6 +86,8 @@ brew "rbenv"
 brew "rbenv-bundler"
 # Adds basic gemset support to rbenv
 brew "rbenv-gemset"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Safe, concurrent, practical language

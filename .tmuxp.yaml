@@ -11,10 +11,10 @@ windows:
       - shell_command: nvim .
         focus: true
       - shell_command: ls -a
-  - window_name: lazygit
+  - window_name: git
     layout: main-horizontal
     options:
       main-pane-height: 80%
     panes:
       - shell_command: lazygit
-      - shell_command: git version
+      - shell_command: git --version

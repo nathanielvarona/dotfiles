@@ -141,7 +141,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 
 # ZSH_HIGHLIGHT_HIGHLIGHTERS
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-export ZSH_HIGHLIGHT_STYLES[suffix\-alias]=fg=green,underline
+export ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
@@ -229,8 +229,12 @@ alias ls='lsd'
 alias zsh_history="fc -il 1"
 alias meld="/Applications/Meld.app/Contents/MacOS/Meld"
 
-# LazyGit
+# LazyGit Alias
 alias lg='lazygit'
+
+# Tmux and Tmuxp Alias
+alias tpl='tmuxp load'
+alias tmk='tmux kill-session -t'
 
 # ASDF Tools Version Manager
 export ASDF_DIR='/usr/local/opt/asdf/libexec'

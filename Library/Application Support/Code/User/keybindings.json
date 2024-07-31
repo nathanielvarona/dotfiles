@@ -6,15 +6,43 @@
   },
 
   // Explorer Keybinding like `Neo-tree.nvim`
+  // {
+  //   "key": "ctrl+e",
+  //   "command": "workbench.view.explorer",
+  //   "when": "!explorerViewletVisible"
+  // },
+  // {
+  //   "key": "ctrl+e",
+  //   "command": "workbench.action.closeSidebar",
+  //   "when": "explorerViewletVisible && !editorFocus"
+  // },
+  // {
+  //   "key": "ctrl+e",
+  //   "command": "workbench.files.action.focusFilesExplorer",
+  //   "when": "explorerViewletVisible && editorFocus"
+  // },
+
+  // Keybinding for <leader>e using vscode-neovim
   {
-    "key": "ctrl+e",
-    "command": "workbench.view.explorer",
-    "when": "!explorerViewletVisible"
+    "key": "space e",
+    "command": "vscode-neovim.send",
+    "args": "<leader>e",
+    "when": "neovim.mode == 'normal'"
   },
   {
-    "key": "ctrl+e",
+    "key": "space e",
+    "command": "workbench.view.explorer",
+    "when": "!explorerViewletVisible && neovim.mode == 'normal'"
+  },
+  {
+    "key": "space e",
     "command": "workbench.action.closeSidebar",
-    "when": "explorerViewletVisible"
+    "when": "explorerViewletVisible && !editorFocus && neovim.mode == 'normal'"
+  },
+  {
+    "key": "space e",
+    "command": "workbench.files.action.focusFilesExplorer",
+    "when": "explorerViewletVisible && editorFocus && neovim.mode == 'normal'"
   },
 
   // VSCode Terminal
