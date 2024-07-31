@@ -51,17 +51,23 @@ zinit snippet OMZ::plugins/extract
 zinit snippet OMZ::plugins/gnu-utils
 zinit snippet OMZ::plugins/common-aliases
 
-# Jump Around
-zinit load agkozak/zsh-z
+# Source fzf
+if [ -f ~/.fzfrc ]; then
+  source ~/.fzfrc
+fi
 
 # Command-line fuzzy finder written in Go
 source <(fzf --zsh)
+
+# Shell extension to navigate your filesystem faster
 source <(zoxide init --cmd cd zsh)
 
 # Atuin
 export ATUIN_NOBIND="true"
 # eval "$(atuin init zsh)"
 zinit load atuinsh/atuin
+# Jump around (same with zoxide) with fzf
+zinit load agkozak/zsh-z
 
 bindkey '^r' atuin-search
 
