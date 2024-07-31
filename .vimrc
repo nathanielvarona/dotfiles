@@ -21,3 +21,17 @@ set cursorline
 
 " Highlight cursor line underneath the cursor vertically.
 set cursorcolumn
+
+" Make sure you have `vim-plug` installed
+" Installation:
+"   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+call plug#begin()
+
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+
+call plug#end()
+
+" Plugin `catppuccin/vim` settings
+colorscheme catppuccin_mocha
