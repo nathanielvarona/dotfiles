@@ -2,7 +2,7 @@
 
 BREW_BUNDLE_DUMP = brew bundle dump --no-lock --describe --force --file
 
-all: brewfile
+all: brewfile asdf poetry krew helm ollama
 
 brewfile: brewfile-formulae brewfile-casks brewfile-taps brewfile-mas brewfile-vscode
 
@@ -20,3 +20,18 @@ brewfile-mas:
 
 brewfile-vscode:
 	$(BREW_BUNDLE_DUMP) ./vscode.Brewfile --vscode
+
+asdf:
+	asdf plugin list > ./asdf-plugins
+
+poetry:
+	pipx list --short > ./pipx-apps
+
+krew:
+	krew list > ./krew-plugins
+
+helm:
+	helm repo list > ./helm-repos
+
+ollama:
+	ollama list | awk 'NR > 1 { print $$1 }' > ./ollama-models

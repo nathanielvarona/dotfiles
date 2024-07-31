@@ -19,6 +19,10 @@ indent_style = space
 indent_size = tab
 indent_style = tab
 
+[{Makefile,**.mk}]
+indent_size = 2
+indent_style = tab
+
 [{**.*sh,test/run,**.bats}]
 indent_style = space
 
