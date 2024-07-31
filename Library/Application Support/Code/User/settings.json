@@ -30,11 +30,11 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
+  "shellformat.path": "/usr/local/bin/shfmt",
+  "shellformat.flag": "--indent 2",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.lua",
-  "shellformat.path": "/usr/local/bin/shfmt",
-  "shellformat.flag": "--indent 2"
+  "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.lua"
 }
