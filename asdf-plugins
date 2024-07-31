@@ -1,7 +1,5 @@
 argocd
 awscli
-# aws-sam-cli
-# bazel
 eksctl
 helm-ct
 helm
@@ -16,7 +14,5 @@ kubeval
 kustomize
 minikube
 packer
-# skaffold
 terraform
-# terragrunt
 tilt
