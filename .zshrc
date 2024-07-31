@@ -62,18 +62,59 @@ source <(fzf --zsh)
 # Shell extension to navigate your filesystem faster
 source <(zoxide init --cmd cd zsh)
 
-# Atuin
-export ATUIN_NOBIND="true"
-# eval "$(atuin init zsh)"
-zinit load atuinsh/atuin
 # Jump around (same with zoxide) with fzf
 zinit load agkozak/zsh-z
 
-bindkey '^r' atuin-search
+# Atuin Command History Database (Vanilla Setup)
+# export ATUIN_NOBIND="true"
+# # eval "$(atuin init zsh)"
+# zinit load atuinsh/atuin
+
+# bindkey '^r' atuin-search
 
 # bind to the up key, which depends on terminal mode
 # bindkey '^[[A' atuin-up-search
 # bindkey '^[OA' atuin-up-search
+
+# Combine Atuin and FZF
+atuin-setup() {
+if ! which atuin &> /dev/null; then return 1; fi
+  bindkey '^E' _atuin_search_widget
+
+  export ATUIN_NOBIND="true"
+  eval "$(atuin init zsh)"
+  fzf-atuin-history-widget() {
+    local selected num
+    setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
+
+    # local atuin_opts="--cmd-only --limit ${ATUIN_LIMIT:-5000}"
+    local atuin_opts="--cmd-only"
+    local fzf_opts=(
+      --height=${FZF_TMUX_HEIGHT:-80%}
+      --tac
+      "-n2..,.."
+      --tiebreak=index
+      "--query=${LBUFFER}"
+      "+m"
+      "--bind=ctrl-d:reload(atuin search $atuin_opts -c $PWD),ctrl-r:reload(atuin search $atuin_opts)"
+    )
+
+    selected=$(
+      eval "atuin search ${atuin_opts}" |
+        fzf "${fzf_opts[@]}"
+    )
+    local ret=$?
+    if [ -n "$selected" ]; then
+      # the += lets it insert at current pos instead of replacing
+      LBUFFER+="${selected}"
+    fi
+    zle reset-prompt
+    return $ret
+  }
+  zle -N fzf-atuin-history-widget
+  bindkey '^R' fzf-atuin-history-widget
+}
+atuin-setup
 
 # History
 export HISTFILE=~/.zsh_history
