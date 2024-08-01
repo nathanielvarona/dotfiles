@@ -38,6 +38,8 @@ brew "fx"
 brew "fzf"
 # GIF image/animation creator/editor
 brew "gifsicle"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
