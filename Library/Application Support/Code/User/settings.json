@@ -1,4 +1,5 @@
 {
+  // "workbench.settings.editor": "json",
   "workbench.colorTheme": "GitHub Dark Default",
   "workbench.preferredDarkColorTheme": "GitHub Dark Default",
   "workbench.preferredLightColorTheme": "GitHub Light Default",
@@ -6,7 +7,6 @@
   "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
   "workbench.startupEditor": "readme",
   "workbench.iconTheme": "file-icons",
-  // "workbench.settings.editor": "json",
   "workbench.activityBar.location": "hidden",
   "window.autoDetectColorScheme": true,
   "explorer.compactFolders": false,
@@ -41,5 +41,7 @@
   },
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "$home/.config/nvim/init.lua",
-  "find-it-faster.general.useTerminalInEditor": true
+  "find-it-faster.general.useTerminalInEditor": true,
+  "find-it-faster.general.killTerminalAfterUse": true,
+  "find-it-faster.general.batTheme": "GitHub"
 }
