@@ -229,6 +229,11 @@ export CXX="ccache clang++"
 # LSD (LSDeluxe)
 alias ls='lsd'
 
+# TODO: Evaluate the Functionality (`lsd` has the features I need for now)
+# INFO: Winning in Terms of Speed using `hyperfine "eza -la --icons" "lsd -la"`
+# eza - A modern replacement for ls.
+# alias ls='eza -la --icons'
+
 # Alias (others)
 alias zsh_history="fc -il 1"
 alias meld="/Applications/Meld.app/Contents/MacOS/Meld"

@@ -26,6 +26,8 @@ brew "dvm"
 brew "editorconfig"
 # Tool to verify that your files are in harmony with your .editorconfig
 brew "editorconfig-checker"
+# Modern, maintained replacement for ls
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Play, record, convert, and stream audio and video
