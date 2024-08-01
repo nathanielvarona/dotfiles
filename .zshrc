@@ -304,8 +304,8 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Ollama CLI Completion
 # NOTE: This is Temporary until Ollam implement a Completion Generator Feature from the CLI
-if ! [[ -e "$ZSH_CACHE_DIR/completions/_ollama.zsh" ]]; then
-  curl -sSL -o $ZSH_CACHE_DIR/completions/_ollama.zsh \
+if ! [[ -e "$ZSH_CACHE_DIR/completions/_ollama" ]]; then
+  curl -sSL -o $ZSH_CACHE_DIR/completions/_ollama \
     https://gist.githubusercontent.com/nathanielvarona/72d827ae3b90c71a655e8a7b33154e8a/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh
 fi
 
