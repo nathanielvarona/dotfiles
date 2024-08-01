@@ -104,6 +104,8 @@ brew "shfmt"
 brew "stow"
 # Tool Command Language
 brew "tcl-tk"
+# Simplified and community-driven man pages
+brew "tldr"
 # Terminal multiplexer
 brew "tmux"
 # Tmux session manager. Built on libtmux
