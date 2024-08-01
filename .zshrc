@@ -123,6 +123,8 @@ if ! which atuin &> /dev/null; then return 1; fi
 }
 atuin-setup
 
+eval $(thefuck --alias wtf)
+
 # History
 export HISTFILE=~/.zsh_history
 export HISTFILESIZE=1000000000

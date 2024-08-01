@@ -104,6 +104,8 @@ brew "shfmt"
 brew "stow"
 # Tool Command Language
 brew "tcl-tk"
+# Programmatically correct mistyped console commands
+brew "thefuck"
 # Simplified and community-driven man pages
 brew "tldr"
 # Terminal multiplexer
