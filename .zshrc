@@ -51,10 +51,14 @@ zinit snippet OMZ::plugins/extract
 zinit snippet OMZ::plugins/gnu-utils
 zinit snippet OMZ::plugins/common-aliases
 
-# Source fzf
-if [ -f ~/.fzfrc ]; then
-  source ~/.fzfrc
-fi
+# Source FZF Settings
+[[ ! -f ~/.fzfrc ]] || source ~/.fzfrc
+
+# https://github.com/junegunn/fzf-git.sh
+source ~/Projects/contribute/fzf-git.sh/fzf-git.sh
+
+# Source FZF Git Settings
+[[ ! -f ~/.fzfgit ]] || source ~/.fzfgit
 
 # Command-line fuzzy finder written in Go
 source <(fzf --zsh)

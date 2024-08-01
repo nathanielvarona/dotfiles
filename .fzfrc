@@ -1,29 +1,27 @@
 # Scheme name: GitHub Dark Default
 
 _gen_fzf_github_dark_default_opts() {
+  local color00='#0d1117' # Background
+  local color01='#161b22' # Lighter Background
+  local color02='#313244' # Not used, but can be for additional customization
+  local color03='#45475a' # Not used, but can be for additional customization
+  local color04='#8b949e' # Comment
+  local color05='#c9d1d9' # Foreground
+  local color06='#39c5cf' # Cyan
+  local color07='#58a6ff' # Blue
+  local color08='#ff7b72' # Red
+  local color09='#d29922' # Orange
+  local color0A='#e3b341' # Yellow
+  local color0B='#3fb950' # Green
+  local color0C='#39c5cf' # Cyan
+  local color0D='#58a6ff' # Blue
+  local color0E='#bc8cff' # Purple
+  local color0F='#c9d1d9' # Not used, but can be for additional customization
 
-local color00='#0d1117' # Background
-local color01='#161b22' # Lighter Background
-local color02='#313244' # Not used, but can be for additional customization
-local color03='#45475a' # Not used, but can be for additional customization
-local color04='#8b949e' # Comment
-local color05='#c9d1d9' # Foreground
-local color06='#39c5cf' # Cyan
-local color07='#58a6ff' # Blue
-local color08='#ff7b72' # Red
-local color09='#d29922' # Orange
-local color0A='#e3b341' # Yellow
-local color0B='#3fb950' # Green
-local color0C='#39c5cf' # Cyan
-local color0D='#58a6ff' # Blue
-local color0E='#bc8cff' # Purple
-local color0F='#c9d1d9' # Not used, but can be for additional customization
-
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-" --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D"\
-" --color=fg:$color05,header:$color0D,info:$color0A,pointer:$color0C"\
-" --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
-
+  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS""\
+ --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D""\
+ --color=fg:$color05,header:$color0D,info:$color0A,pointer:$color0C""\
+ --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
 }
 
 _gen_fzf_github_dark_default_opts
