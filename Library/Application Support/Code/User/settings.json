@@ -40,5 +40,6 @@
     "asvetliakov.vscode-neovim": 1
   },
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/nvim/init.lua"
+  "vscode-neovim.neovimInitVimPaths.darwin": "$home/.config/nvim/init.lua",
+  "find-it-faster.general.useTerminalInEditor": true
 }
