@@ -83,7 +83,7 @@ zinit load agkozak/zsh-z
 # Combine Atuin and FZF
 atuin-setup() {
 if ! which atuin &> /dev/null; then return 1; fi
-  bindkey '^E' _atuin_search_widget
+  bindkey '^Y' _atuin_search_widget
 
   export ATUIN_NOBIND="true"
   eval "$(atuin init zsh)"
