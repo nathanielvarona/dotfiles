@@ -3,7 +3,7 @@ p10k_config_index=1
 
 # Function to retrieve the path to the Powerlevel10k config directory
 _get_p10k_config_path() {
-  local config_path="$(find "$HOME/.local/share/zinit/plugins" -name 'romkatv---powerlevel10k')/config"
+  local config_path="$(find "$HOME/.local/share/zinit/plugins" -name 'romkatv*' | grep --color=never 'powerlevel10k')/config"
   [[ -d "$config_path" ]] || { echo "Error: Powerlevel10k config directory not found"; exit 1; }
   echo "$config_path"
 }
