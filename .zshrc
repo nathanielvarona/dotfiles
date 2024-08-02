@@ -85,8 +85,9 @@ zinit load agkozak/zsh-z
 # bindkey '^[[A' atuin-up-search
 # bindkey '^[OA' atuin-up-search
 
-# Combine Atuin and FZF
-atuin-setup() {
+# Combine Atuin to FZF
+# Use the `CTRL+Y` to access Atuin UI
+combine_fzf_atuin() {
 if ! which atuin &> /dev/null; then return 1; fi
   bindkey '^Y' _atuin_search_widget
 
@@ -126,7 +127,7 @@ if ! which atuin &> /dev/null; then return 1; fi
   zle -N fzf-atuin-history-widget
   bindkey '^R' fzf-atuin-history-widget
 }
-atuin-setup
+combine_fzf_atuin
 
 eval $(thefuck --alias wtf)
 
