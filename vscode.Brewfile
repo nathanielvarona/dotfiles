@@ -1,6 +1,7 @@
 vscode "alefragnani.project-manager"
 vscode "asvetliakov.vscode-neovim"
 vscode "bierner.markdown-emoji"
+vscode "chaitanyashahare.lazygit"
 vscode "darkriszty.markdown-table-prettify"
 vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"

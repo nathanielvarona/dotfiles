@@ -42,5 +42,12 @@
   {
     "key": "ctrl+alt+m",
     "command": "workbench.action.toggleMaximizedPanel"
+  },
+
+  // LazyGit
+  {
+    "key": "space g g",
+    "command": "lazygit.openLazygit",
+    "when": "(editorFocus && neovim.mode == 'normal') || (!editorFocus && !terminalFocus && !inputFocus && neovim.mode != 'insert')"
   }
 ]
