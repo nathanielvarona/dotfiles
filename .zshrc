@@ -60,6 +60,11 @@ source ~/Projects/contribute/fzf-git.sh/fzf-git.sh
 # Source FZF Git Settings
 [[ ! -f ~/.fzfgit ]] || source ~/.fzfgit
 
+# Utility tool for using git interactively. Powered by junegunn/fzf.
+# Use the `git forgit <GIT_SUBCOMMAND>` instead of using `git-forgit <GIT_SUBCOMMAND>`
+zinit ice as"program" pick"bin/git-forgit"
+zinit load wfxr/forgit
+
 # Command-line fuzzy finder written in Go
 source <(fzf --zsh)
 
