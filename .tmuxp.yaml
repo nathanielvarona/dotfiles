@@ -11,7 +11,7 @@ windows:
       - shell_command: nvim .
         focus: true
       - shell_command: ls -a
-  - window_name: git
+  - window_name: vcs
     layout: main-horizontal
     options:
       main-pane-height: 80%
