@@ -391,3 +391,11 @@ complete -o nospace -C aws_completer aws
 if command -v ngrok &>/dev/null; then
   eval "$(ngrok completion)"
 fi
+
+# Fixes Tmux Cursor
+if [ -n "$TMUX" ]; then
+  _fix_cursor() {
+    echo -ne '\e[5 q'
+  }
+  precmd_functions+=(_fix_cursor)
+fi
