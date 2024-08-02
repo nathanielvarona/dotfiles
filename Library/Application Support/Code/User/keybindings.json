@@ -49,5 +49,13 @@
     "key": "space g g",
     "command": "lazygit.openLazygit",
     "when": "(editorFocus && neovim.mode == 'normal') || (!editorFocus && !terminalFocus && !inputFocus && neovim.mode != 'insert')"
+  },
+  {
+    "command": "lazygit.openLazygit",
+    "key": "ctrl+g g"
+  },
+  {
+    "command": "lazygit.openLazygit",
+    "key": "ctrl+g ctrl+g"
   }
 ]
