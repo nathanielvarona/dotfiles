@@ -83,6 +83,13 @@ brew bundle install --no-lock \
   --file ./vscode.Brewfile
 ```
 
+5. Whalebrew (Containerized Apps)
+
+```bash
+brew bundle install --no-lock \
+  --file ./whalebrew.Brewfile
+```
+
 <details>
   <summary>Dump Existing Packages to File</summary>
 
@@ -95,6 +102,7 @@ make brewfile-formulae
 make brewfile-casks
 make brewfile-mas
 make brewfile-vscode
+make brewfile-whalebrew
 ```
 
 </details>

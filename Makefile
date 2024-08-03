@@ -4,7 +4,7 @@ BREW_BUNDLE_DUMP = brew bundle dump --no-lock --describe --force --file
 
 all: brewfile asdf pipx krew helm ollama
 
-brewfile: brewfile-formulae brewfile-casks brewfile-taps brewfile-mas brewfile-vscode
+brewfile: brewfile-formulae brewfile-casks brewfile-taps brewfile-mas brewfile-vscode brewfile-whalebrew
 
 brewfile-formulae:
 	$(BREW_BUNDLE_DUMP) ./formulae.Brewfile --brews
@@ -20,6 +20,9 @@ brewfile-mas:
 
 brewfile-vscode:
 	$(BREW_BUNDLE_DUMP) ./vscode.Brewfile --vscode
+
+brewfile-whalebrew:
+	$(BREW_BUNDLE_DUMP) ./whalebrew.Brewfile --whalebrew
 
 asdf:
 	asdf plugin list > ./asdf-plugins

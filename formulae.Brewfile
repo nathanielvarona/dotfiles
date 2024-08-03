@@ -122,6 +122,8 @@ brew "typescript"
 brew "watch"
 # Internet file retriever
 brew "wget"
+# Homebrew, but with Docker images
+brew "whalebrew"
 # Tools for the WireGuard secure network tunnel
 brew "wireguard-tools"
 # JavaScript package manager
