@@ -37,5 +37,4 @@ helm:
 	helm repo list > ./helm-repos
 
 ollama:
-	pgrep -x "ollama" > /dev/null && ollama list | awk 'NR > 1 { print $$1 }' > ./ollama-models
-
+	@pgrep -x "ollama" > /dev/null && ollama list | awk 'NR > 1 { print $$1 }' > ./ollama-models && echo "Ollama Model List Dumped" || echo "Ollama Service is Down!"
