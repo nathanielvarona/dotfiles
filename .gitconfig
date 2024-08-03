@@ -1,10 +1,15 @@
-[includeIf "gitdir:~/.dotfiles/"]
-	path = ~/.gitconfig-personal
+# For Personal Projects and/or Any OSS Related Contributions
+# Private/Public Personal
 [includeIf "gitdir:~/Projects/personal/"]
 	path = ~/.gitconfig-personal
+# OSS Toolings
 [includeIf "gitdir:~/Projects/contribute/"]
 	path = ~/.gitconfig-personal
+# Homebrew
+[includeIf "gitdir:/usr/local/Homebrew/Library/Taps/"]
+	path = ~/.gitconfig-personal
 
+# For Organization (Private) or Work Related Contributions
 [includeIf "gitdir:~/Projects/work/"]
 	path = ~/.gitconfig-work
 
