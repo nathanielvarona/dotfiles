@@ -1,4 +1,6 @@
 tap "amar1729/formulae"
 tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
 tap "homebrew/services"
 tap "localsend/localsend"

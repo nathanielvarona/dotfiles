@@ -38,6 +38,8 @@ brew "fnm"
 brew "fx"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
+brew "gh"
 # GIF image/animation creator/editor
 brew "gifsicle"
 # Syntax-highlighting pager for git and diff output
