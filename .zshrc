@@ -294,7 +294,7 @@ zinit snippet OMZ::plugins/pyenv
 zinit snippet OMZ::plugins/poetry
 
 # Perl Initialization
-# PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5" cpan local::lib
+[[ ! -d $HOME/.perl5 ]] && PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5" cpan local::lib
 eval "$(perl -I$HOME/.perl5/lib/perl5 -Mlocal::lib=$HOME/.perl5)"
 export PERL5LIB="/Library/Developer/CommandLineTools/usr/share/git-core/perl:$PERL5LIB"
 
