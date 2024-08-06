@@ -1,3 +1,5 @@
+# Static checker for GitHub Actions workflow files
+brew "actionlint"
 # Asciicast to GIF converter
 brew "agg"
 # Interpreted, interactive, object-oriented programming language
@@ -100,6 +102,8 @@ brew "rsync"
 brew "rust"
 # Generate passwords using SecurityFoundation framework
 brew "sf-pwgen"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
