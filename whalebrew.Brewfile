@@ -1,3 +1,3 @@
 whalebrew "whalebrew/figlet"
-whalebrew "whalebrew/octodns-compare"
+whalebrew "nathanielvarona/graph-easy"
 whalebrew "whalebrew/whalesay"
