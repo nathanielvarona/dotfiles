@@ -39,11 +39,6 @@ zinit light zsh-users/zsh-history-substring-search
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light Aloxaf/fzf-tab
-
-# A CLI interface to git that relies heavily on fzf
-zinit ice as"program" pick"bin/git-fuzzy"
-zinit light bigH/git-fuzzy
 
 # OMZ Plugins
 zinit snippet OMZ::plugins/git
@@ -51,17 +46,23 @@ zinit snippet OMZ::plugins/extract
 zinit snippet OMZ::plugins/gnu-utils
 zinit snippet OMZ::plugins/common-aliases
 
-# Source FZF Settings
+# fzf is a general-purpose command-line fuzzy finder.
+# https://github.com/junegunn/fzf
 [[ ! -f ~/.fzfrc ]] || source ~/.fzfrc
 
-# https://github.com/junegunn/fzf-git.sh
-source ~/Projects/contribute/fzf-git.sh/fzf-git.sh
+# Replace zsh's default completion selection menu with fzf!
+# https://github.com/Aloxaf/fzf-tab
+zinit light Aloxaf/fzf-tab
 
-# Source FZF Git Settings
-[[ ! -f ~/.fzfgit ]] || source ~/.fzfgit
+# A CLI interface to git that relies heavily on fzf
+# https://github.com/bigH/git-fuzzy
+# Usage: "[git-fuzzy | git fuzzy] <GIT_SUBCOMMAND>"
+zinit ice as"program" pick"bin/git-fuzzy"
+zinit light bigH/git-fuzzy
 
-# Utility tool for using git interactively. Powered by junegunn/fzf.
-# Use the `git forgit <GIT_SUBCOMMAND>` instead of using `git-forgit <GIT_SUBCOMMAND>`
+# Utility tool for using git interactively.
+# https://github.com/wfxr/forgit
+# Usage: "[git-forgit | git forgit] <GIT_SUBCOMMAND>"
 zinit ice as"program" pick"bin/git-forgit"
 zinit load wfxr/forgit
 
@@ -84,50 +85,6 @@ zinit load agkozak/zsh-z
 # bind to the up key, which depends on terminal mode
 # bindkey '^[[A' atuin-up-search
 # bindkey '^[OA' atuin-up-search
-
-# Combine Atuin to FZF
-# Use the `CTRL+Y` to access Atuin UI
-combine_fzf_atuin() {
-if ! which atuin &> /dev/null; then return 1; fi
-  bindkey '^Y' _atuin_search_widget
-
-  export ATUIN_NOBIND="true"
-  eval "$(atuin init zsh)"
-  fzf-atuin-history-widget() {
-    local selected num
-    setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
-
-    # local atuin_opts="--cmd-only --limit ${ATUIN_LIMIT:-5000}"
-    local atuin_opts="--cmd-only"
-    local fzf_opts=(
-      --height=${FZF_TMUX_HEIGHT:-100%}
-      --tac
-      "-n2..,.."
-      --tiebreak=index
-      "--query=${LBUFFER}"
-      "+m"
-      '--preview=echo {}'
-      "--preview-window=down:3:hidden:wrap"
-      "--bind=?:toggle-preview"
-      "--bind=ctrl-d:reload(atuin search $atuin_opts -c $PWD),ctrl-r:reload(atuin search $atuin_opts)"
-    )
-
-    selected=$(
-      eval "atuin search ${atuin_opts}" |
-        fzf "${fzf_opts[@]}"
-    )
-    local ret=$?
-    if [ -n "$selected" ]; then
-      # the += lets it insert at current pos instead of replacing
-      LBUFFER+="${selected}"
-    fi
-    zle reset-prompt
-    return $ret
-  }
-  zle -N fzf-atuin-history-widget
-  bindkey '^R' fzf-atuin-history-widget
-}
-combine_fzf_atuin
 
 eval $(thefuck --alias wtf)
 
@@ -167,7 +124,8 @@ export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
 ###
 # If other project sources require these libraries as dependencies for builds.
-###
+# ---------------------------------------------------------
+#
 
 # Object-file caching compiler wrapper
 export PATH="/usr/local/opt/ccache/libexec:$PATH"
@@ -225,11 +183,15 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include $CPPFLAGS"
 export CC="ccache clang"
 export CXX="ccache clang++"
 
+#
+# ---------------------------------------------------------
+###
+
 # ls colors
 # export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
 # export LS_COLORS=${LSCOLORS}
 # WARNING: Vivid is not working Properly on macOS Terminal
-# export LS_COLORS="$(vivid generate zenburn)"
+export LS_COLORS="$(vivid generate zenburn)"
 
 # Alias (`ls` with colors)
 # alias ls="ls --color"

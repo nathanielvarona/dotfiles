@@ -62,3 +62,87 @@ _fzf_comprun() {
   *) fzf --preview "$show_file_or_dir_preview" "$@" ;;
   esac
 }
+
+###
+# ---------------------------------------------------------
+# Redefine this function to change the options
+# https://github.com/junegunn/fzf-git.sh
+#
+# Keybinds:
+# "CTRL-G + CTRL-H" - for commit Hashes
+#
+
+source ~/Projects/contribute/fzf-git.sh/fzf-git.sh
+
+_fzf_git_fzf() {
+  fzf-tmux -p80%,60% -- \
+    --layout=reverse --multi --height=50% --min-height=20 --border \
+    --border-label-pos=2 \
+    --color='header:italic:underline,label:blue' \
+    --preview-window='right,50%,border-left' \
+    --bind='ctrl-/:change-preview-window(down,50%,border-top|hidden|)' "$@"
+}
+
+fgco() {
+  _fzf_git_each_ref --no-multi | xargs git checkout
+}
+
+fgswt() {
+  cd "$(_fzf_git_worktrees --no-multi)"
+}
+
+#
+# ---------------------------------------------------------
+###
+
+###
+# ---------------------------------------------------------
+# Combine Atuin to FZF
+# Use the `CTRL+Y` to access Atuin UI
+#
+
+combine_fzf_atuin() {
+if ! which atuin &> /dev/null; then return 1; fi
+  bindkey '^Y' _atuin_search_widget
+
+  export ATUIN_NOBIND="true"
+  eval "$(atuin init zsh)"
+  fzf-atuin-history-widget() {
+    local selected num
+    setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
+
+    # local atuin_opts="--cmd-only --limit ${ATUIN_LIMIT:-5000}"
+    local atuin_opts="--cmd-only"
+    local fzf_opts=(
+      --height=${FZF_TMUX_HEIGHT:-100%}
+      --tac
+      "-n2..,.."
+      --tiebreak=index
+      "--query=${LBUFFER}"
+      "+m"
+      '--preview=echo {}'
+      "--preview-window=down:3:hidden:wrap"
+      "--bind=?:toggle-preview"
+      "--bind=ctrl-d:reload(atuin search $atuin_opts -c $PWD),ctrl-r:reload(atuin search $atuin_opts)"
+    )
+
+    selected=$(
+      eval "atuin search ${atuin_opts}" |
+        fzf "${fzf_opts[@]}"
+    )
+    local ret=$?
+    if [ -n "$selected" ]; then
+      # the += lets it insert at current pos instead of replacing
+      LBUFFER+="${selected}"
+    fi
+    zle reset-prompt
+    return $ret
+  }
+  zle -N fzf-atuin-history-widget
+  bindkey '^R' fzf-atuin-history-widget
+}
+combine_fzf_atuin
+
+#
+# ---------------------------------------------------------
+###

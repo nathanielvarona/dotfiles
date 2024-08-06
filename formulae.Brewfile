@@ -118,6 +118,8 @@ brew "tmuxp"
 brew "trash"
 # Language for application scale JavaScript development
 brew "typescript"
+# Generator for LS_COLORS with support for multiple color themes
+brew "vivid"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
