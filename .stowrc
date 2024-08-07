@@ -1,6 +1,7 @@
 --target=~
 --ignore=README.*
 --ignore=doc
+--ignore=packages
 --ignore=\.git
 --ignore=\.gitignore
 --ignore=\.DS_Store
@@ -9,14 +10,5 @@
 --ignore=\.stowrc
 --ignore=\.editorconfig
 --ignore=\.secrets.dist
---ignore=\.Brewfile
 --ignore=\.tmuxp.yaml
---ignore=asdf-plugins
---ignore=cpanfile
---ignore=hugging-face-models
---ignore=ollama-models
---ignore=pipx-apps
---ignore=pyenv-versions
---ignore=krew-plugins
---ignore=helm-repos
 --ignore=Makefile

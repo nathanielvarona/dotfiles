@@ -1,3 +1,11 @@
+# GNU Pretty Good Privacy (PGP)
+
+The `pass` Password Manager and `pinentry` Passphrase Entry Dialog Utilizing the Assuan Protocol
+
+```bash
+defaults write org.gpgtools.common UseKeychain false
+```
+
 ## Troubleshooting
 
 1. Restart the GPG Agent for Any GPG related Configuration Changes
