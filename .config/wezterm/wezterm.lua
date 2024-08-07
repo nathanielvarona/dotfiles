@@ -17,7 +17,7 @@ config.initial_rows = 30
 -- config.initial_cols = 172
 -- config.initial_rows = 45
 
-config.default_cursor_style = "BlinkingBar"
+config.default_cursor_style = "SteadyBlock"
 
 config.font = wezterm.font_with_fallback({
   { family = "JetBrains Mono NL", scale = 1 },
