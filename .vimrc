@@ -22,6 +22,9 @@ set cursorline
 " Highlight cursor line underneath the cursor vertically.
 set cursorcolumn
 
+" enable true colors support
+set termguicolors
+
 " vim cursor escape codes for the terminal emulator
 "
 " Vim modes:
@@ -52,13 +55,21 @@ let &t_SI = "\<Esc>[6 q"
 "     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 call plug#begin()
-
 " Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 " Plug 'joshdick/onedark.vim'
-Plug 'nanotech/jellybeans.vim'
-
+" Plug 'nanotech/jellybeans.vim'
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
+
+" Plugin settings
+" ===============
 
 " colorscheme catppuccin_mocha
 " colorscheme onedark
-colorscheme jellybeans
+" colorscheme jellybeans
+
+" let ayucolor="light"  " for light version of theme
+" let ayucolor="mirage" " for mirage version of theme
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
+
