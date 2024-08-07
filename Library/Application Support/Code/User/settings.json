@@ -8,6 +8,10 @@
   "workbench.startupEditor": "readme",
   "workbench.iconTheme": "file-icons",
   "workbench.activityBar.location": "hidden",
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#c9d1d9",
+    "editorCursor.background": "#0d1117"
+  },
   "window.autoDetectColorScheme": true,
   "explorer.compactFolders": false,
   "git.autofetch": true,
