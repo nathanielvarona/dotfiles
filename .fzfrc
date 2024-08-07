@@ -19,9 +19,9 @@ _gen_fzf_github_dark_default_opts() {
   local color0F='#c9d1d9' # Not used, but can be for additional customization
 
   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS""\
- --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D""\
- --color=fg:$color05,header:$color0D,info:$color0A,pointer:$color0C""\
- --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
+    --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D""\
+    --color=fg:$color05,header:$color0D,info:$color0A,pointer:$color0C""\
+    --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
 }
 _gen_fzf_github_dark_default_opts
 
@@ -102,7 +102,7 @@ fgswt() {
 #
 
 combine_fzf_atuin() {
-if ! which atuin &> /dev/null; then return 1; fi
+  if ! which atuin &>/dev/null; then return 1; fi
   bindkey '^Y' _atuin_search_widget
 
   export ATUIN_NOBIND="true"
