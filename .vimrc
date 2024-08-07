@@ -1,3 +1,4 @@
+set background=dark
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
@@ -55,10 +56,11 @@ let &t_SI = "\<Esc>[6 q"
 "     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 call plug#begin()
-Plug 'wojciechkepka/vim-github-dark'
+Plug 'iibe/gruvbox-high-contrast'
 call plug#end()
 
 " Plugin settings
 " ===============
-colorscheme ghdark
-
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox-high-contrast
+set background=dark
