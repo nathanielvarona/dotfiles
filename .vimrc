@@ -30,8 +30,12 @@ set cursorcolumn
 call plug#begin()
 
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+" Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
 
 " Plugin `catppuccin/vim` settings
 colorscheme catppuccin_mocha
+" colorscheme catppuccin_mocha
+colorscheme onedark
