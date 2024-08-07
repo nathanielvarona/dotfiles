@@ -23,7 +23,7 @@ set cursorline
 set cursorcolumn
 
 " vim cursor escape codes for the terminal emulator
-
+"
 " Vim modes:
 "  (&t_EI) -> VISUAL
 "  (&t_SR) -> REPLACE
@@ -43,8 +43,8 @@ let &t_SI = "\<Esc>[6 q"
 
 " set cursor to vertical bar when entering cmd line and
 " revert cursor back to block when leaving cmd line
-autocmd CmdlineEnter * execute 'silent !echo -ne "' . &t_SI . '"'
-autocmd CmdlineLeave * execute 'silent !echo -ne "' . &t_EI . '"'
+" autocmd CmdlineEnter * execute 'silent !echo -ne "' . &t_SI . '"'
+" autocmd CmdlineLeave * execute 'silent !echo -ne "' . &t_EI . '"'
 
 " Make sure you have `vim-plug` installed
 " Installation:
@@ -54,9 +54,11 @@ autocmd CmdlineLeave * execute 'silent !echo -ne "' . &t_EI . '"'
 call plug#begin()
 
 " Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-Plug 'joshdick/onedark.vim'
+" Plug 'joshdick/onedark.vim'
+Plug 'nanotech/jellybeans.vim'
 
 call plug#end()
 
 " colorscheme catppuccin_mocha
-colorscheme onedark
+" colorscheme onedark
+colorscheme jellybeans
