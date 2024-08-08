@@ -1,66 +1,52 @@
+" Set background color to dark.
 set background=dark
-" Disable compatibility with vi which can cause unexpected issues.
+
+" Disable compatibility with vi to avoid unexpected issues.
 set nocompatible
 
-" Enable type file detection. Vim will be able to try to detect the type of file in use.
-filetype on
+" Enable file type detection, plugin loading, and indentation settings.
+filetype plugin indent on
 
-" Enable plugins and load plugin for the detected file type.
-filetype plugin on
-
-" Load an indent file for the detected file type.
-filetype indent on
-
-" Turn syntax highlighting on.
+" Turn on syntax highlighting.
 syntax on
 
-" Add numbers to each line on the left-hand side.
+" Display line numbers on the left side.
 set number
 
-" Highlight cursor line underneath the cursor horizontally.
+" Highlight the line and column under the cursor.
 set cursorline
-
-" Highlight cursor line underneath the cursor vertically.
 set cursorcolumn
 
-" enable true colors support
+" Enable true color support in the terminal.
 set termguicolors
 
-" vim cursor escape codes for the terminal emulator
-"
-" Vim modes:
-"  (&t_EI) -> VISUAL
-"  (&t_SR) -> REPLACE
-"  (&t_SI) -> INSERT
-"
-"Cursor settings:
-"  1 -> blinking block
-"  2 -> solid block
-"  3 -> blinking underscore
-"  4 -> solid underscore
-"  5 -> blinking vertical bar
-"  6 -> solid vertical bar
+" Configure cursor shapes for different modes:
+" 1 -> blinking block (normal mode)
+" 2 -> solid block (insert mode)
+" 3 -> blinking underscore (replace mode)
+" 4 -> solid underscore (visual mode)
+" 5 -> blinking vertical bar (cmdline mode)
+" 6 -> solid vertical bar (search mode)
+let &t_EI = "\<Esc>[2 q" " Cursor shape: solid block for INSERT mode
+let &t_SR = "\<Esc>[4 q" " Cursor shape: underscore for REPLACE mode
+let &t_SI = "\<Esc>[6 q" " Cursor shape: vertical bar for VISUAL mode
 
-let &t_EI = "\<Esc>[2 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_SI = "\<Esc>[6 q"
+" Configure cursor shape changes for command line mode:
+" Uncomment the following lines if you want to automatically change the cursor shape when entering and leaving command line mode.
+autocmd CmdlineEnter * execute 'silent !echo -ne "' . "\<Esc>[1 q" . '"'
+autocmd CmdlineLeave * execute 'silent !echo -ne "' . "\<Esc>[2 q" . '"'
 
-" set cursor to vertical bar when entering cmd line and
-" revert cursor back to block when leaving cmd line
-" autocmd CmdlineEnter * execute 'silent !echo -ne "' . &t_SI . '"'
-" autocmd CmdlineLeave * execute 'silent !echo -ne "' . &t_EI . '"'
-
-" Make sure you have `vim-plug` installed
+" Ensure you have `vim-plug` installed.
 " Installation:
-"   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 call plug#begin()
+" Add your plugins here.
 Plug 'iibe/gruvbox-high-contrast'
 call plug#end()
 
 " Plugin settings
 " ===============
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox-high-contrast
-set background=dark
+let g:gruvbox_contrast_dark = 'hard' " Use hard contrast for gruvbox
+colorscheme gruvbox-high-contrast " Set colorscheme to gruvbox-high-contrast
