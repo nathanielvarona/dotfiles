@@ -1,6 +1,62 @@
+# Vim swap files
+*.swp
+*.swo
+*.swn
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+
+# Session files
+Session.vim
+Sessionx.vim
+
+# Backup files
+*.bak
+*.tmp
+*.orig
+
+# Undo files
+*.undo
+[._]*.un~
+
+# Auto-generated tag files
+tags
+*.tags
+
+# NetRW history file
+.netrwhist
+
+# Viminfo file
+.viminfo
+
+# Plugin directories (for plugin managers)
+bundle/
+plugged/
+
+# Compiled files (if used)
+*.out
+*.pyc
+*.class
+
+# Global Vim configuration file
+.gvimrc
+
+# Miscellaneous
+*~
+
+# Development and configuration files
 .develop
 .vscode
 .secrets
 .gitconfig-personal
 .gitconfig-work
+
+# macOS Finder metadata
 .DS_Store
+
+# Neovim specific
+# Swap files created by Neovim
+*.nvim.sw[pon]
+# Backup files created by Neovim
+*.nvim.bak
