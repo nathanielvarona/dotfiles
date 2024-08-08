@@ -57,5 +57,17 @@
   {
     "command": "lazygit.openLazygit",
     "key": "ctrl+g ctrl+g"
+  },
+
+  // Settings Cycler
+  {
+    "key": "ctrl+l n",
+    "command": "settings.cycle.relativeLineNumbers",
+    "when": "editorFocus && neovim.mode == 'normal' || !editorFocus && !inputFocus && !terminalFocus && neovim.mode != 'insert'"
+  },
+  {
+    "key": "ctrl+l ctrl+n",
+    "command": "settings.cycle.relativeLineNumbers",
+    "when": "editorFocus && neovim.mode == 'normal' || !editorFocus && !inputFocus && !terminalFocus && neovim.mode != 'insert'"
   }
 ]

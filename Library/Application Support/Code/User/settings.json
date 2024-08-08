@@ -50,5 +50,20 @@
   "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
   "find-it-faster.general.useTerminalInEditor": true,
   "find-it-faster.general.killTerminalAfterUse": true,
-  "find-it-faster.general.batTheme": "GitHub"
+  "find-it-faster.general.batTheme": "GitHub",
+  "editor.lineNumbers": "relative",
+  "settings.cycle": [
+    {
+      "id": "relativeLineNumbers",
+      "overrideWorkspaceSettings": false,
+      "values": [
+        {
+          "editor.lineNumbers": "on"
+        },
+        {
+          "editor.lineNumbers": "relative"
+        }
+      ]
+    }
+  ]
 }
