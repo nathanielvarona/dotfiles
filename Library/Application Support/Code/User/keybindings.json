@@ -2,72 +2,86 @@
   // Open Projects
   {
     "key": "cmd+o",
-    "command": "projectManager.listGitProjects#sideBarGit"
+    "command": "projectManager.listGitProjects#sideBarGit",
+    "description": "Open the project manager sidebar to list Git projects"
   },
 
-  // Keybinding for <leader>e using vscode-neovim, ignoring if terminal is active or in file creation/renaming, and ignoring NeoVim mode if not in editor
+  // Keybinding for <leader>e using vscode-neovim
   {
     "key": "space e",
     "command": "vscode-neovim.send",
     "args": "<leader>e",
-    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus"
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
+    "description": "Trigger <leader>e command in NeoVim, ignoring if terminal is active or in file creation/renaming"
   },
   {
     "key": "space e",
     "command": "workbench.view.explorer",
-    "when": "!explorerViewletVisible && (editorFocus && neovim.mode == 'normal' || !editorFocus && !terminalFocus && !inputFocus)"
+    "when": "!explorerViewletVisible && (editorFocus && neovim.mode == 'normal' || !editorFocus && !terminalFocus && !inputFocus)",
+    "description": "Open the Explorer view when it is not visible and in NeoVim normal mode"
   },
   {
     "key": "space e",
     "command": "workbench.action.closeSidebar",
-    "when": "explorerViewletVisible && !editorFocus && !terminalFocus && !inputFocus"
+    "when": "explorerViewletVisible && !editorFocus && !terminalFocus && !inputFocus",
+    "description": "Close the sidebar when the Explorer view is visible and not in the editor focus"
   },
   {
     "key": "space e",
     "command": "workbench.files.action.focusFilesExplorer",
-    "when": "explorerViewletVisible && editorFocus && (neovim.mode == 'normal' || !editorFocus && !terminalFocus && !inputFocus)"
+    "when": "explorerViewletVisible && editorFocus && (neovim.mode == 'normal' || !editorFocus && !terminalFocus && !inputFocus)",
+    "description": "Focus on the Files Explorer when it is visible and in NeoVim normal mode"
   },
 
   // VSCode Terminal
   {
     "key": "ctrl+`",
+    "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active",
-    "command": "workbench.action.terminal.toggleTerminal"
+    "description": "Toggle the terminal when it is active"
   },
   {
     "key": "ctrl+\\",
+    "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active",
-    "command": "workbench.action.terminal.toggleTerminal"
+    "description": "Alternate keybinding to toggle the terminal when it is active"
   },
   {
     "key": "ctrl+alt+m",
-    "command": "workbench.action.toggleMaximizedPanel"
+    "command": "workbench.action.toggleMaximizedPanel",
+    "description": "Toggle the maximized state of the panel"
   },
 
   // LazyGit
   {
     "key": "space g g",
     "command": "lazygit.openLazygit",
-    "when": "(editorFocus && neovim.mode == 'normal') || (!editorFocus && !terminalFocus && !inputFocus && neovim.mode != 'insert')"
+    "when": "(editorFocus && neovim.mode == 'normal') || (!editorFocus && !terminalFocus && !inputFocus && neovim.mode != 'insert')",
+    "description": "Open LazyGit when in NeoVim normal mode or when not in editor focus and other conditions"
   },
   {
+    "key": "ctrl+g g",
     "command": "lazygit.openLazygit",
-    "key": "ctrl+g g"
+    "description": "Open LazyGit with alternative keybinding"
   },
   {
+    "key": "ctrl+g ctrl+g",
     "command": "lazygit.openLazygit",
-    "key": "ctrl+g ctrl+g"
+    "description": "Alternate keybinding to open LazyGit"
   },
 
   // Settings Cycler
+  // Toggle Editor Line Numbers
   {
     "key": "ctrl+l n",
     "command": "settings.cycle.relativeLineNumbers",
-    "when": "editorFocus && neovim.mode == 'normal' || !editorFocus && !inputFocus && !terminalFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode == 'normal' || !editorFocus && !inputFocus && !terminalFocus && neovim.mode != 'insert'",
+    "description": "Cycle through relative line numbers in the editor or when not in focus"
   },
   {
     "key": "ctrl+l ctrl+n",
     "command": "settings.cycle.relativeLineNumbers",
-    "when": "editorFocus && neovim.mode == 'normal' || !editorFocus && !inputFocus && !terminalFocus && neovim.mode != 'insert'"
+    "when": "editorFocus && neovim.mode == 'normal' || !editorFocus && !inputFocus && !terminalFocus && neovim.mode != 'insert'",
+    "description": "Alternate keybinding to cycle through relative line numbers"
   }
 ]
