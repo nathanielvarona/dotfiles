@@ -15,8 +15,7 @@ if vim.g.vscode then
   -- Load the vscode API for easier integration with VSCode commands
   local vscode = require("vscode")
 
-  -- Define custom mappings that will emulate the behavior of NeoVim
-  -- but use VSCode's cursor movement commands to handle wrapped lines.
+  -- Define custom mappings to handle cursor movements with wrapped lines
   local mappings = {
     up = "k", -- Move up
     down = "j", -- Move down
@@ -26,11 +25,11 @@ if vim.g.vscode then
   }
 
   -- Function to move the cursor using VSCode's cursorMove command
-  -- This allows the cursor to behave like in NeoVim, but with special handling for wrapped lines
+  -- This function customizes cursor behavior for wrapped lines
   local function moveCursor(to, select)
     return function()
       local mode = vim.api.nvim_get_mode().mode
-      -- If in visual mode, return normal NeoVim mapping (for consistent behavior)
+      -- If in visual mode, use normal NeoVim mappings
       if mode == "V" or mode == "" then
         return mappings[to]
       end
@@ -40,9 +39,9 @@ if vim.g.vscode then
         args = {
           {
             to = to,
-            by = "wrappedLine", -- Move by wrapped line instead of actual line
-            value = vim.v.count1, -- Repeat based on the count prefix
-            select = select, -- Whether or not the selection is active (visual mode)
+            by = "wrappedLine", -- Move by wrapped line
+            value = vim.v.count1, -- Repeat based on count prefix
+            select = select, -- Handle selection in visual mode
           },
         },
       })
@@ -64,16 +63,15 @@ if vim.g.vscode then
   vim.keymap.set("v", "^", moveCursor("wrappedLineFirstNonWhitespaceCharacter", true), { expr = true })
   vim.keymap.set("v", "$", moveCursor("wrappedLineEnd", true), { expr = true })
 
-  -- Set up key mappings for more advanced Vim motions
+  -- Additional Vim motions and commands:
+  -- Advanced Vim motions with descriptions
   vim.keymap.set("n", "W", "w", { desc = "Move forward to the start of the next word" })
   vim.keymap.set("n", "B", "b", { desc = "Move backward to the start of the previous word" })
   vim.keymap.set("n", "gg", "gg", { desc = "Move to the beginning of the file" })
   vim.keymap.set("n", "G", "G", { desc = "Move to the end of the file" })
 
-  -- Define a command to quickly move to the start of the next paragraph
+  -- Define commands for navigating paragraphs
   vim.api.nvim_create_user_command("NextParagraph", "normal! }", { desc = "Move to the start of the next paragraph" })
-
-  -- Define a command to quickly move to the start of the previous paragraph
   vim.api.nvim_create_user_command(
     "PrevParagraph",
     "normal! {",
