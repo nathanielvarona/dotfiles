@@ -12,29 +12,37 @@
 ]]
 
 if vim.g.vscode then
+  -- Load the vscode API for easier integration with VSCode commands
   local vscode = require("vscode")
+
+  -- Define custom mappings that will emulate the behavior of NeoVim
+  -- but use VSCode's cursor movement commands to handle wrapped lines.
   local mappings = {
-    up = "k",
-    down = "j",
-    wrappedLineStart = "0",
-    wrappedLineFirstNonWhitespaceCharacter = "^",
-    wrappedLineEnd = "$",
+    up = "k", -- Move up
+    down = "j", -- Move down
+    wrappedLineStart = "0", -- Move to the start of the wrapped line
+    wrappedLineFirstNonWhitespaceCharacter = "^", -- Move to the first non-whitespace character on the wrapped line
+    wrappedLineEnd = "$", -- Move to the end of the wrapped line
   }
 
+  -- Function to move the cursor using VSCode's cursorMove command
+  -- This allows the cursor to behave like in NeoVim, but with special handling for wrapped lines
   local function moveCursor(to, select)
     return function()
-      local mode = vim.api.nvim_get_mode()
-      if mode.mode == "V" or mode.mode == "" then
+      local mode = vim.api.nvim_get_mode().mode
+      -- If in visual mode, return normal NeoVim mapping (for consistent behavior)
+      if mode == "V" or mode == "" then
         return mappings[to]
       end
 
+      -- Use VSCode's cursorMove command for normal mode
       vscode.action("cursorMove", {
         args = {
           {
             to = to,
-            by = "wrappedLine",
-            value = vim.v.count1,
-            select = select,
+            by = "wrappedLine", -- Move by wrapped line instead of actual line
+            value = vim.v.count1, -- Repeat based on the count prefix
+            select = select, -- Whether or not the selection is active (visual mode)
           },
         },
       })
@@ -42,17 +50,41 @@ if vim.g.vscode then
     end
   end
 
+  -- Set up key mappings for normal mode
   vim.keymap.set("n", "k", moveCursor("up"), { expr = true })
   vim.keymap.set("n", "j", moveCursor("down"), { expr = true })
   vim.keymap.set("n", "0", moveCursor("wrappedLineStart"), { expr = true })
   vim.keymap.set("n", "^", moveCursor("wrappedLineFirstNonWhitespaceCharacter"), { expr = true })
   vim.keymap.set("n", "$", moveCursor("wrappedLineEnd"), { expr = true })
 
+  -- Set up key mappings for visual mode (selecting text)
   vim.keymap.set("v", "k", moveCursor("up", true), { expr = true })
   vim.keymap.set("v", "j", moveCursor("down", true), { expr = true })
   vim.keymap.set("v", "0", moveCursor("wrappedLineStart", true), { expr = true })
   vim.keymap.set("v", "^", moveCursor("wrappedLineFirstNonWhitespaceCharacter", true), { expr = true })
   vim.keymap.set("v", "$", moveCursor("wrappedLineEnd", true), { expr = true })
 
-  vim.notify("vscode-specific configuration loaded...")
+  -- Set up key mappings for more advanced Vim motions
+  vim.keymap.set("n", "W", "w", { desc = "Move forward to the start of the next word" })
+  vim.keymap.set("n", "B", "b", { desc = "Move backward to the start of the previous word" })
+  vim.keymap.set("n", "gg", "gg", { desc = "Move to the beginning of the file" })
+  vim.keymap.set("n", "G", "G", { desc = "Move to the end of the file" })
+
+  -- Define a command to quickly move to the start of the next paragraph
+  vim.api.nvim_create_user_command("NextParagraph", "normal! }", { desc = "Move to the start of the next paragraph" })
+
+  -- Define a command to quickly move to the start of the previous paragraph
+  vim.api.nvim_create_user_command(
+    "PrevParagraph",
+    "normal! {",
+    { desc = "Move to the start of the previous paragraph" }
+  )
+
+  -- Visual mode mappings for quick selections
+  vim.keymap.set("v", "p", '"_dP', { desc = "Paste over selection without affecting register" })
+  vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+  vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+  -- Notify the user that VSCode-specific configuration has been loaded
+  vim.notify("VSCode-specific configuration loaded...", vim.log.levels.INFO)
 end
