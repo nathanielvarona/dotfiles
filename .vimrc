@@ -17,6 +17,11 @@ set number
 set cursorline
 set cursorcolumn
 
+" Disable error bells, visual bells, and sounds.
+set noerrorbells
+set novisualbell
+set t_vb=
+
 " Enable true color support in the terminal.
 set termguicolors
 
