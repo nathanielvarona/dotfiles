@@ -2,6 +2,8 @@
 cask "anaconda"
 # Allows connection to a computer remotely
 cask "anydesk"
+# Opensource IDE for exploring and testing api's
+cask "bruno"
 # API documentation browser and code snippet manager
 cask "dash@6"
 # Voice and text chat software
