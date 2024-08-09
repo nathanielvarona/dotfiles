@@ -8,6 +8,9 @@ if [[ -e ~/.secrets ]]; then
   source ~/.secrets
 fi
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export VSCODE_APPDATA="${XDG_CONFIG_HOME}"
+
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
