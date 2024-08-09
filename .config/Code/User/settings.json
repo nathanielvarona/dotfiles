@@ -65,5 +65,67 @@
         }
       ]
     }
+  ],
+  "todohighlight.keywords": [
+    {
+      "text": "DEBUG:",
+      "color": "#F28FAD",
+      "backgroundColor": "rgba(242,143,173,0.2)",
+      "border": "1px solid #F28FAD"
+    },
+    {
+      "text": "REVIEW:",
+      "color": "#F8BD96",
+      "backgroundColor": "rgba(248,189,150,0.2)",
+      "border": "1px solid #F8BD96"
+    },
+    {
+      "text": "NOTE:",
+      "color": "#FAE3B0",
+      "backgroundColor": "rgba(250,227,176,0.2)",
+      "overviewRulerColor": "grey"
+    },
+    {
+      "text": "HACK:",
+      "color": "#96CDFB",
+      "backgroundColor": "rgba(150,205,251,0.2)",
+      "isWholeLine": false
+    },
+    {
+      "text": "TODO:",
+      "color": "#B5E8E0",
+      "backgroundColor": "rgba(181,232,224,0.2)",
+      "border": "1px solid #B5E8E0",
+      "borderRadius": "2px"
+    },
+    {
+      "text": "FIXME:",
+      "color": "#DDB6F2",
+      "backgroundColor": "rgba(221,182,242,0.2)",
+      "border": "1px dashed #DDB6F2"
+    },
+    {
+      "text": "BUG:",
+      "color": "#F28FAD",
+      "backgroundColor": "rgba(242,143,173,0.2)",
+      "isWholeLine": true
+    },
+    {
+      "text": "OPTIMIZE:",
+      "color": "#ABE9B3",
+      "backgroundColor": "rgba(171,233,179,0.2)",
+      "overviewRulerColor": "green"
+    },
+    {
+      "text": "CHANGED:",
+      "color": "#8AADF4",
+      "backgroundColor": "rgba(138,173,244,0.2)",
+      "border": "1px solid #8AADF4"
+    },
+    {
+      "text": "QUESTION:",
+      "color": "#C6AAE8",
+      "backgroundColor": "rgba(198,170,232,0.2)"
+    }
   ]
 }
