@@ -2,14 +2,14 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# Implement XDG Spec
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # Personal Environment Variables
 # Such as Vendor Keys/Credentials and/or API Secrets/Tokens
 if [[ -e ~/.secrets ]]; then
   source ~/.secrets
 fi
-
-export XDG_CONFIG_HOME="$HOME/.config"
-export VSCODE_APPDATA="${XDG_CONFIG_HOME}"
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -18,6 +18,10 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# Forcing Apps to use XDG Spec
+export VSCODE_APPDATA="${XDG_CONFIG_HOME}" # NOTE: Also available in `EnvPane`
+# export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg" # TODO: Evaluate first the Apps I commonly use the requires GnuPG
 
 # Homebrew Initialization
 eval "$(/usr/local/bin/brew shellenv)"
