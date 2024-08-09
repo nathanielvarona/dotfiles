@@ -69,63 +69,53 @@
   "todohighlight.keywords": [
     {
       "text": "DEBUG:",
-      "color": "#F28FAD",
-      "backgroundColor": "rgba(242,143,173,0.2)",
-      "border": "1px solid #F28FAD"
+      "color": "#f5c2e7", // Pink
+      "backgroundColor": "#1e1e2e" // Base
     },
     {
       "text": "REVIEW:",
-      "color": "#F8BD96",
-      "backgroundColor": "rgba(248,189,150,0.2)",
-      "border": "1px solid #F8BD96"
+      "color": "#f38ba8", // Red
+      "backgroundColor": "#1e1e2e" // Base
     },
     {
       "text": "NOTE:",
-      "color": "#FAE3B0",
-      "backgroundColor": "rgba(250,227,176,0.2)",
-      "overviewRulerColor": "grey"
+      "color": "#fab387", // Peach
+      "backgroundColor": "#1e1e2e" // Base
     },
     {
       "text": "HACK:",
-      "color": "#96CDFB",
-      "backgroundColor": "rgba(150,205,251,0.2)",
-      "isWholeLine": false
+      "color": "#cba6f7", // Mauve
+      "backgroundColor": "#1e1e2e" // Base
     },
     {
       "text": "TODO:",
-      "color": "#B5E8E0",
-      "backgroundColor": "rgba(181,232,224,0.2)",
-      "border": "1px solid #B5E8E0",
-      "borderRadius": "2px"
+      "color": "#89b4fa", // Blue
+      "backgroundColor": "#1e1e2e" // Base
     },
     {
       "text": "FIXME:",
-      "color": "#DDB6F2",
-      "backgroundColor": "rgba(221,182,242,0.2)",
-      "border": "1px dashed #DDB6F2"
+      "color": "#eba0ac", // Maroon
+      "backgroundColor": "#1e1e2e" // Base
     },
     {
       "text": "BUG:",
-      "color": "#F28FAD",
-      "backgroundColor": "rgba(242,143,173,0.2)",
-      "isWholeLine": true
+      "color": "#f9e2af", // Yellow
+      "backgroundColor": "#1e1e2e" // Base
     },
     {
       "text": "OPTIMIZE:",
-      "color": "#ABE9B3",
-      "backgroundColor": "rgba(171,233,179,0.2)",
-      "overviewRulerColor": "green"
+      "color": "#a6e3a1", // Green
+      "backgroundColor": "#1e1e2e" // Base
     },
     {
       "text": "CHANGED:",
-      "color": "#8AADF4",
-      "backgroundColor": "rgba(138,173,244,0.2)",
-      "border": "1px solid #8AADF4"
+      "color": "#74c7ec", // Sapphire
+      "backgroundColor": "#1e1e2e" // Base
     },
     {
       "text": "QUESTION:",
-      "color": "#C6AAE8",
-      "backgroundColor": "rgba(198,170,232,0.2)"
+      "color": "#94e2d5", // Teal
+      "backgroundColor": "#1e1e2e" // Base
     }
   ]
 }
