@@ -3,7 +3,7 @@
 PACKAGES = ./packages
 BREW_BUNDLE_DUMP = brew bundle dump --no-lock --describe --force --file
 
-all: brewfile asdf pipx krew helm ollama
+all: brewfile asdf pyenv pipx krew helm ollama
 
 brewfile: brewfile-formulae brewfile-casks brewfile-taps brewfile-mas brewfile-vscode brewfile-whalebrew
 
