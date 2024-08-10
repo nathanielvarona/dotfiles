@@ -68,52 +68,52 @@
   ],
   "todohighlight.keywords": [
     {
-      "text": "NOTE:",
+      "text": " NOTE:",
       "color": "#181825", // Mantle
       "backgroundColor": "#fab387" // Peach (informative, low severity)
     },
     {
-      "text": "DEBUG:",
+      "text": " DEBUG:",
       "color": "#181825", // Mantle
       "backgroundColor": "#f5c2e7" // Pink (debugging, low-medium severity)
     },
     {
-      "text": "REVIEW:",
+      "text": " REVIEW:",
       "color": "#181825", // Mantle
       "backgroundColor": "#f38ba8" // Red (needs review, medium severity)
     },
     {
-      "text": "HACK:",
+      "text": " HACK:",
       "color": "#181825", // Mantle
       "backgroundColor": "#cba6f7" // Mauve (temporary workaround, medium severity)
     },
     {
-      "text": "QUESTION:",
+      "text": " QUESTION:",
       "color": "#181825", // Mantle
       "backgroundColor": "#94e2d5" // Teal (needs clarification, medium severity)
     },
     {
-      "text": "TODO:",
+      "text": " TODO:",
       "color": "#181825", // Mantle
       "backgroundColor": "#89b4fa" // Blue (to be done, medium-high severity)
     },
     {
-      "text": "CHANGED:",
+      "text": " CHANGED:",
       "color": "#181825", // Mantle
       "backgroundColor": "#74c7ec" // Sapphire (recent changes, medium-high severity)
     },
     {
-      "text": "OPTIMIZE:",
+      "text": " OPTIMIZE:",
       "color": "#181825", // Mantle
       "backgroundColor": "#a6e3a1" // Green (optimization needed, high severity)
     },
     {
-      "text": "FIXME:",
+      "text": " FIXME:",
       "color": "#181825", // Mantle
-      "backgroundColor": "#eba0ac" // Maroon (needs fixing, high severity)
+      "backgroundColor": " #eba0ac" // Maroon (needs fixing, high severity)
     },
     {
-      "text": "BUG:",
+      "text": " BUG:",
       "color": "#181825", // Mantle
       "backgroundColor": "#f9e2af" // Yellow (critical, highest severity)
     }
