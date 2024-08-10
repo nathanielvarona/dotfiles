@@ -34,7 +34,7 @@ PREFIX='/usr/local/opt/browserpass' make hosts-chrome-user -f '/usr/local/opt/br
 
 ## Working with Keys
 
-### Public Keys
+### Public Key
 
 #### Importing Public Key
 
@@ -42,7 +42,7 @@ PREFIX='/usr/local/opt/browserpass' make hosts-chrome-user -f '/usr/local/opt/br
 gpg --import ./publickey.asc
 ```
 
-### Private Keys
+### Private Key
 
 #### Obtain the **Encrypted Private Key** from a secured storage and **Decrypt** it with **PassPhrase**
 

@@ -55,7 +55,7 @@ zinit snippet OMZ::plugins/common-aliases
 
 # fzf is a general-purpose command-line fuzzy finder.
 # https://github.com/junegunn/fzf
-[[ ! -f ~/.fzfrc ]] || source ~/.fzfrc
+[[ ! -f ~/.fzfrc.zsh ]] || source ~/.fzfrc.zsh
 
 # Replace zsh's default completion selection menu with fzf!
 # https://github.com/Aloxaf/fzf-tab
