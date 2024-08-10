@@ -4,15 +4,15 @@ return {
   config = function()
     require("todo-comments").setup({
       keywords = {
-        NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-        DEBUG = { icon = " ", color = "debug" },
+        NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+        DEBUG = { icon = " ", color = "debug" },
         REVIEW = { icon = " ", color = "warning" },
-        HACK = { icon = " ", color = "hack" },
-        QUESTION = { icon = " ", color = "question" },
-        TODO = { icon = " ", color = "todo" },
-        CHANGED = { icon = " ", color = "changed" },
-        OPTIMIZE = { icon = "﯑ ", color = "optimize" },
-        FIXME = { icon = " ", color = "fix" },
+        HACK = { icon = " ", color = "hack" },
+        QUESTION = { icon = " ", color = "question" },
+        TODO = { icon = " ", color = "todo" },
+        CHANGED = { icon = "󱖊 ", color = "changed" },
+        OPTIMIZE = { icon = "󰅒 ", color = "optimize" },
+        FIXME = { icon = " ", color = "fix" },
         BUG = { icon = " ", color = "bug" },
       },
       colors = {
@@ -39,3 +39,17 @@ return {
     })
   end,
 }
+
+--  # Test Todo Highlight
+--[[
+    # NOTE: text details
+    # DEBUG: text details
+    # REVIEW: text details
+    # HACK: text details
+    # QUESTION: text details
+    # TODO: text details
+    # CHANGED: text details
+    # OPTIMIZE: text details
+    # FIXME: text details
+    # BUG: text details
+--]]

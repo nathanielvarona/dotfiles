@@ -66,6 +66,20 @@
       ]
     }
   ],
+  "todo-tree.highlights.enabled": false,
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "todo-tree.general.tags": [
+    "NOTE: ",
+    "DEBUG: ",
+    "REVIEW: ",
+    "HACK: ",
+    "QUESTION: ",
+    "TODO: ",
+    "CHANGED: ",
+    "OPTIMIZE: ",
+    "FIXME: ",
+    "BUG: "
+  ],
   "todohighlight.keywords": [
     {
       "text": " NOTE:",
@@ -118,4 +132,17 @@
       "backgroundColor": "#f9e2af" // Yellow (critical, highest severity)
     }
   ]
+  //  Test Todo Highlight
+  /*
+    # NOTE: text details
+    # DEBUG: text details
+    # REVIEW: text details
+    # HACK: text details
+    # QUESTION: text details
+    # TODO: text details
+    # CHANGED: text details
+    # OPTIMIZE: text details
+    # FIXME: text details
+    # BUG: text details
+  */
 }
