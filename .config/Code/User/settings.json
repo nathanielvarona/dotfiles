@@ -7,7 +7,6 @@
   "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
   "workbench.startupEditor": "readme",
   "workbench.iconTheme": "file-icons",
-  "workbench.activityBar.location": "hidden",
   "workbench.colorCustomizations": {
     "editorCursor.foreground": "#c9d1d9",
     "editorCursor.background": "#0d1117"
@@ -67,82 +66,159 @@
     }
   ],
   "todo-tree.highlights.enabled": false,
-  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
   "todo-tree.general.tags": [
-    "NOTE: ",
-    "DEBUG: ",
-    "REVIEW: ",
-    "HACK: ",
-    "QUESTION: ",
-    "TODO: ",
-    "CHANGED: ",
-    "OPTIMIZE: ",
-    "FIXME: ",
-    "BUG: "
+    "BUG",
+    "FIXME",
+    "WARNING",
+    "NOTE",
+    "OPTIMIZE",
+    "HINT",
+    "CHANGED",
+    "TODO",
+    "REVIEW",
+    "QUESTION",
+    "HACK",
+    "DEBUG"
   ],
+  "todo-tree.highlights.customHighlight": {
+    "BUG": {
+      "icon": "bug",
+      "iconColour": "rgb(243, 139, 168)", // Red
+      "type": "line"
+    },
+    "FIXME": {
+      "icon": "flame",
+      "iconColour": "rgb(250, 179, 135)", // Orange
+      "type": "line"
+    },
+    "WARNING": {
+      "icon": "alert",
+      "iconColour": "rgb(249, 226, 175)", // Yellow
+      "type": "line"
+    },
+    "NOTE": {
+      "icon": "info",
+      "iconColour": "rgb(166, 227, 161)", // Green
+      "type": "line"
+    },
+    "OPTIMIZE": {
+      "icon": "zap",
+      "iconColour": "rgb(137, 180, 250)", // Blue
+      "type": "line"
+    },
+    "HINT": {
+      "icon": "light-bulb",
+      "iconColour": "rgb(148, 226, 213)", // Teal
+      "type": "line"
+    },
+    "CHANGED": {
+      "icon": "diff-modified",
+      "iconColour": "rgb(116, 199, 236)", // Sapphire
+      "type": "line"
+    },
+    "TODO": {
+      "icon": "check-circle",
+      "iconColour": "rgb(180, 190, 254)", // Blue
+      "type": "line"
+    },
+    "REVIEW": {
+      "icon": "code-review",
+      "iconColour": "rgb(137, 220, 235)", // Sky
+      "type": "line"
+    },
+    "QUESTION": {
+      "icon": "question",
+      "iconColour": "rgb(203, 166, 247)", // Mauve
+      "type": "line"
+    },
+    "HACK": {
+      "icon": "tools",
+      "iconColour": "rgb(245, 194, 231)", // Pink
+      "type": "line"
+    },
+    "DEBUG": {
+      "icon": "play",
+      "iconColour": "rgb(243, 139, 168)", // Red
+      "type": "line"
+    }
+  },
   "todohighlight.keywords": [
     {
-      "text": " NOTE:",
+      "text": "BUG",
       "color": "#181825", // Mantle
-      "backgroundColor": "#fab387" // Peach (informative, low severity)
+      "backgroundColor": "#f38ba8" // Red (Critical, highest severity)
     },
     {
-      "text": " DEBUG:",
+      "text": "FIXME",
       "color": "#181825", // Mantle
-      "backgroundColor": "#f5c2e7" // Pink (debugging, low-medium severity)
+      "backgroundColor": "#fab387" // Orange (Needs fixing, high severity)
     },
     {
-      "text": " REVIEW:",
+      "text": "WARNING",
       "color": "#181825", // Mantle
-      "backgroundColor": "#f38ba8" // Red (needs review, medium severity)
+      "backgroundColor": "#f9e2af" // Yellow (Needs attention, medium severity)
     },
     {
-      "text": " HACK:",
+      "text": "NOTE",
       "color": "#181825", // Mantle
-      "backgroundColor": "#cba6f7" // Mauve (temporary workaround, medium severity)
+      "backgroundColor": "#a6e3a1" // Green (Informative, low severity)
     },
     {
-      "text": " QUESTION:",
+      "text": "OPTIMIZE",
       "color": "#181825", // Mantle
-      "backgroundColor": "#94e2d5" // Teal (needs clarification, medium severity)
+      "backgroundColor": "#89b4fa" // Blue (Optimization needed, high severity)
     },
     {
-      "text": " TODO:",
+      "text": "HINT",
       "color": "#181825", // Mantle
-      "backgroundColor": "#89b4fa" // Blue (to be done, medium-high severity)
+      "backgroundColor": "#94e2d5" // Teal (Informative, low severity)
     },
     {
-      "text": " CHANGED:",
+      "text": "CHANGED",
       "color": "#181825", // Mantle
-      "backgroundColor": "#74c7ec" // Sapphire (recent changes, medium-high severity)
+      "backgroundColor": "#74c7ec" // Sapphire (Recent changes, medium-high severity)
     },
     {
-      "text": " OPTIMIZE:",
+      "text": "TODO",
       "color": "#181825", // Mantle
-      "backgroundColor": "#a6e3a1" // Green (optimization needed, high severity)
+      "backgroundColor": "#b4befe" // Blue (To be done, medium-high severity)
     },
     {
-      "text": " FIXME:",
+      "text": "REVIEW",
       "color": "#181825", // Mantle
-      "backgroundColor": " #eba0ac" // Maroon (needs fixing, high severity)
+      "backgroundColor": "#89dceb" // Sky (Needs review, medium severity)
     },
     {
-      "text": " BUG:",
+      "text": "QUESTION",
       "color": "#181825", // Mantle
-      "backgroundColor": "#f9e2af" // Yellow (critical, highest severity)
+      "backgroundColor": "#cba6f7" // Mauve (Needs clarification, medium severity)
+    },
+    {
+      "text": "HACK",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#f5c2e7" // Pink (Temporary workaround, medium severity)
+    },
+    {
+      "text": "DEBUG",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#f38ba8" // Red (Debugging, low-medium severity)
     }
-  ]
-  //  Test Todo Highlight
+  ],
+  "workbench.activityBar.location": "hidden"
+
+  // Test Todo Highlight
   /*
-    # NOTE: text details
-    # DEBUG: text details
-    # REVIEW: text details
-    # HACK: text details
-    # QUESTION: text details
-    # TODO: text details
-    # CHANGED: text details
-    # OPTIMIZE: text details
-    # FIXME: text details
     # BUG: text details
+    # FIXME: text details
+    # WARNING: text details
+    # NOTE: text details
+    # OPTIMIZE: text details
+    # HINT: text details
+    # CHANGED: text details
+    # TODO: text details
+    # REVIEW: text details
+    # QUESTION: text details
+    # HACK: text details
+    # DEBUG: text details
   */
 }
