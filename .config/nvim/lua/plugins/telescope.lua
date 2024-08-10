@@ -10,7 +10,7 @@ return {
     vim.api.nvim_set_keymap(
       "n",
       "<leader>fh",
-      '<cmd>lua require("telescope.builtin").find_files({ hidden = true })<CR>',
+      '<cmd>lua require("telescope.builtin").find_files({ hidden = true, no_ignore = true })<CR>',
       { noremap = true, silent = true }
     )
   end,

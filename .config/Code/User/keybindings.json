@@ -6,14 +6,30 @@
     "description": "Open the project manager sidebar to list Git projects"
   },
 
-  // Keybinding for <leader>e using vscode-neovim
+  // VSCode Terminal
   {
-    "key": "space e",
-    "command": "vscode-neovim.send",
-    "args": "<leader>e",
-    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
-    "description": "Trigger <leader>e command in NeoVim, ignoring if terminal is active or in file creation/renaming"
+    "key": "ctrl+\\",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active",
+    "description": "Alternate keybinding to toggle the terminal when it is active"
   },
+  {
+    "key": "ctrl+alt+m",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "description": "Toggle the maximized state of the panel"
+  },
+
+  // Settings Cycler
+  // Toggle Editor Line Numbers
+  {
+    "key": "ctrl+l n",
+    "command": "settings.cycle.relativeLineNumbers",
+    "when": "editorFocus && neovim.mode == 'normal' || !editorFocus && !inputFocus && !terminalFocus && neovim.mode != 'insert'",
+    "description": "Cycle through relative line numbers in the editor or when not in focus"
+  },
+
+  // File Explorer
+  // Neo-tree-like remaps
   {
     "key": "space e",
     "command": "workbench.view.explorer",
@@ -33,55 +49,27 @@
     "description": "Focus on the Files Explorer when it is visible and in NeoVim normal mode"
   },
 
-  // VSCode Terminal
+  // FindItFaster
+  // Telescope-like keybinding
   {
-    "key": "ctrl+`",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active",
-    "description": "Toggle the terminal when it is active"
+    "key": "space f g",
+    "command": "find-it-faster.findFiles",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
+    "description": "Find It Faster: search file"
   },
   {
-    "key": "ctrl+\\",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active",
-    "description": "Alternate keybinding to toggle the terminal when it is active"
-  },
-  {
-    "key": "ctrl+alt+m",
-    "command": "workbench.action.toggleMaximizedPanel",
-    "description": "Toggle the maximized state of the panel"
+    "key": "space s g",
+    "command": "find-it-faster.findWithinFiles",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
+    "description": "Find It Faster: search within files"
   },
 
   // LazyGit
+  // Neovim-like plugin keybinding for LazyGit
   {
     "key": "space g g",
     "command": "lazygit.openLazygit",
-    "when": "(editorFocus && neovim.mode == 'normal') || (!editorFocus && !terminalFocus && !inputFocus && neovim.mode != 'insert')",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
     "description": "Open LazyGit when in NeoVim normal mode or when not in editor focus and other conditions"
-  },
-  {
-    "key": "ctrl+g g",
-    "command": "lazygit.openLazygit",
-    "description": "Open LazyGit with alternative keybinding"
-  },
-  {
-    "key": "ctrl+g ctrl+g",
-    "command": "lazygit.openLazygit",
-    "description": "Alternate keybinding to open LazyGit"
-  },
-
-  // Settings Cycler
-  // Toggle Editor Line Numbers
-  {
-    "key": "ctrl+l n",
-    "command": "settings.cycle.relativeLineNumbers",
-    "when": "editorFocus && neovim.mode == 'normal' || !editorFocus && !inputFocus && !terminalFocus && neovim.mode != 'insert'",
-    "description": "Cycle through relative line numbers in the editor or when not in focus"
-  },
-  {
-    "key": "ctrl+l ctrl+n",
-    "command": "settings.cycle.relativeLineNumbers",
-    "when": "editorFocus && neovim.mode == 'normal' || !editorFocus && !inputFocus && !terminalFocus && neovim.mode != 'insert'",
-    "description": "Alternate keybinding to cycle through relative line numbers"
   }
 ]
