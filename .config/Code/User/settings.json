@@ -68,54 +68,54 @@
   ],
   "todohighlight.keywords": [
     {
+      "text": "NOTE:",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#fab387" // Peach (informative, low severity)
+    },
+    {
       "text": "DEBUG:",
-      "color": "#f5c2e7", // Pink
-      "backgroundColor": "#1e1e2e" // Base
+      "color": "#181825", // Mantle
+      "backgroundColor": "#f5c2e7" // Pink (debugging, low-medium severity)
     },
     {
       "text": "REVIEW:",
-      "color": "#f38ba8", // Red
-      "backgroundColor": "#1e1e2e" // Base
-    },
-    {
-      "text": "NOTE:",
-      "color": "#fab387", // Peach
-      "backgroundColor": "#1e1e2e" // Base
+      "color": "#181825", // Mantle
+      "backgroundColor": "#f38ba8" // Red (needs review, medium severity)
     },
     {
       "text": "HACK:",
-      "color": "#cba6f7", // Mauve
-      "backgroundColor": "#1e1e2e" // Base
-    },
-    {
-      "text": "TODO:",
-      "color": "#89b4fa", // Blue
-      "backgroundColor": "#1e1e2e" // Base
-    },
-    {
-      "text": "FIXME:",
-      "color": "#eba0ac", // Maroon
-      "backgroundColor": "#1e1e2e" // Base
-    },
-    {
-      "text": "BUG:",
-      "color": "#f9e2af", // Yellow
-      "backgroundColor": "#1e1e2e" // Base
-    },
-    {
-      "text": "OPTIMIZE:",
-      "color": "#a6e3a1", // Green
-      "backgroundColor": "#1e1e2e" // Base
-    },
-    {
-      "text": "CHANGED:",
-      "color": "#74c7ec", // Sapphire
-      "backgroundColor": "#1e1e2e" // Base
+      "color": "#181825", // Mantle
+      "backgroundColor": "#cba6f7" // Mauve (temporary workaround, medium severity)
     },
     {
       "text": "QUESTION:",
-      "color": "#94e2d5", // Teal
-      "backgroundColor": "#1e1e2e" // Base
+      "color": "#181825", // Mantle
+      "backgroundColor": "#94e2d5" // Teal (needs clarification, medium severity)
+    },
+    {
+      "text": "TODO:",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#89b4fa" // Blue (to be done, medium-high severity)
+    },
+    {
+      "text": "CHANGED:",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#74c7ec" // Sapphire (recent changes, medium-high severity)
+    },
+    {
+      "text": "OPTIMIZE:",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#a6e3a1" // Green (optimization needed, high severity)
+    },
+    {
+      "text": "FIXME:",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#eba0ac" // Maroon (needs fixing, high severity)
+    },
+    {
+      "text": "BUG:",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#f9e2af" // Yellow (critical, highest severity)
     }
   ]
 }
