@@ -84,5 +84,5 @@ if vim.g.vscode then
   vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
   -- Notify the user that VSCode-specific configuration has been loaded
-  vim.notify("VSCode-specific configuration loaded...", vim.log.levels.INFO)
+  vim.notify("Neovim: VSCode-specific configuration loaded...", vim.log.levels.INFO)
 end
