@@ -8,7 +8,7 @@ return {
         FIXME = { icon = " ", color = "fix" }, -- Needs fixing, high severity
         WARNING = { icon = " ", color = "warning" }, -- Needs attention, medium severity
         NOTE = { icon = " ", color = "note" }, -- Informative, low severity
-        OPTIMIZE = { icon = " ", color = "optimize" }, -- Optimization needed, high severity
+        OPTIMIZE = { icon = " ", color = "optimization" }, -- Optimization needed, high severity
         HINT = { icon = " ", color = "hint" }, -- Informative, low severity
         CHANGED = { icon = " ", color = "changed" }, -- Recent changes, medium-high severity
         TODO = { icon = " ", color = "todo" }, -- To be done, medium-high severity
@@ -22,19 +22,19 @@ return {
         fix = { "#fab387" }, -- Orange (FIXME)
         warning = { "#f9e2af" }, -- Yellow (WARNING)
         note = { "#a6e3a1" }, -- Green (NOTE)
-        optimize = { "#89b4fa" }, -- Blue (OPTIMIZE)
+        optimization = { "#89b4fa" }, -- Blue (OPTIMIZE)
         hint = { "#94e2d5" }, -- Teal (HINT)
         changed = { "#74c7ec" }, -- Sapphire (CHANGED)
         todo = { "#b4befe" }, -- Blue (TODO)
         review = { "#89dceb" }, -- Sky (REVIEW)
         question = { "#cba6f7" }, -- Mauve (QUESTION)
         hack = { "#f5c2e7" }, -- Pink (HACK)
-        debug = { "#f38ba8" }, -- Red (DEBUG)
+        debug = { "#eba0ac" }, -- Maroon (DEBUG)
       },
       highlight = {
-        before = "empty", -- "fg" or "bg" or empty
-        keyword = "bg", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
-        after = "empty", -- "fg" or "bg" or empty
+        before = "", -- "fg" or "bg" or empty
+        keyword = "fg", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
+        after = "", -- "fg" or "bg" or empty
         pattern = [[.*<(KEYWORDS)\s*:]], -- pattern used for highlight (vim regex)
         comments_only = false, -- uses treesitter to match keywords in comments only
         max_line_len = 400, -- ignore lines longer than this

@@ -139,7 +139,7 @@
     },
     "DEBUG": {
       "icon": "play",
-      "iconColour": "rgb(243, 139, 168)", // Red
+      "iconColour": "rgb(235, 160, 172)", // Red
       "type": "line"
     }
   },
@@ -202,7 +202,7 @@
     {
       "text": "DEBUG",
       "color": "#181825", // Mantle
-      "backgroundColor": "#f38ba8" // Red (Debugging, low-medium severity)
+      "backgroundColor": "#eba0ac" // Maroon (Debugging, low-medium severity)
     }
   ],
   "workbench.activityBar.location": "hidden"
