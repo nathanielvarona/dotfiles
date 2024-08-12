@@ -372,11 +372,13 @@ fi
 
 # Isolate Neovim/Nvim Applications using `$NVIM_APPNAME` Enviornment Variables
 # See https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME
-export NVIM_APPNAME="lazyvim"
-#
-# Other Options are:
-# - 'kickstart' # https://github.com/nvim-lua/kickstart.nvim
-# - 'lazyvim' # https://github.com/LazyVim/LazyVim
+alias vim-kickstart="NVIM_APPNAME=kickstartvim $(brew --prefix)/bin/nvim" # https://github.com/nvim-lua/kickstart.nvim
+alias vim-lazy="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # https://github.com/LazyVim/LazyVim
+
+# Set Default Neovim Distro
+alias nvim='vim-lazy'
+
+# Other Neovim Distro are:
 # - 'astrovim' # https://github.com/AstroNvim/AstroNvim
 # - 'nvchad' # https://github.com/NvChad/NvChad
 # - 'lunarvim' # https://github.com/lunarvim/lunarvim
