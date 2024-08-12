@@ -370,8 +370,13 @@ if [ -n "$TMUX" ]; then
   precmd_functions+=(_fix_cursor)
 fi
 
-# Isolate Nvim Applications using `$NVIM_APPNAME` Enviornment Variables
+# Isolate Neovim/Nvim Applications using `$NVIM_APPNAME` Enviornment Variables
 # See https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME
-if [ -f "${XDG_CONFIG_HOME}/nvim/init.sh" ]; then
-  source "${XDG_CONFIG_HOME}/nvim/init.sh"
-fi
+export NVIM_APPNAME="lazyvim"
+#
+# Other Options are:
+# - 'kickstart' # https://github.com/nvim-lua/kickstart.nvim
+# - 'lazyvim' # https://github.com/LazyVim/LazyVim
+# - 'astrovim' # https://github.com/AstroNvim/AstroNvim
+# - 'nvchad' # https://github.com/NvChad/NvChad
+# - 'lunarvim' # https://github.com/lunarvim/lunarvim
