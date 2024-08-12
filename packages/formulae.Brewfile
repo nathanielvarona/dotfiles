@@ -134,6 +134,8 @@ brew "whalebrew"
 brew "wireguard-tools"
 # JavaScript package manager
 brew "yarn"
+# View colored diff with side by side and auto pager support
+brew "ydiff"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Shell extension to navigate your filesystem faster
