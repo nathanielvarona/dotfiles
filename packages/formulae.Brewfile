@@ -20,6 +20,8 @@ brew "ccache"
 brew "conda-zsh-completion"
 # Top-like interface for container metrics
 brew "ctop"
+# Reference implementation for the Development Containers specification
+brew "devcontainer"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Docker Version Manager
