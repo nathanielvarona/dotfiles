@@ -370,7 +370,7 @@ if [ -n "$TMUX" ]; then
   precmd_functions+=(_fix_cursor)
 fi
 
-# Isolate Neovim/Nvim Applications using `$NVIM_APPNAME` Enviornment Variables
+# Isolate Neovim Distro using "NVIM_APPNAME' Enviornment Variables
 # See https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME
 alias kickstartvim="NVIM_APPNAME=kickstartvim $(brew --prefix)/bin/nvim" # https://github.com/nvim-lua/kickstart.nvim  # Taste like Vanilla.
 alias lazyvim="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # https://github.com/LazyVim/LazyVim
