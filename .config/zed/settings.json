@@ -7,6 +7,10 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
   "nightly": {
     "enabled": true,
     "channel": "stable"
@@ -29,7 +33,7 @@
   "autosave_on_build_delay": 1500,
   "autosave_on_build_events": ["build", "run", "debug"],
   "autosave_on_build_events_delay": 1500,
-  "vim_mode": false,
+  "vim_mode": true,
   "confirm_quit": false,
   "hover_popover_enabled": true,
   "show_copilot_suggestions": true,
