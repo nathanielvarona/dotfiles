@@ -46,7 +46,8 @@
     "asvetliakov.vscode-neovim": 1
   },
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.NVIM_APPNAME": "lazyvim",
+  // "vscode-neovim.NVIM_APPNAME": "lazyvim",
+  "vscode-neovim.NVIM_APPNAME": "astronvim",
   "find-it-faster.general.useTerminalInEditor": true,
   "find-it-faster.general.killTerminalAfterUse": true,
   "find-it-faster.general.batTheme": "GitHub",

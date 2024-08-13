@@ -377,12 +377,11 @@ fi
 # Kickstart Neovim with minimal configuration (Vanilla-like experience)
 alias kickstartvim="NVIM_APPNAME=kickstartvim $(brew --prefix)/bin/nvim" # Neovim with kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim
 
-# LazyVim: Pre-configured Neovim with popular plugins and easy customization.
-# Provides enhanced Vim motions support for VSCode using the `vscode-neovim` extension.
+# LazyVim and AstroNvim: Both offer enhanced VSCode integration with the `vscode-neovim` extension.
+# LazyVim: Pre-configured Neovim with popular plugins.
 alias lazyvim="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # Neovim with LazyVim: https://github.com/LazyVim/LazyVim
-
-# AstroVim: Feature-rich Neovim configuration with modern features and customizability.
-alias astronvim="NVIM_APPNAME=astronvim $(brew --prefix)/bin/nvim" # Neovim with AstroVim: https://github.com/AstroNvim/AstroNvim
+# AstroNvim: Feature-rich Neovim with modern features and customizability.
+alias astronvim="NVIM_APPNAME=astronvim $(brew --prefix)/bin/nvim" # Neovim with AstroNvim: https://github.com/AstroNvim/AstroNvim
 
 # Other available Neovim distributions:
 # - 'lunarvim' for LunarVim: https://github.com/lunarvim/lunarvim
