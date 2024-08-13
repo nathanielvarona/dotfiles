@@ -3,7 +3,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # Implement XDG Spec
-export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 
 # Personal Environment Variables
 # Such as Vendor Keys/Credentials and/or API Secrets/Tokens
@@ -270,6 +270,8 @@ export PERL5LIB="/Library/Developer/CommandLineTools/usr/share/git-core/perl:$PE
 # Go Binary Path
 export PATH="$HOME/go/bin:$PATH"
 
+# Lua / LuaRocks Binary Path
+export PATH="$HOME/.luarocks/bin:$PATH"
 # User Binaries Path
 export PATH="$HOME/.local/bin:$PATH"
 
