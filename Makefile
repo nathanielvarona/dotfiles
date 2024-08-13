@@ -3,7 +3,7 @@
 PACKAGES = ./packages
 BREW_BUNDLE_DUMP = brew bundle dump --no-lock --describe --force --file
 
-all: brewfile asdf pyenv pipx krew helm ollama
+all: brewfile asdf pyenv pipx krew helm rust-cargo ollama
 
 brewfile: brewfile-formulae brewfile-casks brewfile-taps brewfile-mas brewfile-vscode brewfile-whalebrew
 
@@ -39,6 +39,9 @@ krew:
 
 helm:
 	helm repo list > $(PACKAGES)/helm-repos
+
+rust-cargo:
+	cat ~/.cargo/.crates2.json | jq -r '.installs | keys[] | split(" ")[0]' > $(PACKAGES)/rust-cargo-global-packages
 
 ollama:
 	@pgrep -x "ollama" > /dev/null && ollama list | awk 'NR > 1 { print $$1 }' > $(PACKAGES)/ollama-models && echo "Ollama Model List Dumped" || echo "Dump Skipped! Ollama Service is Down"
