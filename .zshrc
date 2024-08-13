@@ -370,18 +370,23 @@ if [ -n "$TMUX" ]; then
   precmd_functions+=(_fix_cursor)
 fi
 
-# Isolate Neovim Distro using "NVIM_APPNAME' Enviornment Variables
-# See https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME
+# Isolate Neovim configurations using the "NVIM_APPNAME" environment variable.
+# This allows you to run different Neovim distributions with their own configurations.
+# For more information, see: https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME
 
-# Taste like Vanilla
-alias kickstartvim="NVIM_APPNAME=kickstartvim $(brew --prefix)/bin/nvim" # https://github.com/nvim-lua/kickstart.nvim
-# Pre-configured known plugins with overriding capabilities.
-alias lazyvim="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # https://github.com/LazyVim/LazyVim
+# Kickstart Neovim with minimal configuration (Vanilla-like experience)
+alias kickstartvim="NVIM_APPNAME=kickstartvim $(brew --prefix)/bin/nvim" # Neovim with kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim
 
-# Other Neovim Distro are:
-# - 'lunarvim' # https://github.com/lunarvim/lunarvim
-# - 'astrovim' # https://github.com/AstroNvim/AstroNvim
-# - 'nvchad' # https://github.com/NvChad/NvChad
+# LazyVim: Pre-configured Neovim with popular plugins and easy customization
+alias lazyvim="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # Neovim with LazyVim: https://github.com/LazyVim/LazyVim
 
-# Set Default Neovim Distro
+# Other available Neovim distributions:
+# - 'lunarvim' for LunarVim: https://github.com/lunarvim/lunarvim
+# - 'astrovim' for AstroVim: https://github.com/AstroNvim/AstroNvim
+# - 'nvchad' for NvChad: https://github.com/NvChad/NvChad
+
+# Set your default Neovim distribution.
+# By default, Neovim uses the Vanilla configuration.
+# Uncomment one of the following lines to set your preferred default Neovim configuration:
+# alias nvim='kickstartvim'
 # alias nvim='lazyvim'
