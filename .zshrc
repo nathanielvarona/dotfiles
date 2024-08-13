@@ -372,7 +372,10 @@ fi
 
 # Isolate Neovim Distro using "NVIM_APPNAME' Enviornment Variables
 # See https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME
-alias kickstartvim="NVIM_APPNAME=kickstartvim $(brew --prefix)/bin/nvim" # https://github.com/nvim-lua/kickstart.nvim  # Taste like Vanilla.
+
+# Taste like Vanilla
+alias kickstartvim="NVIM_APPNAME=kickstartvim $(brew --prefix)/bin/nvim" # https://github.com/nvim-lua/kickstart.nvim
+# Pre-configured known plugins with overriding capabilities.
 alias lazyvim="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # https://github.com/LazyVim/LazyVim
 
 # Other Neovim Distro are:
