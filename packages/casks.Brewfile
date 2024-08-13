@@ -27,6 +27,8 @@ cask "google-chrome"
 cask "grammarly-desktop"
 # Menu bar manager
 cask "jordanbaird-ice"
+# End-to-end encryption software
+cask "keybase"
 # Displays all connected LG monitor information
 cask "lg-onscreen-control"
 # An open source cross-platform alternative to AirDrop
