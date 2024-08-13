@@ -272,6 +272,10 @@ export PATH="$HOME/go/bin:$PATH"
 
 # Lua / LuaRocks Binary Path
 export PATH="$HOME/.luarocks/bin:$PATH"
+
+# Rust / Cargo Binary Path
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # User Binaries Path
 export PATH="$HOME/.local/bin:$PATH"
 
