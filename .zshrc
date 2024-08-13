@@ -381,4 +381,4 @@ alias lazyvim="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # https://github.
 # - 'nvchad' # https://github.com/NvChad/NvChad
 
 # Set Default Neovim Distro
-alias nvim='lazyvim'
+# alias nvim='lazyvim'
