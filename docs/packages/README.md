@@ -11,42 +11,42 @@ Install Packages
 
 ```bash
 brew bundle install --no-lock \
-  --file ./taps.Brewfile
+  --file ./packages/taps.Brewfile
 ```
 
 2. Brews (Formulae)
 
 ```bash
 brew bundle install --no-lock \
-  --file ./formulae.Brewfile
+  --file ./packages/formulae.Brewfile
 ```
 
 3. Casks (GUI macOS applications)
 
 ```bash
 brew bundle install --no-lock \
-  --file ./casks.Brewfile
+  --file ./packages/casks.Brewfile
 ```
 
 4. MAS (Mac App Store)
 
 ```bash
 brew bundle install --no-lock \
-  --file ./mas.Brewfile
+  --file ./packages/mas.Brewfile
 ```
 
 5. VSCode (Extensions)
 
 ```bash
 brew bundle install --no-lock \
-  --file ./vscode.Brewfile
+  --file ./packages/vscode.Brewfile
 ```
 
 5. Whalebrew (Containerized Apps)
 
 ```bash
 brew bundle install --no-lock \
-  --file ./whalebrew.Brewfile
+  --file ./packages/whalebrew.Brewfile
 ```
 
 <details>
@@ -71,7 +71,7 @@ make brewfile-whalebrew
 Installation of Plugins
 
 ```bash
-egrep -v '^(;|#|//)' ./asdf-plugins |
+egrep -v '^(;|#|//)' ./packages/asdf-plugins |
   xargs -I {} asdf plugin add {}
 ```
 
@@ -79,7 +79,7 @@ egrep -v '^(;|#|//)' ./asdf-plugins |
   <summary>Dump Existing Plugins to File</summary>
 
 ```bash
-asdf plugin list > ./asdf-plugins
+asdf plugin list > ./packages/asdf-plugins
 ```
 
 </details>
@@ -89,7 +89,7 @@ asdf plugin list > ./asdf-plugins
 Build and Install Python Versions from Source
 
 ```bash
-egrep -v '^(;|#|//)' ./pyenv-versions |
+egrep -v '^(;|#|//)' ./packages/pyenv-versions |
   xargs -I {} pyenv install {}
 ```
 
@@ -97,7 +97,7 @@ egrep -v '^(;|#|//)' ./pyenv-versions |
   <summary>Dump Existing Versions to File</summary>
 
 ```bash
-pyenv versions --bare --skip-aliases --skip-envs > ./pyenv-versions
+pyenv versions --bare --skip-aliases --skip-envs > ./packages/pyenv-versions
 ```
 
 </details>
@@ -107,7 +107,7 @@ pyenv versions --bare --skip-aliases --skip-envs > ./pyenv-versions
 Installation of Python Apps
 
 ```bash
-awk '{print $1}' ./pipx-apps |
+awk '{print $1}' ./packages/pipx-apps |
   egrep -v '^(;|#|//)' |
     xargs -I {} pipx install {}
 ```
@@ -116,7 +116,7 @@ awk '{print $1}' ./pipx-apps |
   <summary>Dump Existing Apps to File</summary>
 
 ```bash
-pipx list --short > ./pipx-apps
+pipx list --short > ./packages/pipx-apps
 ```
 
 </details>
@@ -126,7 +126,7 @@ pipx list --short > ./pipx-apps
 Install Krew Plugins
 
 ```bash
-awk 'NR > 1 {print $1}' ./krew-plugins |
+awk '{print $1}' ./packages/krew-plugins |
   egrep -v '^(;|#|//)' |
     xargs -I {} krew install {}
 ```
@@ -135,7 +135,24 @@ awk 'NR > 1 {print $1}' ./krew-plugins |
   <summary>Dump Existing Plugins to File</summary>
 
 ```bash
-krew list > ./krew-plugins
+krew list > ./packages/krew-plugins
+```
+
+## Rust / Cargo Packages
+
+Install Cargo Packages
+
+```bash
+awk '{print $1}' ./packages/rust-cargo-global-packages |
+  egrep -v '^(;|#|//)' |
+    xargs -I {} cargo install {}
+```
+
+<details>
+  <summary>Dump Existing Plugins to File</summary>
+
+```bash
+cat ~/.cargo/.crates2.json | jq -r '.installs | keys[] | split(" ")[0]' > ./packages/rust-cargo-global-packages
 ```
 
 </details>
@@ -145,7 +162,7 @@ krew list > ./krew-plugins
 Add the Helm Repositories
 
 ```bash
-awk 'NR > 1 {split($0, ri, " "); print ri[1] " " ri[2]}' ./helm-repos |
+awk 'NR > 1 {split($0, ri, " "); print ri[1] " " ri[2]}' ./packages/helm-repos |
   egrep -v '^(;|#|//)' |
     xargs -n 2 helm repo add
 ```
@@ -154,7 +171,7 @@ awk 'NR > 1 {split($0, ri, " "); print ri[1] " " ri[2]}' ./helm-repos |
   <summary>Dump Existing Repositories to File</summary>
 
 ```bash
-helm repo list > ./helm-repos
+helm repo list > ./packages/helm-repos
 ```
 
 </details>
@@ -170,24 +187,27 @@ cpan App::cpanminus
 Use the CPANM to Install Module/Tool from the `cpanfile`
 
 ```bash
-cpanm --installdeps ./
+cpanm --installdeps ./packages/
 ```
 
 ## Ollama Models
 
-Dump Model List
-
-```bash
-ollama list |
-  awk 'NR > 1 { print $1 }' > ./ollama-models
-```
-
 Pull Models
 
 ```bash
-egrep -v '^(;|#|//)' ./ollama-models |
+egrep -v '^(;|#|//)' ./packages/ollama-models |
   xargs -I {} ollama pull {}
 ```
+
+<details>
+  <summary>Dump Existing Models to File</summary>
+
+```bash
+ollama list |
+  awk 'NR > 1 { print $1 }' > ./packages/ollama-models
+```
+
+</details>
 
 ## Hugging Face Models
 
@@ -198,5 +218,5 @@ while IFS= read -r model_name; do
   repo_id="$(echo ${model_name%% *} | tr -d '[:blank:]')"
   filename="$( echo ${model_name#* } | tr -d '[:blank:]')"
   huggingface-cli download "$repo_id" "$filename"
-done < <(awk 'NR > 1' ./hugging-face-models | egrep -v '^(;|#|//)')
+done < <(awk 'NR > 1' ./packages/hugging-face-models | egrep -v '^(;|#|//)')
 ```

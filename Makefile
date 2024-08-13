@@ -44,7 +44,9 @@ rust-cargo:
 	cat ~/.cargo/.crates2.json | jq -r '.installs | keys[] | split(" ")[0]' > $(PACKAGES)/rust-cargo-global-packages
 
 ollama:
-	@pgrep -x "ollama" > /dev/null && ollama list | awk 'NR > 1 { print $$1 }' > $(PACKAGES)/ollama-models && echo "Ollama Model List Dumped" || echo "Dump Skipped! Ollama Service is Down"
+	@pgrep -x "ollama" > /dev/null && ollama list | awk 'NR > 1 { print $$1 }' > $(PACKAGES)/ollama-models && \
+	echo "Ollama Model List Dumped" || \
+	echo "Dump Skipped! Ollama Service is Down"
 
 # TODO:
 # - hugging-face-models (Future)
