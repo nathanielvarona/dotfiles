@@ -2,9 +2,19 @@ return {
   "nvim-neo-tree/neo-tree.nvim",
   opts = function(_, opts)
     opts.filesystem.filtered_items = {
-      hide_dotfiles = false, -- Show files starting with .
-      hide_gitignored = false, -- Show gitignored files if you want
-      hide_hidden = false, -- Show hidden files
+      visible = true,
+      show_hidden_count = true,
+      hide_dotfiles = false,
+      hide_gitignored = false,
+      hide_hidden = false,
+      hide_by_name = {
+        -- add extension names you want to explicitly exclude
+        ".git",
+        ".DS_Store",
+        "thumbs.db",
+      },
+      never_show = {},
     }
+    vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
   end,
 }
