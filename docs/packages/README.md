@@ -138,6 +138,8 @@ awk '{print $1}' ./packages/krew-plugins |
 krew list > ./packages/krew-plugins
 ```
 
+</details>
+
 ## Rust / Cargo Packages
 
 Install Cargo Packages
