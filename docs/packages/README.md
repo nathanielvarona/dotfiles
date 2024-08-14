@@ -53,7 +53,23 @@ brew bundle install --no-lock \
   <summary>Dump Existing Packages to File using Makefile</summary>
 
 ```bash
-make brewfile
+# Brew Formulae
+brew bundle dump --no-lock --describe --force --file ./packages/formulae.Brewfile --brews
+
+# Brew Casks
+brew bundle dump --no-lock --describe --force --file ./packages/casks.Brewfile --casks
+
+# Brew Taps
+brew bundle dump --no-lock --describe --force --file ./packages/taps.Brewfile --taps
+
+# Brew MAS
+brew bundle dump --no-lock --describe --force --file ./packages/mas.Brewfile --mas
+
+# Brew VSCode
+brew bundle dump --no-lock --describe --force --file ./packages/vscode.Brewfile --vscode
+
+# Brew Whalebrew
+brew bundle dump --no-lock --describe --force --file ./packages/whalebrew.Brewfile --whalebrew
 
 # Specific Brew Dependency Dumps
 make brewfile-taps
@@ -62,6 +78,10 @@ make brewfile-casks
 make brewfile-mas
 make brewfile-vscode
 make brewfile-whalebrew
+
+# Makefile
+# All Brew Dependency
+make brewfile
 ```
 
 </details>
@@ -80,6 +100,9 @@ egrep -v '^(;|#|//)' ./packages/asdf-plugins |
 
 ```bash
 asdf plugin list > ./packages/asdf-plugins
+
+# Makefile
+make asdf
 ```
 
 </details>
@@ -98,6 +121,9 @@ egrep -v '^(;|#|//)' ./packages/pyenv-versions |
 
 ```bash
 pyenv versions --bare --skip-aliases --skip-envs > ./packages/pyenv-versions
+
+# Makefile
+make pyenv
 ```
 
 </details>
@@ -117,6 +143,9 @@ awk '{print $1}' ./packages/pipx-apps |
 
 ```bash
 pipx list --short > ./packages/pipx-apps
+
+# Makefile
+make pipx
 ```
 
 </details>
@@ -136,25 +165,9 @@ awk '{print $1}' ./packages/krew-plugins |
 
 ```bash
 krew list > ./packages/krew-plugins
-```
 
-</details>
-
-## Rust / Cargo Packages
-
-Install Cargo Packages
-
-```bash
-awk '{print $1}' ./packages/rust-cargo-global-packages |
-  egrep -v '^(;|#|//)' |
-    xargs -I {} cargo install {}
-```
-
-<details>
-  <summary>Dump Existing Plugins to File</summary>
-
-```bash
-cat ~/.cargo/.crates2.json | jq -r '.installs | keys[] | split(" ")[0]' > ./packages/rust-cargo-global-packages
+# Makefile
+make krew
 ```
 
 </details>
@@ -174,6 +187,53 @@ awk 'NR > 1 {split($0, ri, " "); print ri[1] " " ri[2]}' ./packages/helm-repos |
 
 ```bash
 helm repo list > ./packages/helm-repos
+
+# Makefile
+make helm
+```
+
+</details>
+
+## Rust / Cargo Packages
+
+Install Cargo Packages
+
+```bash
+awk '{print $1}' ./packages/rust-cargo-global-packages |
+  egrep -v '^(;|#|//)' |
+    xargs -I {} cargo install {}
+```
+
+<details>
+  <summary>Dump Existing Plugins to File</summary>
+
+```bash
+cat ~/.cargo/.crates2.json | jq -r '.installs | keys[] | split(" ")[0]' > ./packages/rust-cargo-global-packages
+
+# Makefile
+make rust-cargo
+```
+
+</details>
+
+## GitHub CLI Extensions
+
+Install GitHub CLI Extensions
+
+```bash
+awk '{print $1}' ./packages/github-cli-extensions |
+  egrep -v '^(;|#|//)' |
+    xargs -I {} gh extension install {}
+```
+
+<details>
+  <summary>Dump Existing Extensions to File</summary>
+
+```bash
+gh extension list | awk -F'\t' '{print $2}' > $(PACKAGES)/github-cli-extensions
+
+# Makefile
+make github-cli-extension
 ```
 
 </details>
@@ -207,6 +267,9 @@ egrep -v '^(;|#|//)' ./packages/ollama-models |
 ```bash
 ollama list |
   awk 'NR > 1 { print $1 }' > ./packages/ollama-models
+
+# Makefile
+make ollama
 ```
 
 </details>
