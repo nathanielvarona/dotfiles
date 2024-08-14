@@ -6,6 +6,11 @@ https://neovimcraft.com/
 
 ## Troubleshooting
 
+> [!NOTE]
+> Applies to `lazyvim`, `astronvim`, `nvchad`, and `kickstartvim` only!
+>
+> For LunarVim kindly check the document [docs/LunarVim.md](./LunarVim.md).
+
 ### Reset LazyVim (NeoVim) Cache
 
 #### Standard/Legacy Directory for Nvim
@@ -14,7 +19,7 @@ https://neovimcraft.com/
 rm -Rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 ```
 
-#### Isolated Nvim Applications using `$NVIM_APPNAME` Enviornment Variables
+#### Isolated Neovim Applications using `$NVIM_APPNAME` Enviornment Variables
 
 See https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME
 

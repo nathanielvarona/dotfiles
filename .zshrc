@@ -380,24 +380,15 @@ fi
 # This allows you to run different Neovim distributions with their own configurations.
 # For more information, see: https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME
 
-# Kickstart Neovim with minimal configuration (Vanilla-like experience)
-alias kickstartvim="NVIM_APPNAME=kickstartvim $(brew --prefix)/bin/nvim" # Neovim with kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim
+# NOTE: `LazyVim` and `AstroNvim`: Both offer enhanced VSCode integration with the `vscode-neovim` extension.
 
-# LazyVim and AstroNvim: Both offer enhanced VSCode integration with the `vscode-neovim` extension.
-# LazyVim: Pre-configured Neovim with popular plugins.
+# LazyVim: Neovim setup powered by `lazy.nvim` to make it easy to customize and extend your config.
 alias lazyvim="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # Neovim with LazyVim: https://github.com/LazyVim/LazyVim
-# AstroNvim: Feature-rich Neovim with modern features and customizability.
+# LunarVim: An IDE layer for Neovim with sane defaults. Completely free and community driven.
+alias lunarvim='lvim' # Neovim with LunarVim: https://github.com/lunarvim/lunarvim
+# AstroNvim: Aesthetically pleasing and feature-rich Neovim configuration that focuses on extensibility and usability.
 alias astronvim="NVIM_APPNAME=astronvim $(brew --prefix)/bin/nvim" # Neovim with AstroNvim: https://github.com/AstroNvim/AstroNvim
-
 # NvChad: Blazing fast Neovim config providing solid defaults and a beautiful UI
 alias nvchad="NVIM_APPNAME=nvchad $(brew --prefix)/bin/nvim" # Neovim with NvChad: https://github.com/NvChad/NvChad
-
-# Other available Neovim distributions:
-# - 'lunarvim' for LunarVim: https://github.com/lunarvim/lunarvim
-
-# Set your default Neovim distribution.
-# By default, Neovim uses the Vanilla configuration.
-# Uncomment one of the following lines to set your preferred default Neovim configuration:
-# alias nvim='kickstartvim'
-# alias nvim='lazyvim'
-# alias nvim='astronvim'
+# NOT a Neovim distribution, but instead a starting point for your configuration. (Vanilla-like experience)
+alias kickstartvim="NVIM_APPNAME=kickstartvim $(brew --prefix)/bin/nvim" # Neovim with kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim
