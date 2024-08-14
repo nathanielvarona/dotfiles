@@ -41,7 +41,7 @@ helm:
 	helm repo list > $(PACKAGES)/helm-repos
 
 rust-cargo:
-	cat ~/.cargo/.crates2.json | jq -r '.installs | keys[] | split(" ")[0]' > $(PACKAGES)/rust-cargo-global-packages
+	cat ~/.cargo/.crates2.json | jq -r '.installs | keys[] | split(" ")[0]' > $(PACKAGES)/rust-cargo-packages
 
 github-cli-extension:
 	gh extension list | awk -F'\t' '{print $$2}' > $(PACKAGES)/github-cli-extensions

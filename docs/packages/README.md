@@ -194,12 +194,12 @@ make helm
 
 </details>
 
-## Rust / Cargo Packages
+## Rust Cargo Packages
 
 Install Cargo Packages
 
 ```bash
-awk '{print $1}' ./packages/rust-cargo-global-packages |
+awk '{print $1}' ./packages/rust-cargo-packages |
   egrep -v '^(;|#|//)' |
     xargs -I {} cargo install {}
 ```
@@ -208,7 +208,7 @@ awk '{print $1}' ./packages/rust-cargo-global-packages |
   <summary>Dump Existing Plugins to File</summary>
 
 ```bash
-cat ~/.cargo/.crates2.json | jq -r '.installs | keys[] | split(" ")[0]' > ./packages/rust-cargo-global-packages
+cat ~/.cargo/.crates2.json | jq -r '.installs | keys[] | split(" ")[0]' > ./packages/rust-cargo-packages
 
 # Makefile
 make rust-cargo
