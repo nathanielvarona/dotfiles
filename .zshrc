@@ -390,5 +390,5 @@ alias lunarvim='lvim' # Neovim with LunarVim: https://github.com/lunarvim/lunarv
 alias astronvim="NVIM_APPNAME=astronvim $(brew --prefix)/bin/nvim" # Neovim with AstroNvim: https://github.com/AstroNvim/AstroNvim
 # NvChad: Blazing fast Neovim config providing solid defaults and a beautiful UI
 alias nvchad="NVIM_APPNAME=nvchad $(brew --prefix)/bin/nvim" # Neovim with NvChad: https://github.com/NvChad/NvChad
-# NOT a Neovim distribution, but instead a starting point for your configuration. (Vanilla-like experience)
+# kickstart.nvim: NOT a Neovim distribution, but instead a starting point for your configuration. (Vanilla-like experience)
 alias kickstartvim="NVIM_APPNAME=kickstartvim $(brew --prefix)/bin/nvim" # Neovim with kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim
