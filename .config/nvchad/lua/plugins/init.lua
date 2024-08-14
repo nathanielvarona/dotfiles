@@ -22,4 +22,23 @@ return {
   -- 		},
   -- 	},
   -- },
+
+    {
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      return {
+        sort_by = "case_sensitive", -- Correct way to sort case-sensitively
+        view = {
+          width = 30,
+        },
+        renderer = {
+          group_empty = true,
+        },
+        filters = {
+          dotfiles = false, -- Set to false to show hidden files
+          git_ignored = false, -- Show files from .gitignore
+        },
+      }
+    end,
+  },
 }
