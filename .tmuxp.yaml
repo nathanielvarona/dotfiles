@@ -8,7 +8,7 @@ windows:
     options:
       main-pane-height: 80%
     panes:
-      - shell_command: nvim .
+      - shell_command: lazyvim .
         focus: true
       - shell_command: ls -a
   - window_name: vcs
