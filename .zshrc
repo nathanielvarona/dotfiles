@@ -389,9 +389,11 @@ alias lazyvim="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # Neovim with Laz
 # AstroNvim: Feature-rich Neovim with modern features and customizability.
 alias astronvim="NVIM_APPNAME=astronvim $(brew --prefix)/bin/nvim" # Neovim with AstroNvim: https://github.com/AstroNvim/AstroNvim
 
+# NvChad: Blazing fast Neovim config providing solid defaults and a beautiful UI
+alias nvchad="NVIM_APPNAME=nvchad $(brew --prefix)/bin/nvim" # Neovim with NvChad: https://github.com/NvChad/NvChad
+
 # Other available Neovim distributions:
 # - 'lunarvim' for LunarVim: https://github.com/lunarvim/lunarvim
-# - 'nvchad' for NvChad: https://github.com/NvChad/NvChad
 
 # Set your default Neovim distribution.
 # By default, Neovim uses the Vanilla configuration.
