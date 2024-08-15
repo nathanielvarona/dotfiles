@@ -32,21 +32,30 @@
   // Neo-tree-like remaps
   {
     "key": "space e",
-    "command": "workbench.view.explorer",
-    "when": "!explorerViewletVisible && (editorFocus && neovim.mode == 'normal' || !editorFocus && !terminalFocus && !inputFocus)",
-    "description": "Open the Explorer view when it is not visible and in NeoVim normal mode"
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.files.action.focusFilesExplorer"
+      ]
+    },
+    "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus) && !sideBarFocus"
   },
   {
     "key": "space e",
-    "command": "workbench.action.closeSidebar",
-    "when": "explorerViewletVisible && !editorFocus && !terminalFocus && !inputFocus",
-    "description": "Close the sidebar when the Explorer view is visible and not in the editor focus"
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    "when": "sideBarFocus && !inputFocus"
   },
   {
     "key": "space e",
-    "command": "workbench.files.action.focusFilesExplorer",
-    "when": "explorerViewletVisible && editorFocus && (neovim.mode == 'normal' || !editorFocus && !terminalFocus && !inputFocus)",
-    "description": "Focus on the Files Explorer when it is visible and in NeoVim normal mode"
+    "when": "neovim.mode == 'normal' && editorTextFocus && foldersViewVisible",
+    "command": "workbench.action.toggleSidebarVisibility"
   },
 
   // FindItFaster
