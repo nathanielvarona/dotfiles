@@ -2,8 +2,15 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Implement XDG Spec
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+# XDG Base Directory Specification
+# Stores application configuration files.
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+# Stores temporary cache data.
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+# Stores application data.
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+# Stores persistent application state data.
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
 # Personal Environment Variables
 # Such as Vendor Keys/Credentials and/or API Secrets/Tokens
@@ -256,6 +263,10 @@ eval "$(pyenv init -)"
 zinit snippet OMZ::plugins/pyenv
 
 # Poetry Apps (Python Packages)
+export POETRY_CACHE_DIR="$XDG_CACHE_HOME/pypoetry"
+export POETRY_VIRTUALENVS_PREFER_ACTIVE_PYTHON="true"
+export POETRY_VIRTUALENVS_OPTIONS_ALWAYS_COPY="true"
+
 # if ! [[ -e "$ZSH_CACHE_DIR/completions/_poetry" ]]; then
 #   poetry completions zsh > $ZSH_CACHE_DIR/completions/_poetry
 # fi
