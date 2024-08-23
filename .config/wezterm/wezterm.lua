@@ -91,7 +91,7 @@ config.window_padding = {
 }
 
 config.show_tab_index_in_tab_bar = true
-config.tab_and_split_indices_are_zero_based = true
+config.tab_and_split_indices_are_zero_based = false
 
 config.colors = {
   tab_bar = {
