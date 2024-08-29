@@ -13,20 +13,20 @@
 
 return {
   -- Import the VSCode extras from LazyVim
-  { import = "lazyvim.plugins.extras.vscode" },
+  {
+    import = "lazyvim.plugins.extras.vscode",
+    cond = vim.g.vscode,
+  },
 
   {
     -- Additional configuration for VSCode-specific setup
     "LazyVim/LazyVim",
-    opts = function(_, opts)
-      if not vim.g.vscode then
-        return opts or {}
-      end
+    cond = vim.g.vscode,
+    config = function(_, opts)
+      opts = opts or {}
 
       -- Notify the user that VSCode-specific configuration has been loaded
       vim.notify("Neovim: LazyVim", vim.log.levels.INFO)
-
-      return opts or {}
     end,
   },
 }
