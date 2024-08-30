@@ -2,10 +2,13 @@
 # Private/Public Personal
 [includeIf "gitdir:~/Projects/personal/"]
 	path = ~/.gitconfig-personal
-# OSS Toolings
+# Open-Source Contributions
 [includeIf "gitdir:~/Projects/contribute/"]
 	path = ~/.gitconfig-personal
-# Homebrew
+# Password Store (GnuPG Encrypted)
+[includeIf "gitdir:~/.password-store/"]
+	path = ~/.gitconfig-personal
+# Homebrews
 [includeIf "gitdir:/usr/local/Homebrew/Library/Taps/"]
 	path = ~/.gitconfig-personal
 
