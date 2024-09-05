@@ -36,7 +36,7 @@ cask "lg-onscreen-control"
 # An open source cross-platform alternative to AirDrop
 cask "localsend"
 # Software for Logitech devices
-cask "logi-options-plus"
+cask "logi-options+"
 # Native desktop app for Messenger (formerly Facebook Messenger)
 cask "messenger"
 # Reverse proxy, secure introspectable tunnels to localhost
