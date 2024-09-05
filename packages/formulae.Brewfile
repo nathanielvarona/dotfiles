@@ -152,5 +152,7 @@ brew "zsh-completions"
 brew "amar1729/formulae/browserpass"
 # Prefer the tty when using pinentry, fallback to GUI
 brew "amar1729/formulae/pinentry-prefer-tty"
+# Official Go implementation of the Ethereum protocol
+brew "ethereum/ethereum/ethereum"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
