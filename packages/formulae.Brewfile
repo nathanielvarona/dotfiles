@@ -112,6 +112,8 @@ brew "sf-pwgen"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# Non-interactive SSH password auth
+brew "sshpass"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Tool Command Language
