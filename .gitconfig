@@ -40,7 +40,7 @@
 	prompt = false
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 [difftool "meld"]
 	trustExitCode = true
 	cmd = open -W -a /Applications/Meld.app/Contents/MacOS/Meld --args \"$LOCAL\" \"$REMOTE\"
@@ -80,7 +80,7 @@
 # 	insteadOf = https://github.com/
 
 [credential]
+	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
-
 [credential "https://dev.azure.com"]
 	useHttpPath = true
