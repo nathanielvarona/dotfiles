@@ -61,6 +61,10 @@ cask "sourcetree"
 cask "spotify"
 # Remote access and connectivity software focused on security
 cask "teamviewer"
+# Development environment
+cask "vagrant"
+# Virtualiser for x86 hardware
+cask "virtualbox"
 # Open-source code editor
 cask "visual-studio-code"
 # Create, manage, and run virtual machines
