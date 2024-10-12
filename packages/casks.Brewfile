@@ -73,6 +73,8 @@ cask "vmware-fusion"
 cask "wezterm"
 # Native desktop client for WhatsApp
 cask "whatsapp"
+# Administration tool for MikroTik RouterOS
+cask "winbox"
 # Multiplayer code editor
 cask "zed"
 # Video communication and virtual meeting platform
