@@ -6,6 +6,8 @@ cask "anydesk"
 cask "balenaetcher"
 # Opensource IDE for exploring and testing api's
 cask "bruno"
+# Tool to show live information about the batteries in various devices
+cask "coconutbattery"
 # API documentation browser and code snippet manager
 cask "dash@6"
 # Voice and text chat software
@@ -37,7 +39,7 @@ cask "keybase"
 cask "ksnip"
 # Displays all connected LG monitor information
 cask "lg-onscreen-control"
-# An open source cross-platform alternative to AirDrop
+# Open-source cross-platform alternative to AirDrop
 cask "localsend"
 # Software for Logitech devices
 cask "logi-options+"
