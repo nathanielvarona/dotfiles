@@ -2,6 +2,8 @@
 cask "anaconda"
 # Allows connection to a computer remotely
 cask "anydesk"
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
 # Opensource IDE for exploring and testing api's
 cask "bruno"
 # API documentation browser and code snippet manager
