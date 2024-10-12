@@ -31,6 +31,8 @@ cask "grammarly-desktop"
 cask "jordanbaird-ice"
 # End-to-end encryption software
 cask "keybase"
+# Screenshot and annotation tool
+cask "ksnip"
 # Displays all connected LG monitor information
 cask "lg-onscreen-control"
 # An open source cross-platform alternative to AirDrop
