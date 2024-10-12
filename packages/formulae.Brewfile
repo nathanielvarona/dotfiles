@@ -62,6 +62,8 @@ brew "huggingface-cli"
 brew "hyperfine"
 # GNU utilities for networking
 brew "inetutils"
+# Update of iperf: measures TCP, UDP, and SCTP bandwidth
+brew "iperf3"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Handy way to save and run project-specific commands
