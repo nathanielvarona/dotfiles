@@ -30,6 +30,8 @@ brew "dvm"
 brew "editorconfig"
 # Tool to verify that your files are in harmony with your .editorconfig
 brew "editorconfig-checker"
+# Read, write, modify, and display EXIF data on the command-line
+brew "exif"
 # Modern, maintained replacement for ls
 brew "eza"
 # Simple, fast and user-friendly alternative to find
@@ -88,6 +90,8 @@ brew "opentofu"
 brew "pass"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Object-relational database system
 brew "postgresql@16"
 # Password generator
@@ -145,7 +149,9 @@ brew "wireguard-tools"
 # JavaScript package manager
 brew "yarn"
 # View colored diff with side by side and auto pager support
-brew "ydiff"
+brew "ydiff", link: false
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Shell extension to navigate your filesystem faster

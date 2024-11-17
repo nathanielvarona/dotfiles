@@ -37,8 +37,6 @@ cask "jordanbaird-ice"
 cask "keybase"
 # Screenshot and annotation tool
 cask "ksnip"
-# Displays all connected LG monitor information
-cask "lg-onscreen-control"
 # Open-source cross-platform alternative to AirDrop
 cask "localsend"
 # Software for Logitech devices
@@ -73,6 +71,8 @@ cask "vagrant"
 cask "virtualbox"
 # Open-source code editor
 cask "visual-studio-code"
+# Multimedia player
+cask "vlc"
 # Create, manage, and run virtual machines
 cask "vmware-fusion"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
