@@ -230,8 +230,7 @@ alias tpl='tmuxp load'
 alias tmk='tmux kill-session -t'
 
 # ASDF Tools Version Manager
-export ASDF_DIR='/usr/local/opt/asdf/libexec'
-. /usr/local/opt/asdf/libexec/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # ASDF Plugins/Apps
 # With OhMyZsh
