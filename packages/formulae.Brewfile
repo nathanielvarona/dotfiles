@@ -123,7 +123,7 @@ brew "sshpass"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Tool Command Language
-brew "tcl-tk"
+brew "tcl-tk@8"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # Simplified and community-driven man pages

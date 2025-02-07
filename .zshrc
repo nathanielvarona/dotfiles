@@ -197,6 +197,14 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include $CPPFLAGS"
 export CC="ccache clang"
 export CXX="ccache clang++"
 
+# Tcl programming language and Tk graphical user interface toolkit (Version 8)
+export PATH="/usr/local/opt/tcl-tk@8/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/tcl-tk@8/lib"
+export CPPFLAGS="-I/usr/local/opt/tcl-tk@8/include"
+
+export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk@8/lib/pkgconfig"
+
 #
 # ---------------------------------------------------------
 ###
