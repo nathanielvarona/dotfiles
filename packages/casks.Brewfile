@@ -1,3 +1,5 @@
+# Mobile device management suite
+cask "airdroid"
 # Distribution of the Python and R programming languages for scientific computing
 cask "anaconda"
 # Allows connection to a computer remotely
@@ -8,6 +10,8 @@ cask "balenaetcher"
 cask "bruno"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
+# Server and cloud storage browser
+cask "cyberduck"
 # API documentation browser and code snippet manager
 cask "dash@6"
 # Voice and text chat software
@@ -16,6 +20,9 @@ cask "discord"
 cask "docker"
 # Online diagram software
 cask "drawio"
+# Web browser
+cask "firefox"
+cask "font-fontawesome"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
@@ -25,6 +32,10 @@ cask "garmin-express"
 cask "gas-mask"
 # Menu bar app to monitor graphics card usage
 cask "gfxcardstatus"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Free and open-source image editor
+cask "gimp"
 # Cross-platform Git credential storage for multiple hosting providers
 cask "git-credential-manager"
 # Web browser
@@ -37,12 +48,16 @@ cask "jordanbaird-ice"
 cask "keybase"
 # Screenshot and annotation tool
 cask "ksnip"
+# Free cross-platform office suite, fresh version
+cask "libreoffice"
 # Open-source cross-platform alternative to AirDrop
 cask "localsend"
 # Software for Logitech devices
 cask "logi-options+"
 # Native desktop app for Messenger (formerly Facebook Messenger)
 cask "messenger"
+# Multi-platform web browser
+cask "microsoft-edge"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 # Knowledge base that works on top of a local folder of plain text Markdown files
@@ -75,6 +90,8 @@ cask "visual-studio-code"
 cask "vlc"
 # Create, manage, and run virtual machines
 cask "vmware-fusion"
+# Remote desktop application focusing on security
+cask "vnc-viewer"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
 # Native desktop client for WhatsApp
