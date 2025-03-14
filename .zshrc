@@ -178,6 +178,13 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include $CPPFLAGS"
 # For pkg-config to find zlib
 # export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
+# OpenBlas
+# For compilers to find openblas you may need to set:
+export LDFLAGS="-L/usr/local/opt/openblas/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/openblas/include $CPPFLAGS"
+# For pkg-config to find openblas you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig"
+
 # LLVM
 # If you need to have llvm first in your PATH, run:
 export PATH="/usr/local/opt/llvm/bin:$PATH"
@@ -190,12 +197,12 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include $CPPFLAGS"
 # C and C++ Compilers with `ccache` an Object-file caching compiler wrapper
 #
 # Apple `clang` (from Xcode Developer Toolchains)
-# export CC="ccache gcc"
-# export CXX="ccache g++"
+export CC="ccache gcc"
+export CXX="ccache g++"
 #
 # Homebrew `clang` (from LLVM)
-export CC="ccache clang"
-export CXX="ccache clang++"
+# export CC="ccache clang"
+# export CXX="ccache clang++"
 
 # Tcl programming language and Tk graphical user interface toolkit (Version 8)
 export PATH="/usr/local/opt/tcl-tk@8/bin:$PATH"
