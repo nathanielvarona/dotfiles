@@ -12,6 +12,9 @@
 [includeIf "gitdir:/usr/local/Homebrew/Library/Taps/"]
 	path = ~/.gitconfig-personal
 
+[includeIf "gitdir:~/Projects/others/"]
+	path = ~/.gitconfig-others
+
 # For Organization (Private) or Work Related Contributions
 [includeIf "gitdir:~/Projects/work/"]
 	path = ~/.gitconfig-work
@@ -40,7 +43,7 @@
 	prompt = false
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [difftool "meld"]
 	trustExitCode = true
 	cmd = open -W -a /Applications/Meld.app/Contents/MacOS/Meld --args \"$LOCAL\" \"$REMOTE\"
@@ -80,7 +83,7 @@
 # 	insteadOf = https://github.com/
 
 [credential]
-	helper = 
+	helper =
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true

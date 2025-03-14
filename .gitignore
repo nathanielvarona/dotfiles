@@ -51,6 +51,7 @@ plugged/
 .secrets
 .gitconfig-personal
 .gitconfig-work
+.gitconfig-others
 
 # macOS Finder metadata
 .DS_Store
