@@ -2,11 +2,15 @@
 cask "airdroid"
 # Distribution of the Python and R programming languages for scientific computing
 cask "anaconda"
+# Redis desktop manager
+cask "another-redis-desktop-manager"
 # Allows connection to a computer remotely
 cask "anydesk"
+# Audio utility
+cask "background-music"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
-# Opensource IDE for exploring and testing api's
+# Open source IDE for exploring and testing APIs
 cask "bruno"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
@@ -17,7 +21,7 @@ cask "dash@6"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerised applications and microservices
-cask "docker"
+cask "docker-desktop"
 # Online diagram software
 cask "drawio"
 # Web browser
@@ -42,6 +46,8 @@ cask "git-credential-manager"
 cask "google-chrome"
 # Grammarly for desktop
 cask "grammarly-desktop"
+# Open-source video transcoder
+cask "handbrake-app"
 # Menu bar manager
 cask "jordanbaird-ice"
 # End-to-end encryption software
@@ -64,6 +70,8 @@ cask "ngrok"
 cask "obsidian"
 # Open source build of Lens Kubernetes IDE
 cask "openlens"
+# Android file transfer
+cask "openmtp"
 # Administration and development platform for PostgreSQL
 cask "pgadmin4"
 # Collaboration platform for API development
@@ -80,6 +88,8 @@ cask "sourcetree"
 cask "spotify"
 # Remote access and connectivity software focused on security
 cask "teamviewer"
+# Open-source BitTorrent client
+cask "transmission"
 # Development environment
 cask "vagrant"
 # Virtualiser for x86 hardware
@@ -88,8 +98,6 @@ cask "virtualbox"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
-# Create, manage, and run virtual machines
-cask "vmware-fusion"
 # Remote desktop application focusing on security
 cask "vnc-viewer"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
@@ -100,5 +108,7 @@ cask "whatsapp"
 cask "winbox"
 # Multiplayer code editor
 cask "zed"
+# Mesh VPN client
+cask "zerotier-one"
 # Video communication and virtual meeting platform
 cask "zoom"

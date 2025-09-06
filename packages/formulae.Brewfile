@@ -4,8 +4,6 @@ brew "shellcheck"
 brew "actionlint"
 # Asciicast to GIF converter
 brew "agg"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # Record and share terminal sessions
 brew "asciinema"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more
@@ -76,6 +74,8 @@ brew "gobject-introspection"
 brew "gping"
 # Toolkit for creating graphical user interfaces
 brew "gtk+3"
+# Grammar Checker for Developers
+brew "harper"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Improved top (interactive process viewer)
@@ -115,9 +115,9 @@ brew "mas"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Port scanning utility for large networks
-brew "nmap", link: false
+brew "nmap"
 # Ping Tool in Rust with Real-Time Data and Visualizations
-brew "nping"
+brew "nping", link: false
 # Create, run, and share large language models (LLMs)
 brew "ollama"
 # Open source computer vision library
@@ -129,7 +129,7 @@ brew "pass"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Object-relational database system
-brew "postgresql@16", restart_service: :changed
+brew "postgresql@16"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
 # Password generator
@@ -138,14 +138,20 @@ brew "pwgen"
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Generic machine emulator and virtualizer
 brew "qemu"
+# Messaging and streaming broker
+brew "rabbitmq"
 # Ruby version manager
 brew "rbenv"
 # Makes shims aware of bundle install paths
 brew "rbenv-bundler"
 # Adds basic gemset support to rbenv
 brew "rbenv-gemset"
+# Persistent key-value database, with built-in net interface
+brew "redis"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
@@ -206,3 +212,5 @@ brew "amar1729/formulae/pinentry-prefer-tty"
 brew "ethereum/ethereum/ethereum"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
+# Ookla Speedtest
+brew "teamookla/speedtest/speedtest"

@@ -5,7 +5,7 @@ BREW_BUNDLE_DUMP = brew bundle dump --describe --force --file
 
 all: brewfile asdf pyenv pipx krew helm rust-cargo github-cli-extension ollama
 
-brewfile: brewfile-formulae brewfile-casks brewfile-taps brewfile-mas brewfile-vscode brewfile-whalebrew
+brewfile: brewfile-formulae brewfile-casks brewfile-taps brewfile-mas brewfile-vscode # brewfile-whalebrew
 
 brewfile-formulae:
 	$(BREW_BUNDLE_DUMP) $(PACKAGES)/formulae.Brewfile --brews

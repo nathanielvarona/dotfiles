@@ -1,1 +1,7 @@
-theme = dark:GitHub-Dark-Default,light:GitHub-Ligth-Default
+theme = dark:GitHub-Dark-Default,light:GitHub-Light-Default
+
+# disable ligatures
+font-feature = -calt
+
+# Enable built-in shell integration
+# shell-integration = zsh
