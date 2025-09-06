@@ -51,7 +51,7 @@
   "find-it-faster.general.killTerminalAfterUse": true,
   "find-it-faster.general.batTheme": "GitHub",
   // "find-it-faster.general.useGitIgnoreExcludes": false, # BUG: Try to revisit on future releases
-  "editor.lineNumbers": "relative",
+  // "editor.lineNumbers": "relative",
   "settings.cycle": [
     {
       "id": "relativeLineNumbers",
@@ -205,7 +205,15 @@
       "backgroundColor": "#eba0ac" // Maroon (Debugging, low-medium severity)
     }
   ],
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "vscode-markdown-github.theme.dark": "dark",
+  "files.exclude": {
+    "**/__pycache__": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "vs-kubernetes": {
+    "vs-kubernetes.minikube-show-information-expiration": "2025-10-02T03:52:34.438Z"
+  },
 
   // Test Todo Highlight
   /*
