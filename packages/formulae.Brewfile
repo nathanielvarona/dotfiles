@@ -115,9 +115,9 @@ brew "mas"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Port scanning utility for large networks
-brew "nmap"
+brew "nmap", link: false
 # Ping Tool in Rust with Real-Time Data and Visualizations
-brew "nping", link: false
+brew "nping"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
 # Open source computer vision library
