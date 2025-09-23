@@ -1,5 +1,6 @@
 return {
   "iamcco/markdown-preview.nvim",
+  tag = "v0.0.10",
   -- dir = "~/Projects/contribute/neovim/plugins/markdown-preview.nvim",
   -- dev = true,
   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

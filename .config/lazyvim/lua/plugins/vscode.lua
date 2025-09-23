@@ -11,6 +11,10 @@
     - https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim
 ]]
 
+if not vim.g.vscode then
+  return {}
+end
+
 return {
   -- Import the VSCode extras from LazyVim
   {
@@ -21,13 +25,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = function(_, opts)
-      if not vim.g.vscode then
-        return {}
-      end
-
       -- Notify the user that VSCode-specific configuration has been loaded
       vim.notify("Neovim: LazyVim", vim.log.levels.INFO)
-
       return opts
     end,
   },
