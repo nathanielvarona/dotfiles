@@ -11,3 +11,8 @@
 --   - and finally your own `plugins`
 
 -- vim.g.lazyvim_check_order = false
+
+-- Default sessionoptions settings
+-- vim.o.sessionoptions = "buffers,curdir,tabpages,winsize,help,globals,skiprtp,folds"
+-- Auto-Session Plugin Recommendation
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
