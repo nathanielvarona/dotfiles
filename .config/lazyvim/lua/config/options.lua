@@ -14,5 +14,6 @@
 
 -- Default sessionoptions settings
 -- vim.o.sessionoptions = "buffers,curdir,tabpages,winsize,help,globals,skiprtp,folds"
+-- Inspect Settings Vim Command: "set sessionoptions?"
 -- Auto-Session Plugin Recommendation
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
