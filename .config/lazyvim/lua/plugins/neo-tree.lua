@@ -1,15 +1,8 @@
+-- Extending LazyVim Pre-Included Plugins
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    "MunifTanjim/nui.nvim",
-    -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-  },
-  lazy = false,
-  config = function()
-    require("neo-tree").setup({
+  opts = function(_, opts)
+    return vim.tbl_deep_extend("force", opts, {
       filesystem = {
         filtered_items = {
           visible = true,
@@ -17,15 +10,22 @@ return {
           hide_dotfiles = false,
           hide_gitignored = true,
           hide_by_name = {
-            -- add extension names you want to explicitly exclude
-            -- ".git",
-            -- ".DS_Store",
-            -- "thumbs.db",
+            ".git",
+            ".DS_Store",
+            "thumbs.db",
           },
           never_show = {},
         },
       },
     })
-    vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
   end,
+  keys = {
+    {
+      "<C-n>",
+      ":Neotree filesystem reveal toggle<CR>",
+      desc = "Toggle Neo-tree",
+      noremap = true,
+      silent = true,
+    },
+  },
 }
