@@ -1,4 +1,4 @@
-theme = dark:GitHub-Dark-Default,light:GitHub-Light-Default
+theme = dark:GitHub Dark Default,light:GitHub Light Default
 
 # disable ligatures
 font-feature = -calt
