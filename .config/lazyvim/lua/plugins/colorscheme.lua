@@ -17,6 +17,8 @@ return {
       require("github-theme").setup({
         -- your custom options here
       })
+      -- vim.cmd("colorscheme github_dark_high_contrast")
+      -- vim.cmd("colorscheme github_dark_tritanopia")
     end,
   },
 }
