@@ -50,6 +50,8 @@ cask "google-chrome"
 cask "grammarly-desktop"
 # Open-source video transcoder
 cask "handbrake-app"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
 # Menu bar manager
 cask "jordanbaird-ice"
 # End-to-end encryption software
