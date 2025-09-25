@@ -1,5 +1,5 @@
 # Use Command `tmuxp load .`
-before_script: wezterm cli set-tab-title dotfiles
+# before_script: wezterm cli set-tab-title dotfiles
 session_name: dotfiles
 windows:
   - window_name: editor
