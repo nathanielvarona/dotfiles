@@ -22,7 +22,7 @@ return {
   keys = {
     {
       "<C-n>",
-      ":Neotree filesystem reveal toggle<CR>",
+      ":Neotree filesystem reveal left<CR>",
       desc = "Toggle Neo-tree",
       noremap = true,
       silent = true,
