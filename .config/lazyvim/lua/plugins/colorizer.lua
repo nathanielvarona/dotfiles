@@ -1,6 +1,6 @@
 return {
   "norcalli/nvim-colorizer.lua",
-  branch = "master",
+  -- branch = "master",
   config = function()
     require("colorizer").setup({
       "lua",

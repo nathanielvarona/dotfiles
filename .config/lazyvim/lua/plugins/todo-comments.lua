@@ -1,6 +1,6 @@
 return {
   "folke/todo-comments.nvim",
-  tag = "v1.4.0",
+  -- tag = "v1.4.0",
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
     keywords = {
