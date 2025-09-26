@@ -47,7 +47,7 @@
   },
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
   "vscode-neovim.NVIM_APPNAME": "lazyvim", // "astronvim"
-  "find-it-faster.general.useTerminalInEditor": false,
+  "find-it-faster.general.useTerminalInEditor": true,
   "find-it-faster.general.killTerminalAfterUse": false,
   "find-it-faster.general.batTheme": "GitHub",
   // "find-it-faster.general.useGitIgnoreExcludes": false, # BUG: Try to revisit on future releases
@@ -213,6 +213,20 @@
   "javascript.updateImportsOnFileMove.enabled": "never",
   "vs-kubernetes": {
     "vs-kubernetes.minikube-show-information-expiration": "2025-10-02T03:52:34.438Z"
+  },
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   }
 
   // Test Todo Highlight

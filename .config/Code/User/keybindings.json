@@ -31,7 +31,7 @@
   // File Explorer
   // Neo-tree-like remaps
   {
-    "key": "space e",
+    "key": "space shift+e",
     "command": "runCommands",
     "args": {
       "commands": [
@@ -42,7 +42,7 @@
     "when": "neovim.mode == 'normal' && (editorTextFocus || !inputFocus) && !sideBarFocus"
   },
   {
-    "key": "space e",
+    "key": "space shift+e",
     "command": "runCommands",
     "args": {
       "commands": [
@@ -53,7 +53,7 @@
     "when": "sideBarFocus && !inputFocus"
   },
   {
-    "key": "space e",
+    "key": "space shift+e",
     "when": "neovim.mode == 'normal' && editorTextFocus && foldersViewVisible",
     "command": "workbench.action.toggleSidebarVisibility"
   },
@@ -61,7 +61,7 @@
   // FindItFaster
   // Telescope-like keybinding
   {
-    "key": "space f g",
+    "key": "space f shift+f",
     "command": "find-it-faster.findFiles",
     "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
     "description": "Find It Faster: search file"

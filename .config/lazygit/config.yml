@@ -23,3 +23,6 @@ gui:
 
   authorColors:
     '*': '#6f42c1'
+
+os:
+  editPreset: "vscode"
