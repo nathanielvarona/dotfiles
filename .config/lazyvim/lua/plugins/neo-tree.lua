@@ -1,4 +1,3 @@
--- Extending LazyVim Pre-Included Plugins
 return {
   "nvim-neo-tree/neo-tree.nvim",
   opts = function(_, opts)
@@ -17,7 +16,24 @@ return {
           never_show = {},
         },
       },
+      default_component_configs = {
+        indent = {
+          indent_size = 2,
+          padding = 1,
+          indent_guides = {
+            enable = true,
+          },
+          with_markers = true,
+          indent_marker = "│",
+          last_indent_marker = "└",
+          highlight = "NeoTreeIndentMarker",
+        },
+      },
     })
+  end,
+  config = function(_, opts)
+    vim.cmd("highlight NeoTreeIndentMarker guifg=#74c7ec")
+    require("neo-tree").setup(opts)
   end,
   keys = {
     {
