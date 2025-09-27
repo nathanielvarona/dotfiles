@@ -28,3 +28,6 @@ vim.g.lazyvim_python_ruff = "ruff"
 -- Set to "solargraph" to use solargraph instead of ruby_lsp.
 vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 vim.g.lazyvim_ruby_formatter = "rubocop"
+
+-- Better Hardtime Hints Visibility
+-- vim.opt.showmode = false
