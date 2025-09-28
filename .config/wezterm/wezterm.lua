@@ -7,7 +7,11 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = "Brogrammer"
+-- config.color_scheme = "Brogrammer"
+-- config.color_scheme = "GitHub Dark"
+-- config.color_scheme = "Tangoesque (terminal.sexy)"
+-- config.color_scheme = "Terminix Dark (Gogh)"
+config.color_scheme = "Google (dark) (terminal.sexy)"
 
 -- Intended for Recommended Asciinema Demo
 config.initial_cols = 100
