@@ -1,28 +1,53 @@
 gui:
-  # GitHub Dark Default theme
+  # GitHub Dark Default Theme
+  # theme:
+  #   activeBorderColor:
+  #     - '#0366d6'
+  #     - bold
+  #   inactiveBorderColor:
+  #     - '#444c56'
+  #   optionsTextColor:
+  #     - '#79b8ff'
+  #   selectedLineBgColor:
+  #     - '#2d333b'
+  #   cherryPickedCommitBgColor:
+  #     - '#2d333b'
+  #   cherryPickedCommitFgColor:
+  #     - '#0366d6'
+  #   unstagedChangesColor:
+  #     - '#d73a49'
+  #   defaultFgColor:
+  #     - '#cdd9e5'
+  #   searchingActiveBorderColor:
+  #     - '#fffbdd'
+  #
+  # authorColors:
+  #   '*': '#6f42c1'
+
+  # Catppuccin Mocha Mauve Theme
   theme:
     activeBorderColor:
-      - '#0366d6'
+      - "#cba6f7"
       - bold
     inactiveBorderColor:
-      - '#444c56'
+      - "#a6adc8"
     optionsTextColor:
-      - '#79b8ff'
+      - "#89b4fa"
     selectedLineBgColor:
-      - '#2d333b'
+      - "#313244"
     cherryPickedCommitBgColor:
-      - '#2d333b'
+      - "#45475a"
     cherryPickedCommitFgColor:
-      - '#0366d6'
+      - "#cba6f7"
     unstagedChangesColor:
-      - '#d73a49'
+      - "#f38ba8"
     defaultFgColor:
-      - '#cdd9e5'
+      - "#cdd6f4"
     searchingActiveBorderColor:
-      - '#fffbdd'
+      - "#f9e2af"
 
   authorColors:
-    '*': '#6f42c1'
+    "*": "#b4befe"
 
 os:
   editPreset: "vscode"
