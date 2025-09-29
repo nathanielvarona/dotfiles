@@ -30,4 +30,4 @@ vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 vim.g.lazyvim_ruby_formatter = "rubocop"
 
 -- Better Hardtime Hints Visibility
--- vim.opt.showmode = false
+vim.opt.showmode = false
