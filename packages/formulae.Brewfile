@@ -180,6 +180,8 @@ brew "tmux"
 brew "tmuxp"
 # CLI tool that moves files or folder to the trash
 brew "trash", link: true
+# Parser generator tool
+brew "tree-sitter-cli"
 # Language for application scale JavaScript development
 brew "typescript"
 # Generator for LS_COLORS with support for multiple color themes
