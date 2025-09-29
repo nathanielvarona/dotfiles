@@ -16,7 +16,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   asdf
   fnm
   rbenv
-  pyenv
+  # pyenv
   virtualenv
   anaconda
   go_version
