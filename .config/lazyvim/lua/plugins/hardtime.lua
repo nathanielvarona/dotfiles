@@ -3,6 +3,7 @@ return {
     "m4xshen/hardtime.nvim",
     event = "VeryLazy",
     dependencies = { "MunifTanjim/nui.nvim" },
+    vscode = true, -- Include the use of VSCode to be Disciplined
     config = function()
       require("hardtime").setup({
 
