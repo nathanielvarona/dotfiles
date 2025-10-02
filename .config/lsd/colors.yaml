@@ -1,40 +1,40 @@
-# Catppuccin Mocha Theme
+# GitHub Dark High Contrast-inspired theme for LSDeluxe
 
-user: "#cba6f7"
-group: "#b4befe"
+user: "#79abff" # Bright blue for user
+group: "#79abff" # Bright blue for group
 permission:
-  read: "#a6e3a1"
-  write: "#f9e2af"
-  exec: "#eba0ac"
-  exec-sticky: "#cba6f7"
-  no-access: "#a6adc8"
-  octal: "#94e2d5"
-  acl: "#94e2d5"
-  context: "#89dceb"
+  read: "#3fb950" # Green for read
+  write: "#d29922" # Yellow for write
+  exec: "#ff7b72" # Red for exec
+  exec-sticky: "#79abff" # Bright blue for sticky exec
+  no-access: "#768390" # Gray for no access
+  octal: "#6cb6ff" # Blue for octal
+  acl: "#6cb6ff" # Blue for acl
+  context: "#6cb6ff" # Blue for context
 date:
-  hour-old: "#94e2d5"
-  day-old: "#89dceb"
-  older: "#74c7ec"
+  hour-old: "#6cb6ff" # Blue for hour-old
+  day-old: "#6cb6ff" # Blue for day-old
+  older: "#79abff" # Bright blue for older
 size:
-  none: "#a6adc8"
-  small: "#a6e3a1"
-  medium: "#f9e2af"
-  large: "#fab387"
+  none: "#768390" # Gray for none
+  small: "#3fb950" # Green for small
+  medium: "#d29922" # Yellow for medium
+  large: "#ffab70" # Orange for large
 inode:
-  valid: "#f5c2e7"
-  invalid: "#a6adc8"
+  valid: "#d2a8ff" # Purple for valid
+  invalid: "#768390" # Gray for invalid
 links:
-  valid: "#f5c2e7"
-  invalid: "#a6adc8"
-tree-edge: "#bac2de"
+  valid: "#d2a8ff" # Purple for valid
+  invalid: "#768390" # Gray for invalid
+tree-edge: "#768390" # Gray for tree edge
 git-status:
-  default: "#cdd6f4"
-  unmodified: "#a6adc8"
-  ignored: "#a6adc8"
-  new-in-index: "#a6e3a1"
-  new-in-workdir: "#a6e3a1"
-  typechange: "#f9e2af"
-  deleted: "#f38ba8"
-  renamed: "#a6e3a1"
-  modified: "#f9e2af"
-  conflicted: "#f38ba8"
+  default: "#c9d1d9" # Default text color
+  unmodified: "#768390" # Gray for unmodified
+  ignored: "#768390" # Gray for ignored
+  new-in-index: "#3fb950" # Green for new in index
+  new-in-workdir: "#3fb950" # Green for new in workdir
+  typechange: "#d29922" # Yellow for typechange
+  deleted: "#ff7b72" # Red for deleted
+  renamed: "#3fb950" # Green for renamed
+  modified: "#d29922" # Yellow for modified
+  conflicted: "#ff7b72" # Red for conflicted
