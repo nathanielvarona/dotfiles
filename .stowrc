@@ -16,3 +16,5 @@
 --ignore=.config/iTerm2
 --ignore=.config/kitty
 --ignore=.config/zellij
+--ignore=.config/Terminal
+--ignore=.config/lsd/colors
