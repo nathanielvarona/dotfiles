@@ -53,6 +53,8 @@ cask "grammarly-desktop"
 cask "handbrake-app"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Enables an integrated web browser in iTerm2
+cask "itermbrowserplugin"
 # Menu bar manager
 cask "jordanbaird-ice"
 # End-to-end encryption software
