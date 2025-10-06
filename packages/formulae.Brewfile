@@ -22,6 +22,8 @@ brew "ccache"
 brew "openblas"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
+# Versatile and fast Unicode/ASCII/ANSI graphics renderer
+brew "chafa"
 # Cross-platform make
 brew "cmake"
 # Zsh completion for conda
@@ -184,6 +186,8 @@ brew "trash", link: true
 brew "tree-sitter-cli"
 # Language for application scale JavaScript development
 brew "typescript"
+# Simple terminal image viewer written in Rust
+brew "viu"
 # Generator for LS_COLORS with support for multiple color themes
 brew "vivid"
 # Executes a program periodically, showing output fullscreen
@@ -212,6 +216,8 @@ brew "amar1729/formulae/browserpass"
 brew "amar1729/formulae/pinentry-prefer-tty"
 # Official Go implementation of the Ethereum protocol
 brew "ethereum/ethereum/ethereum"
+# Drop in replacement for ueberzug written in C++
+brew "jstkdng/programs/ueberzugpp"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # Ookla Speedtest
