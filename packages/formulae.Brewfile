@@ -62,6 +62,8 @@ brew "fx"
 brew "fzf"
 # GitHub command-line tool
 brew "gh"
+# Interpreter for PostScript and PDF
+brew "ghostscript"
 # GIF image/animation creator/editor
 brew "gifsicle"
 # Syntax-highlighting pager for git and diff output
@@ -114,6 +116,8 @@ brew "lsd"
 brew "luarocks"
 # Mac App Store command-line interface
 brew "mas"
+# CLI for Mermaid library
+brew "mermaid-cli"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Port scanning utility for large networks
@@ -172,6 +176,8 @@ brew "sshpass"
 brew "stow"
 # Tool Command Language
 brew "tcl-tk@8"
+# Modernized, complete, self-contained TeX/LaTeX engine
+brew "tectonic"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # Simplified and community-driven man pages
