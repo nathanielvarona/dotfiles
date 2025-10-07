@@ -1,8 +1,8 @@
 argocd
 awscli
 eksctl
-helm-ct
 helm
+helm-ct
 helmfile
 kind
 kompose
@@ -12,6 +12,7 @@ kubectl
 kubectx
 kubeval
 kustomize
+lua
 minikube
 packer
 terraform
