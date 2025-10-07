@@ -60,6 +60,8 @@ cask "itermbrowserplugin"
 cask "jordanbaird-ice"
 # End-to-end encryption software
 cask "keybase"
+# GPU-based terminal emulator
+cask "kitty"
 # Screenshot and annotation tool
 cask "ksnip"
 # Free cross-platform office suite, fresh version
