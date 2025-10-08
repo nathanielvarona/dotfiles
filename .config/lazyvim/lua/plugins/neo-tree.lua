@@ -36,12 +36,12 @@ return {
     require("neo-tree").setup(opts)
   end,
   keys = {
-    {
-      "<C-n>",
-      ":Neotree filesystem reveal left<CR>",
-      desc = "Toggle Neo-tree",
-      noremap = true,
-      silent = true,
-    },
+    -- {
+    --   "<C-n>",
+    --   ":Neotree filesystem reveal left<CR>",
+    --   desc = "Toggle Neo-tree",
+    --   noremap = true,
+    --   silent = true,
+    -- },
   },
 }
