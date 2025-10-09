@@ -33,7 +33,6 @@ cask "firefox"
 cask "font-fontawesome"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
-cask "font-meslo-for-powerlevel10k"
 cask "font-meslo-lg-nerd-font"
 cask "font-symbols-only-nerd-font"
 # Update maps and software, sync with Garmin Connect and register your device
