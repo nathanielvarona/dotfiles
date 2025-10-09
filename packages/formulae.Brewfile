@@ -164,6 +164,8 @@ brew "ripgrep"
 brew "rsync"
 # Safe, concurrent, practical language
 brew "rust"
+# Interactive find and replace in the terminal
+brew "scooter"
 # Generate passwords using SecurityFoundation framework
 brew "sf-pwgen"
 # Autoformat shell script source code
