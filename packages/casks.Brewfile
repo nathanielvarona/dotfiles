@@ -12,6 +12,8 @@ cask "anydesk"
 cask "background-music"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
+# Cross platform SQL editor and database management app
+cask "beekeeper-studio"
 # Open source IDE for exploring and testing APIs
 cask "bruno"
 # Tool to show live information about the batteries in various devices
