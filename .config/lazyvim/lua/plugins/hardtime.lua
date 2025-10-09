@@ -6,7 +6,7 @@ return {
     vscode = true, -- Include the use of VSCode to be Disciplined
     config = function()
       require("hardtime").setup({
-
+        disable_mouse = false,
         hints = {
           ["k%^"] = {
             message = function()
