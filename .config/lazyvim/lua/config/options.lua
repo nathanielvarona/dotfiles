@@ -18,11 +18,13 @@
 -- Auto-Session Plugin Recommendation
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
+-- WARNING: Temporary disabled due to performance issue.
 -- LSP Server to use for Python.
+-- Uncomment if LazyExtras: "lang.python" or "lazyvim.plugins.extras.lang.python" is enabled.
 -- Set to "basedpyright" to use basedpyright instead of pyright.
-vim.g.lazyvim_python_lsp = "pyright"
+-- vim.g.lazyvim_python_lsp = "pyright"
 -- Set to "ruff_lsp" to use the old LSP implementation version.
-vim.g.lazyvim_python_ruff = "ruff"
+-- vim.g.lazyvim_python_ruff = "ruff"
 
 -- LSP Server to use for Ruby.
 -- Set to "solargraph" to use solargraph instead of ruby_lsp.
