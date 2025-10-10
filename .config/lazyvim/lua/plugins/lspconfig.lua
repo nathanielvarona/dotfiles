@@ -1,45 +1,41 @@
 return {
   {
-    "mason-org/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = {
+      automatic_installation = true,
       ensure_installed = {
-        "ty", -- Python LSP, and Linter
-        "ruff", -- Python Formatter
-        "htmx-lsp",
+        "ty", -- Python LSP and Linter (Type Checker)
+        "ruff", -- Python LSP, Linter and Formater (Code Formater)
+        "htmx",
       },
     },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        ty = {
-          -- enabled = false,
-          settings = {
-            ty = {
-              -- disableLanguageServices = true,
-            },
-          },
-        },
-        ruff = {
-          -- enabled = false,
-          cmd_env = { RUFF_TRACE = "messages" },
-          init_options = {
-            settings = {
-              logLevel = "error",
-            },
-          },
-          keys = {
-            {
-              "<leader>co",
-              LazyVim.lsp.action["source.organizeImports"],
-              desc = "Organize Imports",
-            },
-          },
-        },
-        htmx = {
-          -- enabled = false,
-          -- cmd = { "htmx-lsp", "--level", "DEBUG" },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      {
+        "neovim/nvim-lspconfig",
+
+        -- NOTE:
+        -- > If you want to overide the default LSP custom settings.
+        -- > Such as adding custom LSP flags to monitor Log level.
+
+        opts = {
+          -- servers = {
+          --   ty = {
+          --     init_options = {
+          --       logLevel = "debug",
+          --     },
+          --   },
+          --   ruff = {
+          --     init_options = {
+          --       settings = {
+          --         logLevel = "debug",
+          --       },
+          --     },
+          --   },
+          --   htmx = {
+          --     cmd = { "htmx-lsp", "--level", "DEBUG" },
+          --   },
+          -- },
         },
       },
     },
