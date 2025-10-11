@@ -4,6 +4,7 @@
 
 -- vim.g.lazyvim_picker = "fzf"
 -- vim.g.lazyvim_picker = "telescope"
+-- vim.g.lazyvim_picker = "snacks"
 
 -- The order of your `lazy.nvim` imports is incorrect:
 --   - `lazyvim.plugins` should be first

@@ -61,3 +61,6 @@ plugged/
 *.nvim.sw[pon]
 # Backup files created by Neovim
 *.nvim.bak
+
+# Harper Dictionary
+.harper-dictionary.txt
