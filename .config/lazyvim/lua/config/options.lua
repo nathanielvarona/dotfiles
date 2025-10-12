@@ -34,3 +34,10 @@ vim.g.lazyvim_ruby_formatter = "rubocop"
 
 -- Better Hardtime Hints Visibility
 vim.opt.showmode = false
+
+-- Bypass filetype dectection
+vim.filetype.add({
+  extension = {
+    html = "html",
+  },
+})

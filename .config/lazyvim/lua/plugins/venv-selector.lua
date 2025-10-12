@@ -1,3 +1,6 @@
+-- stylua: ignore
+-- if true then return {} end
+
 return {
   {
     -- NOTE: Disable this plugin if LazyExtras: "lang.python" or "lazyvim.plugins.extras.lang.python" is enabled.
