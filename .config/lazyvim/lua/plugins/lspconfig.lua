@@ -57,6 +57,13 @@ return {
             },
           },
         },
+        ltex = {
+          settings = {
+            ltex = {
+              language = "en-US",
+            },
+          },
+        }
       },
     },
   },
