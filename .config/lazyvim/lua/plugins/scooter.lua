@@ -3,7 +3,12 @@
 
 return {
   "folke/snacks.nvim",
-  config = function()
+  opts = {
+    --- your other snacks configs...
+  },
+  config = function(_, opts)
+    require("snacks").setup(opts)
+
     local scooter_term = nil
 
     -- Called by scooter to open the selected file at the correct line from the scooter search list
