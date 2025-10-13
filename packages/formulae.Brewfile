@@ -198,6 +198,8 @@ brew "tree-sitter-cli"
 brew "typescript"
 # Pretty print math in monospace fonts, using a TeX-like syntax
 brew "utftex"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Simple terminal image viewer written in Rust
 brew "viu"
 # Generator for LS_COLORS with support for multiple color themes
