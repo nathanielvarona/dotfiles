@@ -1,3 +1,2 @@
 poetry
-fabric @ git+https://github.com/danielmiessler/fabric
 pylatexenc

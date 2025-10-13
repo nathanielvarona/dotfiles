@@ -50,6 +50,8 @@ brew "editorconfig-checker"
 brew "exif"
 # Modern, maintained replacement for ls
 brew "eza"
+# Open-source framework for augmenting humans using AI
+brew "fabric-ai"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # H.265/HEVC encoder
