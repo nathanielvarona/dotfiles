@@ -212,6 +212,9 @@ export CPPFLAGS="-I/usr/local/opt/tcl-tk@8/include"
 
 export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk@8/lib/pkgconfig"
 
+# ImageMagick Fallback Library
+export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+
 #
 # ---------------------------------------------------------
 ###
