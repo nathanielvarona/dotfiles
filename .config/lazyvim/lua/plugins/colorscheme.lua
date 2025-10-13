@@ -22,8 +22,8 @@ return {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme = "catppuccin-mocha",
-      colorscheme = "github_dark_default",
-      -- colorscheme = "github_dark_high_contrast",
+      -- colorscheme = "github_dark_default",
+      colorscheme = "github_dark_high_contrast",
       -- colorscheme = "github_dark_tritanopia",
       -- colorscheme = "kanagawa-dragon",
       -- colorscheme = "kanagawa-wave",
