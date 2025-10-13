@@ -194,6 +194,8 @@ brew "trash", link: true
 brew "tree-sitter-cli"
 # Language for application scale JavaScript development
 brew "typescript"
+# Pretty print math in monospace fonts, using a TeX-like syntax
+brew "utftex"
 # Simple terminal image viewer written in Rust
 brew "viu"
 # Generator for LS_COLORS with support for multiple color themes
