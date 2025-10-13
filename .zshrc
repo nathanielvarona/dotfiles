@@ -263,8 +263,8 @@ zinit snippet OMZ::plugins/minikube
 source <(fnm env)
 
 # Ruby Version Manager
-# eval "$(rbenv init - zsh)"
-zinit snippet OMZ::plugins/rbenv
+eval "$(rbenv init - zsh)"
+# zinit snippet OMZ::plugins/rbenv
 
 # Anaconda Initialization (Python)
 export CONDA_AUTO_ACTIVATE_BASE=false
