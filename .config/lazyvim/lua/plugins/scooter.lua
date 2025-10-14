@@ -69,5 +69,12 @@ return {
       local search_text = vim.fn.getregion()
       open_scooter_with_text(search_text)
     end, { desc = "Open Scooter with selected text" })
+
+    vim.keymap.set("n", "<leader>sF", function()
+      scooter_hidden = not scooter_hidden
+      require("snacks").notify("Scooter hidden files: " .. (scooter_hidden and "on" or "off"))
+      -- open_scooter()
+    end, { desc = "Toggle Scooter hidden files" })
+
   end,
 }
