@@ -70,6 +70,8 @@ brew "gh"
 brew "ghostscript"
 # GIF image/animation creator/editor
 brew "gifsicle"
+# Highest-quality GIF encoder based on pngquant
+brew "gifski"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
 # GNU Pretty Good Privacy (PGP) package
