@@ -10,6 +10,7 @@ return {
     require("snacks").setup(opts)
 
     local scooter_term = nil
+    local scooter_hidden = true
 
     -- Called by scooter to open the selected file at the correct line from the scooter search list
     _G.EditLineFromScooter = function(file_path, line)
@@ -39,7 +40,11 @@ return {
       if is_terminal_running(scooter_term) then
         scooter_term:toggle()
       else
-        scooter_term = require("snacks").terminal.open("scooter", {
+        local cmd = "scooter"
+        if scooter_hidden then
+          cmd = cmd .. " --hidden"
+        end
+        scooter_term = require("snacks").terminal.open(cmd, {
           win = { position = "float" },
         })
       end
@@ -50,8 +55,11 @@ return {
         scooter_term:close()
       end
 
-      local escaped_text = vim.fn.shellescape(search_text:gsub("\r?\n", " "))
-      scooter_term = require("snacks").terminal.open("scooter --fixed-strings --search-text " .. escaped_text, {
+      local cmd = "scooter --fixed-strings --search-text " .. vim.fn.shellescape(search_text:gsub("\r?\n", " "))
+      if scooter_hidden then
+        cmd = cmd .. " --hidden"
+      end
+      scooter_term = require("snacks").terminal.open(cmd, {
         win = { position = "float" },
       })
     end
