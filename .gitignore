@@ -64,3 +64,4 @@ plugged/
 
 # Harper Dictionary
 .harper-dictionary.txt
+.ruby-lsp
