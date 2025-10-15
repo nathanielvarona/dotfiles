@@ -8,10 +8,6 @@ My Dotfiles Collection
 - Managed using GNU `stow` to symlink dotfiles to my home directory `~/` or `$HOME`
 - Handy scripts for installing packages and development toolings
 
-## Screencast
-
-[![asciicast - dotfiles: tmuxp - lazyvim - tree-sitter - lspconfig - lazygit](https://asciinema.org/a/748818.svg)](https://asciinema.org/a/748818?autoplay=1&loop=1)
-
 ## Quick Setup
 
 ```bash
@@ -35,3 +31,10 @@ stow --restow --verbose .
 ## Tooling Documentations
 
 Kindly check the [./docs](./docs) directory.
+
+## Screencast
+
+- dotfiles: tmuxp - lazyvim - tree-sitter - lspconfig - lazygit
+  [![asciicast - dotfiles: tmuxp - lazyvim - tree-sitter - lspconfig - lazygit](https://asciinema.org/a/748818.svg)](https://asciinema.org/a/748818?autoplay=1&loop=1)
+- Dotfiles - Zinit Initial Load
+  [![Dotfiles - Zinit Initial Load](https://asciinema.org/a/666761.svg)](https://asciinema.org/a/666761?autoplay=1&loop=1)
