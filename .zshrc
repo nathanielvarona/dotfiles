@@ -28,7 +28,7 @@ fi
 
 # Forcing Apps to use XDG Spec
 export VSCODE_APPDATA="${XDG_CONFIG_HOME}" # NOTE: Also available in `EnvPane`
-# export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg" # TODO: Evaluate first the Apps I commonly use the requires GnuPG
+export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg" # TODO: Evaluate first the Apps I commonly use the requires GnuPG
 
 # Homebrew Initialization
 eval "$(/usr/local/bin/brew shellenv)"
