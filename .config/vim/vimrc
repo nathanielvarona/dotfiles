@@ -1,0 +1,4 @@
+let s:script_dir = expand('<sfile>:p:h')
+execute 'source' s:script_dir . '/options.vim'
+execute 'source' s:script_dir . '/keybinds.vim'
+execute 'source' s:script_dir . '/plugins.vim'
