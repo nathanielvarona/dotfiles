@@ -395,7 +395,7 @@ if command -v ngrok &>/dev/null; then
   eval "$(ngrok completion)"
 fi
 
-# See `~/.vimrc` for Cursor Escape Codes
+# See `~/.config/vim/vimrc` for Cursor Escape Codes
 # Fixes Terminal Cursor in a Tmux with a VI Mode Keys Enabled
 if [ -n "$TMUX" ]; then
   _fix_cursor() {
