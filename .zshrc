@@ -332,6 +332,9 @@ fi
 # API documentation browser and code snippet manager
 zinit snippet OMZ::plugins/dash
 
+# ZSH VI Mode:
+source /usr/local/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
 # Define the directory to search (change as needed)
 source_dir=~/.scripts/autoload
 # Loop through all files ending with *.source.sh recursively

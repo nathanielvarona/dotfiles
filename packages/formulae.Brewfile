@@ -228,6 +228,8 @@ brew "zlib"
 brew "zoxide"
 # Additional completion definitions for zsh
 brew "zsh-completions"
+# Better and friendly vi(vim) mode plugin for ZSH
+brew "zsh-vi-mode"
 # Host application for browser extension providing access to your password store
 brew "amar1729/formulae/browserpass"
 # Prefer the tty when using pinentry, fallback to GUI

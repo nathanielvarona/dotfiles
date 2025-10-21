@@ -20,6 +20,7 @@ return {
         htmx = {
           cmd = { "htmx-lsp", "--level", "DEBUG" },
         },
+        -- pylsp = {},
         -- pyright = {
         --   settings = {
         --     python = {
