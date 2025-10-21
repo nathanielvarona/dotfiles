@@ -32,9 +32,9 @@ stow --restow --verbose .
 
 Kindly check the [./docs](./docs) directory.
 
-## Screencast
+## Asciinema Demo
 
-- dotfiles: tmuxp - lazyvim - tree-sitter - lspconfig - lazygit
-  [![asciicast - dotfiles: tmuxp - lazyvim - tree-sitter - lspconfig - lazygit](https://asciinema.org/a/748818.svg)](https://asciinema.org/a/748818?autoplay=1&loop=1)
+- Dotfiles - tmuxp, lazyvim, treesitter, lspconfig, and lazygit
+  [![asciicast - Dotfiles - tmuxp, lazyvim, treesitter, lspconfig, and lazygit](https://asciinema.org/a/748818.svg)](https://asciinema.org/a/748818?autoplay=1&loop=1)
 - Dotfiles - Zinit Initial Load
   [![Dotfiles - Zinit Initial Load](https://asciinema.org/a/666761.svg)](https://asciinema.org/a/666761?autoplay=1&loop=1)
