@@ -142,6 +142,8 @@ brew "opentofu"
 brew "pass"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Object-relational database system
 brew "postgresql@16"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
@@ -166,6 +168,8 @@ brew "rbenv-bundler"
 brew "rbenv-gemset"
 # Persistent key-value database, with built-in net interface
 brew "redis"
+# SVG rendering tool and library
+brew "resvg"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
@@ -174,6 +178,8 @@ brew "rsync"
 brew "rust"
 # Interactive find and replace in the terminal
 brew "scooter"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
 # Generate passwords using SecurityFoundation framework
 brew "sf-pwgen"
 # Autoformat shell script source code
