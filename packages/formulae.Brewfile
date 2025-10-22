@@ -190,6 +190,8 @@ brew "slides"
 brew "sshpass"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# TOML toolkit written in Rust
+brew "taplo"
 # Tool Command Language
 brew "tcl-tk@8"
 # Modernized, complete, self-contained TeX/LaTeX engine
