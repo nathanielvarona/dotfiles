@@ -46,6 +46,8 @@ brew "dvm"
 brew "editorconfig"
 # Tool to verify that your files are in harmony with your .editorconfig
 brew "editorconfig-checker"
+# Official Go implementation of the Ethereum protocol
+brew "ethereum"
 # Read, write, modify, and display EXIF data on the command-line
 brew "exif"
 # Modern, maintained replacement for ls
@@ -232,8 +234,6 @@ brew "zsh-completions"
 brew "amar1729/formulae/browserpass"
 # Prefer the tty when using pinentry, fallback to GUI
 brew "amar1729/formulae/pinentry-prefer-tty"
-# Official Go implementation of the Ethereum protocol
-brew "ethereum/ethereum/ethereum"
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
