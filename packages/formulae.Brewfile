@@ -220,6 +220,8 @@ brew "whalebrew"
 brew "wireguard-tools"
 # JavaScript package manager
 brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
 # View colored diff with side by side and auto pager support
 brew "ydiff"
 # Feature-rich command-line audio/video downloader
