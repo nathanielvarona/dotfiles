@@ -191,24 +191,22 @@ export CPPFLAGS="-I/usr/local/opt/openblas/include $CPPFLAGS"
 # For pkg-config to find openblas you may need to set:
 # export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig"
 
-# LLVM
+
+# Comment LLVM settings to only use Apple `clang` (from Xcode Developer Toolchains)
+# Homebrew `clang` (from LLVM)
 # If you need to have llvm first in your PATH, run:
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+# export PATH="/usr/local/opt/llvm/bin:$PATH"
 # To use the bundled libc++ please add the following LDFLAGS:
 # export LDFLAGS="-L/usr/local/opt/llvm/lib/c++ -Wl,-rpath,/usr/local/opt/llvm/lib/c++ $LDFLAGS"
 # For compilers to find llvm you may need to set:
-export LDFLAGS="-L/usr/local/opt/llvm/lib $LDFLAGS"
-export CPPFLAGS="-I/usr/local/opt/llvm/include $CPPFLAGS"
+# export LDFLAGS="-L/usr/local/opt/llvm/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/llvm/include $CPPFLAGS"
+# For cmake to find llvm you may need to set:
+# export CMAKE_PREFIX_PATH="/usr/local/opt/llvm"
 
 # C and C++ Compilers with `ccache` an Object-file caching compiler wrapper
-#
-# Apple `clang` (from Xcode Developer Toolchains)
-export CC="ccache gcc"
-export CXX="ccache g++"
-#
-# Homebrew `clang` (from LLVM)
-# export CC="ccache clang"
-# export CXX="ccache clang++"
+export CC="ccache clang"
+export CXX="ccache clang++"
 
 # Tcl programming language and Tk graphical user interface toolkit (Version 8)
 export PATH="/usr/local/opt/tcl-tk@8/bin:$PATH"
