@@ -45,6 +45,12 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
+# Zsh Vi Mode
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+# Fix zsh-history-substring-search behaviour
+zvm_after_init_commands+=("bindkey '^[[A' up-line-or-search" "bindkey '^[[B' down-line-or-search")
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -331,9 +337,6 @@ fi
 
 # API documentation browser and code snippet manager
 zinit snippet OMZ::plugins/dash
-
-# ZSH VI Mode:
-source /usr/local/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Define the directory to search (change as needed)
 source_dir=~/.scripts/autoload
