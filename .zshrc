@@ -415,7 +415,7 @@ fi
 # Fixes Terminal Cursor in a Tmux with a VI Mode Keys Enabled
 if [ -n "$TMUX" ]; then
   _fix_cursor() {
-    echo -ne '\e[1 q'
+    echo -ne '\e[6 q'
   }
   precmd_functions+=(_fix_cursor)
 fi
