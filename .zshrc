@@ -125,7 +125,12 @@ export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=0
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 
 # ZSH_HIGHLIGHT_HIGHLIGHTERS
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(
+  main
+  brackets
+  pattern
+  # cursor
+)
 export ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
@@ -139,6 +144,7 @@ zvm_after_init_commands+=(
   "bindkey '^[[A' history-substring-search-up"
   "bindkey '^[[B' history-substring-search-down"
 )
+export ZVM_VI_EDITOR=vim
 
 # GNU Bins
 # NOTE: Some were internally loaded in the $PATH if without conflicts
