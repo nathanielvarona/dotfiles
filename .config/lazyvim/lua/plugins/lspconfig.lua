@@ -16,9 +16,20 @@ return {
             },
           },
         },
+        bashls = {
+          filetypes = {
+            "bash",
+            "sh",
+            "zsh"
+          }
+        },
         html = {},
         htmx = {
-          cmd = { "htmx-lsp", "--level", "DEBUG" },
+          -- cmd = {
+          --   "htmx-lsp",
+          --   "--level",
+          --   "DEBUG"
+          -- },
         },
         -- pylsp = {},
         -- pyright = {

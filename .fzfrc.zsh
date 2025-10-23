@@ -56,10 +56,10 @@ _fzf_comprun() {
   shift
 
   case "$command" in
-  cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-  export | unset) fzf --preview "eval 'echo \${}'" "$@" ;;
-  ssh) fzf --preview 'dig {}' "$@" ;;
-  *) fzf --preview "$show_file_or_dir_preview" "$@" ;;
+    cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export | unset) fzf --preview "eval 'echo \${}'" "$@" ;;
+    ssh) fzf --preview 'dig {}' "$@" ;;
+    *) fzf --preview "$show_file_or_dir_preview" "$@" ;;
   esac
 }
 
@@ -98,23 +98,23 @@ fgswt() {
 ###
 # ---------------------------------------------------------
 # Combine Atuin to FZF
-# Use the `CTRL+Y` to access Atuin UI
+# Use the `CTRL+E` to access Atuin UI
 #
 
 combine_fzf_atuin() {
-  if ! which atuin &>/dev/null; then return 1; fi
-  bindkey '^Y' _atuin_search_widget
+  if ! which atuin &> /dev/null; then return 1; fi
+  bindkey '^E' _atuin_search_widget
 
   export ATUIN_NOBIND="true"
   eval "$(atuin init zsh)"
   fzf-atuin-history-widget() {
     local selected num
-    setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
+    setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
 
     # local atuin_opts="--cmd-only --limit ${ATUIN_LIMIT:-5000}"
     local atuin_opts="--cmd-only"
     local fzf_opts=(
-      --height=${FZF_TMUX_HEIGHT:-100%}
+      --height=${FZF_TMUX_HEIGHT:-40%}
       --tac
       "-n2..,.."
       --tiebreak=index
@@ -127,8 +127,8 @@ combine_fzf_atuin() {
     )
 
     selected=$(
-      eval "atuin search ${atuin_opts}" |
-        fzf "${fzf_opts[@]}"
+      eval "atuin search ${atuin_opts}" \
+                                        | fzf "${fzf_opts[@]}"
     )
     local ret=$?
     if [ -n "$selected" ]; then
@@ -142,6 +142,37 @@ combine_fzf_atuin() {
   bindkey '^R' fzf-atuin-history-widget
 }
 combine_fzf_atuin
+
+# GitHub Gist: https://gist.github.com/nikvdp/f72ff1776815861c5da78ceab2847be2
+# make sure you have `tac` [1] (if on on macOS) and `atuin` [2] installed, then drop the below in your ~/.zshrc
+#
+# [1]: https://unix.stackexchange.com/questions/114041/how-can-i-get-the-tac-command-on-os-x
+# [2]: https://github.com/ellie/atuin
+
+# atuin-setup() {
+#   ! hash atuin && return
+#   bindkey '^E' _atuin_search_widget
+#
+#   export ATUIN_NOBIND="true"
+#   eval "$(atuin init zsh)"
+#   fzf-atuin-history-widget() {
+#     local selected num
+#     setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
+#     selected=$(atuin search --cmd-only --limit ${ATUIN_LIMIT:-5000} | tac |
+#       FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort,ctrl-z:ignore $FZF_CTRL_R_OPTS --query=${LBUFFER} +m" fzf)
+#     local ret=$?
+#     if [ -n "$selected" ]; then
+#       # the += lets it insert at current pos instead of replacing
+#       LBUFFER+="${selected}"
+#     fi
+#     zle reset-prompt
+#     return $ret
+#   }
+#   zle -N fzf-atuin-history-widget
+#   bindkey '^R' fzf-atuin-history-widget
+# }
+#
+# atuin-setup
 
 #
 # ---------------------------------------------------------

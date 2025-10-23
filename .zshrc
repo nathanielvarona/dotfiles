@@ -45,12 +45,6 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
-# Zsh Vi Mode
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
-# Fix zsh-history-substring-search behaviour
-zvm_after_init_commands+=("bindkey '^[[A' up-line-or-search" "bindkey '^[[B' down-line-or-search")
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -66,9 +60,25 @@ zinit snippet OMZ::plugins/extract
 zinit snippet OMZ::plugins/gnu-utils
 zinit snippet OMZ::plugins/common-aliases
 
+# Command-line fuzzy finder written in Go
+source <(fzf --zsh)
+
+# Atuin Command History Database (Vanilla Setup)
+# export ATUIN_NOBIND="true"
+# eval "$(atuin init zsh)"
+# zinit load atuinsh/atuin
+
+# bindkey '^E' atuin-search
+
+# bind to the up key, which depends on terminal mode
+# bindkey '^[[A' atuin-up-search
+# bindkey '^[OA' atuin-up-search
+
 # fzf is a general-purpose command-line fuzzy finder.
 # https://github.com/junegunn/fzf
-[[ ! -f ~/.fzfrc.zsh ]] || source ~/.fzfrc.zsh
+function init_fzfrc() {
+  [[ ! -f ~/.fzfrc.zsh ]] || source ~/.fzfrc.zsh
+}
 
 # Replace zsh's default completion selection menu with fzf!
 # https://github.com/Aloxaf/fzf-tab
@@ -86,25 +96,11 @@ zinit light bigH/git-fuzzy
 zinit ice as"program" pick"bin/git-forgit"
 zinit load wfxr/forgit
 
-# Command-line fuzzy finder written in Go
-source <(fzf --zsh)
-
 # Shell extension to navigate your filesystem faster
 source <(zoxide init --cmd cd zsh)
 
 # Jump around (same with zoxide) with fzf
 zinit load agkozak/zsh-z
-
-# Atuin Command History Database (Vanilla Setup)
-# export ATUIN_NOBIND="true"
-# # eval "$(atuin init zsh)"
-# zinit load atuinsh/atuin
-
-# bindkey '^r' atuin-search
-
-# bind to the up key, which depends on terminal mode
-# bindkey '^[[A' atuin-up-search
-# bindkey '^[OA' atuin-up-search
 
 eval $(thefuck --alias wtf)
 
@@ -119,8 +115,8 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 
 # ZSH-HISTORY-SUBSTRING-SEARCH Plugin
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=0
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=0
@@ -133,6 +129,16 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 export ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
+
+# Zsh Vi Mode
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+# Fix zsh-history-substring-search behaviour
+zvm_after_init_commands+=(
+  init_fzfrc
+  "bindkey '^[[A' history-substring-search-up"
+  "bindkey '^[[B' history-substring-search-down"
+)
 
 # GNU Bins
 # NOTE: Some were internally loaded in the $PATH if without conflicts
