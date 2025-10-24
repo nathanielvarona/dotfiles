@@ -75,7 +75,7 @@ return {
     })
   end,
   config = function(_, opts)
-    vim.cmd("highlight NeoTreeIndentMarker guifg=#74c7ec")
+    vim.cmd("highlight NeoTreeIndentMarker guifg=#6c7086")
     require("neo-tree").setup(opts)
   end,
   keys = {
