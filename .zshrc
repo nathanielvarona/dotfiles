@@ -145,6 +145,7 @@ zvm_after_init_commands+=(
   "bindkey '^[[B' history-substring-search-down"
 )
 export ZVM_VI_EDITOR=vim
+export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
 # GNU Bins
 # NOTE: Some were internally loaded in the $PATH if without conflicts
