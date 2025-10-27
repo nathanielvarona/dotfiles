@@ -4,79 +4,84 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        harper_ls = {
-          settings = {
-            ["harper-ls"] = {
-              linters = {
-                SentenceCapitalization = false,
-                SpellCheck = false,
+    opts = function(_, opts)
+      return vim.tbl_deep_extend("force", opts, {
+        servers = {
+          harper_ls = {
+            enabled = false,
+            settings = {
+              ["harper-ls"] = {
+                linters = {
+                  SentenceCapitalization = false,
+                  SpellCheck = false,
+                },
               },
             },
           },
-        },
-        bashls = {
-          filetypes = {
-            "bash",
-            "sh",
-            "zsh"
+          bashls = {
+            filetypes = {
+              "bash",
+              "sh",
+              "zsh"
+            }
+          },
+          html = {},
+          htmx = {
+            -- cmd = {
+            --   "htmx-lsp",
+            --   "--level",
+            --   "DEBUG"
+            -- },
+          },
+          -- pylsp = {},
+          -- pyright = {
+          --   settings = {
+          --     python = {
+          --       analysis = {
+          --         autoSearchPaths = true,
+          --         useLibraryCodeForTypes = true,
+          --         diagnosticMode = 'openFilesOnly',
+          --       },
+          --     },
+          --   }
+          -- },
+          ty = {
+            init_options = {
+              -- logLevel = "debug",
+            },
+            settings = {
+              ty = {
+                -- disableLanguageServices = true, -- if you want to use ty exclusively for type checking and want to use another language server like pyright
+                inlayHints = {
+                  variableTypes = false,
+                  callArgumentNames = false,
+                },
+                experimental = {
+                  autoImport = true,
+                },
+              },
+            },
+          },
+          ruff = {
+            init_options = {
+              settings = {
+                -- logLevel = "debug",
+                showSyntaxErrors = false,
+                organizeImports = true,
+              },
+            },
+          },
+          ltex = {
+            enabled = false,
+            settings = {
+              ltex = {
+                language = "en-US",
+              },
+            },
           }
         },
-        html = {},
-        htmx = {
-          -- cmd = {
-          --   "htmx-lsp",
-          --   "--level",
-          --   "DEBUG"
-          -- },
-        },
-        -- pylsp = {},
-        -- pyright = {
-        --   settings = {
-        --     python = {
-        --       analysis = {
-        --         autoSearchPaths = true,
-        --         useLibraryCodeForTypes = true,
-        --         diagnosticMode = 'openFilesOnly',
-        --       },
-        --     },
-        --   }
-        -- },
-        ty = {
-          init_options = {
-            -- logLevel = "debug",
-          },
-          settings = {
-            ty = {
-              -- disableLanguageServices = true, -- if you want to use ty exclusively for type checking and want to use another language server like pyright
-              inlayHints = {
-                variableTypes = false,
-                callArgumentNames = false,
-              },
-              experimental = {
-                autoImport = true,
-              },
-            },
-          },
-        },
-        ruff = {
-          init_options = {
-            settings = {
-              -- logLevel = "debug",
-              showSyntaxErrors = false,
-              organizeImports = true,
-            },
-          },
-        },
-        ltex = {
-          settings = {
-            ltex = {
-              language = "en-US",
-            },
-          },
-        }
-      },
-    },
+      })
+
+    end,
   },
 }

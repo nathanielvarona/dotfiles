@@ -1,12 +1,14 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  opts = {
-    ensure_installed = {
-      "latex",
-      "norg",
-      "svelte",
-      "typst",
-      "vue",
-    },
-  },
+  opts = function(_, opts)
+    return vim.tbl_deep_extend("force", opts, {
+      ensure_installed = {
+        "latex",
+        "norg",
+        "svelte",
+        "typst",
+        "vue",
+      },
+    })
+  end,
 }
