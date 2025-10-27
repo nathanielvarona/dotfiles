@@ -18,8 +18,8 @@ brew "bat"
 brew "binwalk"
 # Python code formatter
 brew "black"
-# Object-file caching compiler wrapper
-brew "ccache"
+# Freely available high-quality data compressor
+brew "bzip2"
 # Optimized BLAS library
 brew "openblas"
 # Package compiler and linker metadata toolkit
@@ -40,6 +40,8 @@ brew "devcontainer"
 brew "direnv"
 # C++ library for machine learning
 brew "dlib"
+# Embeddable SQL OLAP Database Management System
+brew "duckdb"
 # Docker Version Manager
 brew "dvm"
 # Maintain consistent coding style between multiple editors
@@ -186,6 +188,8 @@ brew "sf-pwgen"
 brew "shfmt"
 # Terminal based presentation tool
 brew "slides"
+# Implementation of the Secure Real-time Transport Protocol
+brew "srtp"
 # Non-interactive SSH password auth
 brew "sshpass"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -244,8 +248,6 @@ brew "zsh-completions"
 brew "amar1729/formulae/browserpass"
 # Prefer the tty when using pinentry, fallback to GUI
 brew "amar1729/formulae/pinentry-prefer-tty"
-# Drop in replacement for ueberzug written in C++
-brew "jstkdng/programs/ueberzugpp"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # Ookla Speedtest

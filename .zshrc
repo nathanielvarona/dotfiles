@@ -160,9 +160,6 @@ export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 # ---------------------------------------------------------
 #
 
-# Object-file caching compiler wrapper
-export PATH="/usr/local/opt/ccache/libexec:$PATH"
-
 # OpenSSL
 # export PATH="/usr/local/opt/openssl/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
@@ -177,10 +174,10 @@ export CPPFLAGS="-I/usr/local/opt/readline/include"
 
 # SQLite
 # If you need to have sqlite first in your PATH, run:
-export PATH="/usr/local/opt/sqlite/bin:$PATH"
+# export PATH="/usr/local/opt/sqlite/bin:$PATH"
 # For compilers to find sqlite you may need to set:
-export LDFLAGS="-L/usr/local/opt/sqlite/lib $LDFLAGS"
-export CPPFLAGS="-I/usr/local/opt/sqlite/include $CPPFLAGS"
+# export LDFLAGS="-L/usr/local/opt/sqlite/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/sqlite/include $CPPFLAGS"
 # For pkg-config to find sqlite you may need to set:
 # export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
 
@@ -192,18 +189,46 @@ export CPPFLAGS="-I/usr/local/opt/postgresql@16/include $CPPFLAGS"
 
 # Zlib
 # For compilers to find zlib you may need to set:
-export LDFLAGS="-L/usr/local/opt/zlib/lib $LDFLAGS"
-export CPPFLAGS="-I/usr/local/opt/zlib/include $CPPFLAGS"
+# export LDFLAGS="-L/usr/local/opt/zlib/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/zlib/include $CPPFLAGS"
 # For pkg-config to find zlib
 # export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
+# Bzip2
+# If you need to have bzip2 first in your PATH, run:
+# export PATH="/usr/local/opt/bzip2/bin:$PATH"
+# For compilers to find bzip2 you may need to set:
+# export LDFLAGS="-L/usr/local/opt/bzip2/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/bzip2/include $PPFLAGS"
+
 # OpenBlas
 # For compilers to find openblas you may need to set:
-export LDFLAGS="-L/usr/local/opt/openblas/lib $LDFLAGS"
-export CPPFLAGS="-I/usr/local/opt/openblas/include $CPPFLAGS"
+# export LDFLAGS="-L/usr/local/opt/openblas/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/openblas/include $CPPFLAGS"
 # For pkg-config to find openblas you may need to set:
 # export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig"
 
+# ncurses
+# If you need to have ncurses first in your PATH, run:
+# export PATH="/usr/local/opt/ncurses/bin:$PATH"
+# For compilers to find ncurses you may need to set:
+# export LDFLAGS="-L/usr/local/opt/ncurses/lib $LFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/ncurses/include $CPPFLAGS"
+# For pkgconf to find ncurses you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
+
+# Tcl programming language and Tk graphical user interface toolkit (Version 8)
+# If you need to have tcl-tk@8 first in your PATH, run:
+# export PATH="/usr/local/opt/tcl-tk@8/bin:$PATH"
+# For compilers to find tcl-tk@8 you may need to et:
+# export LDFLAGS="-L/usr/local/opt/tcl-tk@8/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/tcl-tk@8/include $CPPFLAGS"
+# For pkgconf to find tcl-tk@8 you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk@8/lib/pkgconfig"
+
+# srtp - Implementation of the Secure Real-time Transport Protocol
+export CFLAGS="-I/usr/local/opt/srtp/include $CFLAGS"
+export LDFLAGS="-L/usr/local/opt/srtp/lib $LDFLAGS"
 
 # Comment LLVM settings to only use Apple `clang` (from Xcode Developer Toolchains)
 # Homebrew `clang` (from LLVM)
@@ -217,20 +242,20 @@ export CPPFLAGS="-I/usr/local/opt/openblas/include $CPPFLAGS"
 # For cmake to find llvm you may need to set:
 # export CMAKE_PREFIX_PATH="/usr/local/opt/llvm"
 
+
+# ccache - Object-file caching compiler wrapper
+# export PATH="/usr/local/opt/ccache/libexec:$PATH"
+
 # C and C++ Compilers with `ccache` an Object-file caching compiler wrapper
-export CC="ccache clang"
-export CXX="ccache clang++"
+# export CC="ccache clang"
+# export CXX="ccache clang++"
 
-# Tcl programming language and Tk graphical user interface toolkit (Version 8)
-export PATH="/usr/local/opt/tcl-tk@8/bin:$PATH"
+# Headers without ccache
+export CC="clang"
+export CXX="clang++"
 
-export LDFLAGS="-L/usr/local/opt/tcl-tk@8/lib"
-export CPPFLAGS="-I/usr/local/opt/tcl-tk@8/include"
-
-export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk@8/lib/pkgconfig"
-
-# ImageMagick Fallback Library
-export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+# Fallback Library
+# export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
 #
 # ---------------------------------------------------------
