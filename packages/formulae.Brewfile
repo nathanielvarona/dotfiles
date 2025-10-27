@@ -142,12 +142,14 @@ brew "opencv"
 brew "opentofu"
 # Password manager
 brew "pass"
+# Open-source vector similarity search for Postgres
+brew "pgvector"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
-brew "postgresql@16"
+brew "postgresql@18"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
 # Password generator
