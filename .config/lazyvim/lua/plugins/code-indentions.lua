@@ -2,23 +2,23 @@
 -- if true then return {} end
 
 local highlight = {
+  "RainbowBlue",
+  "RainbowViolet",
   "RainbowRed",
+  "RainbowYellow",
   "RainbowGreen",
   "RainbowOrange",
-  "RainbowBlue",
-  "RainbowYellow",
   "RainbowCyan",
-  "RainbowViolet",
 }
 
 local colors = {
+  "#61AFEF", -- Blue
+  "#C678DD", -- Violet
   "#E06C75", -- Red
+  "#E5C07B", -- Yellow
   "#98C379", -- Green
   "#D19A66", -- Orange
-  "#61AFEF", -- Blue
-  "#E5C07B", -- Yellow
   "#56B6C2", -- Cyan
-  "#C678DD", -- Violet
 }
 
 local function setup_highlights()
