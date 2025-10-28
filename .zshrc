@@ -182,8 +182,8 @@ export CPPFLAGS="-I/usr/local/opt/readline/include"
 # export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
 
 # For compilers to find postgresql@16 you may need to set:
-export LDFLAGS="-L/usr/local/opt/postgresql@16/lib $LDFLAGS"
-export CPPFLAGS="-I/usr/local/opt/postgresql@16/include $CPPFLAGS"
+export LDFLAGS="-L/usr/local/opt/postgresql@18/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/postgresql@18/include $CPPFLAGS"
 # For pkg-config to find postgresql@16 you may need to set:
 # export PKG_CONFIG_PATH="/usr/local/opt/postgresql@16/lib/pkgconfig"
 
@@ -350,8 +350,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 # Homebrew keg-only packages
-# postgresql@16
-export PATH="/usr/local/opt/postgresql@16/bin:$PATH"
+# postgresql@18
+export PATH="/usr/local/opt/postgresql@18/bin:$PATH"
 
 # Directory Enviornment Varaibles `reads .envrc or .env`
 # eval "$(direnv hook zsh)"
