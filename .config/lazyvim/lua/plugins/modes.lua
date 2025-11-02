@@ -1,3 +1,6 @@
+-- stylua: ignore
+if true then return {} end
+
 return {
   "mvllow/modes.nvim",
   -- tag = "v0.3.0",
