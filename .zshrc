@@ -136,16 +136,16 @@ export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
 export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
 # Zsh Vi Mode
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
+# zinit ice depth=1
+# zinit light jeffreytse/zsh-vi-mode
 # Fix zsh-history-substring-search behaviour
-zvm_after_init_commands+=(
-  init_fzfrc
-  "bindkey '^[[A' history-substring-search-up"
-  "bindkey '^[[B' history-substring-search-down"
-)
-export ZVM_VI_EDITOR=vim
-export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+# zvm_after_init_commands+=(
+#   init_fzfrc
+#   "bindkey '^[[A' history-substring-search-up"
+#   "bindkey '^[[B' history-substring-search-down"
+# )
+# export ZVM_VI_EDITOR=vim
+# export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
 # GNU Bins
 # NOTE: Some were internally loaded in the $PATH if without conflicts
