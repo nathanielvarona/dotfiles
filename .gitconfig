@@ -27,12 +27,13 @@
     diffFilter = delta --color-only
 
 [delta]
-    navigate = true    # use n and N to move between diff sections
-    # side-by-side = true
+	navigate = true    # use n and N to move between diff sections
+	# side-by-side = true
+	line-numbers = true
 
-    # delta detects terminal colors automatically; set one of these to disable auto-detection
-    # dark = true
-    # light = true
+	# delta detects terminal colors automatically; set one of these to disable auto-detection
+	# dark = true
+	# light = true
 
 [diff]
 	colorMoved = default
@@ -43,7 +44,7 @@
 	prompt = false
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [difftool "meld"]
 	trustExitCode = true
 	cmd = open -W -a /Applications/Meld.app/Contents/MacOS/Meld --args \"$LOCAL\" \"$REMOTE\"

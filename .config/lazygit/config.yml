@@ -1,58 +1,6 @@
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
-
-gui:
-  # GitHub Dark Default Theme
-  theme:
-    activeBorderColor:
-      - "#0366d6"
-      - bold
-    inactiveBorderColor:
-      - "#444c56"
-    optionsTextColor:
-      - "#79b8ff"
-    selectedLineBgColor:
-      - "#2d333b"
-    cherryPickedCommitBgColor:
-      - "#2d333b"
-    cherryPickedCommitFgColor:
-      - "#0366d6"
-    unstagedChangesColor:
-      - "#d73a49"
-    defaultFgColor:
-      - "#cdd9e5"
-    searchingActiveBorderColor:
-      - "#fffbdd"
-
-  authorColors:
-    "*": "#6f42c1"
-
-  # Catppuccin Mocha Mauve Theme
-  # theme:
-  #   activeBorderColor:
-  #     - "#cba6f7"
-  #     - bold
-  #   inactiveBorderColor:
-  #     - "#a6adc8"
-  #   optionsTextColor:
-  #     - "#89b4fa"
-  #   selectedLineBgColor:
-  #     - "#313244"
-  #   cherryPickedCommitBgColor:
-  #     - "#45475a"
-  #   cherryPickedCommitFgColor:
-  #     - "#cba6f7"
-  #   unstagedChangesColor:
-  #     - "#f38ba8"
-  #   defaultFgColor:
-  #     - "#cdd6f4"
-  #   searchingActiveBorderColor:
-  #     - "#f9e2af"
-  #
-  # authorColors:
-  #   "*": "#b4befe"
-
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never
 os:
   editPreset: "vscode"
