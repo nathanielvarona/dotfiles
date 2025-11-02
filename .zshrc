@@ -64,11 +64,11 @@ zinit snippet OMZ::plugins/common-aliases
 source <(fzf --zsh)
 
 # Atuin Command History Database (Vanilla Setup)
-# export ATUIN_NOBIND="true"
-# eval "$(atuin init zsh)"
+export ATUIN_NOBIND="true"
+eval "$(atuin init zsh)"
 # zinit load atuinsh/atuin
 
-# bindkey '^E' atuin-search
+bindkey '^Y' atuin-search
 
 # bind to the up key, which depends on terminal mode
 # bindkey '^[[A' atuin-up-search
