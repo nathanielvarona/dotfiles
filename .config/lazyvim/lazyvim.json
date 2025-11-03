@@ -11,6 +11,7 @@
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.php",
+    "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.sql",
     "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.terraform",
@@ -20,6 +21,7 @@
     "lazyvim.plugins.extras.ui.indent-blankline",
     "lazyvim.plugins.extras.ui.mini-animate",
     "lazyvim.plugins.extras.ui.smear-cursor",
+    "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.mini-hipatterns",
     "lazyvim.plugins.extras.vscode"
   ],
