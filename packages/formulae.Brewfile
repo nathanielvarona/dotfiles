@@ -34,6 +34,8 @@ brew "conda-zsh-completion"
 brew "coreutils"
 # Top-like interface for container metrics
 brew "ctop"
+# Secure runtime for JavaScript and TypeScript
+brew "deno"
 # Reference implementation for the Development Containers specification
 brew "devcontainer"
 # Load/unload environment variables based on $PWD
@@ -116,6 +118,8 @@ brew "jq"
 brew "just"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
+# Lazier way to manage everything docker
+brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Portable Foreign Function Interface library
