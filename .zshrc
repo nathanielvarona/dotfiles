@@ -362,7 +362,10 @@ zinit snippet OMZ::plugins/direnv
 [ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
 
 # Kubernetes Plugin Manager
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME}/.krew/bin:$PATH"
+
+# Mason (Neovim/LazyVim) Binaries
+export PATH="${XDG_DATA_HOME:-$HOME}/lazyvim/mason/bin:$PATH"
 
 # Ollama CLI Completion
 # NOTE: This is Temporary until Ollam implement a Completion Generator Feature from the CLI

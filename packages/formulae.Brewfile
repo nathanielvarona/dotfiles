@@ -190,8 +190,6 @@ brew "scooter"
 brew "sevenzip"
 # Generate passwords using SecurityFoundation framework
 brew "sf-pwgen"
-# Autoformat shell script source code
-brew "shfmt"
 # Terminal based presentation tool
 brew "slides"
 # Implementation of the Secure Real-time Transport Protocol
@@ -200,8 +198,6 @@ brew "srtp"
 brew "sshpass"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
-# TOML toolkit written in Rust
-brew "taplo"
 # Tool Command Language
 brew "tcl-tk@8"
 # Modernized, complete, self-contained TeX/LaTeX engine
