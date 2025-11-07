@@ -44,32 +44,32 @@ return {
           --     },
           --   }
           -- },
-          -- ty = {
-          --   init_options = {
-          --     -- logLevel = "debug",
-          --   },
-          --   settings = {
-          --     ty = {
-          --       -- disableLanguageServices = true, -- if you want to use ty exclusively for type checking and want to use another language server like pyright
-          --       inlayHints = {
-          --         variableTypes = false,
-          --         callArgumentNames = false,
-          --       },
-          --       experimental = {
-          --         autoImport = true,
-          --       },
-          --     },
-          --   },
-          -- },
-          -- ruff = {
-          --   init_options = {
-          --     settings = {
-          --       -- logLevel = "debug",
-          --       showSyntaxErrors = false,
-          --       organizeImports = true,
-          --     },
-          --   },
-          -- },
+          ty = {
+            init_options = {
+              -- logLevel = "debug",
+            },
+            settings = {
+              ty = {
+                -- disableLanguageServices = true, -- if you want to use ty exclusively for type checking and want to use another language server like pyright
+                inlayHints = {
+                  variableTypes = false,
+                  callArgumentNames = false,
+                },
+                experimental = {
+                  autoImport = true,
+                },
+              },
+            },
+          },
+          ruff = {
+            init_options = {
+              settings = {
+                -- logLevel = "debug",
+                showSyntaxErrors = false,
+                organizeImports = true,
+              },
+            },
+          },
           -- ltex = {
           --   enabled = false,
           --   settings = {

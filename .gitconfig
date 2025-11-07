@@ -44,7 +44,7 @@
 	prompt = false
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 [difftool "meld"]
 	trustExitCode = true
 	cmd = open -W -a /Applications/Meld.app/Contents/MacOS/Meld --args \"$LOCAL\" \"$REMOTE\"
