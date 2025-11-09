@@ -226,6 +226,8 @@ brew "viu"
 brew "vivid"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
+# Watch files and take action when they change
+brew "watchman"
 # Internet file retriever
 brew "wget"
 # Homebrew, but with Docker images
