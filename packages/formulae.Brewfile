@@ -154,8 +154,6 @@ brew "pipx"
 brew "poppler"
 # Object-relational database system
 brew "postgresql@18"
-# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
-brew "prettier"
 # Password generator
 brew "pwgen"
 # Python version management
