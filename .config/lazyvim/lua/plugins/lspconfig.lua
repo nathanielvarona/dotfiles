@@ -70,6 +70,7 @@ return {
               },
             },
           },
+          djls = {},
           -- ltex = {
           --   enabled = false,
           --   settings = {
