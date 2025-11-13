@@ -40,8 +40,6 @@ brew "deno"
 brew "devcontainer"
 # Load/unload environment variables based on $PWD
 brew "direnv"
-# C++ library for machine learning
-brew "dlib"
 # Embeddable SQL OLAP Database Management System
 brew "duckdb"
 # Docker Version Manager
@@ -118,6 +116,8 @@ brew "jq"
 brew "just"
 # Kubernetes CLI To Manage Your Clusters In Style!
 brew "k9s"
+# Linear Algebra PACKage
+brew "lapack"
 # Lazier way to manage everything docker
 brew "lazydocker"
 # Simple terminal UI for git commands

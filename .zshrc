@@ -230,6 +230,15 @@ export CPPFLAGS="-I/usr/local/opt/postgresql@18/include $CPPFLAGS"
 export CFLAGS="-I/usr/local/opt/srtp/include $CFLAGS"
 export LDFLAGS="-L/usr/local/opt/srtp/lib $LDFLAGS"
 
+# Linear Algebra PACKage
+# For compilers to find lapack you may need to set:
+# export LDFLAGS="-L/usr/local/opt/lapack/lib"
+# export CPPFLAGS="-I/usr/local/opt/lapack/include"
+# For pkgconf to find lapack you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/lapack/lib/pkgconfig"
+# For cmake to find lapack you may need to set:
+# export CMAKE_PREFIX_PATH="/usr/local/opt/lapack"
+
 # Comment LLVM settings to only use Apple `clang` (from Xcode Developer Toolchains)
 # Homebrew `clang` (from LLVM)
 # If you need to have llvm first in your PATH, run:
