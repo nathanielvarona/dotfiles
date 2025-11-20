@@ -28,7 +28,9 @@ final_space = true
     style = 'powerline'
 
     [blocks.segments.properties]
-      style = 'full'
+      style = 'agnoster_short'
+      max_depth = 2
+      truncate_to_unique = true
 
   [[blocks.segments]]
     leading_diamond = ''
