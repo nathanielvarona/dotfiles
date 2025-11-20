@@ -21,9 +21,9 @@ final_space = true
 
   [[blocks.segments]]
     template = ' {{ .Path }} '
-    foreground = '#282828'
+    foreground = '#111111'
     powerline_symbol = ''
-    background = '#458588'
+    background = '#3465a4'
     type = 'path'
     style = 'powerline'
 
@@ -31,29 +31,35 @@ final_space = true
       style = 'agnoster_short'
       max_depth = 2
       truncate_to_unique = true
+      hide_root_location = true
 
   [[blocks.segments]]
-    leading_diamond = ''
-    trailing_diamond = ''
-    template = ' {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+    template = ' {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
     foreground = '#282828'
     powerline_symbol = ''
-    background = '#98971A'
+    background = '#4e9a06'
     type = 'git'
     style = 'powerline'
-    background_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}', '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}', '{{ if gt .Ahead 0 }}#B388FF{{ end }}', '{{ if gt .Behind 0 }}#B388FF{{ end }}']
+    background_templates = [
+      '{{ if or (.Working.Changed) (.Staging.Changed) }}#c4a000{{ end }}',
+      '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#f26d50{{ end }}',
+      '{{ if gt .Ahead 0 }}#B388FF{{ end }}',
+      '{{ if gt .Behind 0 }}#B388FF{{ end }}'
+    ]
 
     [blocks.segments.properties]
-      branch_icon = ' '
+      github_icon = ' '
+      branch_icon = ' '
       branch_identical_icon = '●'
       branch_template = '{{ trunc 25 .Branch }}'
       fetch_status = true
+      fetch_upstream_icon = true
 
   [[blocks.segments]]
     template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
     foreground = '#111111'
     powerline_symbol = ''
-    background = '#8ED1F7'
+    background = '#00acd7'
     type = 'go'
     style = 'powerline'
 
@@ -72,10 +78,10 @@ final_space = true
       fetch_version = true
 
   [[blocks.segments]]
-    template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }} {{ if .Venv }}({{ .Venv }}){{ end }}{{ end }} '
+    template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }} {{ if .Venv }}({{ .Venv }}){{ end }}{{ end }} '
     foreground = '#111111'
     powerline_symbol = ''
-    background = '#FFDE57'
+    background = '#4B8BBE'
     type = 'python'
     style = 'powerline'
 
@@ -85,7 +91,7 @@ final_space = true
 
   [[blocks.segments]]
     template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
-    foreground = '#ffffff'
+    foreground = '#111111'
     powerline_symbol = ''
     background = '#AE1401'
     type = 'ruby'
@@ -96,7 +102,42 @@ final_space = true
       fetch_version = true
 
   [[blocks.segments]]
-    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
+    type = "node"
+    style = "powerline"
+    powerline_symbol = ""
+    foreground = '#111111'
+    background = "#6CA35E"
+    template = "  {{ .Full }} "
+
+  [[blocks.segments]]
+    type = "lua"
+    style = "powerline"
+    powerline_symbol = ""
+    foreground = "#111111"
+    background = "blue"
+    template = "  {{ .Full }} "
+
+  [[blocks.segments]]
+    template = '  '
+    foreground = '#111111'
+    powerline_symbol = ''
+    background = '#ffff66'
+    type = 'root'
+    style = 'powerline'
+
+  [[blocks.segments]]
+    type = 'executiontime'
+    style = 'powerline'
+    foreground = 'black'
+    background = 'red'
+    powerline_symbol = ''
+    template = ' {{ .FormattedMs }} '
+
+    [blocks.segments.properties]
+      threshold = 5000
+
+  [[blocks.segments]]
+    template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
     foreground = '#ffffff'
     powerline_symbol = ''
     background = '#FEAC19'
@@ -119,23 +160,58 @@ final_space = true
       display_default = false
 
   [[blocks.segments]]
-    template = '  '
-    foreground = '#111111'
-    powerline_symbol = ''
-    background = '#ffff66'
-    type = 'root'
-    style = 'powerline'
+    type = "gcp"
+    style = "powerline"
+    powerline_symbol = ""
+    foreground = "#ffffff"
+    background = "#47888d"
+    template = " 󱇶 {{.Project}} :: {{.Account}} "
 
   [[blocks.segments]]
-    type = 'executiontime'
-    style = 'powerline'
-    foreground = 'black'
-    background = 'red'
-    powerline_symbol = ''
-    template = ' {{ .FormattedMs }} '
+    type = "docker"
+    style = "powerline"
+    powerline_symbol = ""
+    foreground = "#000000"
+    background = "#0B59E7"
+    template = "  {{ .Context }} "
 
     [blocks.segments.properties]
-      threshold = 5000
+      display_mode = 'files'
+
+  [[blocks.segments]]
+    type = "kubectl"
+    style = "powerline"
+    powerline_symbol = ""
+    foreground = "#000000"
+    background = "#ebcc34"
+    template = "  {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
+
+  [[blocks.segments]]
+    background = "#a7cae1"
+    foreground = "#100e23"
+    powerline_symbol = ""
+    template = "  {{ .Version }}"
+    style = "powerline"
+    type = "helm"
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+
+  [[blocks.segments]]
+    type = "argocd"
+    style = "powerline"
+    powerline_symbol = ""
+    foreground = "#ffffff"
+    background = "#FFA400"
+    template = "  {{ .Name }}:{{ .User }}@{{ .Server }} "
+
+  [[blocks.segments]]
+    type = "terraform"
+    style = "powerline"
+    powerline_symbol = ""
+    foreground = "#000000"
+    background = "#ebcc34"
+    template = "  {{.WorkspaceName}}"
 
 [[blocks]]
   type = 'prompt'
