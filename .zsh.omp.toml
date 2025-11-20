@@ -125,3 +125,30 @@ final_space = true
     background = '#ffff66'
     type = 'root'
     style = 'powerline'
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    foreground_templates = [
+      "{{if gt .Code 0}}red{{end}}",
+      "{{if eq .Code 0}}green{{end}}",
+    ]
+    background = 'transparent'
+    template = '❯'
+
+# [transient_prompt]
+#   foreground_templates = [
+#     "{{if gt .Code 0}}red{{end}}",
+#     "{{if eq .Code 0}}green{{end}}",
+#   ]
+#   background = 'transparent'
+#   template = '❯ '
+
+[secondary_prompt]
+  foreground = 'green'
+  background = 'transparent'
+  template = '❯❯ '
