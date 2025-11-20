@@ -138,6 +138,8 @@ brew "neovim"
 brew "nmap", link: false
 # Ping Tool in Rust with Real-Time Data and Visualizations
 brew "nping"
+# Prompt theme engine for any shell
+brew "oh-my-posh"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
 # Open source computer vision library
