@@ -27,7 +27,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Forcing Apps to use XDG Spec
-export VSCODE_APPDATA="${XDG_CONFIG_HOME}" # NOTE: Also available in `EnvPane`
+export VSCODE_APPDATA="${XDG_CONFIG_HOME}"  # NOTE: Also available in `EnvPane`
 export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg" # TODO: Evaluate first the Apps I commonly use the requires GnuPG
 
 # Homebrew Initialization
@@ -251,7 +251,6 @@ export LDFLAGS="-L/usr/local/opt/srtp/lib $LDFLAGS"
 # For cmake to find llvm you may need to set:
 # export CMAKE_PREFIX_PATH="/usr/local/opt/llvm"
 
-
 # ccache - Object-file caching compiler wrapper
 # export PATH="/usr/local/opt/ccache/libexec:$PATH"
 
@@ -415,8 +414,8 @@ fi
 # ASDF Plugin without Completion Generator, with only pre-generated completion file
 #
 # For `kubectx` completion, this directory also includes `kubens` completion
-if [[ -e "`asdf where kubectx`/completion" ]]; then
-  FPATH="`asdf where kubectx`/completion:${FPATH}"
+if [[ -e "$(asdf where kubectx)/completion" ]]; then
+  FPATH="$(asdf where kubectx)/completion:${FPATH}"
 fi
 
 # Autoload Completion
@@ -481,4 +480,3 @@ compinit
 # <<<<  Vagrant command completion (end)
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
