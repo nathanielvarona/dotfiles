@@ -117,6 +117,8 @@ cask "vnc-viewer"
 cask "wezterm"
 # Native desktop client for WhatsApp
 cask "whatsapp"
+# Android File Transfer for Linux
+cask "whoozle-android-file-transfer"
 # Administration tool for MikroTik RouterOS
 cask "winbox"
 # Multiplayer code editor
