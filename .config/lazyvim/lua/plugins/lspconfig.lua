@@ -52,8 +52,8 @@ return {
               ty = {
                 -- disableLanguageServices = true, -- if you want to use ty exclusively for type checking and want to use another language server like pyright
                 inlayHints = {
-                  -- variableTypes = false,
-                  -- callArgumentNames = false,
+                  variableTypes = false,
+                  callArgumentNames = false,
                 },
                 experimental = {
                   autoImport = true,
