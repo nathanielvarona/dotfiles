@@ -72,7 +72,7 @@ final_space = true
       fetch_version = true
 
   [[blocks.segments]]
-    template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
+    template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }} {{ if .Venv }}({{ .Venv }}){{ end }}{{ end }} '
     foreground = '#111111'
     powerline_symbol = ''
     background = '#FFDE57'
@@ -81,7 +81,7 @@ final_space = true
 
     [blocks.segments.properties]
       display_mode = 'files'
-      fetch_virtual_env = false
+      fetch_virtual_env = true
 
   [[blocks.segments]]
     template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
