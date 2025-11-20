@@ -125,6 +125,18 @@ final_space = true
     background = '#ffff66'
     type = 'root'
     style = 'powerline'
+
+  [[blocks.segments]]
+    type = 'executiontime'
+    style = 'powerline'
+    foreground = 'black'
+    background = 'red'
+    powerline_symbol = ''
+    template = ' {{ .FormattedMs }} '
+
+    [blocks.segments.properties]
+      threshold = 5000
+
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
