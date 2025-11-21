@@ -14,7 +14,7 @@ _get_p10k_config_path() {
 # Array of potential Powerlevel10k config files
 # Indices correspond to config numbers
 p10k_configs=(
-  "$HOME/.p10k-custom.zsh"                         # 1: Custom Minimal
+  "$XDG_CONFIG_HOME/powerlevel10k/p10k-custom.zsh"                         # 1: Custom Minimal
   "$(_get_p10k_config_path)/p10k-classic.zsh"      # 2: Classic
   "$(_get_p10k_config_path)/p10k-lean-8colors.zsh" # 3: Lean 8 colors
   "$(_get_p10k_config_path)/p10k-lean.zsh"         # 4: Lean
