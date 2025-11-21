@@ -83,7 +83,7 @@ bindkey '^Y' atuin-search
 # fzf is a general-purpose command-line fuzzy finder.
 # https://github.com/junegunn/fzf
 function init_fzfrc() {
-  [[ ! -f ~/.fzfrc.zsh ]] || source ~/.fzfrc.zsh
+  [[ ! -f $XDG_CONFIG_HOME/fzf/fzfrc.zsh ]] || source $XDG_CONFIG_HOME/fzf/fzfrc.zsh
 }
 
 # Replace zsh's default completion selection menu with fzf!
