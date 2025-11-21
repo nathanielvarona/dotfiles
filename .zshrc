@@ -27,7 +27,10 @@ fi
 # fi
 
 # Oh My Posh https://ohmyposh.dev/
-eval "$(oh-my-posh init zsh --config ~/.zsh.omp.toml)"
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  # eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/ohmyposh/p10k.omp.toml)"
+  eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/ohmyposh/zen.omp.toml)"
+fi
 
 # Forcing Apps to use XDG Spec
 export VSCODE_APPDATA="${XDG_CONFIG_HOME}"  # NOTE: Also available in `EnvPane`
