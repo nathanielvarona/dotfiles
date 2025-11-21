@@ -1,4 +1,4 @@
-console_title_template = '{{ .Folder }}'
+console_title_template = '{{ if eq .PWD "~" }}~{{ else }}{{ .Folder }}{{ end }}'
 version = 3
 final_space = true
 
