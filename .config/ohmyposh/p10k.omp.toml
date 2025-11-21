@@ -78,10 +78,22 @@ final_space = true
       fetch_version = true
 
   [[blocks.segments]]
-    template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }} {{ if .Venv }}({{ .Venv }}){{ end }}{{ end }} '
+    template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
     foreground = '#111111'
     powerline_symbol = ''
-    background = '#4B8BBE'
+    background = '#306998'
+    type = 'python'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      fetch_virtual_env = true
+
+  [[blocks.segments]]
+    template = ' {{ if .Venv }}{{ .Venv }}{{ end }} '
+    foreground = '#111111'
+    powerline_symbol = ''
+    background = '#FFD43B'
     type = 'python'
     style = 'powerline'
 
