@@ -45,3 +45,12 @@ vim.filetype.add({
     html = "html",
   },
 })
+
+-- Native Whitespace Settings
+-- vim.opt.list = true
+-- vim.opt.listchars = {
+--   space = "·",
+--   tab = "->",
+--   eol = "↵",
+--   trail = "·",
+-- }
