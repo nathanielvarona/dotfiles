@@ -60,10 +60,10 @@ final_space = true
     [blocks.segments.properties]
       cache_duration = 'none'
 
-[transient_prompt]
-  template = '❯ '
-  background = 'transparent'
-  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+# [transient_prompt]
+#   template = '❯ '
+#   background = 'transparent'
+#   foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
 
 [secondary_prompt]
   template = '❯❯ '
