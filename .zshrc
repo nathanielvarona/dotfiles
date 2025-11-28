@@ -137,9 +137,10 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(
   pattern
   # cursor
 )
-# export ZSH_HIGHLIGHT_STYLES[suffix - alias]=fg=green,underline
-# export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
-# export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
+export ZSH_HIGHLIGHT_STYLES['unknown-token']=fg=red
+export ZSH_HIGHLIGHT_STYLES['suffix-alias']=fg=green,underline
+export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
+export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
 
 # Zsh Vi Mode
 # zinit ice depth=1
