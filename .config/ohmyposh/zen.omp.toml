@@ -8,7 +8,7 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
-    template = '{{ .Path }}'
+    template = '{{ .Path }} '
     foreground = 'blue'
     background = 'transparent'
     type = 'path'
@@ -25,27 +25,23 @@ final_space = true
     foreground_templates = [
       "{{ if or (.Working.Changed) (.Staging.Changed) }}yellow{{ end }}",
       "{{ if and (gt .Ahead 0) (gt .Behind 0) }}orange{{ end }}",
-      "{{ if gt .Ahead 0 }}purple{{ end }}",
-      "{{ if gt .Behind 0 }}red{{ end }}"
+      "{{ if gt .Ahead 0 }}cyan{{ end }}",
+      "{{ if gt .Behind 0 }}magenta{{ end }}"
     ]
-    template = " {{.UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} "
+    template = "{{.UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} "
     foreground = 'green'
     background = 'transparent'
     type = 'git'
     style = 'plain'
 
-
     [blocks.segments.properties]
-      github_icon = ' '
       branch_icon = ' '
-      branch_identical_icon = '●'
       branch_template = '{{ trunc 25 .Branch }}'
       fetch_status = true
-      commit_icon = '@'
-
+      fetch_upstream_icon = true
 
   [[blocks.segments]]
-    template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ if .Venv }} <#FFD43B>({{ .Venv }})</> {{ end }}{{ end }} '
+    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ if .Venv }} <#FFD43B>({{ .Venv }})</> {{ end }}{{ end }} '
     foreground = '#306998'
     type = 'python'
     style = 'plain'
