@@ -41,7 +41,7 @@ final_space = true
       fetch_upstream_icon = true
 
   [[blocks.segments]]
-    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ if .Venv }} <#FFD43B>({{ .Venv }})</> {{ end }}{{ end }} '
+    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ if .Venv }} <#FFD43B>({{ .Venv }})</>{{ end }}{{ end }} '
     foreground = '#306998'
     type = 'python'
     style = 'plain'
@@ -49,6 +49,12 @@ final_space = true
     [blocks.segments.properties]
       display_mode = 'files'
       fetch_virtual_env = true
+
+  [[blocks.segments]]
+    foreground = "#6CA35E"
+    template = " {{ .Full }} "
+    type = "node"
+    style = "plain"
 
   [[blocks.segments]]
     template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
