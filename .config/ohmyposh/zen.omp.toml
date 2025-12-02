@@ -51,6 +51,15 @@ final_space = true
       fetch_virtual_env = true
 
   [[blocks.segments]]
+    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
+    foreground = '#00acd7'
+    type = 'go'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      fetch_version = true
+
+  [[blocks.segments]]
     template = '{{ .FormattedMs }}'
     foreground = 'yellow'
     background = 'transparent'
