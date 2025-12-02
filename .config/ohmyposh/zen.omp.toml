@@ -66,6 +66,12 @@ final_space = true
       fetch_version = true
 
   [[blocks.segments]]
+    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
+    foreground = '#AE1401'
+    type = 'ruby'
+    style = 'plain'
+
+  [[blocks.segments]]
     template = '{{ .FormattedMs }}'
     foreground = 'yellow'
     background = 'transparent'
