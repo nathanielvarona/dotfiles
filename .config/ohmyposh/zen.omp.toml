@@ -43,6 +43,17 @@ final_space = true
       fetch_status = true
       commit_icon = '@'
 
+
+  [[blocks.segments]]
+    template = '  {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ if .Venv }} <#FFD43B>({{ .Venv }})</> {{ end }}{{ end }} '
+    foreground = '#306998'
+    type = 'python'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      fetch_virtual_env = true
+
   [[blocks.segments]]
     template = '{{ .FormattedMs }}'
     foreground = 'yellow'
