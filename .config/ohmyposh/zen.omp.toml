@@ -72,6 +72,12 @@ final_space = true
     style = 'plain'
 
   [[blocks.segments]]
+    template = " {{ .Full }} "
+    foreground = "blue"
+    type = "lua"
+    style = "plain"
+
+  [[blocks.segments]]
     template = '{{ .FormattedMs }}'
     foreground = 'yellow'
     background = 'transparent'
