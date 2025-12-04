@@ -19,7 +19,7 @@ final_space = true
       style = 'agnoster_short'
       max_depth = 2
       truncate_to_unique = true
-      # hide_root_location = true
+      hide_root_location = true
 
   [[blocks.segments]]
     foreground_templates = [
