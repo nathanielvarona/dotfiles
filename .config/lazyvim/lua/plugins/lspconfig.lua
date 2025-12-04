@@ -7,16 +7,16 @@ return {
     opts = function(_, opts)
       return vim.tbl_deep_extend("force", opts, {
         servers = {
-          -- harper_ls = {
-          --   settings = {
-          --     ["harper-ls"] = {
-          --       linters = {
-          --         SentenceCapitalization = false,
-          --         SpellCheck = false,
-          --       },
-          --     },
-          --   },
-          -- },
+          harper_ls = {
+            settings = {
+              ["harper-ls"] = {
+                linters = {
+                  SentenceCapitalization = false,
+                  SpellCheck = false,
+                },
+              },
+            },
+          },
           bashls = {
             filetypes = {
               "bash",
