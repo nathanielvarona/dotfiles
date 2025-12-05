@@ -2,6 +2,9 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# Set Default Editor
+export EDITOR="lazyvim"
+
 # XDG Base Directory Specification
 # Stores application configuration files.
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -65,6 +68,11 @@ zinit snippet OMZ::plugins/git
 zinit snippet OMZ::plugins/extract
 zinit snippet OMZ::plugins/gnu-utils
 zinit snippet OMZ::plugins/common-aliases
+zinit snippet OMZ::plugins/vi-mode
+
+# vi-mode plugin settings
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
 
 # Command-line fuzzy finder written in Go
 source <(fzf --zsh)
@@ -471,7 +479,10 @@ fi
 # NOTE: `LazyVim` and `AstroNvim`: Both offer enhanced VSCode integration with the `vscode-neovim` extension.
 
 # LazyVim: Neovim setup powered by `lazy.nvim` to make it easy to customize and extend your config.
-alias lazyvim="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # Neovim with LazyVim: https://github.com/LazyVim/LazyVim
+# alias lazyvim="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # Neovim with LazyVim: https://github.com/LazyVim/LazyVim
+lazyvim() {
+  NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim "$@"
+}
 # LunarVim: An IDE layer for Neovim with sane defaults. Completely free and community driven.
 alias lunarvim='lvim' # Neovim with LunarVim: https://github.com/lunarvim/lunarvim
 # AstroNvim: Aesthetically pleasing and feature-rich Neovim configuration that focuses on extensibility and usability.
