@@ -172,7 +172,7 @@ brew "rabbitmq"
 brew "rbenv"
 # Makes shims aware of bundle install paths
 brew "rbenv-bundler"
-# Adds basic gemset support to rbenv
+# KISS yet powerful gem / gemset management for rbenv
 brew "rbenv-gemset"
 # Persistent key-value database, with built-in net interface
 brew "redis"
@@ -210,6 +210,8 @@ brew "tldr"
 brew "tmux"
 # Tmux session manager. Built on libtmux
 brew "tmuxp"
+# Convert TOML to JSON
+brew "toml2json"
 # CLI tool that moves files or folder to the trash
 brew "trash", link: true
 # Parser generator tool
