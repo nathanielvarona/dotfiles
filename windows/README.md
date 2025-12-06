@@ -1,4 +1,4 @@
-# Windows Install
+# Windows Installation
 
 Using Oh-My-Posh Terminal Prompt
 
@@ -41,4 +41,17 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ```bash
 bash ./sync.sh
+```
+
+## Windows Subsystem for Linux (WSL)
+
+### Installation
+
+```bash
+sudo apt update
+sudo apt install zsh
+```
+
+```bash
+sudo chsh -s $(which zsh) $USER
 ```

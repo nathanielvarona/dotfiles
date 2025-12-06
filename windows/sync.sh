@@ -11,6 +11,9 @@ cp -rfv ./PowerShell "${HOME}"/Documents/
 cp -rfv ../.config/ohmyposh/ ./OhMyPosh/
 cp -rfv ./OhMyPosh "${HOME}"/Documents/
 
+# WSL
+cp -rfv ./WSL "${HOME}"/Documents/
+
 # Cleanup
 rm -Rf ./OhMyPosh
 rm -Rf ./PowerShell
