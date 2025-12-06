@@ -2,6 +2,7 @@
 --ignore=README.*
 --ignore=docs
 --ignore=packages
+--ignore=windows
 --ignore=Makefile
 --ignore=.git
 --ignore=.gitignore

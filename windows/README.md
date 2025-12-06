@@ -59,6 +59,10 @@ sudo chsh -s $(which zsh) $USER
 Install Homebrew
 
 ```bash
+sudo apt-get install build-essential procps curl file git
+```
+
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
