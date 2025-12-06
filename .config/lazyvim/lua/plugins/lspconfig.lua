@@ -79,6 +79,7 @@ return {
           --     },
           --   },
           -- }
+          powershell_es = {},
         },
       })
 
