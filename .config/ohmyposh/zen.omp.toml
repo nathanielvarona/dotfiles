@@ -3,130 +3,140 @@ version = 3
 final_space = true
 
 [secondary_prompt]
-template = '❯❯ '
-foreground = 'magenta'
-background = 'transparent'
+  template = '❯❯ '
+  foreground = 'magenta'
+  background = 'transparent'
 
-# [transient_prompt]
-# template = '❯ '
-# background = 'transparent'
-# foreground_templates = [
-#   '{{if gt .Code 0}}red{{end}}',
-#   '{{if eq .Code 0}}magenta{{end}}',
-# ]
+  # [transient_prompt]
+  # template = '❯ '
+  # background = 'transparent'
+  # foreground_templates = [
+  #   '{{if gt .Code 0}}red{{end}}',
+  #   '{{if eq .Code 0}}magenta{{end}}',
+  # ]
 
 [[blocks]]
-type = 'prompt'
-alignment = 'left'
-newline = true
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
 
   [[blocks.segments]]
-  template = '{{ .Path }} '
-  foreground = 'blue'
-  background = 'transparent'
-  type = 'path'
-  style = 'plain'
+    template = '{{ .Path }} '
+    foreground = 'blue'
+    background = 'transparent'
+    type = 'path'
+    style = 'plain'
 
     [blocks.segments.properties]
-    cache_duration = 'none'
-    hide_root_location = true
-    max_depth = 2
-    style = 'agnoster_short'
-    truncate_to_unique = true
+      cache_duration = 'none'
+      hide_root_location = true
+      max_depth = 2
+      style = 'agnoster_short'
+      truncate_to_unique = true
 
   [[blocks.segments]]
-  template = '{{.UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
-  foreground = 'green'
-  background = 'transparent'
-  type = 'git'
-  style = 'plain'
-  foreground_templates = [
-    '{{ if or (.Working.Changed) (.Staging.Changed) }}yellow{{ end }}',
-    '{{ if and (gt .Ahead 0) (gt .Behind 0) }}orange{{ end }}',
-    '{{ if gt .Ahead 0 }}cyan{{ end }}',
-    '{{ if gt .Behind 0 }}magenta{{ end }}',
-  ]
+    template = '{{ if .WSL }}WSL at{{ end }} {{.Icon}} '
+    foreground = '#ffffff'
+    background = '#3A3A3A'
+    type = 'os'
+    style = 'powerline'
 
     [blocks.segments.properties]
-    branch_icon = ' '
-    branch_template = '{{ trunc 25 .Branch }}'
-    cache_duration = 'none'
-    fetch_status = true
-    fetch_upstream_icon = true
+      cache_duration = 'none'
 
   [[blocks.segments]]
-  template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ if .Venv }} <#FFD43B>({{ .Venv }})</>{{ end }}{{ end }} '
-  foreground = '#306998'
-  type = 'python'
-  style = 'plain'
+    template = '{{.UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+    foreground = 'green'
+    background = 'transparent'
+    type = 'git'
+    style = 'plain'
+    foreground_templates = [
+      '{{ if or (.Working.Changed) (.Staging.Changed) }}yellow{{ end }}',
+      '{{ if and (gt .Ahead 0) (gt .Behind 0) }}orange{{ end }}',
+      '{{ if gt .Ahead 0 }}cyan{{ end }}',
+      '{{ if gt .Behind 0 }}magenta{{ end }}',
+    ]
 
     [blocks.segments.properties]
-    cache_duration = 'none'
-    display_mode = 'files'
-    fetch_virtual_env = true
+      branch_icon = ' '
+      branch_template = '{{ trunc 25 .Branch }}'
+      cache_duration = 'none'
+      fetch_status = true
+      fetch_upstream_icon = true
 
   [[blocks.segments]]
-  template = ' {{ .Full }} '
-  foreground = '#6CA35E'
-  type = 'node'
-  style = 'plain'
+    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ if .Venv }} <#FFD43B>({{ .Venv }})</>{{ end }}{{ end }} '
+    foreground = '#306998'
+    type = 'python'
+    style = 'plain'
 
     [blocks.segments.properties]
-    cache_duration = 'none'
+      cache_duration = 'none'
+      display_mode = 'files'
+      fetch_virtual_env = true
 
   [[blocks.segments]]
-  template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
-  foreground = '#00acd7'
-  type = 'go'
-  style = 'plain'
+    template = ' {{ .Full }} '
+    foreground = '#6CA35E'
+    type = 'node'
+    style = 'plain'
 
     [blocks.segments.properties]
-    cache_duration = 'none'
-    fetch_version = true
+      cache_duration = 'none'
 
   [[blocks.segments]]
-  template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
-  foreground = '#AE1401'
-  type = 'ruby'
-  style = 'plain'
+    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
+    foreground = '#00acd7'
+    type = 'go'
+    style = 'plain'
 
     [blocks.segments.properties]
-    cache_duration = 'none'
+      cache_duration = 'none'
+      fetch_version = true
 
   [[blocks.segments]]
-  template = ' {{ .Full }} '
-  foreground = 'blue'
-  type = 'lua'
-  style = 'plain'
+    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} '
+    foreground = '#AE1401'
+    type = 'ruby'
+    style = 'plain'
 
     [blocks.segments.properties]
-    cache_duration = 'none'
+      cache_duration = 'none'
 
   [[blocks.segments]]
-  template = '{{ .FormattedMs }}'
-  foreground = 'yellow'
-  background = 'transparent'
-  type = 'executiontime'
-  style = 'plain'
+    template = ' {{ .Full }} '
+    foreground = 'blue'
+    type = 'lua'
+    style = 'plain'
 
     [blocks.segments.properties]
-    cache_duration = 'none'
-    threshold = 5000
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = '{{ .FormattedMs }}'
+    foreground = 'yellow'
+    background = 'transparent'
+    type = 'executiontime'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      threshold = 5000
 
 [[blocks]]
-type = 'prompt'
-alignment = 'left'
-newline = true
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
 
   [[blocks.segments]]
-  template = '❯'
-  background = 'transparent'
-  type = 'text'
-  style = 'plain'
-  foreground_templates = [
-    '{{if gt .Code 0}}red{{end}}',
-    '{{if eq .Code 0}}magenta{{end}}',
-  ]
+    template = '❯'
+    background = 'transparent'
+    type = 'text'
+    style = 'plain'
+    foreground_templates = [
+      '{{if gt .Code 0}}red{{end}}',
+      '{{if eq .Code 0}}magenta{{end}}',
+    ]
 
     [blocks.segments.properties]
-    cache_duration = 'none'
+      cache_duration = 'none'
