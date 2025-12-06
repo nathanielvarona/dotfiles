@@ -242,6 +242,8 @@ brew "yazi"
 brew "ydiff"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
+# Flexible and fast Zsh plugin manager
+brew "zinit"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Shell extension to navigate your filesystem faster
