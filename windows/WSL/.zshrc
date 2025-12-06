@@ -35,3 +35,38 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.omp.toml)"
+
+source /home/linuxbrew/.linuxbrew/opt/zinit/zinit.zsh
+[[ ! -e $ZSH_CACHE_DIR/completions ]] && mkdir -p $ZSH_CACHE_DIR/completions
+
+# Add in zsh plugins
+zinit light zsh-users/zsh-history-substring-search
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+
+# ZSH-HISTORY-SUBSTRING-SEARCH Plugin
+bindkey '\eOA' history-substring-search-up
+bindkey '\eOB' history-substring-search-down
+export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=0
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=0
+
+# ZSH-AUTOSUGGESTIONS Plugin
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
+
+# ZSH_HIGHLIGHT_HIGHLIGHTERS
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(
+  main
+  brackets
+  pattern
+)
+export ZSH_HIGHLIGHT_STYLES['unknown-token']=fg=red
+export ZSH_HIGHLIGHT_STYLES['suffix-alias']=fg=green,underline
+export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
+export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
+

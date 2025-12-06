@@ -55,3 +55,21 @@ sudo apt install zsh
 ```bash
 sudo chsh -s $(which zsh) $USER
 ```
+
+Install Homebrew
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Install Zinit
+
+```bash
+brew install zinit
+```
+
+Install Oh-My-Posh
+
+```bash
+brew install oh-my-posh
+```
