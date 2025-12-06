@@ -89,6 +89,8 @@ cask "openmtp"
 cask "pgadmin4"
 # Collaboration platform for API development
 cask "postman"
+# Command-line shell and scripting language
+cask "powershell"
 # OpenVPN client
 cask "pritunl"
 # Video chat, voice call and instant messaging application
