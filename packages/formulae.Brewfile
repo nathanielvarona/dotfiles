@@ -256,5 +256,7 @@ brew "amar1729/formulae/browserpass"
 brew "amar1729/formulae/pinentry-prefer-tty"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
+# CLI for out-of-band management of Kubernetes nodes created by Talos
+brew "siderolabs/tap/talosctl"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
