@@ -6,13 +6,31 @@ Using Oh-My-Posh Terminal Prompt
 
 ### Installation
 
+Upgrade/Install PowerShell
+
+```powershell
+winget install Microsoft.PowerShell --source winget
+
+# From MSStore
+winget install 9MZ1SNWT0N5D
+```
+
+Install Oh-My-Posh
+
 ```powershell
 winget install JanDeDobbeleer.OhMyPosh --source winget
+
+# From MSStore
+winget install XP8K0HKJFRXGCK
 ```
+
+Install NerdFont
 
 ```powershell
 oh-my-posh font install meslo
 ```
+
+Set Execution Policy
 
 ```powershell
 Get-ExecutionPolicy -List
