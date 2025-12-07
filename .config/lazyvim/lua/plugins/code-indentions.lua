@@ -3,22 +3,24 @@
 
 local highlight = {
   "RainbowBlue",
-  "RainbowRed",
-  "RainbowViolet",
-  "RainbowCyan",
-  "RainbowYellow",
   "RainbowGreen",
+  "RainbowYellow",
+  "RainbowPurple",
+  "RainbowRed",
+  "RainbowCyan",
   "RainbowOrange",
+  "RainbowViolet",
 }
 
 local colors = {
-  "#61AFEF", -- Blue
-  "#E06C75", -- Red
-  "#C678DD", -- Violet
-  "#56B6C2", -- Cyan
-  "#E5C07B", -- Yellow
-  "#98C379", -- Green
-  "#D19A66", -- Orange
+  "#7AC7FF", -- Lighter Blue
+  "#AFF7A0", -- Lighter Green
+  "#FFD77A", -- Lighter Yellow
+  "#B77AFF", -- Lighter Purple
+  "#FF7A7A", -- Lighter Red
+  "#7AD7D7", -- Lighter Cyan
+  "#FFC07A", -- Lighter Orange
+  "#D7A0FF", -- Lighter Violet
 }
 
 local function setup_highlights()
@@ -49,7 +51,8 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     opts = {
       indent = {
-        char = "▎",
+        -- char = "│",
+        -- tab_char = "│",
         highlight = highlight,
       },
       scope = {
