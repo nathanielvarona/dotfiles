@@ -1,43 +1,39 @@
 # Windows Installation
 
-Using Oh-My-Posh Terminal Prompt
-
 ## PowerShell
 
 ### Installation
 
-Upgrade/Install PowerShell
+1. Install PowerShell:
 
-```powershell
+```bash
 winget install Microsoft.PowerShell --source winget
-
-# From MSStore
-winget install 9MZ1SNWT0N5D
+# or from MSStore: winget install 9MZ1SNWT0N5D
 ```
 
-Install Oh-My-Posh
+2. Install Oh-My-Posh:
 
-```powershell
+```bash
 winget install JanDeDobbeleer.OhMyPosh --source winget
-
-# From MSStore
-winget install XP8K0HKJFRXGCK
+# or from MSStore: winget install XP8K0HKJFRXGCK
 ```
 
-Install NerdFont
+3. Install NerdFont:
 
-```powershell
+```bash
 oh-my-posh font install meslo
 ```
 
-Set Execution Policy
+4. Set Execution Policy:
 
-```powershell
+```bash
 Get-ExecutionPolicy -List
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
 ### Setup
+
+1. Run the sync script:
 
 ```bash
 bash ./sync.sh
@@ -47,33 +43,33 @@ bash ./sync.sh
 
 ### Installation
 
+1. Update and install ZSH:
+
 ```bash
 sudo apt update
 sudo apt install zsh
-```
-
-```bash
 sudo chsh -s $(which zsh) $USER
 ```
 
-Install Homebrew
+2. Install Homebrew:
 
 ```bash
 sudo apt-get install build-essential procps curl file git
-```
-
-```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Install Zinit
+3. Install Zinit and Oh-My-Posh:
 
 ```bash
 brew install zinit
+brew install oh-my-posh
 ```
 
-Install Oh-My-Posh
+### Setup
+
+1. Copy WSL configuration:
 
 ```bash
-brew install oh-my-posh
+cp wsl.zsh ~/.wsl.zsh
+echo -n "\nsource ~/.wsl.zsh" >> ~/.zshrc
 ```
