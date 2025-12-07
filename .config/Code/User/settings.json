@@ -45,8 +45,17 @@
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1
   },
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  // Nvim distribution with preconfigured VSCode compatible plugins
   "vscode-neovim.NVIM_APPNAME": "lazyvim", // "astronvim"
+
+  // macOS
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+
+  // WSL
+  "vscode-neovim.neovimExecutablePaths.linux": "/home/linuxbrew/.linuxbrew/bin/nvim",
+  "vscode-neovim.useWSL": true,
+  "vscode-neovim.wslDistribution": "Ubuntu",
+
   "find-it-faster.general.useTerminalInEditor": true,
   "find-it-faster.general.killTerminalAfterUse": false,
   "find-it-faster.general.batTheme": "GitHub",
@@ -227,7 +236,10 @@
   },
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
-  }
+  },
+  "python.defaultInterpreterPath": "/usr/local/bin/python3",
+  "python.terminal.activateEnvironment": false,
+  "python-envs.terminal.showActivateButton": true
 
   // Test Todo Highlight
   /*
