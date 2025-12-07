@@ -1,7 +1,13 @@
 " Ensure you have `vim-plug` installed.
 " Installation:
-" curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs \
-"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" -or-
+" curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
+" Usage
+" :PlugInstall
+"
 
 call plug#begin()
 " Add your plugins here.
@@ -23,3 +29,4 @@ nnoremap <silent> <c-j> :<C-U>TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :<C-U>TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :<C-U>TmuxNavigateRight<cr>
 nnoremap <silent> <c-\> :<C-U>TmuxNavigatePrevious<cr>
+
