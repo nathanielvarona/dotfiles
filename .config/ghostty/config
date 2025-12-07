@@ -1,7 +1,20 @@
 theme = dark:GitHub Dark Default,light:GitHub Light Default
 
+font-size = 14
+
 # disable ligatures
 font-feature = -calt
+
+mouse-hide-while-typing = true
+
+window-theme = system
+
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+
+window-inherit-working-directory = false
+working-directory = home
 
 # Enable built-in shell integration
 # shell-integration = zsh
