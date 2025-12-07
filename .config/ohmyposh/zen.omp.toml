@@ -21,7 +21,7 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
-    template = '{{ if .WSL }}wsl {{ end }}{{.Icon}} '
+    template = '{{ if .WSL }} {{ end }}{{.Icon}} '
     foreground = '#6c7086'
     type = 'os'
     style = 'plain'
