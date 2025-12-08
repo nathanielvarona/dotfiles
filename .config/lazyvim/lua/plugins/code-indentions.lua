@@ -7,6 +7,7 @@ local highlight = {
   "RainbowYellow",
   "RainbowPurple",
   "RainbowRed",
+  "RainbowIndigo",
   "RainbowCyan",
   "RainbowOrange",
   "RainbowViolet",
@@ -18,6 +19,7 @@ local colors = {
   "#FFD77A", -- Lighter Yellow
   "#B77AFF", -- Lighter Purple
   "#FF7A7A", -- Lighter Red
+  "#6A5ACD", -- Lighter Indigo
   "#7AD7D7", -- Lighter Cyan
   "#FFC07A", -- Lighter Orange
   "#D7A0FF", -- Lighter Violet
