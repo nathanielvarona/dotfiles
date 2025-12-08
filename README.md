@@ -34,7 +34,11 @@ Kindly check the [./docs](./docs) directory.
 
 ## Asciinema Demo
 
-- Dotfiles - tmuxp, lazyvim, treesitter, lspconfig, and lazygit
-  [![asciicast - Dotfiles - tmuxp, lazyvim, treesitter, lspconfig, and lazygit](https://asciinema.org/a/748818.svg)](https://asciinema.org/a/748818?autoplay=1&loop=1)
-- Dotfiles - Zinit Initial Load
-  [![Dotfiles - Zinit Initial Load](https://asciinema.org/a/666761.svg)](https://asciinema.org/a/666761?autoplay=1&loop=1)
+- **Windows/Linux:** Dotfiles - PowerShell, WSL, Docker, and NVIDIA CUDA featuring Oh-My-Posh Prompt
+  [![asciinema: Dotfiles - PowerShell, WSL, Docker, and NVIDIA CUDA featuring Oh-My-Posh Prompt](https://asciinema.org/a/760740.svg)](https://asciinema.org/a/760740?autoplay=1&loop=1)
+
+- **macOS:** Dotfiles - tmuxp, lazyvim, treesitter, lspconfig, and lazygit
+  [![asciinema: Dotfiles - tmuxp, lazyvim, treesitter, lspconfig, and lazygit](https://asciinema.org/a/748818.svg)](https://asciinema.org/a/748818?autoplay=1&loop=1)
+
+- **macOS:** Dotfiles - Zinit Initial Load
+  [![asciinema: Dotfiles - Zinit Initial Load](https://asciinema.org/a/666761.svg)](https://asciinema.org/a/666761?autoplay=1&loop=1)
