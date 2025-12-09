@@ -58,8 +58,10 @@
     "command": "workbench.action.toggleSidebarVisibility"
   },
 
+  // Fuzzy Find
+  //
   // FindItFaster
-  // Telescope-like keybinding
+  // Find Files
   {
     "key": "space f shift+f",
     "command": "find-it-faster.findFiles",
@@ -71,6 +73,27 @@
     "command": "find-it-faster.findWithinFiles",
     "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
     "description": "Find It Faster: search within files"
+  },
+  // Find Buffers
+  {
+    "key": "space f b",
+    "command": "workbench.action.showAllEditors",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
+    "description": "Fuzzy Find Buffers"
+  },
+  // Close All Buffers except for Active
+  {
+    "key": "space b o",
+    "command": "workbench.action.closeOtherEditors",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
+    "description": "Close All Buffers except for Active"
+  },
+  // Close Active Buffer
+  {
+    "key": "space b d",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
+    "description": "Close Active Buffer"
   },
 
   // LazyGit
