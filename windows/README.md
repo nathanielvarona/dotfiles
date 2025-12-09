@@ -31,6 +31,14 @@ Get-ExecutionPolicy -List
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
+Uninstall Module Methods
+
+Using Administraot privilege Command
+
+```bash
+pwsh -NoProfile -NonInteractive -Command "Uninstall-Module -Name PSReadLine -RequiredVersion 2.4.5"
+```
+
 ### Setup
 
 1. Run the sync script:
