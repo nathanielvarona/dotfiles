@@ -14,6 +14,7 @@ call plug#begin()
 Plug 'iibe/gruvbox-high-contrast'
 Plug 'wojciechkepka/vim-github-dark'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 " Plugin settings

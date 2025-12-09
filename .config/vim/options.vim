@@ -44,3 +44,6 @@ autocmd CmdlineEnter * execute 'silent !echo -ne "' . "\<Esc>[1 q" . '"'
 " Revert cursor shape when leaving command line mode.
 autocmd CmdlineLeave * execute 'silent !echo -ne "' . "\<Esc>[2 q" . '"'
 
+" Integrate Sysmtem Clipboard
+set clipboard=unnamed
+
