@@ -46,6 +46,7 @@
     "asvetliakov.vscode-neovim": 1
   },
   // Nvim distribution with preconfigured VSCode compatible plugins
+  // Other Compatible Nvim Distribution: `lazyvim`, and `astronvim`
   "vscode-neovim.NVIM_APPNAME": "vscodeneovim",
 
   // macOS
@@ -57,7 +58,7 @@
   "vscode-neovim.wslDistribution": "Ubuntu",
 
   "find-it-faster.general.useTerminalInEditor": true,
-  "find-it-faster.general.killTerminalAfterUse": false,
+  "find-it-faster.general.killTerminalAfterUse": true,
   "find-it-faster.general.batTheme": "GitHub",
   // "find-it-faster.general.useGitIgnoreExcludes": false, # BUG: Try to revisit on future releases
   "editor.lineNumbers": "relative",
