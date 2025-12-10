@@ -81,6 +81,13 @@
     "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
     "description": "Fuzzy Find Buffers"
   },
+  // Find All Files in a Workspace
+  {
+    "key": "space f a",
+    "command": "workbench.action.quickOpen",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
+    "description": "Fuzzy Find All"
+  },
   // Close All Buffers except for Active
   {
     "key": "space b o",
