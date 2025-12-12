@@ -110,5 +110,13 @@
     "command": "lazygit.openLazygit",
     "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus",
     "description": "Open LazyGit when in NeoVim normal mode or when not in editor focus and other conditions"
+  },
+
+  // Show Code Outline
+  // TODO: Use Outline Toggle from the Explorer
+  {
+    "key": "space c s",
+    "command": "workbench.action.gotoSymbol",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus"
   }
 ]
