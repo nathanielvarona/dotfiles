@@ -1,5 +1,5 @@
 console_title_template = '{{ .Folder }}'
-version = 3
+version = 4
 final_space = true
 
 [secondary_prompt]
@@ -24,6 +24,7 @@ final_space = true
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
+  newline = false
 
   [[blocks.segments]]
     template = '{{ if .WSL }}WSL at{{ end }} {{.Icon}} '
@@ -32,7 +33,7 @@ final_space = true
     type = 'os'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
   [[blocks.segments]]
@@ -43,7 +44,7 @@ final_space = true
     type = 'path'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       hide_root_location = true
       max_depth = 2
@@ -64,7 +65,7 @@ final_space = true
       '{{ if gt .Behind 0 }}#B388FF{{ end }}',
     ]
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       branch_icon = ' '
       branch_template = '{{ trunc 25 .Branch }}'
       cache_duration = 'none'
@@ -79,7 +80,7 @@ final_space = true
     type = 'go'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       fetch_version = true
 
@@ -91,7 +92,7 @@ final_space = true
     type = 'julia'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       fetch_version = true
 
@@ -103,7 +104,7 @@ final_space = true
     type = 'python'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       display_mode = 'files'
       fetch_virtual_env = true
@@ -116,7 +117,7 @@ final_space = true
     type = 'python'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       display_mode = 'files'
       fetch_virtual_env = true
@@ -129,7 +130,7 @@ final_space = true
     type = 'ruby'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       display_mode = 'files'
       fetch_version = true
@@ -142,7 +143,7 @@ final_space = true
     type = 'node'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
   [[blocks.segments]]
@@ -153,7 +154,7 @@ final_space = true
     type = 'lua'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
   [[blocks.segments]]
@@ -164,7 +165,7 @@ final_space = true
     type = 'root'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
   [[blocks.segments]]
@@ -175,7 +176,7 @@ final_space = true
     type = 'executiontime'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       threshold = 5000
 
@@ -187,7 +188,7 @@ final_space = true
     type = 'azfunc'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       display_mode = 'files'
       fetch_version = false
@@ -203,7 +204,7 @@ final_space = true
       '{{if contains "jan" .Profile}}#f1184c{{end}}',
     ]
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       display_default = false
 
@@ -215,7 +216,7 @@ final_space = true
     type = 'gcp'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
   [[blocks.segments]]
@@ -226,7 +227,7 @@ final_space = true
     type = 'docker'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       display_mode = 'files'
 
@@ -238,7 +239,7 @@ final_space = true
     type = 'kubectl'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
   [[blocks.segments]]
@@ -249,7 +250,7 @@ final_space = true
     type = 'helm'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       display_mode = 'files'
 
@@ -261,7 +262,7 @@ final_space = true
     type = 'argocd'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
   [[blocks.segments]]
@@ -272,7 +273,7 @@ final_space = true
     type = 'terraform'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
 [[blocks]]
@@ -290,5 +291,5 @@ final_space = true
       '{{if eq .Code 0}}green{{end}}',
     ]
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'

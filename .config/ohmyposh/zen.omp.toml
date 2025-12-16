@@ -1,5 +1,5 @@
 console_title_template = '{{ if eq .PWD "~" }}~{{ else }}{{ .Folder }}{{ end }}'
-version = 3
+version = 4
 final_space = true
 
 [secondary_prompt]
@@ -18,7 +18,7 @@ final_space = true
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
-  newline = true
+  newline = false
 
   [[blocks.segments]]
     template = '{{ if .WSL }} {{ end }}{{.Icon}} '
@@ -26,7 +26,7 @@ final_space = true
     type = 'os'
     style = 'plain'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
   [[blocks.segments]]
@@ -36,7 +36,7 @@ final_space = true
     type = 'path'
     style = 'plain'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       hide_root_location = true
       max_depth = 2
@@ -56,7 +56,7 @@ final_space = true
       '{{ if gt .Behind 0 }}magenta{{ end }}',
     ]
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       branch_icon = ' '
       branch_template = '{{ trunc 25 .Branch }}'
       cache_duration = 'none'
@@ -69,7 +69,7 @@ final_space = true
     type = 'python'
     style = 'plain'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       display_mode = 'files'
       fetch_virtual_env = true
@@ -80,7 +80,7 @@ final_space = true
     type = 'node'
     style = 'plain'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
   [[blocks.segments]]
@@ -89,7 +89,7 @@ final_space = true
     type = 'go'
     style = 'plain'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       fetch_version = true
 
@@ -99,7 +99,7 @@ final_space = true
     type = 'ruby'
     style = 'plain'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
   [[blocks.segments]]
@@ -108,7 +108,7 @@ final_space = true
     type = 'lua'
     style = 'plain'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
 
   [[blocks.segments]]
@@ -118,7 +118,7 @@ final_space = true
     type = 'executiontime'
     style = 'plain'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'
       threshold = 5000
 
@@ -137,5 +137,5 @@ final_space = true
       '{{if eq .Code 0}}magenta{{end}}',
     ]
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       cache_duration = 'none'

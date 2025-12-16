@@ -1,5 +1,5 @@
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
-version = 3
+version = 4
 final_space = true
 
 [upgrade]
@@ -29,7 +29,7 @@ final_space = true
     type = 'path'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       folder_separator_icon = '  '
       home_icon = '~'
       style = 'folder'
@@ -50,7 +50,7 @@ final_space = true
       '{{ if gt .Behind 0 }}#B388FF{{ end }}',
     ]
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       branch_template = '{{ trunc 25 .Branch }}'
       fetch_status = true
       fetch_upstream_icon = true
@@ -63,7 +63,7 @@ final_space = true
     type = 'node'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       fetch_version = true
 
   [[blocks.segments]]
@@ -74,7 +74,7 @@ final_space = true
     type = 'go'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       fetch_version = true
 
   [[blocks.segments]]
@@ -85,7 +85,7 @@ final_space = true
     type = 'julia'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       fetch_version = true
 
   [[blocks.segments]]
@@ -96,7 +96,7 @@ final_space = true
     type = 'python'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       display_mode = 'files'
       fetch_virtual_env = false
 
@@ -108,7 +108,7 @@ final_space = true
     type = 'ruby'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       display_mode = 'files'
       fetch_version = true
 
@@ -120,7 +120,7 @@ final_space = true
     type = 'azfunc'
     style = 'powerline'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       display_mode = 'files'
       fetch_version = false
 
@@ -135,7 +135,7 @@ final_space = true
       '{{if contains "jan" .Profile}}#f1184c{{end}}',
     ]
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       display_default = false
 
   [[blocks.segments]]
@@ -153,7 +153,7 @@ final_space = true
     type = 'executiontime'
     style = 'plain'
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       always_enabled = true
 
   [[blocks.segments]]
@@ -165,7 +165,7 @@ final_space = true
     style = 'diamond'
     background_templates = ['{{ if gt .Code 0 }}#e91e63{{ end }}']
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       always_enabled = true
 
 [[blocks]]
@@ -187,7 +187,7 @@ final_space = true
     style = 'powerline'
     invert_powerline = true
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       paused_icon = ' '
       playing_icon = ' '
 
@@ -205,7 +205,7 @@ final_space = true
     ]
     invert_powerline = true
 
-    [blocks.segments.properties]
+    [blocks.segments.options]
       charged_icon = ' '
       charging_icon = ' '
       discharging_icon = ' '

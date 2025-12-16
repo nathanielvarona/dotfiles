@@ -31,7 +31,6 @@ fi
 
 # Oh My Posh https://ohmyposh.dev/
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  # eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/ohmyposh/p10k.omp.toml)"
   eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/ohmyposh/zen.omp.toml)"
 fi
 
