@@ -1,3 +1,5 @@
+"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
+
 console_title_template = '{{ if eq .PWD "~" }}~{{ else }}{{ .Folder }}{{ end }}'
 version = 4
 final_space = true
@@ -26,9 +28,6 @@ final_space = true
     type = 'os'
     style = 'plain'
 
-    [blocks.segments.options]
-      cache_duration = 'none'
-
   [[blocks.segments]]
     template = '{{ .Path }} '
     foreground = 'blue'
@@ -37,11 +36,9 @@ final_space = true
     style = 'plain'
 
     [blocks.segments.options]
-      cache_duration = 'none'
       hide_root_location = true
       max_depth = 2
       style = 'agnoster_short'
-      truncate_to_unique = true
 
   [[blocks.segments]]
     template = '{{.UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }}{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
@@ -59,7 +56,6 @@ final_space = true
     [blocks.segments.options]
       branch_icon = ' '
       branch_template = '{{ trunc 25 .Branch }}'
-      cache_duration = 'none'
       fetch_status = true
       fetch_upstream_icon = true
 
@@ -119,7 +115,6 @@ final_space = true
     style = 'plain'
 
     [blocks.segments.options]
-      cache_duration = 'none'
       threshold = 5000
 
 [[blocks]]
