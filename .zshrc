@@ -85,8 +85,8 @@ eval "$(atuin init zsh)"
 bindkey '^Y' atuin-search
 
 # bind to the up key, which depends on terminal mode
-# bindkey '^[[A' atuin-up-search
-# bindkey '^[OA' atuin-up-search
+# bindkey '\eOA' atuin-up-search
+# bindkey '\eOB' atuin-up-search
 
 # fzf is a general-purpose command-line fuzzy finder.
 # https://github.com/junegunn/fzf
@@ -129,8 +129,8 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 
 # ZSH-HISTORY-SUBSTRING-SEARCH Plugin
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey '\eOA' history-substring-search-up
+bindkey '\eOB' history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=0
 export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=0
