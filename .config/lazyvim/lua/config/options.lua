@@ -54,3 +54,5 @@ vim.filetype.add({
 --   eol = "↵",
 --   trail = "·",
 -- }
+
+-- Wrap Line options use the "lua/plugins/neominimap.lua" file.
