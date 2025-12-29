@@ -75,8 +75,6 @@ cask "libreoffice"
 cask "localsend"
 # Software for Logitech devices
 cask "logi-options+"
-# Native desktop app for Messenger (formerly Facebook Messenger)
-cask "messenger"
 # Multi-platform web browser
 cask "microsoft-edge"
 # Reverse proxy, secure introspectable tunnels to localhost
