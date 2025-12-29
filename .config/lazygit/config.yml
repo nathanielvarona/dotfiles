@@ -4,3 +4,59 @@ git:
       pager: delta --paging=never
 os:
   editPreset: "vscode"
+
+gui:
+  theme:
+    # Focused window border (strong blue)
+    activeBorderColor:
+      - "#79c0ff"
+      - bold
+
+    # Non-focused window border (stronger than default)
+    inactiveBorderColor:
+      - "#484f58"
+
+    # Searching border
+    searchingActiveBorderColor:
+      - "#e3b341"
+      - bold
+
+    # Bottom help text
+    optionsTextColor:
+      - "#c9d1d9"
+
+    # Selected line (high contrast)
+    selectedLineBgColor:
+      - "#1f2937"
+
+    # Selected line when inactive
+    inactiveViewSelectedLineBgColor:
+      - "#30363d"
+
+    # Cherry-picked commit
+    cherryPickedCommitFgColor:
+      - "#79c0ff"
+    cherryPickedCommitBgColor:
+      - "#1f2937"
+
+    # Rebase base commit
+    markedBaseCommitFgColor:
+      - "#ffffff"
+    markedBaseCommitBgColor:
+      - "#8250df"
+
+    # Unstaged files
+    unstagedChangesColor:
+      - "#ff7b72"
+
+    # Default foreground text
+    defaultFgColor:
+      - "#f0f6fc"
+
+  authorColors:
+    "*": "#79c0ff"
+
+  branchColorPatterns:
+    main: "#3fb950"
+    master: "#3fb950"
+    develop: "#e3b341"
