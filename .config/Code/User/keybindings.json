@@ -118,5 +118,27 @@
     "key": "space c s",
     "command": "workbench.action.gotoSymbol",
     "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus"
+  },
+
+  // Flash Navigation
+  {
+    "key": "s",
+    "command": "flash-vscode.start",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus"
+  },
+  {
+    "key": "shift+s",
+    "command": "flash-vscode.jump.treesitterSelection",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus"
+  },
+  {
+    "key": "backspace",
+    "command": "flash-vscode.backspace",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus"
+  },
+  {
+    "key": "escape",
+    "command": "flash-vscode.exit",
+    "when": "(editorFocus && neovim.mode == 'normal') || !editorFocus && !terminalFocus && !inputFocus"
   }
 ]
