@@ -483,8 +483,6 @@ fi
 lazyvim() {
   NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim "$@"
 }
-# LunarVim: An IDE layer for Neovim with sane defaults. Completely free and community driven.
-alias lunarvim='lvim' # Neovim with LunarVim: https://github.com/lunarvim/lunarvim
 # AstroNvim: Aesthetically pleasing and feature-rich Neovim configuration that focuses on extensibility and usability.
 alias astronvim="NVIM_APPNAME=astronvim $(brew --prefix)/bin/nvim" # Neovim with AstroNvim: https://github.com/AstroNvim/AstroNvim
 # NvChad: Blazing fast Neovim config providing solid defaults and a beautiful UI
