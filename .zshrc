@@ -284,6 +284,9 @@ export CXX="clang++"
 # ---------------------------------------------------------
 ###
 
+# Kitty Terminal
+export KITTY_LISTEN_ON=unix:/tmp/kitty
+
 # ls colors
 # export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
 # export LS_COLORS=${LSCOLORS}
