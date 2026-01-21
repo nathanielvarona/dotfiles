@@ -14,9 +14,8 @@
 --ignore=.secrets.dist
 --ignore=.tmuxp.yaml
 --ignore=.config/alacritty
---ignore=.config/iTerm2
 --ignore=.config/zellij
---ignore=.config/Terminal
 --ignore=.config/lsd/colors
 --ignore=.harper-dictionary.txt
 --ignore=.ruby-lsp
+--ignore=.gitconfig-includeIf
