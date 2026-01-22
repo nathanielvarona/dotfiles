@@ -1,16 +1,61 @@
-# PowerShell 5.1 Compatibility
-
-# Define the required version of the PSReadLine module
-$requiredPSReadLineVersion = [Version]'2.3.6'
-
-# Check if the required version of PSReadLine is installed
-$psReadLineVersions = (Get-Module -Name PSReadLine -ListAvailable).Version
-if (-not ($psReadLineVersions | Where-Object { $_ -ge $requiredPSReadLineVersion }))
+# ============================================================
+# Cursor Shape (Modern Terminals Only)
+# ============================================================
+# Cursor shape values:
+# 0 = Default (terminal-configured)
+# 1 = Blinking Block
+# 2 = Steady Block
+# 3 = Blinking Underline
+# 4 = Steady Underline
+# 5 = Blinking Bar
+# 6 = Steady Bar
+#
+# ANSI escape sequences are reliably supported only in
+# PowerShell 7+ (and modern terminals). PowerShell 5.1
+# will print these sequences literally, so we guard it.
+if ($PSVersionTable.PSVersion.Major -ge 7)
 {
-  # Install the required version of PSReadLine if it's not already installed
-  Write-Host "PSReadLine module outdated or missing. Installing the available latest version..."
-  Install-Module -Name PSReadLine -AllowClobber -Force
-  Write-Host "PSReadLine module installed."
+  Write-Host -NoNewLine "`e[6 q"
+}
+
+# ============================================================
+# Oh My Posh Prompt Initialization
+# ============================================================
+# Build the path to the Oh My Posh theme configuration
+$configPath = Join-Path $PSScriptRoot "../ohmyposh/zen.omp.toml"
+
+# Initialize Oh My Posh only if:
+# - The oh-my-posh command exists
+# - The configuration file is present
+#
+# This prevents profile errors and keeps startup silent
+if (
+  (Get-Command oh-my-posh -ErrorAction SilentlyContinue) -and
+  (Test-Path $configPath)
+)
+{
+  oh-my-posh init powershell --config $configPath | Invoke-Expression
+}
+
+# ============================================================
+# PSReadLine Module Bootstrap
+# ============================================================
+# Minimum PSReadLine version required for stable behavior
+# across PowerShell 5.1 and 7+
+$MinPSReadLine = [Version]'2.3.6'
+
+# Get the highest installed PSReadLine version (if any)
+$InstalledPSReadLine = Get-Module PSReadLine -ListAvailable |
+  Sort-Object Version -Descending |
+  Select-Object -First 1
+
+# Install or upgrade PSReadLine if missing or outdated
+# - CurrentUser scope avoids admin privileges
+# - AllowClobber prevents command conflicts
+# - Errors are suppressed to avoid profile startup failures
+if (-not $InstalledPSReadLine -or $InstalledPSReadLine.Version -lt $MinPSReadLine)
+{
+  Install-Module PSReadLine -Scope CurrentUser -Force -AllowClobber -ErrorAction SilentlyContinue
 
   # Prompt the user to restart the PowerShell session
   Write-Host ""
@@ -21,29 +66,46 @@ if (-not ($psReadLineVersions | Where-Object { $_ -ge $requiredPSReadLineVersion
   exit 0
 }
 
-# Import the PSReadLine module
-Import-Module PSReadLine
+# ============================================================
+# PSReadLine Configuration
+# ============================================================
+# Import PSReadLine only if it is available
+if (Get-Module -ListAvailable PSReadLine)
+{
+  Import-Module PSReadLine
 
-# Cursor Shape
-# 0: Default cursor shape configured by the user
-# 1: Blinking Block
-# 2: Steady Block
-# 3: Blinking Underline
-# 4: Steady Underline
-# 5: Blinking Bar
-# 6: Steady Bar
-Write-Host -NoNewLine "`e[6 q"
+  # Enable command prediction based on history
+  Set-PSReadLineOption -PredictionSource History
 
-# Configure Oh My Posh prompt
-$configPath = Join-Path -Path $PSScriptRoot -ChildPath "../ohmyposh/zen.omp.toml"
-oh-my-posh init powershell --config $configPath | Invoke-Expression
+  # Keep the cursor at the end of the line when searching history
+  Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 
-# Configure PSReadLine options
-# Enable command suggestion
-Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+  # Enable incremental history search with arrow keys
+  Set-PSReadLineKeyHandler -Key UpArrow   -Function HistorySearchBackward
+  Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+}
 
-# Enable history search with Up/Down arrows
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+# ============================================================
+# PSFzf Module Bootstrap
+# ============================================================
+# Install PSFzf if it is not already available
+# PSFzf integrates fzf with PSReadLine for fast navigation
+if (-not (Get-Module -ListAvailable PSFzf))
+{
+  Install-Module PSFzf -Scope CurrentUser -Force -ErrorAction SilentlyContinue
+}
 
+# ============================================================
+# PSFzf Configuration
+# ============================================================
+# Load PSFzf and configure key bindings if available
+if (Get-Module -ListAvailable PSFzf)
+{
+  Import-Module PSFzf
+
+  # Ctrl + R → fzf-powered reverse history search
+  Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
+
+  # Ctrl + T → fzf-powered file/provider picker
+  Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
+}

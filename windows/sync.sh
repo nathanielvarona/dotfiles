@@ -16,7 +16,7 @@ cp -rfv ./PowerShell "${HOME}"/Documents/
 # Copy the Oh My Posh configuration directory to the local OhMyPosh directory
 # Then, copy the OhMyPosh directory to the user's Documents directory
 cp -rfv ../.config/ohmyposh/ ./ohmyposh/
-cp -rfv ./OhMyPosh "${HOME}"/Documents/
+cp -rfv ./ohmyposh "${HOME}"/Documents/
 
 # Copy Windows Subsystem for Linux configuration files
 # Copy the WindowsSubsystemforLinux directory to the user's Documents directory
