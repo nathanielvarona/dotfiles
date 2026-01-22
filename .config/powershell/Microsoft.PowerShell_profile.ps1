@@ -24,8 +24,18 @@ if (-not ($psReadLineVersions | Where-Object { $_ -ge $requiredPSReadLineVersion
 # Import the PSReadLine module
 Import-Module PSReadLine
 
+# Cursor Shape
+# 0: Default cursor shape configured by the user
+# 1: Blinking Block
+# 2: Steady Block
+# 3: Blinking Underline
+# 4: Steady Underline
+# 5: Blinking Bar
+# 6: Steady Bar
+Write-Host -NoNewLine "`e[6 q"
+
 # Configure Oh My Posh prompt
-$configPath = Join-Path -Path $PSScriptRoot -ChildPath "../OhMyPosh/zen.omp.toml"
+$configPath = Join-Path -Path $PSScriptRoot -ChildPath "../ohmyposh/zen.omp.toml"
 oh-my-posh init powershell --config $configPath | Invoke-Expression
 
 # Configure PSReadLine options
