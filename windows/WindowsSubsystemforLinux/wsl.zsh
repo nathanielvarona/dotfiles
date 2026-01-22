@@ -23,6 +23,9 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.omp.toml)"
 source /home/linuxbrew/.linuxbrew/opt/zinit/zinit.zsh
 [[ ! -e $ZSH_CACHE_DIR/completions ]] && mkdir -p $ZSH_CACHE_DIR/completions
 
+# Command-line fuzzy finder written in Go
+source <(fzf --zsh)
+
 # Load ZSH plugins
 # Load plugins for history substring search, syntax highlighting, autosuggestions, and completions
 zinit light zsh-users/zsh-history-substring-search
