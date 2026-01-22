@@ -55,7 +55,7 @@ $InstalledPSReadLine = Get-Module PSReadLine -ListAvailable |
 # - Errors are suppressed to avoid profile startup failures
 if (-not $InstalledPSReadLine -or $InstalledPSReadLine.Version -lt $MinPSReadLine)
 {
-  Install-Module PSReadLine -Scope CurrentUser -Force -AllowClobber -ErrorAction SilentlyContinue
+  Install-Module -Name PSReadLine -Repository PSGallery -Scope CurrentUser -Force -AllowClobber -ErrorAction SilentlyContinue
 
   # Prompt the user to restart the PowerShell session
   Write-Host ""
@@ -92,7 +92,7 @@ if (Get-Module -ListAvailable PSReadLine)
 # PSFzf integrates fzf with PSReadLine for fast navigation
 if (-not (Get-Module -ListAvailable PSFzf))
 {
-  Install-Module PSFzf -Scope CurrentUser -Force -ErrorAction SilentlyContinue
+  Install-Module -Name PSFzf -Repository PSGallery -Scope CurrentUser -Force -ErrorAction SilentlyContinue
 }
 
 # ============================================================
@@ -108,4 +108,20 @@ if (Get-Module -ListAvailable PSFzf)
 
   # Ctrl + T → fzf-powered file/provider picker
   Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
+}
+
+# ============================================================
+# Terminal-Icons Module Bootstrap
+# ============================================================
+# Install Terminal-Icons if it is not already available
+# Provides nice icons in the terminal for files and folders
+if (-not (Get-Module -ListAvailable Terminal-Icons))
+{
+  Install-Module -Name Terminal-Icons -Repository PSGallery -Scope CurrentUser -Force -ErrorAction SilentlyContinue
+}
+
+# Import Terminal-Icons if available
+if (Get-Module -ListAvailable Terminal-Icons)
+{
+  Import-Module -Name Terminal-Icons
 }
