@@ -125,3 +125,12 @@ if (Get-Module -ListAvailable Terminal-Icons)
 {
   Import-Module -Name Terminal-Icons
 }
+
+# ============================================================
+# Utilities and Scripts
+# ============================================================
+function which ($command)
+{
+  Get-Command -Name $command -ErrorAction SilentlyContinue |
+    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+}
