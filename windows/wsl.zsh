@@ -1,4 +1,4 @@
-# wsl.zsh - Configuration file for WSL ZSH environment
+# wsl.zsh - Configuration file for WSL (Windows Subsystem for Linux) ZSH environment
 
 # Installation:
 # Copy this file to your home directory:
