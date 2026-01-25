@@ -20,7 +20,7 @@ cp -rfv ./ohmyposh "${HOME}"/Documents/
 
 # Copy Windows Subsystem for Linux configuration files
 # Copy the WindowsSubsystemforLinux directory to the user's Documents directory
-cp -rfv ./WindowsSubsystemforLinux "${HOME}"/Documents/
+cp -rfv ./wsl.zsh "${HOME}"/Documents/WindowsSubsystemforLinux/
 
 # Clean up temporary directories
 # Remove the local OhMyPosh and PowerShell directories
