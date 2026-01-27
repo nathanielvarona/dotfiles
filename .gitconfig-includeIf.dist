@@ -2,7 +2,7 @@
 	name = <User Name>
 	email = <123456789+username>@users.noreply.github.com
 
-; Instruct Git Credential Manager (GCM) to use the already logged in credential
+; Instruct Git Credential Manager (GCM) to use the already logged in personal/corporate Git credentials.
 [credential "https://github.com"]
 	useHttpPath = true
 	<username> = <username>
