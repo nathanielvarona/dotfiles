@@ -2,7 +2,7 @@
 --ignore=README.*
 --ignore=docs
 --ignore=packages
---ignore=windows
+--ignore=wsl
 --ignore=Makefile
 --ignore=.git
 --ignore=.gitignore
