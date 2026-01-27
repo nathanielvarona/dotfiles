@@ -85,6 +85,6 @@ brew install oh-my-posh
 Copy WSL configuration:
 
 ```bash
-cp wsl.zsh ~/.wsl.zsh
-echo -n "\nsource ~/.wsl.zsh" >> ~/.zshrc
+cp ./.config/zsh/linux.zsh ~/.wsl.zsh
+echo -n "\n. ~/.wsl.zsh" >> ~/.zshrc
 ```

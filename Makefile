@@ -1,6 +1,6 @@
 .PHONY: all
 
-PACKAGES = ./packages
+PACKAGES = ./pkgs
 BREW_BUNDLE_DUMP = brew bundle dump --describe --force --file
 
 all: brewfile asdf pyenv pipx krew helm rust-cargo github-cli-extension ollama
