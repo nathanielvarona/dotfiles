@@ -319,6 +319,9 @@ alias tmk='tmux kill-session -t'
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/.asdfrc"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
+# Git Config Global
+export GIT_CONFIG_GLOBAL="$HOME/.config/git/.gitconfig"
+
 # ASDF Plugins/Apps
 # With OhMyZsh
 zinit snippet OMZ::plugins/argocd
