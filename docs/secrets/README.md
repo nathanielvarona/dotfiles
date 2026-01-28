@@ -1,5 +1,8 @@
-# Distributed Example for `.secrets` File
+# Basic Secrets Manager
 
+## Distributed Example for `.secrets` File
+
+```bash
 # Github API Token
 #
 # Used for ASDF
@@ -28,3 +31,5 @@ export ATUIN_HOST="0.0.0.0"
 export ATUIN_PORT="8888"
 export ATUIN_OPEN_REGISTRATION=true
 export ATUIN_DB_URI="postgres://atuin:<your-pgsql-password>@localhost/atuin"
+
+```
