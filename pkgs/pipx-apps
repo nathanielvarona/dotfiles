@@ -1,3 +1,4 @@
 django-language-server 5.2.4
 poetry 1.8.3
 pylatexenc 2.10
+sqlit-tui 1.1.9

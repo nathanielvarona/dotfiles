@@ -1,5 +1,5 @@
 # AeroSpace is an i3-like tiling window manager for macOS
-cask "aerospace"
+cask "nikitabobko/tap/aerospace"
 # Mobile device management suite
 cask "airdroid"
 # Distribution of the Python and R programming languages for scientific computing

@@ -38,6 +38,8 @@ brew "ctop"
 brew "deno"
 # Reference implementation for the Development Containers specification
 brew "devcontainer"
+# Diff that understands syntax
+brew "difftastic"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Embeddable SQL OLAP Database Management System
@@ -60,10 +62,10 @@ brew "fabric-ai"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
 # H.265/HEVC encoder
 brew "x265"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
 # Fast and simple Node.js version manager
 brew "fnm"
 # Terminal JSON viewer
@@ -87,7 +89,7 @@ brew "go"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
 # Ping, but with a graph
-brew "gping"
+brew "gping", link: false
 # Toolkit for creating graphical user interfaces
 brew "gtk+3"
 # Grammar Checker for Developers
@@ -104,10 +106,10 @@ brew "hyperfine"
 brew "libde265"
 # ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
-# Tools and libraries to manipulate images in many formats
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # GNU utilities for networking
-brew "inetutils", link: false
+brew "inetutils"
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "iperf3"
 # Image manipulation library
@@ -126,6 +128,8 @@ brew "lazydocker"
 brew "lazygit"
 # Portable Foreign Function Interface library
 brew "libffi"
+# LLM inference in C/C++
+brew "llama.cpp"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Package manager for the Lua programming language
@@ -134,16 +138,20 @@ brew "luarocks"
 brew "mas"
 # CLI for Mermaid library
 brew "mermaid-cli"
+# Ping Tool in Rust with Real-Time Data and Visualizations
+brew "nbping"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Port scanning utility for large networks
 brew "nmap", link: false
-# Ping Tool in Rust with Real-Time Data and Visualizations
-brew "nping"
 # Prompt theme engine for any shell
 brew "oh-my-posh"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# AI coding agent, built for the terminal
+brew "opencode"
 # Open source computer vision library
 brew "opencv"
 # Drop-in replacement for Terraform. Infrastructure as Code Tool
@@ -182,8 +190,6 @@ brew "rbenv-gemset"
 brew "redis"
 # SVG rendering tool and library
 brew "resvg"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # Safe, concurrent, practical language
@@ -240,12 +246,18 @@ brew "wget"
 brew "whalebrew"
 # Tools for the WireGuard secure network tunnel
 brew "wireguard-tools"
+# XML command-line utilities
+brew "xmlstarlet"
+# Command-line XML and HTML beautifier and content extractor
+brew "xq"
 # JavaScript package manager
 brew "yarn"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
 # View colored diff with side by side and auto pager support
 brew "ydiff"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Flexible and fast Zsh plugin manager
