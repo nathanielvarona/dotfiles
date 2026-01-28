@@ -11,10 +11,10 @@ windows:
       - shell_command: lazyvim .
         focus: true
       - shell_command: ls -a
-  - window_name: vcs
-    layout: main-horizontal
-    options:
-      main-pane-height: 80%
-    panes:
-      - shell_command: lazygit
-      - shell_command: git --version
+  # - window_name: vcs
+  #   layout: main-horizontal
+  #   options:
+  #     main-pane-height: 80%
+  #   panes:
+  #     - shell_command: lazygit
+  #     - shell_command: git --version
