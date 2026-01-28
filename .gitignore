@@ -51,6 +51,7 @@ plugged/
 .secrets
 *gitconfig
 !.gitconfig
+!main.gitconfig
 !dist.gitconfig
 
 # macOS Finder metadata
