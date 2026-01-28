@@ -19,9 +19,9 @@ return {
           },
           bashls = {
             filetypes = {
-              "bash",
               "sh",
-              "zsh"
+              "zsh",
+              "zshrc"
             }
           },
           html = {},
