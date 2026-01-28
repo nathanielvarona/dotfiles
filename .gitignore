@@ -49,9 +49,9 @@ plugged/
 .develop
 .vscode
 .secrets
-.gitconfig-personal
-.gitconfig-work
-.gitconfig-others
+*gitconfig
+!.gitconfig
+!dist.gitconfig
 
 # macOS Finder metadata
 .DS_Store

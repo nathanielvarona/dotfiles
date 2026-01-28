@@ -4,7 +4,7 @@
 --ignore=pkgs
 --ignore=wsl
 --ignore=Makefile
---ignore=.git
+--ignore=dist.gitconfig
 --ignore=.gitignore
 --ignore=.DS_Store
 --ignore=.develop
@@ -18,4 +18,3 @@
 --ignore=.config/lsd/colors
 --ignore=.harper-dictionary.txt
 --ignore=.ruby-lsp
---ignore=.gitconfig-includeIf
