@@ -18,3 +18,4 @@
 --ignore=.config/lsd/colors
 --ignore=.harper-dictionary.txt
 --ignore=.ruby-lsp
+--ignore=.taplo.toml
