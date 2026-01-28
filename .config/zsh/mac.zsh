@@ -316,6 +316,7 @@ alias tpl='tmuxp load'
 alias tmk='tmux kill-session -t'
 
 # ASDF Tools Version Manager
+export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/.asdfrc"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # ASDF Plugins/Apps
@@ -425,7 +426,7 @@ if [[ -e "$ZSH_CACHE_DIR/completions" ]]; then
 fi
 
 # Additional completion definitions for Zsh (Mostly Homebrew Installed Packages)
-if type brew &>/dev/null; then
+if type brew &> /dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
@@ -462,7 +463,7 @@ complete -o nospace -C packer packer
 complete -o nospace -C aws_completer aws
 
 # Ngrok Completion
-if command -v ngrok &>/dev/null; then
+if command -v ngrok &> /dev/null; then
   eval "$(ngrok completion)"
 fi
 

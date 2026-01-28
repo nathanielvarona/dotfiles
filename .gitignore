@@ -49,6 +49,7 @@ plugged/
 .develop
 .vscode
 .secrets
+.tool-versions
 *gitconfig
 !.gitconfig
 !main.gitconfig
