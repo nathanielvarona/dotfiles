@@ -1,6 +1,3 @@
--- stylua: ignore
--- if true then return {} end
-
 local highlight = {
   "RainbowBlue",
   "RainbowGreen",

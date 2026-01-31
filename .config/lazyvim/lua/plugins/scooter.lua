@@ -1,6 +1,3 @@
--- stylua: ignore
--- if true then return {} end
-
 return {
   "folke/snacks.nvim",
   opts = {
@@ -75,6 +72,5 @@ return {
       require("snacks").notify("Scooter hidden files: " .. (scooter_hidden and "on" or "off"))
       -- open_scooter()
     end, { desc = "Toggle Scooter hidden files" })
-
   end,
 }
