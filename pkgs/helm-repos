@@ -3,7 +3,6 @@ argo                	https://argoproj.github.io/argo-helm
 stable              	https://charts.helm.sh/stable                        
 kedacore            	https://kedacore.github.io/charts                    
 ingress-nginx       	https://kubernetes.github.io/ingress-nginx           
-kubernetes-dashboard	https://kubernetes.github.io/dashboard/              
 apache-airflow      	https://airflow.apache.org/                          
 kube-state-metrics  	https://kubernetes.github.io/kube-state-metrics      
 jetstack            	https://charts.jetstack.io                           

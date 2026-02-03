@@ -62,10 +62,10 @@ brew "fabric-ai"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Play, record, convert, and stream select audio and video codecs
-brew "ffmpeg"
 # H.265/HEVC encoder
 brew "x265"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
 # Fast and simple Node.js version manager
 brew "fnm"
 # Terminal JSON viewer

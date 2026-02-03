@@ -1,3 +1,12 @@
-REPOSITORY_ID                   MODEL_FILE
-runwayml/stable-diffusion-v1-5  v1-5-pruned.ckpt
-segmind/SSD-1B                  SSD-1B-A1111.safetensors
+"runwayml/stable-diffusion-v1-5"
+"segmind/SSD-1B"
+"moonshotai/Kimi-K2.5"
+"Tongyi-MAI/Z-Image"
+"tencent/HunyuanImage-3.0-Instruct"
+"deepseek-ai/DeepSeek-OCR-2"
+"nvidia/personaplex-7b-v1"
+"Qwen/Qwen3-ASR-1.7B"
+"stepfun-ai/Step-3.5-Flash"
+"PaddlePaddle/PaddleOCR-VL-1.5"
+"circlestone-labs/Anima"
+"Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice"

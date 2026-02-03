@@ -3,7 +3,7 @@
 --ignore=docs
 --ignore=pkgs
 --ignore=wsl
---ignore=Makefile
+--ignore=Justfile
 --ignore=dist.gitconfig
 --ignore=.gitignore
 --ignore=.DS_Store
