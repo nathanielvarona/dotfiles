@@ -495,7 +495,7 @@ alias astronvim="NVIM_APPNAME=astronvim $(brew --prefix)/bin/nvim" # Neovim with
 # NvChad: Blazing fast Neovim config providing solid defaults and a beautiful UI
 alias nvchad="NVIM_APPNAME=nvchad $(brew --prefix)/bin/nvim" # Neovim with NvChad: https://github.com/NvChad/NvChad
 # kickstart.nvim: NOT a Neovim distribution, but instead a starting point for your configuration. (Vanilla-like experience)
-alias kickstartvim="NVIM_APPNAME=kickstartvim $(brew --prefix)/bin/nvim" # Neovim with kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim
+alias kickstartnvim="NVIM_APPNAME=kickstartnvim $(brew --prefix)/bin/nvim" # Neovim with kickstart.nvim: https://github.com/nvim-lua/kickstart.nvim
 
 # >>>> Vagrant command completion (start)
 fpath=(/opt/vagrant/embedded/gems/gems/vagrant-2.4.1/contrib/zsh $fpath)
