@@ -31,7 +31,8 @@ fi
 
 # Oh My Posh https://ohmyposh.dev/
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/ohmyposh/zen.omp.toml)"
+  export POSH_CONFIG="$XDG_CONFIG_HOME/ohmyposh/zen.omp.toml"
+  eval "$(oh-my-posh init zsh)"
 fi
 
 # Forcing Apps to use XDG Spec

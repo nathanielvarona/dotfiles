@@ -4,18 +4,18 @@ console_title_template = '{{ if eq .PWD "~" }}~{{ else }}{{ .Folder }}{{ end }}'
 version = 4
 final_space = true
 
+# [transient_prompt]
+#   template = '❯ '
+#   background = 'transparent'
+#   foreground_templates = [
+#     '{{if gt .Code 0}}red{{end}}',
+#     '{{if eq .Code 0}}magenta{{end}}',
+#   ]
+
 [secondary_prompt]
   template = '❯❯ '
   foreground = 'magenta'
   background = 'transparent'
-
-  # [transient_prompt]
-  # template = '❯ '
-  # background = 'transparent'
-  # foreground_templates = [
-  #   '{{if gt .Code 0}}red{{end}}',
-  #   '{{if eq .Code 0}}magenta{{end}}',
-  # ]
 
 [[blocks]]
   type = 'prompt'
