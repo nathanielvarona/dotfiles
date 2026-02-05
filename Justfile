@@ -2,13 +2,14 @@
 PACKAGES := "./pkgs"
 BREW_BUNDLE_DUMP := "brew bundle dump --describe --force --file"
 
-# Default recipe
+# Default Recipe
 default:
   just --list
 
 # Dump All
-dump: brewfile asdf pyenv pipx krew helm rust-cargo github-cli-extension ollama hugging-face-models whalebrew
+dump-all: brewfile whalebrew asdf pyenv pipx krew helm rust-cargo github-cli-extension ollama hugging-face
 
+# Dump All Brewfile
 brewfile: brewfile-formulae brewfile-casks brewfile-taps brewfile-mas brewfile-vscode
 
 # Dump Brewfile Formulae
@@ -23,7 +24,7 @@ brewfile-casks:
 brewfile-taps:
     {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/taps.Brewfile --taps
 
-# Dump Brewfile MAS
+# Dump Brewfile Mac App Store
 brewfile-mas:
     {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/mas.Brewfile --mas
 
@@ -39,7 +40,7 @@ whalebrew:
 asdf:
     asdf plugin list > {{PACKAGES}}/asdf-plugins
 
-# Dump PyEnv Packages
+# Dump PyEnv Python Versions
 pyenv:
     pyenv versions --bare --skip-aliases --skip-envs > {{PACKAGES}}/pyenv-versions
 
@@ -56,7 +57,7 @@ helm:
     helm repo list > {{PACKAGES}}/helm-repos
 
 # Load Helm Repositories
-helm-repo-add:
+helm-load:
     @awk 'NR > 1 { print $1, $2 }' {{PACKAGES}}/helm-repos | \
     while read -r name url; do \
         helm repo add "$name" "$url"; \
@@ -84,6 +85,6 @@ ollama:
     fi
 
 # Dump Hugging Face Models
-hugging-face-models:
+hugging-face:
     hf models ls | jq '.[] | .id' > {{PACKAGES}}/hugging-face-models
 
