@@ -66,6 +66,8 @@ brew "fd"
 brew "x265"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
 # Fast and simple Node.js version manager
 brew "fnm"
 # Terminal JSON viewer
