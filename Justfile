@@ -1,34 +1,37 @@
+# Justfile is a modern version for Makefile
+# See the Link: https://just.systems/
+
 # Variables
 PACKAGES := "./pkgs"
 BREW_BUNDLE_DUMP := "brew bundle dump --describe --force --file"
 
-# Default Recipe
+# Show Just Available Commands
 default:
   just --list
 
 # Dump All
-dump-all: brewfile whalebrew asdf pyenv pipx krew helm rust-cargo github-cli-extension ollama hugging-face
+dump-all: brewfile whalebrew asdf pyenv pipx krew helm rust-cargo gh-cli-ext ollama hugging-face
 
-# Dump All Brewfile
+# Dump Brewfiles
 brewfile: brewfile-formulae brewfile-casks brewfile-taps brewfile-mas brewfile-vscode
 
-# Dump Brewfile Formulae
+# Dump Brewfile for Formulae
 brewfile-formulae:
     {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/formulae.Brewfile --brews
 
-# Dump Brewfile Casks
+# Dump Brewfile for Casks
 brewfile-casks:
     {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/casks.Brewfile --casks
 
-# Dump Brewfile Taps
+# Dump Brewfile for Taps
 brewfile-taps:
     {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/taps.Brewfile --taps
 
-# Dump Brewfile Mac App Store
+# Dump Brewfile for Mac App Store
 brewfile-mas:
     {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/mas.Brewfile --mas
 
-# Dump Brewfile VSCode Extension
+# Dump Brewfile for VSCode Extensions
 brewfile-vscode:
     {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/vscode.Brewfile --vscode
 
@@ -40,15 +43,15 @@ whalebrew:
 asdf:
     asdf plugin list > {{PACKAGES}}/asdf-plugins
 
-# Dump PyEnv Python Versions
+# Dump PyEnv (Python Version Manager)
 pyenv:
     pyenv versions --bare --skip-aliases --skip-envs > {{PACKAGES}}/pyenv-versions
 
-# Dump Pipx Apps
+# Dump Pipx (Python Apps)
 pipx:
     pipx list --short > {{PACKAGES}}/pipx-apps
 
-# Dump Krew Plugins
+# Dump Krew (Kubernetes Plugin Manager) Plugins
 krew:
     krew list > {{PACKAGES}}/krew-plugins
 
@@ -69,8 +72,8 @@ rust-cargo:
     jq -r '.installs | keys[] | split(" ")[0]' ~/.cargo/.crates2.json \
       > {{PACKAGES}}/rust-cargo-packages
 
-# Dump GH CLI Extension
-github-cli-extension:
+# Dump GitHub CLI Extensions
+gh-cli-ext:
     gh extension list | awk -F'\t' '{print $2}' \
       > {{PACKAGES}}/github-cli-extensions
 
@@ -86,5 +89,5 @@ ollama:
 
 # Dump Hugging Face Models
 hugging-face:
-    hf models ls | jq '.[] | .id' > {{PACKAGES}}/hugging-face-models
+    hf models ls --format json | jq '.[] | .id' > {{PACKAGES}}/hugging-face-models
 
