@@ -47,7 +47,7 @@
   },
   // Nvim distribution with preconfigured VSCode compatible plugins
   // Other Compatible Nvim Distribution: `lazyvim`, and `astronvim`
-  "vscode-neovim.NVIM_APPNAME": "vscodeneovim",
+  "vscode-neovim.NVIM_APPNAME": "lazyvim",
 
   // macOS
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
