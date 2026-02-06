@@ -16,7 +16,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Configure Oh My Posh prompt
 # Initialize Oh My Posh with the specified configuration file
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.omp.toml)"
+eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/zen.omp.toml)"
 
 # Initialize Zinit plugin manager
 # Load Zinit and create the completions directory if it doesn't exist

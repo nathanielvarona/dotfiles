@@ -31,7 +31,7 @@ fi
 
 # Oh My Posh https://ohmyposh.dev/
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  export POSH_CONFIG="$XDG_CONFIG_HOME/ohmyposh/zen.omp.toml"
+  export POSH_CONFIG="$XDG_CONFIG_HOME/oh-my-posh/zen.omp.toml"
   eval "$(oh-my-posh init zsh)"
 fi
 
