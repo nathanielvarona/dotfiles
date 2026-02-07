@@ -22,7 +22,14 @@ if ($PSVersionTable.PSVersion.Major -ge 7)
 # Oh My Posh Prompt Initialization
 # ============================================================
 # Build the path to the Oh My Posh theme configuration
-$configPath = Join-Path $PSScriptRoot "../OhMyPosh/zen.omp.toml"
+$configFile = "zen.omp.toml"
+if ($IsWindows)
+{
+  $configPath = Join-Path $PSScriptRoot "../OhMyPosh/$configFile"
+} elseif ($IsMacOS -or $IsLinux)
+{
+  $configPath = Join-Path $PSScriptRoot "../oh-my-posh/$configFile"
+}
 
 # Initialize Oh My Posh only if:
 # - The oh-my-posh command exists
