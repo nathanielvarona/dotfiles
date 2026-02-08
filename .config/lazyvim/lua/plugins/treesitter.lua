@@ -3,6 +3,8 @@ return {
   opts = {
     ensure_installed = {
       "zsh",
+      "latex",
+      "powershell",
     },
   },
 }

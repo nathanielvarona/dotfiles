@@ -1,3 +1,8 @@
+-- Disabled if Snacks Explorer is Enabled
+if vim.g.lazyvim_picker == "snacks" then
+  return {}
+end
+
 local utils = require("neo-tree.utils")
 
 return {
