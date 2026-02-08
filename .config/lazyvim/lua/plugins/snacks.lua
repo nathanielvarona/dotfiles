@@ -29,6 +29,7 @@ return {
         files = {
           hidden = true,
           ignored = true,
+          exclude = { ".DS_Store" },
         },
       },
     },
