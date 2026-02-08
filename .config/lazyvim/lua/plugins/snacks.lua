@@ -24,6 +24,7 @@ return {
         explorer = {
           hidden = true,
           ignored = true,
+          exclude = { ".DS_Store", "__pycache__" },
         },
         files = {
           hidden = true,
