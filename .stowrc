@@ -19,3 +19,4 @@
 --ignore=.harper-dictionary.txt
 --ignore=.ruby-lsp
 --ignore=.taplo.toml
+--ignore=.markdownlint-cli2.yaml
