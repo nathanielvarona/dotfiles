@@ -56,3 +56,6 @@ vim.filetype.add({
 -- }
 
 -- Wrap Line options use the "lua/plugins/neominimap.lua" file.
+
+-- Disable Snacks Animate
+-- vim.g.snacks_animate = false
