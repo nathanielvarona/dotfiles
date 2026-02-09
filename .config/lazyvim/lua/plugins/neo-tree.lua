@@ -3,8 +3,6 @@ if vim.g.lazyvim_picker == "snacks" then
   return {}
 end
 
-local utils = require("neo-tree.utils")
-
 return {
   "nvim-neo-tree/neo-tree.nvim",
   opts = {
@@ -29,6 +27,7 @@ return {
       },
       commands = {
         trash = function(state)
+          local utils = require("neo-tree.utils")
           local inputs = require("neo-tree.ui.inputs")
           local path = state.tree:get_node().path
           local _, name = utils.split_path(path)
