@@ -32,6 +32,12 @@ stow --restow --verbose .
 
 Kindly check the [./docs](./docs) directory.
 
+## Dotfyle Metadata for Neovim _(LazyVim Distribution)_
+
+<a href="https://dotfyle.com/nathanielvarona/dotfiles-config-lazyvim"><img src="https://dotfyle.com/nathanielvarona/dotfiles-config-lazyvim/badges/plugins?style=social" /></a>
+<a href="https://dotfyle.com/nathanielvarona/dotfiles-config-lazyvim"><img src="https://dotfyle.com/nathanielvarona/dotfiles-config-lazyvim/badges/leaderkey?style=social" /></a>
+<a href="https://dotfyle.com/nathanielvarona/dotfiles-config-lazyvim"><img src="https://dotfyle.com/nathanielvarona/dotfiles-config-lazyvim/badges/plugin-manager?style=social" /></a>
+
 ## Asciinema Demo
 
 - **Windows/Linux:** Dotfiles - PowerShell, WSL, Docker, and NVIDIA CUDA featuring Oh-My-Posh Prompt
