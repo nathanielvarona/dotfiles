@@ -2,6 +2,9 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- Leader Key
+vim.g.mapleader = " "
+
 -- vim.g.lazyvim_picker = "fzf"
 -- vim.g.lazyvim_picker = "telescope"
 vim.g.lazyvim_picker = "snacks"
