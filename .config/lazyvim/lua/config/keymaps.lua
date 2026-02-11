@@ -24,3 +24,8 @@ end, { desc = "Toggle Harper LSP" })
 
 -- Format JSON with jq
 vim.keymap.set("n", "<leader>cj", ":%!jq .<CR>", { desc = "Format JSON with jq" })
+
+-- Tiny Inline Diagnostics
+vim.keymap.set("n", "<leader>de", "<cmd>TinyInlineDiag enable<cr>", { desc = "Enable diagnostics" })
+vim.keymap.set("n", "<leader>dd", "<cmd>TinyInlineDiag disable<cr>", { desc = "Disable diagnostics" })
+vim.keymap.set("n", "<leader>dt", "<cmd>TinyInlineDiag toggle<cr>", { desc = "Toggle diagnostics" })

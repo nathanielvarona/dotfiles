@@ -97,6 +97,7 @@
     "nvim-treesitter/nvim-treesitter-textobjects",
     "projekt0n/github-nvim-theme",
     "qvalentin/helm-ls.nvim",
+    "rachartier/tiny-inline-diagnostic.nvim",
     "rafamadriz/friendly-snippets",
     "rmagatti/auto-session",
     "saghen/blink.cmp",
