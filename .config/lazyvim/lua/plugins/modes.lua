@@ -1,3 +1,4 @@
+-- Disable Plugin
 if true then
   return {}
 end

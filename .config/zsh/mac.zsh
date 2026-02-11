@@ -484,6 +484,9 @@ fi
 # This allows you to run different Neovim distributions with their own configurations.
 # For more information, see: https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME
 
+# Set Default Neovim App
+export NVIM_APPNAME="lazyvim"
+
 # NOTE: `LazyVim` and `AstroNvim`: Both offer enhanced VSCode integration with the `vscode-neovim` extension.
 
 # LazyVim: Neovim setup powered by `lazy.nvim` to make it easy to customize and extend your config.

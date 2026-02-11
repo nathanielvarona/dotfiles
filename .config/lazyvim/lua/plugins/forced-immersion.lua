@@ -1,5 +1,3 @@
--- VIM Motions Advanced Refresher Mode
-
 -- Disable Plugin
 if true then
   return {}

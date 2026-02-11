@@ -1,4 +1,4 @@
--- Disabled if Snacks Explorer is Enabled
+-- Disabled if Snacks Explorer is set.
 if vim.g.lazyvim_picker == "snacks" then
   return {}
 end
