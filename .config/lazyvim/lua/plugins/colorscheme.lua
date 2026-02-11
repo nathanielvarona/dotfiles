@@ -17,18 +17,22 @@ return {
 
   -- { "ellisonleao/gruvbox.nvim" },
 
+  -- { "tiagovla/tokyodark.nvim" },
+
   -- Overide LazyVim `colorscheme` Settings
   {
     "LazyVim/LazyVim",
     opts = {
+      -- colorscheme = "tokyonight-night",
       -- colorscheme = "catppuccin-mocha",
+
       -- colorscheme = "github_dark_default",
       colorscheme = "github_dark_high_contrast",
       -- colorscheme = "github_dark_tritanopia",
       -- colorscheme = "kanagawa-dragon",
       -- colorscheme = "kanagawa-wave",
       -- colorscheme = "gruvbox",
-      -- colorscheme = "tokyonight-night",
+      -- colorscheme = "tokyodark",
     },
   },
 }
