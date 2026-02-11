@@ -21,3 +21,6 @@ vim.keymap.set("n", "<leader>uH", function()
     vim.notify("Harper LSP Enabled", vim.log.levels.INFO)
   end
 end, { desc = "Toggle Harper LSP" })
+
+-- Format JSON with jq
+vim.keymap.set("n", "<leader>cj", ":%!jq .<CR>", { desc = "Format JSON with jq" })
