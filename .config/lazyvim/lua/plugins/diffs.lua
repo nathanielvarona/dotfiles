@@ -1,0 +1,3 @@
+return {
+  "barrettruth/diffs.nvim",
+}
