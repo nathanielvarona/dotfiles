@@ -55,7 +55,6 @@
     "akinsho/bufferline.nvim",
     "aserowy/tmux.nvim",
     "b0o/SchemaStore.nvim",
-    "barrettruth/diffs.nvim",
     "catppuccin",
     "christoomey/vim-tmux-navigator",
     "creativenull/dotfyle-metadata.nvim",
@@ -74,6 +73,7 @@
     "gitsigns.nvim",
     "iamcco/markdown-preview.nvim",
     "johnpmitsch/vai.nvim",
+    "kokusenz/deltaview.nvim",
     "kristijanhusak/vim-dadbod-completion",
     "kristijanhusak/vim-dadbod-ui",
     "linux-cultist/venv-selector.nvim",
@@ -105,7 +105,8 @@
     "stevearc/aerial.nvim",
     "stevearc/conform.nvim",
     "vim-dadbod",
-    "windwp/nvim-ts-autotag"
+    "windwp/nvim-ts-autotag",
+    "zeybek/camouflage.nvim"
   ],
   "pluginManager": "lazy.nvim",
   "treesitterParsers": [],

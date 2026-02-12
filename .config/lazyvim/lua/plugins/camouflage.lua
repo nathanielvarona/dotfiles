@@ -34,13 +34,13 @@ return {
     -- Extend patterns
     config.patterns = config.patterns or {}
 
-    add_unique_pattern(
-      config.patterns,
-      { file_pattern = {
+    add_unique_pattern(config.patterns, {
+      file_pattern = {
         "*.secrets",
         ".secrets*",
-      }, parser = "env" }
-    )
+      },
+      parser = "env",
+    })
 
     add_unique_pattern(config.patterns, {
       file_pattern = {
