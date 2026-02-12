@@ -36,8 +36,8 @@ return {
 
     add_unique_pattern(config.patterns, {
       file_pattern = {
-        "*.secrets",
-        ".secrets*",
+        ".secret*",
+        "*.secret*",
       },
       parser = "env",
     })
