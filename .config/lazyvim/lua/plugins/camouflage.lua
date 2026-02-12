@@ -7,6 +7,15 @@ return {
 
     local defaults = require("camouflage.config").defaults
 
+    local function add_unique_pattern(list, pattern)
+      for _, p in ipairs(list) do
+        if vim.deep_equal(p, pattern) then
+          return
+        end
+      end
+      table.insert(list, pattern)
+    end
+
     -- Start with a copy of defaults
     local config = vim.deepcopy(defaults)
 
@@ -24,19 +33,25 @@ return {
 
     -- Extend patterns
     config.patterns = config.patterns or {}
-    vim.list_extend(config.patterns, {
-      {
-        file_pattern = { "*.secrets", ".secrets*" },
-        parser = "env",
+
+    add_unique_pattern(
+      config.patterns,
+      { file_pattern = {
+        "*.secrets",
+        ".secrets*",
+      }, parser = "env" }
+    )
+
+    add_unique_pattern(config.patterns, {
+      file_pattern = {
+        "environment.plist",
       },
-      {
-        file_pattern = { "environment.plist" },
-        parser = "xml",
-      },
+      parser = "xml",
     })
 
     return config
   end,
+
   keys = {
     { "<leader>ct", "<cmd>CamouflageToggle<cr>", desc = "Toggle Camouflage" },
     { "<leader>cr", "<cmd>CamouflageReveal<cr>", desc = "Reveal Line" },
