@@ -16,61 +16,80 @@ return {
 
   {
     "zeybek/camouflage.nvim",
-    event = "VeryLazy",
+    lazy = false,
+    priority = 1000,
 
     opts = function(_, opts)
-      opts = opts or {}
-
       local defaults = require("camouflage.config").defaults
 
-      local function add_unique_pattern(list, pattern)
-        for _, p in ipairs(list) do
-          if vim.deep_equal(p, pattern) then
+      -- Start from default patterns to preserve peconfigured patterns
+      opts.patterns = vim.deepcopy(defaults.patterns)
+
+      -------------------------------------------------
+      -- Safe overrides
+      -------------------------------------------------
+
+      opts.style = "dotted"
+
+      opts.highlight_group = "DiagnosticWarn"
+
+      opts.reveal = {
+        highlight_group = "DiagnosticInfo",
+      }
+
+      opts.pwned = vim.tbl_extend("force", opts.pwned or {}, {
+        enabled = false,
+      })
+
+      -------------------------------------------------
+      -- Extend parser config safely
+      -------------------------------------------------
+
+      opts.parsers = vim.tbl_deep_extend("force", {}, defaults.parsers, opts.parsers or {})
+
+      opts.parsers.env.include_export = true
+
+      -------------------------------------------------
+      -- Extend file patterns safely
+      -------------------------------------------------
+
+      local function extend_pattern(parser, files)
+        for _, p in ipairs(opts.patterns) do
+          if p.parser == parser then
+            local patterns = p.file_pattern
+
+            if type(patterns) == "string" then
+              patterns = { patterns }
+            end
+
+            patterns = patterns or {}
+
+            ---@cast patterns string[]
+            vim.list_extend(patterns, files)
+
+            p.file_pattern = patterns
             return
           end
         end
-        table.insert(list, pattern)
+
+        table.insert(opts.patterns, {
+          parser = parser,
+          file_pattern = files,
+        })
       end
 
-      -- Start with a copy of defaults
-      local config = vim.deepcopy(defaults)
+      extend_pattern("env", {
 
-      -- Override only what you need
-      config.style = "stars"
-
-      config.colors = {
-        foreground = "#808080",
-        background = "transparent",
-      }
-
-      -- Check passwords against breach database
-      config.pwned = {
-        enabled = false,
-      }
-
-      -- Merge / override parsers
-      config.parsers.env.include_export = true
-      -- include_commented remains true from defaults
-
-      -- Extend patterns
-      config.patterns = config.patterns or {}
-
-      add_unique_pattern(config.patterns, {
-        file_pattern = {
-          ".secret*",
-          "*.secret*",
-        },
-        parser = "env",
+        ".secret*",
+        "*.secret*",
       })
 
-      add_unique_pattern(config.patterns, {
-        file_pattern = {
-          "environment.plist",
-        },
-        parser = "xml",
+      extend_pattern("xml", {
+
+        "environment.plist",
       })
 
-      return config
+      return opts
     end,
 
     keys = {
