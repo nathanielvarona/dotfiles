@@ -43,6 +43,11 @@ return {
         background = "transparent",
       }
 
+      -- Check passwords against breach database
+      config.pwned = {
+        enabled = false,
+      }
+
       -- Merge / override parsers
       config.parsers.env.include_export = true
       -- include_commented remains true from defaults
