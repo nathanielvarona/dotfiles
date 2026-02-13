@@ -3,6 +3,7 @@
 ## Distributed Example for `.secrets` File
 
 ```bash
+# vim: filetype=sh
 # Github API Token
 #
 # Used for ASDF
