@@ -487,10 +487,11 @@ fi
 # Set Default Neovim App
 export NVIM_APPNAME="lazyvim"
 
-# NOTE: `LazyVim` and `AstroNvim`: Both offer enhanced VSCode integration with the `vscode-neovim` extension.
+# NOTE: For VSCode users who want to keep Vim motions:
+# Both `LazyVim` and `AstroNvim` provide enhanced integration
+# when used together with the `vscode-neovim` extension.
 
 # LazyVim: Neovim setup powered by `lazy.nvim` to make it easy to customize and extend your config.
-# alias lazyvim="NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim" # Neovim with LazyVim: https://github.com/LazyVim/LazyVim
 lazyvim() {
   NVIM_APPNAME=lazyvim $(brew --prefix)/bin/nvim "$@"
 }
