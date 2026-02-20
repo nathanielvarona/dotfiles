@@ -46,6 +46,8 @@ vim.g.lazyvim_prettier_needs_config = false
 vim.filetype.add({
   extension = {
     html = "html",
+    tf = "terraform",
+    tofu = "opentofu",
   },
 })
 

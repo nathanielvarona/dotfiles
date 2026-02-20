@@ -76,6 +76,7 @@ return {
       --   },
       -- }
       powershell_es = {},
+      tofu_ls = {},
     },
   },
 }
