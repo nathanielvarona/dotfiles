@@ -3,7 +3,10 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # Set Default Editor
-export EDITOR="lazyvim"
+export EDITOR="nvim"
+
+# Set Default Neovim App
+export NVIM_APPNAME="lazyvim"
 
 # XDG Base Directory Specification
 # Stores application configuration files.
@@ -523,9 +526,6 @@ fi
 # Isolate Neovim configurations using the "NVIM_APPNAME" environment variable.
 # This allows you to run different Neovim distributions with their own configurations.
 # For more information, see: https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME
-
-# Set Default Neovim App
-export NVIM_APPNAME="lazyvim"
 
 # NOTE: For VSCode users who want to keep Vim motions:
 # Both `LazyVim` and `AstroNvim` provide enhanced integration
