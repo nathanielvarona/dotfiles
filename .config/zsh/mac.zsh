@@ -424,13 +424,15 @@ fi
 # Git Scripts
 export PATH="$PATH:$HOME/Projects/contribute/git-scripts"
 
+# =========================================================
+# ZSH Completion System Setup with Auto .zcompdump
+# =========================================================
+
 # ---------------------------
 # Completion Search Paths
 # ---------------------------
 
 # Vagrant Zsh completions
-# - Dynamically extract Vagrant version (e.g., "2.4.9")
-# - Add its contrib Zsh completion folder to the front of fpath
 VAGRANT_VERSION=${VAGRANT_VERSION:-$(vagrant --version | awk '{print $2}')}
 fpath=("/opt/vagrant/embedded/gems/gems/vagrant-${VAGRANT_VERSION}/contrib/zsh" $fpath)
 
@@ -439,49 +441,48 @@ if [[ -e "$ZSH_CACHE_DIR/completions" ]]; then
   fpath=("$ZSH_CACHE_DIR/completions" $fpath)
 fi
 
-# Homebrew-installed completions (mostly site-functions for CLI tools)
-if type brew &>/dev/null; then
+# Homebrew-installed completions
+if type brew &> /dev/null; then
   fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 fi
 
-# ASDF plugin completions (pre-generated)
-# - Includes kubectx and kubens
-if command -v asdf &>/dev/null; then
+# ASDF plugin completions (pre-generated, e.g., kubectx/kubens)
+if command -v asdf &> /dev/null; then
   if [[ -e "$(asdf where kubectx)/completion" ]]; then
     fpath=($(asdf where kubectx)/completion $fpath)
   fi
 fi
 
 # =========================================================
+# Function to Automatically Rebuild .zcompdump
+# =========================================================
+_rebuild_zcompdump_if_needed() {
+  local dump_file="${ZDOTDIR:-$HOME}/.zcompdump"
+
+  # If .zcompdump does not exist or is older than 1 day, regenerate
+  if [[ ! -f "$dump_file" ]] || [[ $(find "$dump_file" -mtime +0 2> /dev/null) ]]; then
+    echo "Regenerating Zsh completion dump..."
+    compinit -C
+  else
+    compinit
+  fi
+}
+
+# =========================================================
 # Zsh Native Completion Initialization
 # =========================================================
-
-# Load the Zsh completion system (compinit)
-# - Enables tab-completion for native Zsh functions
-# - Checks if ~/.zcompdump exists and is recent (within 24h):
-#   - If recent → use normal compinit (fast, safe)
-#   - If missing or old → use compinit -C (skip security audit for speed)
 autoload -Uz compinit
-if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-    compinit
-else
-    compinit -C
-fi
+_rebuild_zcompdump_if_needed
 
 # =========================================================
 # Bash-Compatible Completion
 # =========================================================
-
-# Load Bash-style completion support
-# - Required for programs that provide only Bash completions (`complete -C`)
-# - Must be loaded after native compinit but before registering Bash-style completions
 autoload -Uz bashcompinit
 bashcompinit
 
 # =========================================================
 # Source Native CLI Completion Scripts
 # =========================================================
-# CLI tools providing native Zsh completions
 source <(pritunl-client completion zsh)
 # source <(argocd completion zsh)
 source <(eksctl completion zsh)
@@ -498,8 +499,6 @@ source <(ct completion zsh)  # helm-ct
 # =========================================================
 # Register Bash-Style Completions
 # =========================================================
-
-# Programs without native Zsh completions
 complete -o nospace -C terraform terraform
 complete -o nospace -C packer packer
 complete -o nospace -C aws_completer aws
@@ -508,9 +507,7 @@ complete -o nospace -C tofu tofu
 # =========================================================
 # Optional/Conditional Completions
 # =========================================================
-
-# Ngrok completion if installed
-if command -v ngrok &>/dev/null; then
+if command -v ngrok &> /dev/null; then
   eval "$(ngrok completion)"
 fi
 
