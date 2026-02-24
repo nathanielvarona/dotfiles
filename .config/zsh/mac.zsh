@@ -428,7 +428,7 @@ fi
 export PATH="$PATH:$HOME/Projects/contribute/git-scripts"
 
 # =========================================================
-# ZSH Completion System Setup with Auto .zcompdump
+# ZSH Completion System Setup
 # =========================================================
 
 # ---------------------------
@@ -457,25 +457,10 @@ if command -v asdf &> /dev/null; then
 fi
 
 # =========================================================
-# Function to Automatically Rebuild .zcompdump
-# =========================================================
-_rebuild_zcompdump_if_needed() {
-  local dump_file="${ZDOTDIR:-$HOME}/.zcompdump"
-
-  # If .zcompdump does not exist or is older than 1 day, regenerate
-  if [[ ! -f "$dump_file" ]] || [[ $(find "$dump_file" -mtime +0 2> /dev/null) ]]; then
-    echo "Regenerating Zsh completion dump..."
-    compinit -C
-  else
-    compinit
-  fi
-}
-
-# =========================================================
 # Zsh Native Completion Initialization
 # =========================================================
 autoload -Uz compinit
-_rebuild_zcompdump_if_needed
+compinit -C
 
 # =========================================================
 # Bash-Compatible Completion
