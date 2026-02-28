@@ -28,11 +28,11 @@ Everything is automated through `just`.
 
 Ensure the following are installed before setup:
 
+- `brew`
 - `git`
+- `zsh`
 - `stow`
 - `just`
-- `brew` (macOS)
-- `zsh` (recommended)
 
 ---
 
@@ -45,15 +45,13 @@ git clone https://github.com/nathanielvarona/dotfiles.git dotfiles
 cd dotfiles
 ```
 
-### Stow Commands
-
-Apply all dotfiles:
+### Apply Dotfiles
 
 ```bash
 just stow apply
 ```
 
-Dry-run to preview changes:
+Preview changes:
 
 ```bash
 just stow apply dry-run
@@ -65,7 +63,7 @@ Remove symlinks:
 just stow delete
 ```
 
-Restow (delete + reapply):
+Restow:
 
 ```bash
 just stow restow
@@ -73,26 +71,48 @@ just stow restow
 
 ---
 
-## Package Management
+# Package Management
 
-This repository follows a **Dump → Commit → Restore** workflow.
+This repository follows a:
 
-All package states are stored in:
+> [!NOTE]
+> **Dump → Commit → Restore**
+
+All state is stored in:
 
 ```
 ./pkgs/
 ```
 
-The `Justfile` uses DRY variables:
+The `Justfile` centralizes configuration:
 
 ```make
 PACKAGES := "./pkgs"
 BREW_BUNDLE_DUMP := "brew bundle dump --describe --force --file"
+BREW_BUNDLE_RESTORE := "brew bundle --file"
 ```
 
 ---
 
-### Dump Installed Packages
+## Supported Package Managers
+
+The following ecosystems are automated:
+
+- Homebrew (formulae, casks, taps, mas, vscode)
+- asdf
+- pyenv
+- pipx
+- Cargo
+- GitHub CLI extensions
+- kubectl krew
+- Helm repos
+- Ollama models
+- Hugging Face models
+- Whalebrew
+
+---
+
+# Dump Installed State
 
 Dump everything:
 
@@ -100,7 +120,7 @@ Dump everything:
 just dump-all
 ```
 
-Dump specific managers:
+Dump individual managers:
 
 ```bash
 just dump-brew
@@ -116,18 +136,9 @@ just dump-hugging-face
 just dump-whalebrew
 ```
 
-These commands update manifests inside `pkgs/`:
-
-- `formulae.Brewfile`
-- `casks.Brewfile`
-- `pyenv-versions`
-- `pipx-apps`
-- `rust-cargo-packages`
-- `github-cli-extensions`
-
 ---
 
-### Restore Packages
+# Restore State
 
 Restore everything:
 
@@ -153,23 +164,25 @@ just restore-whalebrew
 
 ---
 
-### Restoration Principles
+## Restoration Design Principles
 
-- **Idempotent**
-- Safe if files are missing or empty
-- Non-breaking (`|| true` applied)
-- Pipeline-friendly (`cat | xargs`)
+- Idempotent
+- File-existence guarded (`[ -f file ]`)
+- Non-breaking (`|| true`)
+- Pipeline-safe (`cat | xargs`)
+- Safe loops for multi-field entries (Helm, asdf)
 
 Example:
 
 ```bash
-[ -f {{PACKAGES}}/pyenv-versions ] && \
-cat {{PACKAGES}}/pyenv-versions | xargs -I{} pyenv install {} || true
+if [ -f ./pkgs/pyenv-versions ]; then
+  cat ./pkgs/pyenv-versions | xargs -I{} pyenv install {} || true
+fi
 ```
 
 ---
 
-### Directory Structure
+# Directory Structure
 
 ```text
 .
@@ -256,9 +269,11 @@ cat {{PACKAGES}}/pyenv-versions | xargs -I{} pyenv install {} || true
 └── README.md                        # Repository documentation
 ```
 
-## Workflow
+---
 
-On a new machine:
+# Workflow
+
+## On a Fresh Machine
 
 ```bash
 git clone ...
@@ -268,7 +283,7 @@ just restore-all
 just stow apply
 ```
 
-On an existing machine after installing new tools:
+## After Installing New Tools
 
 ```bash
 just dump-all
@@ -277,7 +292,7 @@ git commit -m "update package state"
 
 ---
 
-## Philosophy
+# Philosophy
 
 - Treat development environment as **declarative infrastructure**
 - Keep system **reproducible and versioned**
@@ -285,7 +300,7 @@ git commit -m "update package state"
 
 ---
 
-## Asciinema Demos
+# Asciinema Demos
 
 ### Windows / Linux
 
@@ -303,6 +318,6 @@ tmuxp, LazyVim, Treesitter, LSP, Lazygit
 
 ---
 
-## License
+# License
 
 [MIT](./LICENSE)

@@ -1,43 +1,39 @@
-# Justfile is a modern version for Makefile
+# Justfile – Modern Make Alternative
 # https://just.systems/
-
-# ============================================================
-# Dotfiles Justfile
-# ============================================================
 
 set shell := ["bash", "-cu"]
 
-# ------------------------------------------------------------
+# ================
 # Global Variables
-# ------------------------------------------------------------
+# ================
 
 PACKAGES := "./pkgs"
 BREW_BUNDLE_DUMP := "brew bundle dump --describe --force --file"
 BREW_BUNDLE_RESTORE := "brew bundle --file"
 
-# ------------------------------------------------------------
-# Default Target
-# ------------------------------------------------------------
+# ================
+# Default
+# ================
 
 default:
 	@just --list
 
-# ------------------------------------------------------------
-# Ensure pkgs directory exists
-# ------------------------------------------------------------
+# ================
+# Init
+# ================
 
 init:
 	mkdir -p {{PACKAGES}}
 
-# ============================================================
-# STOW
-# ============================================================
+# ================
+# Stow
+# ================
 # Usage:
 #   just stow apply
 #   just stow apply dry-run
 #   just stow delete
-#   just stow restow dry-run
-# ============================================================
+#   just stow restow
+# ================
 
 stow action="apply" mode="" target=".":
 	#!/usr/bin/env bash
@@ -63,37 +59,32 @@ stow action="apply" mode="" target=".":
 	echo "→ stow $CMD $FLAGS {{target}}"
 	stow $CMD $FLAGS {{target}}
 
-# ============================================================
-# HOMEBREW
-# ============================================================
+# ================
+# Homebrew
+# ================
 
-brew-dump: init
-	# Dump all Brew bundles
+dump-brew: init
 	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/formulae.Brewfile --formulae
 	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/casks.Brewfile --cask
 	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/taps.Brewfile --tap
 	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/mas.Brewfile --mas
 	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/vscode.Brewfile --vscode
 
-brew-restore:
-	# Restore Brew bundles
-	{{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/formulae.Brewfile || true
-	{{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/casks.Brewfile || true
-	{{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/taps.Brewfile || true
-	{{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/mas.Brewfile || true
-	{{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/vscode.Brewfile || true
+restore-brew:
+	@if [ -f {{PACKAGES}}/formulae.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/formulae.Brewfile; fi || true
+	@if [ -f {{PACKAGES}}/casks.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/casks.Brewfile; fi || true
+	@if [ -f {{PACKAGES}}/taps.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/taps.Brewfile; fi || true
+	@if [ -f {{PACKAGES}}/mas.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/mas.Brewfile; fi || true
+	@if [ -f {{PACKAGES}}/vscode.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/vscode.Brewfile; fi || true
 
-
-# ============================================================
+# ================
 # ASDF
-# ============================================================
+# ================
 
-asdf-dump: init
-	# Dump installed asdf plugins with URLs
-	asdf plugin list --urls | awk -v OFS='\t' 'NF{$1=$1; print}' | column -t > {{PACKAGES}}/asdf-plugins || true
+dump-asdf: init
+	asdf plugin list --urls | awk 'NF{$1=$1;print}' | column -t > {{PACKAGES}}/asdf-plugins || true
 
-asdf-restore:
-	# Restore asdf plugins
+restore-asdf:
 	@if [ -f {{PACKAGES}}/asdf-plugins ]; then \
 		while read -r plugin url; do \
 			asdf plugin add "$plugin" "$url" || true; \
@@ -101,151 +92,143 @@ asdf-restore:
 	fi
 	asdf install || true
 
+# ================
+# Pyenv
+# ================
 
-# ============================================================
-# PYENV
-# ============================================================
-
-pyenv-dump: init
+dump-pyenv: init
 	pyenv versions --bare > {{PACKAGES}}/pyenv-versions || true
 
-pyenv-restore:
-	[ -f {{PACKAGES}}/pyenv-versions ] && \
-	cat {{PACKAGES}}/pyenv-versions | xargs -I{} pyenv install {} || true
+restore-pyenv:
+	@if [ -f {{PACKAGES}}/pyenv-versions ]; then \
+		cat {{PACKAGES}}/pyenv-versions | xargs -I{} pyenv install {} || true ; \
+	fi
 
+# ================
+# Pipx
+# ================
 
-# ============================================================
-# PIPX
-# ============================================================
-
-pipx-dump: init
+dump-pipx: init
 	pipx list --short | column -t > {{PACKAGES}}/pipx-apps || true
 
-pipx-restore:
+restore-pipx:
 	@if [ -f {{PACKAGES}}/pipx-apps ]; then \
 		awk '{print $1}' {{PACKAGES}}/pipx-apps | xargs -I{} pipx install {} ; \
 	fi
 
+# ================
+# Krew
+# ================
 
-# ============================================================
-# KREW
-# ============================================================
-
-krew-dump: init
+dump-krew: init
 	kubectl krew list > {{PACKAGES}}/krew-plugins || true
 
-krew-restore:
+restore-krew:
 	@if [ -f {{PACKAGES}}/krew-plugins ]; then \
-		cat {{PACKAGES}}/krew-plugins | xargs -I{} kubectl krew install {} ; \
+		cat {{PACKAGES}}/krew-plugins | xargs -I{} kubectl krew install {} || true ; \
 	fi
 
+# ================
+# Helm
+# ================
 
-# ============================================================
-# HELM
-# ============================================================
-
-helm-dump: init
+dump-helm: init
 	helm repo list | sed '1d' | column -t > {{PACKAGES}}/helm-repos || true
 
-helm-restore:
+restore-helm:
 	@if [ -f {{PACKAGES}}/helm-repos ]; then \
-		cat {{PACKAGES}}/helm-repos | xargs -L1 sh -c 'helm repo add $0 $1' ; \
+		while read -r name url; do \
+			helm repo add "$name" "$url" || true; \
+		done < {{PACKAGES}}/helm-repos ; \
 	fi
 	helm repo update || true
 
+# ================
+# Cargo
+# ================
 
-# ============================================================
-# CARGO
-# ============================================================
-
-cargo-dump: init
+dump-cargo: init
 	cargo install --list | awk '/^[a-zA-Z0-9_-]+ v/ {print $1}' > {{PACKAGES}}/rust-cargo-packages || true
 
-cargo-restore:
+restore-cargo:
 	@if [ -f {{PACKAGES}}/rust-cargo-packages ]; then \
-		cat {{PACKAGES}}/rust-cargo-packages | xargs -I{} cargo install {} ; \
+		cat {{PACKAGES}}/rust-cargo-packages | xargs -I{} cargo install {} || true ; \
 	fi
 
+# ================
+# GitHub CLI
+# ================
 
-# ============================================================
-# GITHUB CLI
-# ============================================================
-
-gh-dump: init
+dump-gh-ext: init
 	gh extension list | grep -Eo '[[:alnum:]_-]+/[[:alnum:]_.-]+' > {{PACKAGES}}/github-cli-extensions || true
 
-gh-restore:
+restore-gh-ext:
 	@if [ -f {{PACKAGES}}/github-cli-extensions ]; then \
-		cat {{PACKAGES}}/github-cli-extensions | xargs -I{} gh extension install {} ; \
+		cat {{PACKAGES}}/github-cli-extensions | xargs -I{} gh extension install {} || true ; \
 	fi
 
+# ================
+# Whalebrew
+# ================
 
-# ============================================================
-# WHALEBREW
-# ============================================================
-
-whalebrew-dump: init
+dump-whalebrew: init
 	whalebrew list --no-headers > {{PACKAGES}}/whalebrew || true
 
-whalebrew-restore:
+restore-whalebrew:
 	@if [ -f {{PACKAGES}}/whalebrew ]; then \
-		cat {{PACKAGES}}/whalebrew | xargs -L1 sh -c 'whalebrew install $1 -n $0' ; \
+		cat {{PACKAGES}}/whalebrew | xargs -L1 whalebrew install || true ; \
 	fi
 
+# ================
+# Ollama
+# ================
 
-# ============================================================
-# OLLAMA
-# ============================================================
-
-ollama-dump: init
+dump-ollama: init
 	ollama list | awk 'NR>1 {print $1}' > {{PACKAGES}}/ollama-models || true
 
-ollama-restore:
+restore-ollama:
 	@if [ -f {{PACKAGES}}/ollama-models ]; then \
-		cat {{PACKAGES}}/ollama-models | xargs -I{} ollama pull {} ; \
+		cat {{PACKAGES}}/ollama-models | xargs -I{} ollama pull {} || true ; \
 	fi
 
+# ================
+# Hugging Face
+# ================
 
-# ============================================================
-# HUGGING FACE
-# ============================================================
+dump-hugging-face: init
+	hf models ls | awk 'NR>2 {print $1}' > {{PACKAGES}}/hugging-face-models || true
 
-hugging-face-dump: init
-	hf models ls | awk 'NR > 2' | awk '{print $1}' > {{PACKAGES}}/hugging-face-models || true
-
-hugging-face-restore:
+restore-hugging-face:
 	@if [ -f {{PACKAGES}}/hugging-face-models ]; then \
-		cat {{PACKAGES}}/hugging-face-models | xargs -I{} hf download {} ; \
+		cat {{PACKAGES}}/hugging-face-models | xargs -I{} hf download {} || true ; \
 	fi
 
-
-# ============================================================
-# AGGREGATE TARGETS
-# ============================================================
+# ================
+# Aggregate
+# ================
 
 dump-all: \
-	brew-dump \
-	asdf-dump \
-	pyenv-dump \
-	pipx-dump \
-	krew-dump \
-	helm-dump \
-	cargo-dump \
-	gh-dump \
-	whalebrew-dump \
-	ollama-dump \
-	hugging-face-dump
+	dump-brew \
+	dump-asdf \
+	dump-pyenv \
+	dump-pipx \
+	dump-krew \
+	dump-helm \
+	dump-cargo \
+	dump-gh-ext \
+	dump-whalebrew \
+	dump-ollama \
+	dump-hugging-face
 
 restore-all: \
-	brew-restore \
-	asdf-restore \
-	pyenv-restore \
-	pipx-restore \
-	krew-restore \
-	helm-restore \
-	cargo-restore \
-	gh-restore \
-	whalebrew-restore \
-	ollama-restore \
-	hugging-face-restore
-
+	restore-brew \
+	restore-asdf \
+	restore-pyenv \
+	restore-pipx \
+	restore-krew \
+	restore-helm \
+	restore-cargo \
+	restore-gh-ext \
+	restore-whalebrew \
+	restore-ollama \
+	restore-hugging-face
