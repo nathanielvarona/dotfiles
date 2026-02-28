@@ -71,12 +71,10 @@ just stow restow
 
 ---
 
-# Package Management
-
-This repository follows a:
+## Package Management
 
 > [!NOTE]
-> **Dump → Commit → Restore**
+> This repository follows a **Dump → Commit → Restore**.
 
 All state is stored in:
 
@@ -94,7 +92,7 @@ BREW_BUNDLE_RESTORE := "brew bundle --file"
 
 ---
 
-## Supported Package Managers
+### Supported Package Managers
 
 The following ecosystems are automated:
 
@@ -112,7 +110,7 @@ The following ecosystems are automated:
 
 ---
 
-# Dump Installed State
+## Dump Installed State
 
 Dump everything:
 
@@ -138,7 +136,7 @@ just dump-whalebrew
 
 ---
 
-# Restore State
+## Restore State
 
 Restore everything:
 
@@ -164,7 +162,7 @@ just restore-whalebrew
 
 ---
 
-## Restoration Design Principles
+### Restoration Design Principles
 
 - Idempotent
 - File-existence guarded (`[ -f file ]`)
@@ -182,7 +180,7 @@ fi
 
 ---
 
-# Directory Structure
+## Directory Structure
 
 ```text
 .
@@ -271,9 +269,9 @@ fi
 
 ---
 
-# Workflow
+## Workflow
 
-## On a Fresh Machine
+### On a Fresh Machine
 
 ```bash
 git clone ...
@@ -283,7 +281,7 @@ just restore-all
 just stow apply
 ```
 
-## After Installing New Tools
+### After Installing New Tools
 
 ```bash
 just dump-all
@@ -292,7 +290,7 @@ git commit -m "update package state"
 
 ---
 
-# Philosophy
+## Philosophy
 
 - Treat development environment as **declarative infrastructure**
 - Keep system **reproducible and versioned**
@@ -300,24 +298,26 @@ git commit -m "update package state"
 
 ---
 
-# Asciinema Demos
+## Asciinema Demos
 
 ### Windows / Linux
 
-PowerShell, WSL, Docker, CUDA, Oh-My-Posh  
+#### PowerShell, Windows Subsystem for Linux (WSL), Docker, CUDA, Oh-My-Posh
+
 [![asciinema](https://asciinema.org/a/760740.svg)](https://asciinema.org/a/760740?autoplay=1&loop=1)
 
 ### macOS
 
-tmuxp, LazyVim, Treesitter, LSP, Lazygit  
+#### tmuxp (tmux), LazyVim (NeoVim), Tree-sitter, Language Server Protocol (LSP) , Lazygit (Git)
+
 [![asciinema](https://asciinema.org/a/748818.svg)](https://asciinema.org/a/748818?autoplay=1&loop=1)
 
-### macOS (Zinit)
+#### Zsh, Zinit, Plugin orchestration
 
 [![asciinema](https://asciinema.org/a/666761.svg)](https://asciinema.org/a/666761?autoplay=1&loop=1)
 
 ---
 
-# License
+## License
 
 [MIT](./LICENSE)
