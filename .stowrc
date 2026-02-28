@@ -1,5 +1,6 @@
 --target=~
 --ignore=README.*
+--ignore=LICENSE
 --ignore=docs
 --ignore=pkgs
 --ignore=wsl
