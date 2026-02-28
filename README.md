@@ -249,7 +249,7 @@ cat {{PACKAGES}}/pyenv-versions | xargs -I{} pyenv install {} || true
 ├── .stowrc                          # GNU Stow configuration
 ├── .taplo.toml                      # TOML formatter config
 ├── .tmuxp.yaml                      # tmuxp session layout config
-├── .tool-versions                   # asdf runtime version definitions
+├── .tool-versions                   # asdf runtime version definitions (not committed)
 ├── .zshenv                          # Zsh early environment initialization
 ├── Justfile                         # Task runner definitions (Just automation)
 ├── LICENSE                          # MIT License
