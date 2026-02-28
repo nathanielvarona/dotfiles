@@ -1,93 +1,263 @@
 # Justfile is a modern version for Makefile
 # See the Link: https://just.systems/
 
+# ============================================================
+# Dotfiles Justfile
+# ============================================================
+
+set shell := ["bash", "-cu"]
+
+# ------------------------------------------------------------
 # Variables
+# ------------------------------------------------------------
+
 PACKAGES := "./pkgs"
 BREW_BUNDLE_DUMP := "brew bundle dump --describe --force --file"
+BREW_BUNDLE_RESTORE := "brew bundle --file"
 
-# Show Just Available Commands
+# ------------------------------------------------------------
+# Default
+# ------------------------------------------------------------
+
 default:
-  just --list
+	@just --list
 
-# Dump All
-dump-all: brewfile whalebrew asdf pyenv pipx krew helm rust-cargo gh-cli-ext ollama hugging-face
 
-# Dump Brewfiles
-brewfile: brewfile-formulae brewfile-casks brewfile-taps brewfile-mas brewfile-vscode
+# ============================================================
+# STOW (Grouped Command)
+# Usage:
+#   just stow apply
+#   just stow apply dry-run
+#   just stow delete
+#   just stow restow dry-run
+# ============================================================
 
-# Dump Brewfile for Formulae
-brewfile-formulae:
-    {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/formulae.Brewfile --brews
+stow action="apply" mode="" target=".":
+	#!/usr/bin/env bash
+	set -euo pipefail
 
-# Dump Brewfile for Casks
-brewfile-casks:
-    {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/casks.Brewfile --casks
+	case "{{action}}" in
+		apply)  CMD="--stow" ;;
+		delete) CMD="--delete" ;;
+		restow) CMD="--restow" ;;
+		*)
+			echo "Invalid action: {{action}}"
+			echo "Valid actions: apply | delete | restow"
+			exit 1
+			;;
+	esac
 
-# Dump Brewfile for Taps
-brewfile-taps:
-    {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/taps.Brewfile --taps
+	FLAGS="--verbose"
 
-# Dump Brewfile for Mac App Store
-brewfile-mas:
-    {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/mas.Brewfile --mas
+	if [ "{{mode}}" = "dry-run" ]; then
+		FLAGS="$FLAGS --simulate"
+	fi
 
-# Dump Brewfile for VSCode Extensions
-brewfile-vscode:
-    {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/vscode.Brewfile --vscode
+	echo "→ stow $CMD $FLAGS {{target}}"
+	stow $CMD $FLAGS {{target}}
 
-# Dump Whalebrew Apps
+
+# ============================================================
+# PACKAGE DUMP
+# ============================================================
+
+dump-all: init brewfile whalebrew asdf pyenv pipx krew helm cargo gh-cli-ext ollama hugging-face
+
+# -------------------------
+# Create Package Directory
+# -------------------------
+init:
+	mkdir -p {{PACKAGES}}
+
+# -------------------------
+# Homebrew
+# -------------------------
+
+brewfile:
+	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/formulae.Brewfile
+	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/casks.Brewfile --cask
+	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/taps.Brewfile --tap
+	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/mas.Brewfile --mas
+	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/vscode.Brewfile --vscode
+
+
+# -------------------------
+# Whalebrew
+# -------------------------
+
 whalebrew:
-    whalebrew list > {{PACKAGES}}/whalebrew
+	whalebrew list --no-headers > {{PACKAGES}}/whalebrew || true
 
-# Dump ASDF Toolings
+
+# -------------------------
+# asdf
+# -------------------------
+
 asdf:
-    asdf plugin list > {{PACKAGES}}/asdf-plugins
+	asdf plugin list --urls | awk -v OFS='\t' 'NF{$1=$1; print}' | column -t > {{PACKAGES}}/asdf-plugins || true
 
-# Dump PyEnv (Python Version Manager)
+
+# -------------------------
+# pyenv
+# -------------------------
+
 pyenv:
-    pyenv versions --bare --skip-aliases --skip-envs > {{PACKAGES}}/pyenv-versions
+	pyenv versions --bare > {{PACKAGES}}/pyenv-versions || true
 
-# Dump Pipx (Python Apps)
+
+# -------------------------
+# pipx
+# -------------------------
+
 pipx:
-    pipx list --short > {{PACKAGES}}/pipx-apps
+	pipx list --short | column -t > {{PACKAGES}}/pipx-apps || true
 
-# Dump Krew (Kubernetes Plugin Manager) Plugins
+
+# -------------------------
+# krew
+# -------------------------
+
 krew:
-    krew list > {{PACKAGES}}/krew-plugins
+	kubectl krew list > {{PACKAGES}}/krew-plugins || true
 
-# Dump Helm Repositories
+
+# -------------------------
+# Helm
+# -------------------------
+
 helm:
-    helm repo list > {{PACKAGES}}/helm-repos
+	helm repo list | sed '1d' | column -t > {{PACKAGES}}/helm-repos || true
 
-# Load Helm Repositories
-helm-load:
-    @awk 'NR > 1 { print $1, $2 }' {{PACKAGES}}/helm-repos | \
-    while read -r name url; do \
-        helm repo add "$name" "$url"; \
-    done
-    @helm repo update
 
-# Dump Rust Packages
-rust-cargo:
-    jq -r '.installs | keys[] | split(" ")[0]' ~/.cargo/.crates2.json \
-      > {{PACKAGES}}/rust-cargo-packages
+# -------------------------
+# Cargo
+# -------------------------
 
-# Dump GitHub CLI Extensions
+cargo:
+	cargo install --list | awk '/^[a-zA-Z0-9_-]+ v/ {print $1}' > {{PACKAGES}}/rust-cargo-packages || true
+
+
+# -------------------------
+# GitHub CLI
+# -------------------------
+
 gh-cli-ext:
-    gh extension list | awk -F'\t' '{print $2}' \
-      > {{PACKAGES}}/github-cli-extensions
+	gh extension list | awk '{print $1}' > {{PACKAGES}}/github-cli-extensions || true
 
-# Dump Ollama Models
+
+# -------------------------
+# Ollama
+# -------------------------
+
 ollama:
-    if pgrep -x "ollama" > /dev/null; then \
-        ollama list | awk 'NR > 1 { print $1 }' \
-          > {{PACKAGES}}/ollama-models && \
-        echo "Ollama Model List Dumped"; \
-    else \
-        echo "Dump Skipped! Ollama Service is Down"; \
-    fi
+	ollama list | awk 'NR>1 {print $1}' > {{PACKAGES}}/ollama-models || true
 
-# Dump Hugging Face Models
+
+# -------------------------
+# Hugging Face
+# -------------------------
+
 hugging-face:
-    hf models ls --format json | jq '.[] | .id' > {{PACKAGES}}/hugging-face-models
+	hf models ls | awk 'NR > 2' | awk '{print $1}' > {{PACKAGES}}/hugging-face-models || true
 
+# ============================================================
+# PACKAGE RESTORE
+# ============================================================
+
+restore-all: restore-brew restore-asdf restore-pyenv restore-pipx restore-krew restore-helm restore-cargo restore-gh restore-whalebrew restore-ollama restore-hugging-face
+
+
+# -------------------------
+# Homebrew Restore
+# -------------------------
+
+restore-brew:
+	{{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/formulae.Brewfile || true
+	{{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/casks.Brewfile || true
+	{{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/taps.Brewfile || true
+	{{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/mas.Brewfile || true
+	{{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/vscode.Brewfile || true
+
+
+# -------------------------
+# asdf Restore
+# -------------------------
+restore-asdf:
+	[ -f {{PACKAGES}}/asdf-plugins ] && \
+	while read -r plugin url; do \
+		asdf plugin add "$plugin" "$url" || true; \
+	done < {{PACKAGES}}/asdf-plugins
+
+	asdf install || true
+
+
+# -------------------------
+# pyenv Restore
+# -------------------------
+restore-pyenv:
+	cat {{PACKAGES}}/pyenv-versions | xargs -I{} pyenv install {} || true
+
+
+# -------------------------
+# pipx Restore
+# -------------------------
+
+restore-pipx:
+	cat {{PACKAGES}}/pipx-apps | awk '{print $1}' | xargs -I{} pipx install {} || true
+
+
+# -------------------------
+# krew Restore
+# -------------------------
+
+restore-krew:
+	cat {{PACKAGES}}/krew-plugins | xargs -I{} kubectl krew install {} || true
+
+
+# -------------------------
+# Helm Restore
+# -------------------------
+
+restore-helm:
+	cat {{PACKAGES}}/helm-repos | xargs -L1 sh -c 'helm repo add $0 $1' || true
+	helm repo update || true
+
+
+# -------------------------
+# Cargo Restore
+# -------------------------
+
+restore-cargo:
+	cat {{PACKAGES}}/rust-cargo-packages | xargs -I{} cargo install {} || true
+
+
+# -------------------------
+# GitHub CLI Restore
+# -------------------------
+
+restore-gh:
+	cat {{PACKAGES}}/github-cli-extensions | xargs -I{} gh extension install {} || true
+
+
+# -------------------------
+# Whalebrew Restore
+# -------------------------
+
+restore-whalebrew:
+	cat {{PACKAGES}}/whalebrew | xargs -L1 sh -c 'whalebrew install $1 -n $0' || true
+
+
+# -------------------------
+# Ollama Restore
+# -------------------------
+
+restore-ollama:
+	cat {{PACKAGES}}/ollama-models | xargs -I{} ollama pull {} || true
+
+
+# -------------------------
+# Hugging Face Restore
+# -------------------------
+
+restore-hugging-face:
+	cat {{PACKAGES}}/hugging-face-models | xargs -I{} hf download {} || true
