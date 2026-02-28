@@ -32,6 +32,8 @@ brew "cmake"
 brew "conda-zsh-completion"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Container Signing
+brew "cosign"
 # Top-like interface for container metrics
 brew "ctop"
 # Secure runtime for JavaScript and TypeScript
@@ -149,15 +151,13 @@ brew "nmap", link: false
 # Prompt theme engine for any shell
 brew "oh-my-posh"
 # Create, run, and share large language models (LLMs)
-brew "ollama"
+brew "ollama", restart_service: :changed
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
 # Open source computer vision library
 brew "opencv"
-# Drop-in replacement for Terraform. Infrastructure as Code Tool
-brew "opentofu"
 # Password manager
 brew "pass"
 # Open-source vector similarity search for Postgres
@@ -248,6 +248,8 @@ brew "wget"
 brew "whalebrew"
 # Tools for the WireGuard secure network tunnel
 brew "wireguard-tools"
+# Why is this running?
+brew "witr"
 # XML command-line utilities
 brew "xmlstarlet"
 # Command-line XML and HTML beautifier and content extractor

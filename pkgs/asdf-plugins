@@ -1,19 +1,20 @@
-argocd
-awscli
-eksctl
-helm
-helm-ct
-helmfile
-kind
-kompose
-krew
-kubeconform
-kubectl
-kubectx
-kubeval
-kustomize
-lua
-minikube
-packer
-terraform
-tilt
+argocd       https://github.com/beardix/asdf-argocd.git
+awscli       https://github.com/MetricMike/asdf-awscli.git
+eksctl       https://github.com/elementalvoid/asdf-eksctl.git
+helm         https://github.com/Antiarchitect/asdf-helm.git
+helm-ct      https://github.com/tablexi/asdf-helm-ct.git
+helmfile     https://github.com/feniix/asdf-helmfile.git
+kind         https://github.com/johnlayton/asdf-kind.git
+kompose      https://github.com/technikhil314/asdf-kompose.git
+krew         https://github.com/bjw-s/asdf-krew.git
+kubeconform  https://github.com/lirlia/asdf-kubeconform.git
+kubectl      https://github.com/asdf-community/asdf-kubectl.git
+kubectx      https://gitlab.com/wt0f/asdf-kubectx.git
+kubeval      https://github.com/stefansedich/asdf-kubeval.git
+kustomize    https://github.com/Banno/asdf-kustomize.git
+lua          https://github.com/Stratus3D/asdf-lua.git
+minikube     https://github.com/alvarobp/asdf-minikube.git
+opentofu     https://github.com/virtualroot/asdf-opentofu.git
+packer       https://github.com/asdf-community/asdf-hashicorp.git
+terraform    https://github.com/asdf-community/asdf-hashicorp.git
+tilt         https://github.com/eaceaser/asdf-tilt.git

@@ -16,6 +16,8 @@ cask "balenaetcher"
 cask "beekeeper-studio"
 # Open source IDE for exploring and testing APIs
 cask "bruno"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
 # Server and cloud storage browser
