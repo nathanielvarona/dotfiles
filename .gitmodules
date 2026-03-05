@@ -1,5 +1,5 @@
 [submodule "external/alacritty-theme"]
-	path = external/alacritty-theme
+	path = external/alacritty/alacritty-theme
 	url = https://github.com/alacritty/alacritty-theme.git
 [submodule "external/catppuccin/lsd"]
 	path = external/catppuccin/lsd
