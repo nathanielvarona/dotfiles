@@ -14,7 +14,6 @@
 --ignore=.editorconfig
 --ignore=.secrets.dist
 --ignore=.tmuxp.yaml
---ignore=.config/zellij
 --ignore=.harper-dictionary.txt
 --ignore=.ruby-lsp
 --ignore=.taplo.toml
