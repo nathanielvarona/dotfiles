@@ -236,6 +236,9 @@ fi
 │   ├── vscode                       # VSCode docs
 │   ├── windows                      # Windows-specific setup notes
 │   └── zinit                        # Zinit plugin manager docs
+├── external                         # External package & dependencies (Submodules)
+│   └── repo-user-or-org             # Repository user or orgnanization owner
+│       └── repository               # Repository project directory
 ├── pkgs                             # Reproducible package & dependency manifests
 │   ├── asdf-plugins                 # asdf plugin list
 │   ├── casks.Brewfile               # Homebrew casks (GUI apps)
