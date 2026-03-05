@@ -2,6 +2,8 @@
 cask "nikitabobko/tap/aerospace"
 # Mobile device management suite
 cask "airdroid"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Distribution of the Python and R programming languages for scientific computing
 cask "anaconda"
 # Redis desktop manager

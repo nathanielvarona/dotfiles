@@ -264,6 +264,8 @@ brew "ydiff"
 brew "yq"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
 # Flexible and fast Zsh plugin manager
 brew "zinit"
 # General-purpose lossless data-compression library
