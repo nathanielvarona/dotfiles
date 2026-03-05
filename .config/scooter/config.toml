@@ -1,13 +1,12 @@
 [editor_open]
-command = "nvim --server $NVIM --remote-send '<cmd>lua EditLineFromScooter(\"%file\", %line)<CR>'"
+  command = "nvim --server $NVIM --remote-send '<cmd>lua EditLineFromScooter(\"%file\", %line)<CR>'"
 
 [preview]
-# syntax_highlighting_theme = "TwoDark"
-syntax_highlighting_theme = "Visual Studio Dark+"
+  # Built-in
+  # syntax_highlighting_theme = "base16-eighties.dark" # Default
+  # syntax_highlighting_theme = "base16-ocean.dark"
 
-# Built-in
-# syntax_highlighting_theme = "base16-eighties.dark" # Default
-# syntax_highlighting_theme = "base16-ocean.dark"
+  syntax_highlighting_theme = "Catppuccin Mocha"
 
 [style]
-true_color = true
+  true_color = true
