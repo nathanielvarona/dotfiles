@@ -15,7 +15,6 @@
 --ignore=.secrets.dist
 --ignore=.tmuxp.yaml
 --ignore=.config/zellij
---ignore=.config/lsd/colors
 --ignore=.harper-dictionary.txt
 --ignore=.ruby-lsp
 --ignore=.taplo.toml
