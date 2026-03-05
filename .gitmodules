@@ -10,3 +10,6 @@
 [submodule "external/catppuccin/bat"]
 	path = external/catppuccin/bat
 	url = https://github.com/catppuccin/bat.git
+[submodule "external/kovidgoyal/kitty-themes"]
+	path = external/kovidgoyal/kitty-themes
+	url = https://github.com/kovidgoyal/kitty-themes.git
