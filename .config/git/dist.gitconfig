@@ -1,6 +1,7 @@
-; --------------------------------------------------------------------
+; vim:ft=gitconfig
+; ----------------
 ; Git Configuration — Conditional Include (Distribution Template)
-; --------------------------------------------------------------------
+; ----------------
 ; This file is intended to be conditionally included from ~/.gitconfig
 ; using Git's [includeIf] directive.
 ;
@@ -10,7 +11,7 @@
 ;
 ; This allows separate identities and credential behavior per context
 ; (personal, work, OSS, etc.) without duplicating configuration.
-; --------------------------------------------------------------------
+; ----------------
 
 [user]
 	; Git author identity for this context
@@ -18,15 +19,15 @@
 	name = <User Name>
 	email = <123456789+username>@users.noreply.github.com
 
-; --------------------------------------------------------------------
+; ----------------
 ; GitHub Credential Configuration
-; --------------------------------------------------------------------
+; ----------------
 ; Instruct Git Credential Manager (GCM) to reuse the currently
 ; authenticated GitHub account (personal or corporate).
 ;
 ; useHttpPath ensures credentials are scoped per account and URL,
 ; which is important when working with multiple GitHub identities.
-; --------------------------------------------------------------------
+; ----------------
 [credential "https://github.com"]
 	useHttpPath = true
 

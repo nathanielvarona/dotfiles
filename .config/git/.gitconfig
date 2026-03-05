@@ -1,19 +1,20 @@
-# ====================================================================
+# vim:ft=gitconfig
+# ================
 # Global Git Configuration (XDG-compliant)
-# ====================================================================
+# ================
 # This file acts as the main entry point for all Git configuration.
 # Identity- or context-specific settings are delegated via includeIf
 # to keep this file minimal, DRY, and easy to reason about.
-# ====================================================================
+# ================
 
 
-# --------------------------------------------------------------------
+# ----------------
 # Conditional Includes — Personal / OSS Context
-# --------------------------------------------------------------------
+# ----------------
 # All paths below intentionally share the same identity and settings.
 # This avoids duplication by reusing `personal.gitconfig` everywhere
 # personal credentials or OSS contributions are expected.
-# --------------------------------------------------------------------
+# ----------------
 
 # Personal projects (private or public)
 [includeIf "gitdir:~/Projects/personal/"]
@@ -32,29 +33,29 @@
 	path = ~/.config/git/personal.gitconfig
 
 
-# --------------------------------------------------------------------
+# ----------------
 # Conditional Includes — Other / Misc Context
-# --------------------------------------------------------------------
+# ----------------
 # Used for repositories that do not clearly fall under personal
 # or work identities but still require a separate configuration.
-# --------------------------------------------------------------------
+# ----------------
 [includeIf "gitdir:~/Projects/others/"]
 	path = ~/.config/git/others.gitconfig
 
 
-# --------------------------------------------------------------------
+# ----------------
 # Conditional Includes — Work / Organization Context
-# --------------------------------------------------------------------
+# ----------------
 # Corporate or organization-owned repositories with distinct
 # credentials, signing keys, or workflow preferences.
-# --------------------------------------------------------------------
+# ----------------
 [includeIf "gitdir:~/Projects/work/"]
 	path = ~/.config/git/work.gitconfig
 
 
-# ====================================================================
+# ================
 # Core Behavior
-# ====================================================================
+# ================
 
 [core]
 	# Global ignore file shared across all repositories
@@ -64,9 +65,9 @@
 	pager = delta
 
 
-# ====================================================================
+# ================
 # Diff / Pager Enhancements (delta)
-# ====================================================================
+# ================
 
 [interactive]
 	# Ensure interactive commands (add -p, rebase -i) use delta
@@ -95,9 +96,9 @@
 	guitool = meld
 
 
-# ====================================================================
+# ================
 # Diff Tools
-# ====================================================================
+# ================
 
 [difftool]
 	# Do not prompt before launching difftools
@@ -113,9 +114,9 @@
 	      --args "$LOCAL" "$REMOTE"
 
 
-# ====================================================================
+# ================
 # Merge Tools
-# ====================================================================
+# ================
 
 [merge]
 	# Show base version during conflicts
@@ -138,9 +139,9 @@
 	      --output="$MERGED"
 
 
-# ====================================================================
+# ================
 # Commit & Status
-# ====================================================================
+# ================
 
 [commit]
 	# Standardized commit message template
@@ -151,11 +152,11 @@
 	submoduleSummary = true
 
 
-# ====================================================================
+# ================
 # Git LFS
-# ====================================================================
+# ================
 # Required for repositories using Git Large File Storage.
-# --------------------------------------------------------------------
+# ----------------
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -164,9 +165,9 @@
 	required = true
 
 
-# ====================================================================
+# ================
 # Aliases
-# ====================================================================
+# ================
 
 [alias]
 	# Push including updated submodules
@@ -189,9 +190,9 @@
 	tree = forest --pretty=format:"%C(red)%h %C(magenta)(%ar) %C(blue)%an %C(reset)%s" --style=15 --reverse
 
 
-# ====================================================================
+# ================
 # Credentials
-# ====================================================================
+# ================
 
 [credential]
 	# Clear default helpers to avoid conflicts
@@ -205,9 +206,9 @@
 	useHttpPath = true
 
 
-# ====================================================================
+# ================
 # Optional SSH Preference (Disabled)
-# ====================================================================
+# ================
 # Uncomment to force SSH for GitHub instead of HTTPS.
 #
 # [url "git@github.com:"]
