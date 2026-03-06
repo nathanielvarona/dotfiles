@@ -184,89 +184,89 @@ fi
 
 ```text
 .
-├── .config                          # XDG base directory for user-level application configs
-│   ├── .ssh                         # SSH client configuration and keys
-│   ├── aerospace                    # Aerospace tiling WM configs (macOS)
-│   ├── alacritty                    # Alacritty terminal config
-│   ├── asdf                         # asdf version manager config
-│   ├── atuin                        # Atuin shell history manager config
-│   ├── bat                          # bat (cat clone with syntax highlighting) config
-│   ├── Code                         # VSCode configuration
-│   ├── fzf                          # fzf fuzzy finder config
-│   ├── gh-dash                      # GitHub CLI dashboard config
-│   ├── ghostty                      # Ghostty terminal config
-│   ├── git                          # Git config (user, aliases, includes)
-│   ├── gnupg                        # GnuPG encryption/signing config
-│   ├── kitty                        # Kitty terminal config
-│   ├── lazygit                      # Lazygit TUI config
-│   ├── lazyvim                      # LazyVim (Neovim) config
-│   ├── lsd                          # LSD (modern ls replacement) config
-│   ├── luarocks                     # LuaRocks package manager config
-│   ├── oh-my-posh                   # Oh My Posh prompt config
-│   ├── opencode                     # OpenCode editor/tooling config
-│   ├── powerlevel10k                # Powerlevel10k Zsh prompt theme config
-│   ├── powershell                   # PowerShell profiles & modules
-│   ├── scooter                      # Custom/third-party CLI tool configs
-│   ├── tmux                         # tmux terminal multiplexer config
-│   ├── ueberzugpp                   # ueberzugpp image preview backend config
-│   ├── vim                          # Vim legacy/minimal config
-│   ├── wezterm                      # WezTerm terminal config
-│   ├── yazi                         # Yazi TUI file manager config
-│   ├── zed                          # Zed editor config
-│   ├── zellij                       # Zellij terminal multiplexer config
-│   └── zsh                          # Zsh shell primary configuration
-├── .MacOSX                          # macOS-specific environment configs
-│   └── environment.plist            # macOS launch environment variables
-├── .scripts                         # Custom automation & helper scripts
-│   ├── autoload                     # Scripts automatically sourced by shell
-│   ├── bin                          # Executable utility scripts
-│   └── source                       # Modular script components
-├── docs                             # Internal documentation & technical notes
-│   ├── brew                         # Homebrew docs
-│   ├── envpane                      # Environment pane notes
-│   ├── gnupg                        # GPG documentation
-│   ├── neovim                       # Neovim documentation
-│   ├── notes                        # General technical notes
-│   ├── packages                     # Package management references
-│   ├── powerlevel10k                # Prompt customization docs
-│   ├── secrets                      # Secure configuration handling
-│   ├── shell                        # Shell configuration documentation
-│   ├── terminal                     # Terminal documentation
-│   ├── vim                          # Vim docs
-│   ├── vscode                       # VSCode docs
-│   ├── windows                      # Windows-specific setup notes
-│   └── zinit                        # Zinit plugin manager docs
-├── external                         # External package & dependencies (Submodules)
-│   └── user-or-org-owner            # Repository user or orgnanization owner
-│       └── project_repository       # Project repository directory
-├── pkgs                             # Reproducible package & dependency manifests
-│   ├── asdf-plugins                 # asdf plugin list
-│   ├── casks.Brewfile               # Homebrew casks (GUI apps)
-│   ├── cpanfile                     # Perl dependencies
-│   ├── formulae.Brewfile            # Homebrew formulae (CLI tools)
-│   ├── github-cli-extensions        # GitHub CLI extensions list
-│   ├── helm-repos                   # Helm repository definitions
-│   ├── hugging-face-models          # Hugging Face models references
-│   ├── krew-plugins                 # kubectl krew plugins list
-│   ├── mas.Brewfile                 # Mac App Store apps list
-│   ├── ollama-models                # Ollama local AI model definitions
-│   ├── pipx-apps                    # pipx-installed Python applications
-│   ├── pyenv-versions               # pyenv-managed Python versions
-│   ├── rust-cargo-packages          # Rust cargo-installed packages
-│   ├── taps.Brewfile                # Homebrew taps
-│   ├── vscode.Brewfile              # VSCode extensions
-│   └── whalebrew                    # Whalebrew containerized CLI tools
-├── .editorconfig                    # Editor formatting consistency rules
+├── .config                          # XDG base directory for user application configurations
+│   ├── .ssh                         # SSH client configuration and key management
+│   ├── aerospace                    # Aerospace tiling window manager configuration (macOS)
+│   ├── alacritty                    # Alacritty GPU-accelerated terminal configuration
+│   ├── asdf                         # asdf version manager configuration
+│   ├── atuin                        # Atuin shell history synchronization configuration
+│   ├── bat                          # bat syntax-highlighting pager configuration
+│   ├── Code                         # Visual Studio Code user configuration
+│   ├── fzf                          # fzf fuzzy finder configuration
+│   ├── gh-dash                      # GitHub CLI dashboard configuration
+│   ├── ghostty                      # Ghostty terminal emulator configuration
+│   ├── git                          # Git configuration (user settings, aliases, includes)
+│   ├── gnupg                        # GnuPG encryption and signing configuration
+│   ├── kitty                        # Kitty terminal emulator configuration
+│   ├── lazygit                      # Lazygit terminal UI configuration
+│   ├── lazyvim                      # LazyVim (Neovim distribution) configuration
+│   ├── lsd                          # LSD modern ls replacement configuration
+│   ├── luarocks                     # LuaRocks Lua package manager configuration
+│   ├── oh-my-posh                   # Oh My Posh shell prompt configuration
+│   ├── opencode                     # OpenCode editor and tooling configuration
+│   ├── powerlevel10k                # Powerlevel10k Zsh prompt theme configuration
+│   ├── powershell                   # PowerShell profiles and modules
+│   ├── scooter                      # Third-party or custom CLI tool configurations
+│   ├── tmux                         # tmux terminal multiplexer configuration
+│   ├── ueberzugpp                   # ueberzug++ image preview backend configuration
+│   ├── vim                          # Minimal or legacy Vim configuration
+│   ├── wezterm                      # WezTerm terminal emulator configuration
+│   ├── yazi                         # Yazi terminal file manager configuration
+│   ├── zed                          # Zed editor configuration
+│   ├── zellij                       # Zellij terminal workspace configuration
+│   └── zsh                          # Zsh shell primary configuration
+├── .MacOSX                          # macOS-specific environment configuration
+│   └── environment.plist            # LaunchServices environment variable definitions
+├── .scripts                         # Custom automation scripts and helper utilities
+│   ├── autoload                     # Shell scripts automatically sourced by the shell
+│   ├── bin                          # Executable helper scripts and utilities
+│   └── source                       # Modular script libraries and reusable components
+├── docs                             # Internal documentation and technical references
+│   ├── brew                         # Homebrew usage and configuration notes
+│   ├── envpane                      # Environment panel documentation and notes
+│   ├── gnupg                        # GnuPG usage documentation
+│   ├── neovim                       # Neovim configuration documentation
+│   ├── notes                        # General development and environment notes
+│   ├── packages                     # Package management documentation
+│   ├── powerlevel10k                # Powerlevel10k customization notes
+│   ├── secrets                      # Secure configuration and secret management notes
+│   ├── shell                        # Shell configuration documentation
+│   ├── terminal                     # Terminal emulator documentation
+│   ├── vim                          # Vim configuration documentation
+│   ├── vscode                       # Visual Studio Code documentation
+│   ├── windows                      # Windows environment setup documentation
+│   └── zinit                        # Zinit plugin manager documentation
+├── external                         # External dependencies managed as Git submodules
+│   └── <upstream-owner>             # Upstream GitHub user or organization
+│       └── <repository>             # External project repository
+├── pkgs                             # Reproducible package and dependency manifests
+│   ├── asdf-plugins                 # asdf plugin definitions
+│   ├── casks.Brewfile               # Homebrew casks (GUI applications)
+│   ├── cpanfile                     # Perl dependency manifest
+│   ├── formulae.Brewfile            # Homebrew formulae (CLI tools)
+│   ├── github-cli-extensions        # GitHub CLI extensions list
+│   ├── helm-repos                   # Helm repository definitions
+│   ├── hugging-face-models          # Hugging Face model references
+│   ├── krew-plugins                 # kubectl krew plugin definitions
+│   ├── mas.Brewfile                 # Mac App Store application definitions
+│   ├── ollama-models                # Ollama local AI model definitions
+│   ├── pipx-apps                    # pipx-installed Python applications
+│   ├── pyenv-versions               # pyenv-managed Python versions
+│   ├── rust-cargo-packages          # Cargo-installed Rust CLI packages
+│   ├── taps.Brewfile                # Homebrew tap repositories
+│   ├── vscode.Brewfile              # VSCode extension definitions
+│   └── whalebrew                    # Whalebrew containerized CLI tools
+├── .editorconfig                    # Editor formatting and style consistency rules
 ├── .gitignore                       # Git ignore rules
-├── .markdownlint-cli2.yaml          # Markdown linting config
+├── .markdownlint-cli2.yaml          # Markdown linting configuration
 ├── .secrets                         # Local secret references (not committed)
 ├── .stowrc                          # GNU Stow configuration
-├── .taplo.toml                      # TOML formatter config
-├── .tmuxp.yaml                      # tmuxp session layout config
-├── .tool-versions                   # asdf runtime version definitions (not committed)
+├── .taplo.toml                      # TOML formatter configuration
+├── .tmuxp.yaml                      # tmuxp session layout definitions
+├── .tool-versions                   # asdf runtime version definitions (local only)
 ├── .zshenv                          # Zsh early environment initialization
-├── Justfile                         # Task runner definitions (Just automation)
-├── LICENSE                          # MIT License
+├── Justfile                         # Task runner automation (Just)
+├── LICENSE                          # MIT license
 └── README.md                        # Repository documentation
 ```
 
