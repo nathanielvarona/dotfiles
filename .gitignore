@@ -64,6 +64,3 @@ plugged/
 # Backup files created by Neovim
 *.nvim.bak
 
-# Harper Dictionary
-.harper-dictionary.txt
-.ruby-lsp
