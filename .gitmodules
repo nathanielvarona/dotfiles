@@ -10,3 +10,6 @@
 [submodule "external/kovidgoyal/kitty-themes"]
 	path = external/kovidgoyal/kitty-themes
 	url = https://github.com/kovidgoyal/kitty-themes.git
+[submodule "external/catppuccin/lazygit"]
+	path = external/catppuccin/lazygit
+	url = https://github.com/catppuccin/lazygit.git
