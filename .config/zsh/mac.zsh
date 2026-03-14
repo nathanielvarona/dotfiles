@@ -291,6 +291,9 @@ export CXX="clang++"
 # Kitty Terminal
 export KITTY_LISTEN_ON=unix:/tmp/kitty
 
+# LazyGit Configuration
+export LG_CONFIG_FILE="$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/themes/custom/github-dark.yml"
+
 # ls colors
 # export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
 # export LS_COLORS=${LSCOLORS}
