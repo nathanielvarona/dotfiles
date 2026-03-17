@@ -196,7 +196,7 @@ restore-ollama:
 # ================
 
 dump-hugging-face: init
-	hf models ls | awk 'NR>2 {print $1}' > {{PACKAGES}}/hugging-face-models || true
+	hf models ls --format json | jq -r ".[].id" > {{PACKAGES}}/hugging-face-models || true
 
 restore-hugging-face:
 	@if [ -f {{PACKAGES}}/hugging-face-models ]; then \

@@ -98,12 +98,12 @@ brew "gping", link: false
 brew "gtk+3"
 # Grammar Checker for Developers
 brew "harper"
+# Client library for huggingface.co hub
+brew "hf"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
 # Improved top (interactive process viewer)
 brew "htop"
-# Client library for huggingface.co hub
-brew "huggingface-cli"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Open h.265 video codec implementation
