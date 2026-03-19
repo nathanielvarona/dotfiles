@@ -6,6 +6,8 @@ cask "airdroid"
 cask "alacritty"
 # Distribution of the Python and R programming languages for scientific computing
 cask "anaconda"
+# Android SDK component
+cask "android-platform-tools"
 # Redis desktop manager
 cask "another-redis-desktop-manager"
 # Allows connection to a computer remotely
