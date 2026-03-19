@@ -16,15 +16,5 @@ if not vim.g.vscode then
 end
 
 return {
-  -- Disable Conflicting Extras/Plugins
-  {
-    "nvim-mini/mini.animate",
-    enabled = false,
-  },
-  {
-    "sphamba/smear-cursor.nvim",
-    enabled = false,
-  },
-
   vim.notify("Neovim: LazyVim", vim.log.levels.INFO),
 }
