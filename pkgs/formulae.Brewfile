@@ -138,6 +138,8 @@ brew "lazygit"
 brew "libffi"
 # LLM inference in C/C++
 brew "llama.cpp"
+# Find what models run on your hardware
+brew "llmfit"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Package manager for the Lua programming language
@@ -146,6 +148,8 @@ brew "luarocks"
 brew "mas"
 # CLI for Mermaid library
 brew "mermaid-cli"
+# Fast TUI and CLI for browsing AI models, benchmarks, and coding agents
+brew "models"
 # Ping Tool in Rust with Real-Time Data and Visualizations
 brew "nbping"
 # Ambitious Vim-fork focused on extensibility and agility
