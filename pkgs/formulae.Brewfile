@@ -186,6 +186,8 @@ brew "python@3.12"
 brew "qemu"
 # Messaging and streaming broker
 brew "rabbitmq"
+# File browser
+brew "ranger"
 # Ruby version manager
 brew "rbenv"
 # Makes shims aware of bundle install paths
