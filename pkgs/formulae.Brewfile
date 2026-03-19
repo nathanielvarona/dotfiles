@@ -34,6 +34,8 @@ brew "conda-zsh-completion"
 brew "coreutils"
 # Container Signing
 brew "cosign"
+# Command-line csv viewer
+brew "csvlens"
 # Top-like interface for container metrics
 brew "ctop"
 # Secure runtime for JavaScript and TypeScript
@@ -86,6 +88,8 @@ brew "gifsicle"
 brew "gifski"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Render markdown on the CLI
+brew "glow"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
