@@ -284,6 +284,8 @@ brew "zsh-completions"
 brew "amar1729/formulae/browserpass"
 # Prefer the tty when using pinentry, fallback to GUI
 brew "amar1729/formulae/pinentry-prefer-tty"
+# Interactive TUI for Homebrew
+brew "gromgit/brewtils/taproom"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # CLI for out-of-band management of Kubernetes nodes created by Talos

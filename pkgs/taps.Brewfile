@@ -1,5 +1,6 @@
 tap "amar1729/formulae"
 tap "ethereum/ethereum"
+tap "gromgit/brewtils"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
