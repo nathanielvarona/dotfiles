@@ -65,15 +65,15 @@ stow action="apply" mode="" target=".":
 
 dump-brew: init
 	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/formulae.Brewfile --formulae
-	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/casks.Brewfile --cask
-	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/taps.Brewfile --tap
+	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/cask.Brewfile --cask
+	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/tap.Brewfile --tap
 	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/mas.Brewfile --mas
 	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/vscode.Brewfile --vscode
 
 restore-brew:
 	@if [ -f {{PACKAGES}}/formulae.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/formulae.Brewfile; fi || true
-	@if [ -f {{PACKAGES}}/casks.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/casks.Brewfile; fi || true
-	@if [ -f {{PACKAGES}}/taps.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/taps.Brewfile; fi || true
+	@if [ -f {{PACKAGES}}/cask.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/cask.Brewfile; fi || true
+	@if [ -f {{PACKAGES}}/tap.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/tap.Brewfile; fi || true
 	@if [ -f {{PACKAGES}}/mas.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/mas.Brewfile; fi || true
 	@if [ -f {{PACKAGES}}/vscode.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/vscode.Brewfile; fi || true
 

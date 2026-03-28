@@ -241,7 +241,7 @@ fi
 │       └── <repository>             # External project repository
 ├── pkgs                             # Reproducible package and dependency manifests
 │   ├── asdf-plugins                 # asdf plugin definitions
-│   ├── casks.Brewfile               # Homebrew casks (GUI applications)
+│   ├── cask.Brewfile                # Homebrew casks (GUI applications)
 │   ├── cpanfile                     # Perl dependency manifest
 │   ├── formulae.Brewfile            # Homebrew formulae (CLI tools)
 │   ├── github-cli-extensions        # GitHub CLI extensions list
@@ -253,7 +253,7 @@ fi
 │   ├── pipx-apps                    # pipx-installed Python applications
 │   ├── pyenv-versions               # pyenv-managed Python versions
 │   ├── rust-cargo-packages          # Cargo-installed Rust CLI packages
-│   ├── taps.Brewfile                # Homebrew tap repositories
+│   ├── tap.Brewfile                 # Homebrew tap repositories
 │   ├── vscode.Brewfile              # VSCode extension definitions
 │   └── whalebrew                    # Whalebrew containerized CLI tools
 ├── .editorconfig                    # Editor formatting and style consistency rules
