@@ -1,3 +1,5 @@
+# vim: noexpandtab: tabstop=4: shiftwidth=4: fileencoding=utf-8: foldmethod=marker: filetype=just
+
 # Justfile – Modern Make Alternative
 # https://just.systems/
 
@@ -204,6 +206,51 @@ restore-hugging-face:
 	fi
 
 # ================
+# Perl CPAN
+# ================
+
+dump-perl-modules: init
+	#!/usr/bin/env bash
+	set -euo pipefail
+
+	OUT="{{PACKAGES}}/cpanfile"
+
+	echo "→ Dumping user-installed Perl modules with versions to $OUT"
+
+	perl -MExtUtils::Installed -MModule::CoreList -e '
+		my $inst = ExtUtils::Installed->new();
+		my %core = map { $_ => 1 } Module::CoreList->find_modules(qr/.*/, $]);
+
+		for my $mod (sort $inst->modules()) {
+			next if $mod eq "Perl";
+			next if exists $core{$mod};
+
+			my $ver = $inst->version($mod) || 0;
+			print "requires '\''$mod'\'', '\''$ver'\'';\n";
+		}
+	' > "$OUT" || true
+
+restore-perl-modules:
+	#!/usr/bin/env bash
+	set -euo pipefail
+
+	CPANFILE="{{PACKAGES}}/cpanfile"
+
+	# Bootstrap cpanm if not installed
+	if ! command -v cpanm >/dev/null 2>&1; then
+		echo "→ cpanm not found, installing via cpan"
+		PERL_MM_USE_DEFAULT=1 cpan App::cpanminus || true
+	fi
+
+	# Restore modules using cpanfile
+	if [ -f "$CPANFILE" ]; then
+		echo "→ Installing Perl modules from $CPANFILE"
+		cpanm --quiet --notest --installdeps "{{PACKAGES}}" || true
+	else
+		echo "→ No cpanfile found at $CPANFILE (skipping)"
+	fi
+
+# ================
 # Aggregate
 # ================
 
@@ -218,7 +265,8 @@ dump-all: \
 	dump-gh-ext \
 	dump-whalebrew \
 	dump-ollama \
-	dump-hugging-face
+	dump-hugging-face \
+	dump-perl-modules
 
 restore-all: \
 	restore-brew \
@@ -231,4 +279,6 @@ restore-all: \
 	restore-gh-ext \
 	restore-whalebrew \
 	restore-ollama \
-	restore-hugging-face
+	restore-hugging-face \
+	restore-perl-modules
+

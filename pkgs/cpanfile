@@ -1,1 +1,7 @@
+requires 'App::cpanminus', '1.7049';
+requires 'Class::ISA', '0.36';
 requires 'Graph::Easy', '0.76';
+requires 'String::BufferStack', '1.16';
+requires 'Template::Declare', '0.47';
+requires 'local::lib', '2.000029';
+requires 'mod_perl2', '2.000012';
