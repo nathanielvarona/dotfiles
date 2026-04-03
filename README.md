@@ -125,13 +125,14 @@ just dump-brew
 just dump-asdf
 just dump-pyenv
 just dump-pipx
-just dump-cargo
-just dump-gh-ext
 just dump-krew
 just dump-helm
+just dump-cargo
+just dump-gh-ext
+just dump-whalebrew
 just dump-ollama
 just dump-hugging-face
-just dump-whalebrew
+just dump-perl-modules
 ```
 
 ---
@@ -151,13 +152,14 @@ just restore-brew
 just restore-asdf
 just restore-pyenv
 just restore-pipx
-just restore-cargo
-just restore-gh-ext
 just restore-krew
 just restore-helm
+just restore-cargo
+just restore-gh-ext
+just restore-whalebrew
 just restore-ollama
 just restore-hugging-face
-just restore-whalebrew
+just restore-perl-modules
 ```
 
 ---
