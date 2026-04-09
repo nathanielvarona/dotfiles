@@ -100,13 +100,14 @@ The following ecosystems are automated:
 - asdf
 - pyenv
 - pipx
-- Cargo
-- GitHub CLI extensions
 - kubectl krew
 - Helm repos
+- Cargo
+- GitHub CLI extensions
+- Whalebrew
 - Ollama models
 - Hugging Face models
-- Whalebrew
+- Perl modules
 
 ---
 
