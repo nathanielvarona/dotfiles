@@ -226,6 +226,8 @@ brew "stow"
 brew "tcl-tk@8"
 # Modernized, complete, self-contained TeX/LaTeX engine
 brew "tectonic"
+# General purpose fuzzy finder TUI
+brew "television"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # Simplified and community-driven man pages
