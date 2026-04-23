@@ -76,6 +76,8 @@ brew "x265"
 brew "ffmpeg"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Library for USB device access
+brew "libusb"
 # Fast and simple Node.js version manager
 brew "fnm"
 # Terminal JSON viewer
@@ -192,6 +194,8 @@ brew "pyenv-virtualenv"
 brew "python@3.12"
 # Generic machine emulator and virtualizer
 brew "qemu"
+# Cross-platform application and UI framework
+brew "qt@5"
 # Messaging and streaming broker
 brew "rabbitmq"
 # File browser
