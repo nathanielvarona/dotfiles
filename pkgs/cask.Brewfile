@@ -67,6 +67,8 @@ cask "iterm2"
 cask "itermbrowserplugin"
 # Menu bar manager
 cask "jordanbaird-ice"
+# Password manager app
+cask "keepassxc"
 # End-to-end encryption software
 cask "keybase"
 # GPU-based terminal emulator
