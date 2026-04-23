@@ -22,8 +22,6 @@ cask "beekeeper-studio"
 cask "bruno"
 # Terminal-based AI coding assistant
 cask "claude-code"
-# Tool to show live information about the batteries in various devices
-cask "coconutbattery"
 # Server and cloud storage browser
 cask "cyberduck"
 # API documentation browser and code snippet manager
@@ -99,8 +97,6 @@ cask "postman"
 cask "powershell"
 # OpenVPN client
 cask "pritunl"
-# Video chat, voice call and instant messaging application
-cask "skype"
 # Team communication and collaboration software
 cask "slack"
 # Graphical client for Git version control
