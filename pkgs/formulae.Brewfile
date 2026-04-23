@@ -78,6 +78,8 @@ brew "ffmpeg"
 brew "fish"
 # Library for USB device access
 brew "libusb"
+# Identify, read, write, verify, and erase flash chips
+brew "flashrom"
 # Fast and simple Node.js version manager
 brew "fnm"
 # Terminal JSON viewer
