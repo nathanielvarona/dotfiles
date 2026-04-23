@@ -16,6 +16,8 @@ brew "atuin"
 brew "bat"
 # Searches a binary image for embedded files and executable code
 brew "binwalk"
+# Hex diff viewer using alignment algorithms from biology
+brew "biodiff"
 # Python code formatter
 brew "black"
 # Freely available high-quality data compressor
@@ -248,6 +250,8 @@ brew "typescript"
 brew "utftex"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Visual Binary Diff
+brew "vbindiff"
 # Simple terminal image viewer written in Rust
 brew "viu"
 # Generator for LS_COLORS with support for multiple color themes
