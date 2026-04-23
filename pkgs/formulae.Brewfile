@@ -58,6 +58,8 @@ brew "editorconfig-checker"
 brew "ethereum"
 # Read, write, modify, and display EXIF data on the command-line
 brew "exif"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
 # Modern, maintained replacement for ls
 brew "eza"
 # Open-source framework for augmenting humans using AI
