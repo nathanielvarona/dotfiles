@@ -240,7 +240,8 @@
   },
   "python.defaultInterpreterPath": "/usr/local/bin/python3",
   "python.terminal.activateEnvironment": false,
-  "python-envs.terminal.showActivateButton": true
+  "python-envs.terminal.showActivateButton": true,
+  "chat.disableAIFeatures": true
 
   // Test Todo Highlight
   /*
