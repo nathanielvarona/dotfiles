@@ -28,6 +28,8 @@ brew "openblas"
 brew "pkgconf"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
+# Manage your dotfiles across multiple diverse machines, securely
+brew "chezmoi"
 # Cross-platform make
 brew "cmake"
 # Zsh completion for conda
