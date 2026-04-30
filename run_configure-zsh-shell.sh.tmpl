@@ -1,0 +1,50 @@
+#!/usr/bin/env sh
+set -e
+
+# ---------------------------------------------------------
+# Only run on Linux (WSL or native)
+# ---------------------------------------------------------
+{{ if eq .chezmoi.os "linux" }}
+
+# Detect WSL (optional, but you may want both Linux + WSL anyway)
+is_wsl() {
+  grep -qi microsoft /proc/version 2>/dev/null
+}
+
+# ---------------------------------------------------------
+# Ensure zsh is installed
+# ---------------------------------------------------------
+if ! command -v zsh >/dev/null 2>&1; then
+  echo "[chezmoi] Installing zsh..."
+  if command -v apt-get >/dev/null 2>&1; then
+    sudo apt-get update
+    sudo apt-get install -y zsh
+  else
+    echo "[chezmoi] Skipping: no supported package manager"
+    exit 0
+  fi
+fi
+
+ZSH_PATH="$(command -v zsh)"
+
+# ---------------------------------------------------------
+# Ensure zsh is in /etc/shells
+# ---------------------------------------------------------
+if [ -f /etc/shells ] && ! grep -qx "$ZSH_PATH" /etc/shells; then
+  echo "[chezmoi] Adding zsh to /etc/shells..."
+  echo "$ZSH_PATH" | sudo tee -a /etc/shells >/dev/null
+fi
+
+# ---------------------------------------------------------
+# Set default shell (only if needed)
+# ---------------------------------------------------------
+CURRENT_SHELL="$(getent passwd "$(whoami)" | cut -d: -f7)"
+
+if [ "$CURRENT_SHELL" != "$ZSH_PATH" ]; then
+  echo "[chezmoi] Setting zsh as default shell..."
+  chsh -s "$ZSH_PATH"
+else
+  echo "[chezmoi] zsh already default shell"
+fi
+
+{{ end }}
