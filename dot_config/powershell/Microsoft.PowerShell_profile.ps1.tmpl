@@ -118,6 +118,9 @@ if (Get-Module -ListAvailable Terminal-Icons)
   Import-Module Terminal-Icons
 }
 
+# LazyGit config (multiple files via comma, same as Zsh)
+$env:LG_CONFIG_FILE = "$env:XDG_CONFIG_HOME/lazygit/config.yml,$env:XDG_CONFIG_HOME/lazygit/themes/mocha/blue.yml"
+
 # ------------------------------------------------------------
 # Utilities
 # ------------------------------------------------------------
