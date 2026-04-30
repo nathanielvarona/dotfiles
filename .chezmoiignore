@@ -1,9 +1,9 @@
-.github/
+.github
 install.sh
 LICENSE
 README.md
 
-pkgs/
+pkgs
 .tmuxp.yaml
 .editorconfig
 .gitmodules
@@ -12,33 +12,35 @@ Justfile
 **/lazy-lock.json
 
 {{ if (eq .chezmoi.os "windows") }}
-.config/Code/
-.config/aerospace/
-.config/alacritty/
-.config/asdf/
-.config/atuin/
-.config/bat/
-.config/fzf/
-.config/gh-dash/
-.config/ghostty/
-.config/kitty/
-.config/lazygit/
-.config/lazyvim/
-.config/lsd/
-.config/laurocks/
-.config/opencode/
-.config/powerlevel10k/
-.config/gnupg/
-.config/scooter/
-.config/tmux/
-.config/ueberzugpp/
-.config/vim/
-.config/wezterm/
-.config/yazi/
-.config/zed/
-.config/zellij/
+.zshenv
 
-.scripts/
+.config/Code
+.config/aerospace
+.config/alacritty
+.config/asdf
+.config/atuin
+.config/bat
+.config/fzf
+.config/gh-dash
+.config/ghostty
+.config/kitty
+.config/lazygit
+.config/lazyvim
+.config/lsd
+.config/laurocks
+.config/opencode
+.config/powerlevel10k
+.config/gnupg
+.config/scooter
+.config/tmux
+.config/ueberzugpp
+.config/vim
+.config/wezterm
+.config/yazi
+.config/zed
+.config/zellij
+
+.scripts
 {{ end }}
 
 {{ if (ne .chezmoi.os "windows") }}
