@@ -18,7 +18,7 @@
 
 [".config/lazygit/themes"]
   type = "archive"
-  url = {{ (gitHubLatestRelease "catppuccin/lazygit").TarballURL | quote }}
+  url = "https://github.com/catppuccin/lazygit/archive/main.tar.gz"
   stripComponents = 2
   include = ["*/themes-mergable/**"]
 
