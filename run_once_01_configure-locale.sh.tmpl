@@ -1,7 +1,7 @@
+{{ if ne .chezmoi.os "windows" }}
+{{ if eq .chezmoi.os "linux" }}
 #!/usr/bin/env sh
 set -e
-
-{{ if eq .chezmoi.os "linux" }}
 
 LOCALE="en_US.UTF-8"
 
@@ -27,4 +27,5 @@ else
   echo "[chezmoi] Skipping: /etc/locale.gen not found"
 fi
 
+{{ end }}
 {{ end }}
