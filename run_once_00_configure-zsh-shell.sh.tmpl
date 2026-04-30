@@ -1,5 +1,5 @@
-{{ if ne .chezmoi.os "windows" -}}
-{{ if eq .chezmoi.os "linux" -}}
+{{- if ne .chezmoi.os "windows" -}}
+{{- if eq .chezmoi.os "linux" -}}
 #!/usr/bin/env sh
 set -e
 
@@ -48,5 +48,5 @@ else
   echo "[chezmoi] zsh already default shell"
 fi
 
-{{- end }}
-{{- end }}
+{{- end -}}
+{{- end -}}
