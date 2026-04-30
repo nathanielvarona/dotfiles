@@ -24,7 +24,6 @@ Justfile
 .config/gh-dash
 .config/ghostty
 .config/kitty
-.config/lazyvim
 .config/lsd
 .config/luarocks
 .config/opencode
