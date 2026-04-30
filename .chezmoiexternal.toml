@@ -1,3 +1,4 @@
+{{ if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") }}
 [".config/kitty/themes"]
   type = "archive"
   url = "https://github.com/kovidgoyal/kitty-themes/archive/master.tar.gz"
@@ -16,14 +17,15 @@
   url = "https://github.com/catppuccin/lsd/archive/main.tar.gz"
   path = "lsd-main/themes/catppuccin-mocha/colors.yaml"
 
+[".config/scooter/themes"]
+  type = "archive"
+  url = "https://github.com/catppuccin/bat/archive/main.tar.gz"
+  stripComponents = 2
+  include = ["*/themes/**"]
+{{ end }}
 [".config/lazygit/themes"]
   type = "archive"
   url = "https://github.com/catppuccin/lazygit/archive/main.tar.gz"
   stripComponents = 2
   include = ["*/themes-mergable/**"]
 
-[".config/scooter/themes"]
-  type = "archive"
-  url = "https://github.com/catppuccin/bat/archive/main.tar.gz"
-  stripComponents = 2
-  include = ["*/themes/**"]

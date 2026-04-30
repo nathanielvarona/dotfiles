@@ -24,10 +24,9 @@ Justfile
 .config/gh-dash
 .config/ghostty
 .config/kitty
-.config/lazygit
 .config/lazyvim
 .config/lsd
-.config/laurocks
+.config/luarocks
 .config/opencode
 .config/powerlevel10k
 .config/gnupg
@@ -39,6 +38,7 @@ Justfile
 .config/yazi
 .config/zed
 .config/zellij
+.config/zsh
 
 .scripts
 {{ end }}
