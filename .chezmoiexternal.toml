@@ -28,4 +28,12 @@
   url = "https://github.com/catppuccin/lazygit/archive/main.tar.gz"
   stripComponents = 2
   include = ["*/themes-mergable/**"]
+{{ if (eq .chezmoi.os "windows") }}
+["AppData/Roaming/Code/User/settings.json"]
+  type = "file"
+  source = "dot_config/Code/User/settings.json"
 
+["AppData/Roaming/Code/User/keybindings.json"]
+  type = "file"
+  source = "dot_config/Code/User/keybindings.json"
+{{ end }}
