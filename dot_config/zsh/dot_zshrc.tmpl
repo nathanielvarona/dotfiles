@@ -1,0 +1,227 @@
+# =========================================================
+# ZSH Configuration (Managed by chezmoi)
+# Cross-platform: macOS / Linux / WSL
+# All OS branching handled at template time (ZERO runtime branching)
+# =========================================================
+
+# ---------------------------------------------------------
+# Core Environment
+# ---------------------------------------------------------
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export EDITOR="nvim"
+export NVIM_APPNAME="lazyvim"
+
+# XDG Base Directory Specification
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+
+
+{{ if eq .chezmoi.os "linux" }}
+export GIT_CONFIG_GLOBAL="${XDG_CONFIG_HOME}/git/.gitconfig"
+export VSCODE_APPDATA="${XDG_CONFIG_HOME}"
+export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
+{{ end }}
+
+# Load secrets if present
+[[ -f ~/.secrets ]] && source ~/.secrets
+
+# ---------------------------------------------------------
+# Platform-Specific Paths (Resolved by chezmoi)
+# ---------------------------------------------------------
+
+{{ if eq .chezmoi.os "darwin" }}
+# macOS (Homebrew - Intel default)
+export HOMEBREW_PREFIX="/usr/local"
+{{ else }}
+# Linux / WSL (Linuxbrew default)
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+{{ end }}
+
+# Initialize Homebrew (if installed)
+if [ -x "$HOMEBREW_PREFIX/bin/brew" ]; then
+  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+fi
+
+# ---------------------------------------------------------
+# Prompt (Oh My Posh)
+# ---------------------------------------------------------
+
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  export POSH_CONFIG="$XDG_CONFIG_HOME/oh-my-posh/zen.omp.toml"
+  eval "$(oh-my-posh init zsh)"
+fi
+
+# ---------------------------------------------------------
+# Zinit Plugin Manager
+# ---------------------------------------------------------
+
+# Path differs per platform (templated)
+{{ if eq .chezmoi.os "darwin" }}
+ZINIT_HOME="$HOMEBREW_PREFIX/opt/zinit"
+{{ else }}
+ZINIT_HOME="$HOMEBREW_PREFIX/opt/zinit"
+{{ end }}
+
+# Load Zinit
+if [ -f "$ZINIT_HOME/zinit.zsh" ]; then
+  source "$ZINIT_HOME/zinit.zsh"
+fi
+
+# Ensure completion cache exists
+ZSH_CACHE_DIR="${XDG_CACHE_HOME}/zsh"
+[[ ! -e $ZSH_CACHE_DIR/completions ]] && mkdir -p $ZSH_CACHE_DIR/completions
+
+# ---------------------------------------------------------
+# Plugins
+# ---------------------------------------------------------
+
+zinit light zsh-users/zsh-history-substring-search
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+
+# OMZ snippets
+zinit snippet OMZ::plugins/git
+zinit snippet OMZ::plugins/extract
+zinit snippet OMZ::plugins/common-aliases
+zinit snippet OMZ::plugins/vi-mode
+
+# ---------------------------------------------------------
+# CLI Tools Initialization
+# ---------------------------------------------------------
+
+# fzf
+source <(fzf --zsh)
+
+# atuin (history DB)
+export ATUIN_NOBIND="true"
+eval "$(atuin init zsh)"
+bindkey '^Y' atuin-search
+
+# zoxide (better cd)
+source <(zoxide init --cmd cd zsh)
+
+# thefuck
+eval "$(thefuck --alias wtf)"
+
+# ---------------------------------------------------------
+# History Configuration
+# ---------------------------------------------------------
+
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000000000
+export HISTFILESIZE=1000000000
+export HISTTIMEFORMAT="[%F %T] "
+
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+
+# ---------------------------------------------------------
+# Plugin Configuration
+# ---------------------------------------------------------
+
+# History substring search
+bindkey '\eOA' history-substring-search-up
+bindkey '\eOB' history-substring-search-down
+export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+
+# Autosuggestions
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
+
+# Syntax highlighting
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+# ---------------------------------------------------------
+# Language / Toolchains
+# ---------------------------------------------------------
+
+# Node (fnm)
+source <(fnm env)
+
+# Python (pyenv)
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Ruby (rbenv)
+eval "$(rbenv init - zsh)"
+
+# Go
+export PATH="$HOME/go/bin:$PATH"
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# LuaRocks
+export PATH="$HOME/.luarocks/bin:$PATH"
+
+# User binaries
+export PATH="$HOME/.local/bin:$PATH"
+
+# ---------------------------------------------------------
+# macOS-Specific Toolchain Tweaks
+# ---------------------------------------------------------
+
+{{ if eq .chezmoi.os "darwin" }}
+# Compiler
+export CC="clang"
+export CXX="clang++"
+
+# Example: OpenSSL (Homebrew)
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl/lib $LDFLAGS"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/include $CPPFLAGS"
+{{ end }}
+
+# ---------------------------------------------------------
+# Aliases
+# ---------------------------------------------------------
+
+alias ls='lsd'
+alias lg='lazygit'
+alias zsh_history="fc -il 1"
+
+# ---------------------------------------------------------
+# Completion System
+# ---------------------------------------------------------
+
+autoload -Uz compinit
+compinit -C
+
+autoload -Uz bashcompinit
+bashcompinit
+
+# Homebrew completions
+if [ -x "$HOMEBREW_PREFIX/bin/brew" ]; then
+  fpath=("$($HOMEBREW_PREFIX/bin/brew --prefix)/share/zsh/site-functions" $fpath)
+fi
+
+# ---------------------------------------------------------
+# Misc
+# ---------------------------------------------------------
+
+# Kitty terminal
+export KITTY_LISTEN_ON=unix:/tmp/kitty
+
+# LazyGit config
+export LG_CONFIG_FILE="$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/themes/mocha/blue.yml"
+
+# Neovim launcher
+lazyvim() {
+  NVIM_APPNAME=lazyvim nvim "$@"
+}
+
+# ---------------------------------------------------------
+# WSL-specific marker (templated)
+# ---------------------------------------------------------
+
+{{ if eq .chezmoi.os "linux" }}
+{{ if or (env "WSL_DISTRO_NAME") (contains (lower (printf "%v" .chezmoi.kernel)) "microsoft") }}
+export IS_WSL=1
+{{ end }}
+{{ end }}

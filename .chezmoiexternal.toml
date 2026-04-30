@@ -1,0 +1,29 @@
+[".config/kitty/themes"]
+  type = "archive"
+  url = "https://github.com/kovidgoyal/kitty-themes/archive/master.tar.gz"
+  stripComponents = 2
+  include = ["*/themes/**"]
+
+[".config/alacritty/themes"]
+  type = "archive"
+  url = "https://github.com/alacritty/alacritty-theme/archive/master.tar.gz"
+  exact = true
+  stripComponents = 2
+  include = ["*/themes/**"]
+
+[".config/lsd/colors.yaml"]
+  type = "archive-file"
+  url = "https://github.com/catppuccin/lsd/archive/main.tar.gz"
+  path = "lsd-main/themes/catppuccin-mocha/colors.yaml"
+
+[".config/lazygit/themes"]
+  type = "archive"
+  url = {{ (gitHubLatestRelease "catppuccin/lazygit").TarballURL | quote }}
+  stripComponents = 2
+  include = ["*/themes-mergable/**"]
+
+[".config/scooter/themes"]
+  type = "archive"
+  url = "https://github.com/catppuccin/bat/archive/main.tar.gz"
+  stripComponents = 2
+  include = ["*/themes/**"]

@@ -28,40 +28,6 @@ init:
 	mkdir -p {{PACKAGES}}
 
 # ================
-# Stow
-# ================
-# Usage:
-#   just stow apply
-#   just stow apply dry-run
-#   just stow delete
-#   just stow restow
-# ================
-
-stow action="apply" mode="" target=".":
-	#!/usr/bin/env bash
-	set -euo pipefail
-
-	case "{{action}}" in
-		apply)  CMD="--stow" ;;
-		delete) CMD="--delete" ;;
-		restow) CMD="--restow" ;;
-		*)
-			echo "Invalid action: {{action}}"
-			echo "Valid actions: apply | delete | restow"
-			exit 1
-			;;
-	esac
-
-	FLAGS="--verbose"
-
-	if [ "{{mode}}" = "dry-run" ]; then
-		FLAGS="$FLAGS --simulate"
-	fi
-
-	echo "→ stow $CMD $FLAGS {{target}}"
-	stow $CMD $FLAGS {{target}}
-
-# ================
 # Homebrew
 # ================
 

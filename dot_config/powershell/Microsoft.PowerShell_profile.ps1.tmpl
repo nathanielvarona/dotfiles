@@ -1,0 +1,129 @@
+# ============================================================
+# PowerShell Profile (Managed by chezmoi)
+# Cross-platform: macOS / Linux / Windows
+# Zero runtime OS branching
+# ============================================================
+
+# ------------------------------------------------------------
+# XDG Base Directory (Normalized across platforms)
+# ------------------------------------------------------------
+
+{{ if eq .chezmoi.os "windows" }}
+$env:XDG_CONFIG_HOME = "$HOME\.config"
+$env:XDG_CACHE_HOME  = "$HOME\.cache"
+{{ else }}
+$env:XDG_CONFIG_HOME = "$HOME/.config"
+$env:XDG_CACHE_HOME  = "$HOME/.cache"
+{{ end }}
+
+# ------------------------------------------------------------
+# Cursor Shape (PowerShell 7+ only)
+# ------------------------------------------------------------
+
+if ($PSVersionTable.PSVersion.Major -ge 7)
+{
+  Write-Host -NoNewLine "`e[6 q"
+}
+
+# ------------------------------------------------------------
+# Oh My Posh Prompt (Custom + Built-in Themes)
+# ------------------------------------------------------------
+
+# Default theme
+if (-not $env:POSH_THEME) {
+  $env:POSH_THEME = "zen"
+}
+
+# Custom theme path (XDG)
+$customTheme = Join-Path $env:XDG_CONFIG_HOME "oh-my-posh/$env:POSH_THEME.omp.toml"
+
+# Resolve config:
+# - If custom file exists → use path
+# - Else → assume built-in theme name
+if (Test-Path $customTheme) {
+  $poshConfig = $customTheme
+} else {
+  $poshConfig = $env:POSH_THEME
+}
+
+# Initialize Oh My Posh
+if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+  oh-my-posh init pwsh --config $poshConfig | Invoke-Expression
+}
+
+# ------------------------------------------------------------
+# PSReadLine Bootstrap
+# ------------------------------------------------------------
+
+$MinPSReadLine = [Version]'2.3.6'
+
+$InstalledPSReadLine = Get-Module PSReadLine -ListAvailable |
+  Sort-Object Version -Descending |
+  Select-Object -First 1
+
+if (-not $InstalledPSReadLine -or $InstalledPSReadLine.Version -lt $MinPSReadLine)
+{
+  Install-Module PSReadLine -Repository PSGallery -Scope CurrentUser -Force -AllowClobber -ErrorAction SilentlyContinue
+
+  Write-Host ""
+  Write-Warning "Restart PowerShell to apply PSReadLine updates."
+  Write-Host ""
+
+  exit 0
+}
+
+# ------------------------------------------------------------
+# PSReadLine Configuration
+# ------------------------------------------------------------
+
+if (Get-Module -ListAvailable PSReadLine)
+{
+  Import-Module PSReadLine
+
+  Set-PSReadLineOption -PredictionSource History
+  Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+
+  Set-PSReadLineKeyHandler -Key UpArrow   -Function HistorySearchBackward
+  Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+}
+
+# ------------------------------------------------------------
+# PSFzf Bootstrap + Config
+# ------------------------------------------------------------
+
+if (-not (Get-Module -ListAvailable PSFzf))
+{
+  Install-Module PSFzf -Repository PSGallery -Scope CurrentUser -Force -ErrorAction SilentlyContinue
+}
+
+if (Get-Module -ListAvailable PSFzf)
+{
+  Import-Module PSFzf
+
+  Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
+  Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
+}
+
+# ------------------------------------------------------------
+# Terminal Icons
+# ------------------------------------------------------------
+
+if (-not (Get-Module -ListAvailable Terminal-Icons))
+{
+  Install-Module Terminal-Icons -Repository PSGallery -Scope CurrentUser -Force -ErrorAction SilentlyContinue
+}
+
+if (Get-Module -ListAvailable Terminal-Icons)
+{
+  Import-Module Terminal-Icons
+}
+
+# ------------------------------------------------------------
+# Utilities
+# ------------------------------------------------------------
+
+function which ($command)
+{
+  Get-Command -Name $command -ErrorAction SilentlyContinue |
+    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+}
