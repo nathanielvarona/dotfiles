@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+set -e
+
+{{ if eq .chezmoi.os "linux" }}
+
+LOCALE="en_US.UTF-8"
+
+# Check if locale already exists
+if locale -a 2>/dev/null | grep -qi "^${LOCALE,,}$"; then
+  echo "[chezmoi] Locale $LOCALE already exists"
+  exit 0
+fi
+
+echo "[chezmoi] Configuring locale: $LOCALE"
+
+# Ensure locale.gen exists
+if [ -f /etc/locale.gen ]; then
+  # Uncomment locale safely
+  if grep -q "^# *$LOCALE UTF-8" /etc/locale.gen; then
+    echo "[chezmoi] Enabling $LOCALE in /etc/locale.gen"
+    sudo sed -i "s/^# *$LOCALE UTF-8/$LOCALE UTF-8/" /etc/locale.gen
+  fi
+
+  echo "[chezmoi] Generating locales..."
+  sudo locale-gen
+else
+  echo "[chezmoi] Skipping: /etc/locale.gen not found"
+fi
+
+{{ end }}
