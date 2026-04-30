@@ -44,9 +44,10 @@ Justfile
 {{ end }}
 
 {{ if (ne .chezmoi.os "windows") }}
+AppData
 Documents
 {{ end }}
 
 {{ if (eq .chezmoi.os "linux") }}
-.scripts/
+.scripts
 {{ end }}
