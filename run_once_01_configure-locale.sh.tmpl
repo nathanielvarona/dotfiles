@@ -1,5 +1,5 @@
-{{ if ne .chezmoi.os "windows" }}
-{{ if eq .chezmoi.os "linux" }}
+{{ if ne .chezmoi.os "windows" -}}
+{{ if eq .chezmoi.os "linux" -}}
 #!/usr/bin/env sh
 set -e
 
@@ -27,5 +27,5 @@ else
   echo "[chezmoi] Skipping: /etc/locale.gen not found"
 fi
 
-{{ end }}
-{{ end }}
+{{- end }}
+{{- end }}
