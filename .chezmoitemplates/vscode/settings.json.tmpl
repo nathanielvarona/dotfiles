@@ -1,0 +1,264 @@
+{
+  // "workbench.settings.editor": "json",
+  "workbench.colorTheme": "GitHub Dark Default",
+  "workbench.preferredDarkColorTheme": "GitHub Dark Default",
+  "workbench.preferredLightColorTheme": "GitHub Light Default",
+  "workbench.preferredHighContrastColorTheme": "GitHub Dark High Contrast",
+  "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
+  "workbench.startupEditor": "readme",
+  "workbench.iconTheme": "file-icons",
+  "workbench.colorCustomizations": {
+    "editorCursor.foreground": "#c9d1d9",
+    "editorCursor.background": "#0d1117"
+  },
+  "window.autoDetectColorScheme": true,
+  "explorer.compactFolders": false,
+  "git.autofetch": true,
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'Symbols Nerd Font'",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": false,
+  "editor.minimap.enabled": false,
+  "editor.cursorBlinking": "solid",
+  "terminal.integrated.fontFamily": "'JetBrains Mono NL', 'Symbols Nerd Font'",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.cursorStyle": "block",
+  "terminal.integrated.cursorBlinking": false,
+  "redhat.telemetry.enabled": false,
+  "terminal.integrated.macOptionIsMeta": true,
+  "go.toolsManagement.autoUpdate": true,
+  "projectManager.git.baseFolders": ["~/Projects"],
+  "projectManager.sortList": "Recent",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua",
+    "editor.formatOnSave": true
+  },
+  "shellformat.path": "/usr/local/bin/shfmt",
+  "shellformat.flag": "--indent 2",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  // Nvim distribution with preconfigured VSCode compatible plugins
+  // Other Compatible Nvim Distribution: `lazyvim`, and `astronvim`
+  "vscode-neovim.NVIM_APPNAME": "lazyvim",
+
+  // macOS
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+
+  // WSL
+  "vscode-neovim.neovimExecutablePaths.linux": "/home/linuxbrew/.linuxbrew/bin/nvim",
+  "vscode-neovim.useWSL": true,
+  "vscode-neovim.wslDistribution": "Ubuntu",
+
+  // Windows
+  "vscode-neovim.neovimExecutablePaths.window": "C:\\Program Files\\Neovim\\bin\\nvim.exe",
+
+  "find-it-faster.general.useTerminalInEditor": true,
+  "find-it-faster.general.killTerminalAfterUse": true,
+  "find-it-faster.general.batTheme": "GitHub",
+  // "find-it-faster.general.useGitIgnoreExcludes": false, # BUG: Try to revisit on future releases
+  "editor.lineNumbers": "relative",
+  "settings.cycle": [
+    {
+      "id": "relativeLineNumbers",
+      "overrideWorkspaceSettings": false,
+      "values": [
+        {
+          "editor.lineNumbers": "on"
+        },
+        {
+          "editor.lineNumbers": "relative"
+        }
+      ]
+    }
+  ],
+  "todo-tree.highlights.enabled": false,
+  "todo-tree.general.tags": [
+    "BUG",
+    "FIXME",
+    "WARNING",
+    "NOTE",
+    "OPTIMIZE",
+    "HINT",
+    "CHANGED",
+    "TODO",
+    "REVIEW",
+    "QUESTION",
+    "HACK",
+    "DEBUG"
+  ],
+  "todo-tree.highlights.customHighlight": {
+    "BUG": {
+      "icon": "bug",
+      "iconColour": "rgb(243, 139, 168)", // Red
+      "type": "line"
+    },
+    "FIXME": {
+      "icon": "flame",
+      "iconColour": "rgb(250, 179, 135)", // Orange
+      "type": "line"
+    },
+    "WARNING": {
+      "icon": "alert",
+      "iconColour": "rgb(249, 226, 175)", // Yellow
+      "type": "line"
+    },
+    "NOTE": {
+      "icon": "info",
+      "iconColour": "rgb(166, 227, 161)", // Green
+      "type": "line"
+    },
+    "OPTIMIZE": {
+      "icon": "zap",
+      "iconColour": "rgb(137, 180, 250)", // Blue
+      "type": "line"
+    },
+    "HINT": {
+      "icon": "light-bulb",
+      "iconColour": "rgb(148, 226, 213)", // Teal
+      "type": "line"
+    },
+    "CHANGED": {
+      "icon": "diff-modified",
+      "iconColour": "rgb(116, 199, 236)", // Sapphire
+      "type": "line"
+    },
+    "TODO": {
+      "icon": "check-circle",
+      "iconColour": "rgb(180, 190, 254)", // Blue
+      "type": "line"
+    },
+    "REVIEW": {
+      "icon": "code-review",
+      "iconColour": "rgb(137, 220, 235)", // Sky
+      "type": "line"
+    },
+    "QUESTION": {
+      "icon": "question",
+      "iconColour": "rgb(203, 166, 247)", // Mauve
+      "type": "line"
+    },
+    "HACK": {
+      "icon": "tools",
+      "iconColour": "rgb(245, 194, 231)", // Pink
+      "type": "line"
+    },
+    "DEBUG": {
+      "icon": "play",
+      "iconColour": "rgb(235, 160, 172)", // Red
+      "type": "line"
+    }
+  },
+  "todohighlight.keywords": [
+    {
+      "text": "BUG",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#f38ba8" // Red (Critical, highest severity)
+    },
+    {
+      "text": "FIXME",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#fab387" // Orange (Needs fixing, high severity)
+    },
+    {
+      "text": "WARNING",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#f9e2af" // Yellow (Needs attention, medium severity)
+    },
+    {
+      "text": "NOTE",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#a6e3a1" // Green (Informative, low severity)
+    },
+    {
+      "text": "OPTIMIZE",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#89b4fa" // Blue (Optimization needed, high severity)
+    },
+    {
+      "text": "HINT",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#94e2d5" // Teal (Informative, low severity)
+    },
+    {
+      "text": "CHANGED",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#74c7ec" // Sapphire (Recent changes, medium-high severity)
+    },
+    {
+      "text": "TODO",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#b4befe" // Blue (To be done, medium-high severity)
+    },
+    {
+      "text": "REVIEW",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#89dceb" // Sky (Needs review, medium severity)
+    },
+    {
+      "text": "QUESTION",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#cba6f7" // Mauve (Needs clarification, medium severity)
+    },
+    {
+      "text": "HACK",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#f5c2e7" // Pink (Temporary workaround, medium severity)
+    },
+    {
+      "text": "DEBUG",
+      "color": "#181825", // Mantle
+      "backgroundColor": "#eba0ac" // Maroon (Debugging, low-medium severity)
+    }
+  ],
+  "workbench.activityBar.location": "hidden",
+  "vscode-markdown-github.theme.dark": "dark",
+  "files.exclude": {
+    "**/__pycache__": true
+  },
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "vs-kubernetes": {
+    "vs-kubernetes.minikube-show-information-expiration": "2025-10-02T03:52:34.438Z"
+  },
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "python.defaultInterpreterPath": "/usr/local/bin/python3",
+  "python.terminal.activateEnvironment": false,
+  "python-envs.terminal.showActivateButton": true,
+  "chat.disableAIFeatures": true
+
+  // Test Todo Highlight
+  /*
+    # BUG: text details
+    # FIXME: text details
+    # WARNING: text details
+    # NOTE: text details
+    # OPTIMIZE: text details
+    # HINT: text details
+    # CHANGED: text details
+    # TODO: text details
+    # REVIEW: text details
+    # QUESTION: text details
+    # HACK: text details
+    # DEBUG: text details
+  */
+}

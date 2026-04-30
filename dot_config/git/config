@@ -108,8 +108,8 @@
 	prompt = false
 
 [difftool "sourcetree"]
-	cmd = opendiff "$LOCAL" "$REMOTE"
-	path =
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 
 [difftool "meld"]
 	trustExitCode = true
@@ -132,8 +132,7 @@
 
 [mergetool "sourcetree"]
 	trustExitCode = true
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \
-	      "$LOCAL" "$REMOTE" -ancestor "$BASE" -merge "$MERGED"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 
 [mergetool "meld"]
 	trustExitCode = true
