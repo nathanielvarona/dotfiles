@@ -65,13 +65,54 @@ vim.filetype.add({
 -- Disable Snacks Animate
 -- vim.g.snacks_animate = false
 
--- Set PowerShell as the default shell for Neovim
+-- =========================================================
+-- PowerShell (pwsh) as Neovim Shell on Windows
+-- =========================================================
+-- Configure Neovim to use PowerShell Core (`pwsh.exe`) instead of cmd.exe.
+-- This ensures better scripting capabilities, UTF-8 handling, and consistency
+-- with modern Windows terminal environments.
+
 if vim.fn.has("win32") == 1 then
-  vim.opt.shell = "pwsh.exe -NoLogo" -- Use 'powershell.exe' for older versions
-  vim.opt.shellcmdflag =
-    "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.Formatting.Error='Inline';$PSStyle.Formatting.ErrorAccent='Inline';"
-  vim.opt.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; if($?) { exit $LASTEXITCODE } else { exit 1 }"
-  vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; if($?) { exit $LASTEXITCODE } else { exit 1 }"
+  -- -------------------------------------------------------
+  -- Shell executable
+  -- -------------------------------------------------------
+  -- Use PowerShell Core. Do NOT include arguments here;
+  -- Neovim expects only the binary path for `shell`.
+  vim.opt.shell = "pwsh.exe"
+
+  -- -------------------------------------------------------
+  -- Command execution flags
+  -- -------------------------------------------------------
+  -- -NoLogo        → Skip startup banner for faster execution
+  -- -NoProfile     → Avoid loading user profile (faster, deterministic behavior)
+  -- -ExecutionPolicy RemoteSigned
+  --                 → Allows running local scripts without prompts
+  -- -Command       → Execute the following string as a PowerShell command
+  vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+
+  -- -------------------------------------------------------
+  -- Output redirection (used by :! and system())
+  -- -------------------------------------------------------
+  -- 2>&1           → Merge stderr into stdout
+  -- Out-File       → Write output to a file (Neovim expects a file target)
+  -- -Encoding utf8 → Ensure proper encoding for Neovim buffers
+  -- %s             → Placeholder for temporary file path
+  -- exit $LASTEXITCODE
+  --               → Propagate the actual exit code back to Neovim
+  vim.opt.shellredir = "2>&1 | Out-File -Encoding utf8 %s; exit $LASTEXITCODE"
+
+  -- -------------------------------------------------------
+  -- Pipeline output handling
+  -- -------------------------------------------------------
+  -- Tee-Object     → Writes output to file AND passes it through
+  -- Useful for commands that require both display and capture
+  vim.opt.shellpipe = "2>&1 | Tee-Object %s; exit $LASTEXITCODE"
+
+  -- -------------------------------------------------------
+  -- Quoting behavior
+  -- -------------------------------------------------------
+  -- Disable default quoting to prevent conflicts with PowerShell's
+  -- own parsing rules (especially for complex commands and paths).
   vim.opt.shellquote = ""
   vim.opt.shellxquote = ""
 end
