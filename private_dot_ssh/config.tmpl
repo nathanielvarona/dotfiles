@@ -1,36 +1,110 @@
 # -*-mode:ssh-config-*- vim:ft=sshconfig
 
-# ~/.ssh/config
 # =============================================================================
-# OpenSSH client configuration.
+# ~/.ssh/config
+# OpenSSH Client Configuration (chezmoi managed)
 #
-# See https://www.ssh.com/ssh/config
+# Design Goals:
+# - Cross-platform (macOS, Linux, WSL, Windows)
+# - Secure defaults
+# - Minimal runtime surprises
+# - Fast connection reuse (non-Windows)
 #
+# Docs:
+# https://www.ssh.com/ssh/config
+# =============================================================================
 
-# Skip newer or system-specific unmatched options.
-IgnoreUnknown AddKeysToAgent,UseKeychain
+# -----------------------------------------------------------------------------
+# Compatibility
+# -----------------------------------------------------------------------------
+
+# Ignore unknown options (prevents errors across OS/OpenSSH versions)
+IgnoreUnknown AddKeysToAgent,UseKeychain,IdentityAgent
+
+# -----------------------------------------------------------------------------
+# Global Defaults
+# -----------------------------------------------------------------------------
 
 Host *
-    {{ if ne .chezmoi.os "windows" -}}
-    # Accelerate connections by reusing existing connections to the same host.
+    # -------------------------------------------------------------------------
+    # Connection Performance (disabled on Windows)
+    # -------------------------------------------------------------------------
+    {{- if ne .chezmoi.os "windows" }}
+    # Reuse SSH connections (multiplexing)
     ControlMaster auto
     ControlPath ~/.ssh/controlmasters/%r@%h:%p
-    ControlPersist 5
+    ControlPersist 10m
     {{- end }}
 
-    # Allow storing passphrases in the macOS keychain.
-    # See https://developer.apple.com/library/archive/technotes/tn2449/_index.html
+    # -------------------------------------------------------------------------
+    # Authentication
+    # -------------------------------------------------------------------------
     AddKeysToAgent yes
+
+    {{- if eq .chezmoi.os "darwin" }}
+    # macOS Keychain integration (Apple OpenSSH patch)
     UseKeychain yes
+    {{- end }}
 
-    # Keep the connection temporarily open by sending a data every few minutes.
-    ServerAliveCountMax 6
+    # Prefer modern key types
+    PubkeyAuthentication yes
+    IdentitiesOnly yes
+
+    # -------------------------------------------------------------------------
+    # Security Hardening
+    # -------------------------------------------------------------------------
+    # Disable agent forwarding by default (override per-host if needed)
+    ForwardAgent no
+
+    # Enforce strict host key checking (safer default)
+    StrictHostKeyChecking ask
+
+    # Hash known hosts file (privacy)
+    HashKnownHosts yes
+
+    # Disable password auth fallback (optional but recommended)
+    PasswordAuthentication no
+
+    # -------------------------------------------------------------------------
+    # Connection Stability
+    # -------------------------------------------------------------------------
     ServerAliveInterval 300
+    ServerAliveCountMax 6
 
-    # Disable client-side roaming support for security reasons.
-    # See https://www.upguard.com/blog/fixing-the-new-openssh-roaming-bug
-    UseRoaming no
-
-
-    # https://ghostty.org/docs/help/terminfo#configure-ssh-to-fall-back-to-a-known-terminfo-entry
+    # -------------------------------------------------------------------------
+    # Terminal Compatibility
+    # -------------------------------------------------------------------------
+    # Ensures compatibility with modern terminals (e.g., Ghostty, Kitty)
     SetEnv TERM=xterm-256color
+
+    # -------------------------------------------------------------------------
+    # Logging (useful for debugging)
+    # -------------------------------------------------------------------------
+    LogLevel ERROR
+
+
+# -----------------------------------------------------------------------------
+# Platform-Specific Overrides
+# -----------------------------------------------------------------------------
+
+{{- if eq .chezmoi.os "windows" }}
+
+# Windows OpenSSH quirks:
+# - No ControlMaster support
+# - Different agent handling
+
+Host *
+    # Use Windows SSH agent if available
+    IdentityAgent \\.\pipe\openssh-ssh-agent
+
+{{- end }}
+
+
+# -----------------------------------------------------------------------------
+# Optional: GitHub (example)
+# -----------------------------------------------------------------------------
+# Host github.com
+#     HostName github.com
+#     User git
+#     IdentityFile ~/.ssh/id_ed25519
+#     IdentitiesOnly yes
