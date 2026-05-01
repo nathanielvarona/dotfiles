@@ -118,17 +118,20 @@ if (Get-Module -ListAvailable Terminal-Icons)
   Import-Module Terminal-Icons
 }
 
-# Custom PATH
 # LazyGit config (multiple files via comma, same as Zsh)
 $env:LG_CONFIG_FILE = "$env:XDG_CONFIG_HOME/lazygit/config.yml,$env:XDG_CONFIG_HOME/lazygit/themes/mocha/blue.yml"
 
+# Custom PATH
 # UserProifle Local Path (uv)
 $env:Path = "$env:USERPROFILE\.local\bin;$env:Path"
 
-# Mise Package Manager Activation
-(&mise activate pwsh) | Out-String | Invoke-Expression
+# Hooks and Activation
+# mise Package Manager
+if (Get-Command mise -ErrorAction SilentlyContinue) {
+  (&mise activate pwsh) | Out-String | Invoke-Expression
+}
 
-# vfox Package Manager Hook
+# vfox Package Manager
 if (-not (Test-Path -Path $PROFILE)) { New-Item -Type File -Path $PROFILE -Force }; Add-Content -Path $PROFILE -Value 'Invoke-Expression "$(vfox activate pwsh)"'
 
 # ------------------------------------------------------------
