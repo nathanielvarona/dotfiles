@@ -64,3 +64,14 @@ vim.filetype.add({
 
 -- Disable Snacks Animate
 -- vim.g.snacks_animate = false
+
+-- Set PowerShell as the default shell for Neovim
+if vim.fn.has("win32") == 1 then
+  vim.opt.shell = "pwsh.exe -NoLogo" -- Use 'powershell.exe' for older versions
+  vim.opt.shellcmdflag =
+    "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.Formatting.Error='Inline';$PSStyle.Formatting.ErrorAccent='Inline';"
+  vim.opt.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; if($?) { exit $LASTEXITCODE } else { exit 1 }"
+  vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; if($?) { exit $LASTEXITCODE } else { exit 1 }"
+  vim.opt.shellquote = ""
+  vim.opt.shellxquote = ""
+end
