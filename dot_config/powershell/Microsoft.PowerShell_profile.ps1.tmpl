@@ -118,8 +118,12 @@ if (Get-Module -ListAvailable Terminal-Icons)
   Import-Module Terminal-Icons
 }
 
+# Custom PATH
 # LazyGit config (multiple files via comma, same as Zsh)
 $env:LG_CONFIG_FILE = "$env:XDG_CONFIG_HOME/lazygit/config.yml,$env:XDG_CONFIG_HOME/lazygit/themes/mocha/blue.yml"
+
+# UserProifle Local Path (uv)
+$env:Path = "$env:USERPROFILE\.local\bin;$env:Path"
 
 # ------------------------------------------------------------
 # Utilities
