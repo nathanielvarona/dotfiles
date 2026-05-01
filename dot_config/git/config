@@ -203,6 +203,9 @@
 	# Git Credential Manager (Homebrew-installed)
 	helper = /usr/local/share/gcm-core/git-credential-manager
 
+	helper = 
+	helper = 
+	helper = C:/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 # Azure DevOps requires HTTP path scoping
 [credential "https://dev.azure.com"]
 	useHttpPath = true
