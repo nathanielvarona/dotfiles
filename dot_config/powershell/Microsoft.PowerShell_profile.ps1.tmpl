@@ -143,3 +143,8 @@ function which ($command)
   Get-Command -Name $command -ErrorAction SilentlyContinue |
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
+
+function ls_alias {
+    lsd $args
+}
+Set-Alias -Name ls -Value ls_alias -Option AllScope -Force

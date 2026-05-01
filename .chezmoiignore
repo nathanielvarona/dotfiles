@@ -25,7 +25,6 @@ Justfile
 .config/gh-dash
 .config/ghostty
 .config/kitty
-.config/lsd
 .config/luarocks
 .config/opencode
 .config/powerlevel10k
