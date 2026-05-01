@@ -1,3 +1,0 @@
-[cd]
-  command = "pwsh"
-  args = ["-NoLogo"]

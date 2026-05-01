@@ -1,0 +1,7 @@
+[cd]
+{{- if eq .chezmoi.os "windows" }}
+    command = "pwsh"
+    args = ["-NoLogo"]
+{{- else }}
+    command = "zsh"
+{{- end }}
