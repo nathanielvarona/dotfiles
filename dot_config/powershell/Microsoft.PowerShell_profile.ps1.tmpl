@@ -125,6 +125,12 @@ $env:LG_CONFIG_FILE = "$env:XDG_CONFIG_HOME/lazygit/config.yml,$env:XDG_CONFIG_H
 # UserProifle Local Path (uv)
 $env:Path = "$env:USERPROFILE\.local\bin;$env:Path"
 
+# Mise Package Manager Activation
+(&mise activate pwsh) | Out-String | Invoke-Expression
+
+# vfox Package Manager Hook
+if (-not (Test-Path -Path $PROFILE)) { New-Item -Type File -Path $PROFILE -Force }; Add-Content -Path $PROFILE -Value 'Invoke-Expression "$(vfox activate pwsh)"'
+
 # ------------------------------------------------------------
 # Utilities
 # ------------------------------------------------------------
