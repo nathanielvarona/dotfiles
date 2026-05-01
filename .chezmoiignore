@@ -12,6 +12,7 @@ Justfile
 **/lazy-lock.json
 
 {{ if (eq .chezmoi.os "windows") }}
+.MacOSX
 .zshenv
 
 .config/Code
