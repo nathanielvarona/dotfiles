@@ -226,7 +226,7 @@ lazyvim() {
 }
 
 {{- if eq .chezmoi.os "linux" -}}
-{{ if .chezmoi.kernel.osrelease | contains "WSL2" -}}
+{{- if .chezmoi.kernel.osrelease | contains "WSL" }}
 # ---------------------------------------------------------
 # WSL-specific Configuration
 # ---------------------------------------------------------
