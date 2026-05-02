@@ -1,0 +1,10 @@
+{{- if not (.chezmoi.kernel.osrelease | contains "WSL2") }}
+if true then return {} else
+{{ end -}}
+return {
+  "mason-org/mason.nvim",
+  opts = {
+    max_concurrent_installers = 1, -- Force one at a time
+  },
+}
+
