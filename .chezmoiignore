@@ -25,7 +25,7 @@ Justfile
 .MacOSX
 .zshenv
 
-.config/{aerospace,alacritty,asdf,atuin,bat,fzf,gh-dash,ghostty,kitty,luarocks,opencode,powerlevel10k,gnupg,scooter,tmux,ueberzugpp,vim,wezterm,yazi,zed,zellij,zsh}
+.config/{aerospace,alacritty,asdf,atuin,fzf,gh-dash,ghostty,kitty,luarocks,opencode,powerlevel10k,gnupg,scooter,tmux,ueberzugpp,vim,wezterm,yazi,zed,zellij,zsh}
 
 .scripts
 
