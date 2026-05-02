@@ -225,6 +225,7 @@ lazyvim() {
   NVIM_APPNAME=lazyvim nvim "$@"
 }
 
+{{- if eq .chezmoi.os "linux" -}}
 {{ if .chezmoi.kernel.osrelease | contains "WSL2" -}}
 # ---------------------------------------------------------
 # WSL-specific Configuration
@@ -236,3 +237,4 @@ export IS_WSL=1
 alias pbcopy='clip.exe'
 alias pbpaste='powershell.exe -command "Get-Clipboard" | tr -d "\r"'
 {{- end }}
+{{- end -}}

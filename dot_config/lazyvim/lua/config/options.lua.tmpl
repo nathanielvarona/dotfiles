@@ -118,7 +118,9 @@ if vim.fn.has("win32") == 1 then
 end
 
 -- Integrate Sysmtem Clipboard
+{{- if eq .chezmoi.os "linux" -}}
 {{- if .chezmoi.kernel.osrelease | contains "WSL2" }}
 -- Make sure to install `winget install equalsraf.win32yank`
 vim.opt.clipboard = "unnamedplus"
 {{- end }}
+{{- end -}}

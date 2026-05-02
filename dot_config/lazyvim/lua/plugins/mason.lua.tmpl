@@ -1,6 +1,8 @@
+{{- if eq .chezmoi.os "linux" -}}
 {{- if not (.chezmoi.kernel.osrelease | contains "WSL2") }}
 if true then return {} else
 {{ end -}}
+{{- end -}}
 return {
   "mason-org/mason.nvim",
   opts = {
