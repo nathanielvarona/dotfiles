@@ -1,0 +1,11 @@
+{{- /* .chezmoitemplates/helpers/is_native_unix_like */ -}}
+{{- $isNative := false -}}
+{{- if eq .chezmoi.os "darwin" -}}
+  {{- $isNative = true -}}
+{{- else if eq .chezmoi.os "linux" -}}
+  {{- /* Nested check ensures macOS never evaluates the Linux-only kernel field */ -}}
+  {{- if not (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+    {{- $isNative = true -}}
+  {{- end -}}
+{{- end -}}
+{{- $isNative -}}

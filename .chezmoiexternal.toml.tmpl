@@ -1,13 +1,11 @@
-{{- if (ne .chezmoi.os "windows") -}}
-{{- if (includeTemplate "is_native" .) | trim | eq "true" -}}
+{{- if (includeTemplate "helpers/is_native_unix_like" .) | trim | eq "true" -}}
 [".config/kitty/themes"]
   type = "archive"
   url = "https://github.com/kovidgoyal/kitty-themes/archive/master.tar.gz"
   stripComponents = 2
   include = ["*/themes/**"]
 
-{{ end }}
-{{- end -}}
+{{ end -}}
 
 {{- if (eq .chezmoi.os "windows") -}}
 ["AppData/Roaming/alacritty/themes"]
