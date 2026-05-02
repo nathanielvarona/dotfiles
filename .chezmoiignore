@@ -15,7 +15,6 @@ Justfile
 .MacOSX
 .zshenv
 
-.config/Code
 .config/aerospace
 .config/alacritty
 .config/asdf
