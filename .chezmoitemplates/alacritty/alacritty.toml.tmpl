@@ -1,8 +1,13 @@
 [general]
   live_config_reload = true
   import = [
+{{- if (eq .chezmoi.os "windows") }}
+    "~/AppData/Roaming/alacritty/fonts.toml",
+    "~/AppData/Roaming/alacritty/themes/github_dark_high_contrast.toml",
+{{- else }}
     "~/.config/alacritty/fonts.toml",
     "~/.config/alacritty/themes/github_dark_high_contrast.toml",
+{{- end }}
   ]
 
 [cursor]
@@ -37,3 +42,8 @@
   duration = 0
   # command = { program = "paplay", args = ["/usr/share/sounds/freedesktop/stereo/dialog-error.oga"] }
   command = "None"
+
+{{ if (eq .chezmoi.os "windows") -}}
+[terminal]
+shell = "pwsh"
+{{- end -}}

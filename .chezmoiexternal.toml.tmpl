@@ -9,7 +9,11 @@
 {{ end }}
 {{- end -}}
 
+{{- if (eq .chezmoi.os "windows") -}}
+["AppData/Roaming/alacritty/themes"]
+{{- else -}}
 [".config/alacritty/themes"]
+{{- end }}
   type = "archive"
   url = "https://github.com/alacritty/alacritty-theme/archive/master.tar.gz"
   exact = true
