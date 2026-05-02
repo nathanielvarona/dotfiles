@@ -21,7 +21,7 @@ export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
 
 {{ if eq .chezmoi.os "linux" }}
-export GIT_CONFIG_GLOBAL="${XDG_CONFIG_HOME}/git/.gitconfig"
+export GIT_CONFIG_GLOBAL="${XDG_CONFIG_HOME}/git/config"
 export VSCODE_APPDATA="${XDG_CONFIG_HOME}"
 export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 {{ end }}
@@ -219,12 +219,14 @@ lazyvim() {
   NVIM_APPNAME=lazyvim nvim "$@"
 }
 
+{{ if .chezmoi.kernel.osrelease | contains "WSL2" -}}
 # ---------------------------------------------------------
-# WSL-specific marker (templated)
+# WSL-specific Configuration
 # ---------------------------------------------------------
-
-{{ if eq .chezmoi.os "linux" }}
-{{ if or (env "WSL_DISTRO_NAME") (contains (lower (printf "%v" .chezmoi.kernel)) "microsoft") }}
+# WSL2 Marker
 export IS_WSL=1
-{{ end }}
-{{ end }}
+
+# Use System Clipboard
+alias pbcopy='clip.exe'
+alias pbpaste='powershell.exe -command "Get-Clipboard" | tr -d "\r"'
+{{- end }}
