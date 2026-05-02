@@ -1,9 +1,13 @@
-{{ if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") }}
+{{- if or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux") -}}
+{{- if not (.chezmoi.kernel.osrelease | contains "WSL") -}}
 [".config/kitty/themes"]
   type = "archive"
   url = "https://github.com/kovidgoyal/kitty-themes/archive/master.tar.gz"
   stripComponents = 2
   include = ["*/themes/**"]
+
+{{ end }}
+{{- end -}}
 
 [".config/alacritty/themes"]
   type = "archive"
@@ -22,7 +26,7 @@
   url = "https://github.com/catppuccin/bat/archive/main.tar.gz"
   stripComponents = 2
   include = ["*/themes/**"]
-{{ end }}
+
 [".config/lazygit/themes"]
   type = "archive"
   url = "https://github.com/catppuccin/lazygit/archive/main.tar.gz"
