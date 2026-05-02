@@ -144,6 +144,12 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 # Node (fnm)
 source <(fnm env)
 
+# mise activate
+eval "$(mise activate zsh)"
+
+# vfox Hook
+eval "$(vfox activate zsh)"
+
 # Python (pyenv)
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
