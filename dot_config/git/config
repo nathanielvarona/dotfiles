@@ -1,4 +1,4 @@
-# vim:ft=gitconfig
+# vim: set ft=gitconfig noexpandtab tabstop=2:
 # ================
 # Global Git Configuration (XDG-compliant)
 # ================
@@ -66,7 +66,7 @@
 
 	# Use delta as the default pager for diffs and logs
 	pager = delta
-
+	autocrlf = input
 
 # ================
 # Diff / Pager Enhancements (delta)
@@ -210,15 +210,13 @@
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 
-{{ if eq .chezmoi.os "linux" }}
 [credential "https://github.com"]
   helper=
-  helper=!/usr/bin/gh auth git-credential
+  helper=!gh auth git-credential
 
 [credential "https://gist.github.com"]
   helper=
-  helper=!/usr/bin/gh auth git-credential
-{{- end }}
+  helper=!gh auth git-credential
 
 # ================
 # Optional SSH Preference (Disabled)
