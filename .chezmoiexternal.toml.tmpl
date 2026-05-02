@@ -25,7 +25,11 @@
   url = "https://github.com/catppuccin/lsd/archive/main.tar.gz"
   path = "lsd-main/themes/catppuccin-mocha/colors.yaml"
 
+{{ if (eq .chezmoi.os "windows") -}}
+["AppData/Roaming/scooter/themes"]
+{{- else -}}
 [".config/scooter/themes"]
+{{- end }}
   type = "archive"
   url = "https://github.com/catppuccin/bat/archive/main.tar.gz"
   stripComponents = 2
