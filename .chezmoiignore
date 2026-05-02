@@ -1,3 +1,7 @@
+# ============================================================
+# Global ignores (all platforms)
+# ============================================================
+
 .github
 install.sh
 LICENSE
@@ -11,42 +15,35 @@ Justfile
 
 **/lazy-lock.json
 
-{{ if (eq .chezmoi.os "windows") }}
+# ============================================================
+# Platform-specific ignores
+# ============================================================
+
+{{- if eq .chezmoi.os "windows" }}
+
+# Unix-only configs
 .MacOSX
 .zshenv
 
-.config/aerospace
-.config/alacritty
-.config/asdf
-.config/atuin
-.config/bat
-.config/fzf
-.config/gh-dash
-.config/ghostty
-.config/kitty
-.config/luarocks
-.config/opencode
-.config/powerlevel10k
-.config/gnupg
-.config/scooter
-.config/tmux
-.config/ueberzugpp
-.config/vim
-.config/wezterm
-.config/yazi
-.config/zed
-.config/zellij
-.config/zsh
+.config/{aerospace,alacritty,asdf,atuin,bat,fzf,gh-dash,ghostty,kitty,luarocks,opencode,powerlevel10k,gnupg,scooter,tmux,ueberzugpp,vim,wezterm,yazi,zed,zellij,zsh}
 
 .scripts
-{{ end }}
 
-{{ if (ne .chezmoi.os "windows") }}
+{{- else }}
+
+# Windows-only configs
 AppData
 Documents
-{{ end }}
 
-{{ if (eq .chezmoi.os "linux") }}
+{{- end }}
+
+# ============================================================
+# Linux-specific overrides
+# ============================================================
+
+{{- if eq .chezmoi.os "linux" }}
+
+# macOS-specific leftovers
 .MacOSX
-.scripts
-{{ end }}
+
+{{- end }}
