@@ -1,0 +1,23 @@
+{{ if eq .chezmoi.os "windows" -}}
+# ============================================================
+# Set VSCODE_APPDATA (User Environment Variable)
+# ============================================================
+# Ensures VSCode uses XDG-style config directory:
+#   %USERPROFILE%\.config
+#
+# This runs once via chezmoi and avoids repeated writes
+# on every PowerShell startup.
+
+$varName  = "VSCODE_APPDATA"
+$varValue = "$env:USERPROFILE\.config"
+
+$current = [Environment]::GetEnvironmentVariable($varName, "User")
+
+if ($current -ne $varValue) {
+  [Environment]::SetEnvironmentVariable($varName, $varValue, "User")
+
+  Write-Host "Updated $varName → $varValue" -ForegroundColor Green
+} else {
+  Write-Host "$varName already set correctly" -ForegroundColor DarkGray
+}
+{{- end }}

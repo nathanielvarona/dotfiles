@@ -159,16 +159,3 @@ function ls_alias {
 }
 Set-Alias -Name ls -Value ls_alias -Option AllScope -Force
 
-{{ if eq .chezmoi.os "windows" -}}
-# Bootstrap Code
-
-# Environment Variables for VSCode
-$varName = "VSCODE_APPDATA"
-$varValue = "$env:USERPROFILE\.config"
-
-# Only update if the current value is different to avoid unnecessary writes
-if ([Environment]::GetEnvironmentVariable($varName, "User") -ne $varValue) {
-    [Environment]::SetEnvironmentVariable($varName, $varValue, "User")
-    Write-Host "Set $varName to $varValue for the current user." -ForegroundColor Green
-}
-{{- end }}
