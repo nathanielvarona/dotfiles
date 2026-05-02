@@ -109,7 +109,7 @@
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 
 [difftool "meld"]
 	trustExitCode = true
@@ -203,13 +203,20 @@
 	# Git Credential Manager (Homebrew-installed)
 	helper = /usr/local/share/gcm-core/git-credential-manager
 
-	helper = 
-	helper = 
+	helper =
+	helper =
 	helper = C:/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 # Azure DevOps requires HTTP path scoping
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 
+[credential "https://github.com"]
+  helper=
+  helper=!/usr/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+  helper=
+  helper=!/usr/bin/gh auth git-credential
 
 # ================
 # Optional SSH Preference (Disabled)
