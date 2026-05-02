@@ -1,7 +1,7 @@
-{{- if ne .chezmoi.os "windows" -}}
 {{- if eq .chezmoi.os "linux" -}}
-#!/bin/bash
-set -e
+#!/bin/sh
+
+set -eu
 
 # ---------------------------------------------------------
 # Only run on Linux (WSL or native)
@@ -47,5 +47,4 @@ if [ "$CURRENT_SHELL" != "$ZSH_PATH" ]; then
 else
   echo "[chezmoi] zsh already default shell"
 fi
-{{- end -}}
 {{- end -}}
