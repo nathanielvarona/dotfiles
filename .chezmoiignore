@@ -45,5 +45,6 @@ Documents
 
 # macOS-specific leftovers
 .MacOSX
+.scripts
 
 {{- end }}
