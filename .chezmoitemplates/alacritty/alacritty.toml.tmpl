@@ -1,14 +1,18 @@
 [general]
   live_config_reload = true
-  import = [
 {{- if (eq .chezmoi.os "windows") }}
+  working_directory = "%USERPROFILE%"
+  import = [
     "~/AppData/Roaming/alacritty/fonts.toml",
     "~/AppData/Roaming/alacritty/themes/github_dark_high_contrast.toml",
+  ]
 {{- else }}
+  import = [
     "~/.config/alacritty/fonts.toml",
     "~/.config/alacritty/themes/github_dark_high_contrast.toml",
-{{- end }}
   ]
+{{- end }}
+
 
 [cursor]
   blink_interval = 550
@@ -45,5 +49,7 @@
 
 {{ if (eq .chezmoi.os "windows") -}}
 [terminal]
-shell = "pwsh"
+  [terminal.shell]
+    program = "pwsh"
+    args = ["-NoLogo"]
 {{- end -}}
