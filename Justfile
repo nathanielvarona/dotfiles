@@ -247,6 +247,30 @@ restore-winget:
 		Write-Error "Dump file not found at {{PACKAGES}}/windows-winget"
 	}
 
+[windows]
+restore-vscode-extension-windows:
+    #!pwsh.exe
+    $brewfile = "{{PACKAGES}}/vscode.Brewfile"
+    if (-not (Test-Path $brewfile)) {
+        Write-Error "Brewfile not found at $brewfile"
+        return
+    }
+    # 1. Fetch current extensions once (huge performance boost)
+    Write-Host "Checking current environment..." -ForegroundColor Gray
+    $installed = code --list-extensions
+    # 2. Extract extension IDs from Brewfile
+    $desired = Select-String -Path $brewfile -Pattern '^vscode "(.*)"' | ForEach-Object { $_.Matches.Groups[1].Value }
+    foreach ($ext in $desired) {
+        if ($installed -contains $ext) {
+            Write-Host "--> Skipping (Already Installed): $ext" -ForegroundColor DarkGray
+        } else {
+            Write-Host "--> Installing: $ext" -ForegroundColor Cyan
+            # The CLI will show its own download progress here
+            code --install-extension $ext --force
+        }
+    }
+    Write-Host "VS Code restoration complete." -ForegroundColor Green
+
 # ================
 # Aggregate
 # ================
