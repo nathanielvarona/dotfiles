@@ -1,4 +1,3 @@
 [tools]
-  lua = "latest"
   rust = "latest"
   go = "latest"
