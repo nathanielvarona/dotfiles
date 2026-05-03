@@ -219,7 +219,7 @@ restore-perl-modules:
 [windows]
 dump-winget:
 	#!pwsh.exe
-	$data = winget export -o apps.json --include-versions --ignore-warnings --disable-interactivity --accept-source-agreements
+	winget export -o apps.json --include-versions --ignore-warnings --disable-interactivity --accept-source-agreements
 	jq -r '.Sources[].Packages[] | "\(.PackageIdentifier)\t\(.Version)"' apps.json |
 		ConvertFrom-Csv -Delimiter "`t" -Header "Application", "Version" |
 		Format-Table -AutoSize |
@@ -227,6 +227,7 @@ dump-winget:
 		ForEach-Object { $_.Trim() } |
 		Where-Object { $_ -ne "" } |
 		Set-Content {{PACKAGES}}/windows-winget
+	rm -r -fo apps.json
 
 [windows]
 restore-winget:
