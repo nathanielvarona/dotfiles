@@ -1,5 +1,9 @@
 [font]
+{{- if (eq .chezmoi.os "windows") }}
+size = 11
+{{- else }}
 size = 13
+{{- end }}
 
 builtin_box_drawing = true
 
