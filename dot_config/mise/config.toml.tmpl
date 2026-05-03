@@ -1,5 +1,5 @@
 [tools]
-  {{- if (eq .chezmoi.os "linux") }}
+  {{- if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin")}}
   lua = "5.1.5"
   {{- end }}
   rust = "latest"
