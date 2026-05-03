@@ -47,7 +47,6 @@ plugged/
 
 # Development and configuration files
 .develop
-.vscode
 .secrets
 .tool-versions
 *gitconfig
