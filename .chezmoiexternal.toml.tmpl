@@ -1,4 +1,4 @@
-{{- if (includeTemplate "helpers/is_native_unix_like" .) | trim | eq "true" -}}
+{{- if (includeTemplate "helpers/is_native_unix_like.tmpl" .) | trim | eq "true" -}}
 [".config/kitty/themes"]
   type = "archive"
   url = "https://github.com/kovidgoyal/kitty-themes/archive/master.tar.gz"
