@@ -216,6 +216,36 @@ restore-perl-modules:
 		echo "→ No cpanfile found at $CPANFILE (skipping)"
 	fi
 
+[windows]
+dump-winget:
+	#!pwsh.exe
+	$data = winget export -o apps.json --include-versions --ignore-warnings --disable-interactivity --accept-source-agreements
+	jq -r '.Sources[].Packages[] | "\(.PackageIdentifier)\t\(.Version)"' apps.json |
+		ConvertFrom-Csv -Delimiter "`t" -Header "Application", "Version" |
+		Format-Table -AutoSize |
+		Out-String |
+		ForEach-Object { $_.Trim() } |
+		Where-Object { $_ -ne "" } |
+		Set-Content {{PACKAGES}}/windows-winget
+
+[windows]
+restore-winget:
+	#!pwsh.exe
+	if (Test-Path {{PACKAGES}}/windows-winget) {
+		# Read the file, skip the Header and Table separator lines
+		$apps = Get-Content {{PACKAGES}}/windows-winget | Select-Object -Skip 2
+		foreach ($line in $apps) {
+			# Extract the first column (Package ID) before the whitespace
+			$appId = $line.Split(" ", [System.StringSplitOptions]::RemoveEmptyEntries)[0]
+			if ($appId) {
+				Write-Host "--> Installing: $appId" -ForegroundColor Cyan
+				winget install --id $appId --exact --accept-source-agreements --accept-package-agreements
+			}
+		}
+	} else {
+		Write-Error "Dump file not found at {{PACKAGES}}/windows-winget"
+	}
+
 # ================
 # Aggregate
 # ================
