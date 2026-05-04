@@ -135,6 +135,7 @@ $env:Path = "$env:USERPROFILE\.local\bin;$env:Path"
 # LazyVim Mason Path
 $env:Path = "$env:LOCALAPPDATA\$env:NVIM_APPNAME-data\mason\bin;$env:Path"
 
+{{ if eq .chezmoi.os "windows" }}
 # Hooks and Activation
 # mise Package Manager
 if (Get-Command mise -ErrorAction SilentlyContinue) {
@@ -143,6 +144,7 @@ if (Get-Command mise -ErrorAction SilentlyContinue) {
 
 # vfox Package Manager
 if (-not (Test-Path -Path $PROFILE)) { New-Item -Type File -Path $PROFILE -Force }; Add-Content -Path $PROFILE -Value 'Invoke-Expression "$(vfox activate pwsh)"'
+{{ end }}
 
 # ------------------------------------------------------------
 # Utilities
