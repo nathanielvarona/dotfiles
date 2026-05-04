@@ -46,6 +46,14 @@ if [ -x "$HOMEBREW_PREFIX/bin/brew" ]; then
   eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 fi
 
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+
 # ---------------------------------------------------------
 # Prompt (Oh My Posh)
 # ---------------------------------------------------------
@@ -75,6 +83,13 @@ fi
 ZSH_CACHE_DIR="${XDG_CACHE_HOME}/zsh"
 [[ ! -e $ZSH_CACHE_DIR/completions ]] && mkdir -p $ZSH_CACHE_DIR/completions
 
+# Add in Powerlevel10k
+# zinit ice depth=1
+# zinit light romkatv/powerlevel10k
+
+# To customize prompt, run `p10k configure` or edit $XDG_CONFIG_HOME/powerlevel10k/p10k.zsh.
+# [[ ! -f $XDG_CONFIG_HOME/powerlevel10k/p10k.zsh ]] || source $XDG_CONFIG_HOME/powerlevel10k/p10k.zsh
+
 # ---------------------------------------------------------
 # Plugins
 # ---------------------------------------------------------
@@ -90,6 +105,15 @@ zinit snippet OMZ::plugins/extract
 zinit snippet OMZ::plugins/common-aliases
 zinit snippet OMZ::plugins/vi-mode
 
+{{ if eq .chezmoi.os "darwin" }}
+# API documentation browser and code snippet manager
+zinit snippet OMZ::plugins/dash
+{{ end }}
+
+# vi-mode plugin settings
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+
 # ---------------------------------------------------------
 # CLI Tools Initialization
 # ---------------------------------------------------------
@@ -101,11 +125,41 @@ source <(fzf --zsh)
 export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
 bindkey '^Y' atuin-search
+# bind to the up key, which depends on terminal mode
+# bindkey '\eOA' atuin-up-search
+# bindkey '\eOB' atuin-up-search
 
-# zoxide (better cd)
+# fzf is a general-purpose command-line fuzzy finder.
+# https://github.com/junegunn/fzf
+function init_fzfrc() {
+  [[ ! -f $XDG_CONFIG_HOME/fzf/fzfrc.zsh ]] || source $XDG_CONFIG_HOME/fzf/fzfrc.zsh
+}
+# Load FZF Custom Options
+init_fzfrc
+
+# Replace zsh's default completion selection menu with fzf!
+# https://github.com/Aloxaf/fzf-tab
+zinit light Aloxaf/fzf-tab
+
+# A CLI interface to git that relies heavily on fzf
+# https://github.com/bigH/git-fuzzy
+# Usage: "[git-fuzzy | git fuzzy] <GIT_SUBCOMMAND>"
+zinit ice as"program" pick"bin/git-fuzzy"
+zinit light bigH/git-fuzzy
+
+# Utility tool for using git interactively.
+# https://github.com/wfxr/forgit
+# Usage: "[git-forgit | git forgit] <GIT_SUBCOMMAND>"
+zinit ice as"program" pick"bin/git-forgit"
+zinit load wfxr/forgit
+
+# Shell extension to navigate your filesystem faster
 source <(zoxide init --cmd cd zsh)
 
-# thefuck
+# Jump around (same with zoxide) with fzf
+zinit load agkozak/zsh-z
+
+# Last Command Correction
 eval "$(thefuck --alias wtf)"
 
 # ---------------------------------------------------------
@@ -130,27 +184,214 @@ setopt HIST_IGNORE_ALL_DUPS
 bindkey '\eOA' history-substring-search-up
 bindkey '\eOB' history-substring-search-down
 export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=0
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=0
 
 # Autosuggestions
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 
 # Syntax highlighting
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(
+  main
+  brackets
+  pattern
+  # cursor
+)
+
+export ZSH_HIGHLIGHT_STYLES['unknown-token']=fg=red
+export ZSH_HIGHLIGHT_STYLES['suffix-alias']=fg=green,underline
+export ZSH_HIGHLIGHT_STYLES[precommand]=fg=green,underline
+export ZSH_HIGHLIGHT_STYLES[arg0]=fg=green
+
+# Zsh Vi Mode
+# zinit ice depth=1
+# zinit light jeffreytse/zsh-vi-mode
+# Fix zsh-history-substring-search behaviour
+# zvm_after_init_commands+=(
+#   init_fzfrc
+#   "bindkey '\eOA' history-substring-search-up"
+#   "bindkey '\eOB' history-substring-search-down"
+# )
+# export ZVM_VI_EDITOR=vim
+# export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+
+# GNU Bins
+# NOTE: Some were internally loaded in the $PATH if without conflicts
+#
+# export PATH="/usr/local/opt/inetutils/libexec/gnubin:$PATH"
+# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+# export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+# export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+
+{{ if eq .chezmoi.os "darwin" }}
+# ---------------------------------------------------------
+# macOS-Specific Toolchain Tweaks
+# ---------------------------------------------------------
+
+###
+# If other project sources require these libraries as dependencies for builds.
+# ---------------------------------------------------------
+#
+
+# OpenSSL
+# export PATH="/usr/local/opt/openssl/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/openssl/include $CPPFLAGS"
+
+# Readline
+# For compilers to find readline you may need to set:
+export LDFLAGS="-L/usr/local/opt/readline/lib"
+export CPPFLAGS="-I/usr/local/opt/readline/include"
+# For pkg-config to find readline you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+
+# SQLite
+# If you need to have sqlite first in your PATH, run:
+# export PATH="/usr/local/opt/sqlite/bin:$PATH"
+# For compilers to find sqlite you may need to set:
+# export LDFLAGS="-L/usr/local/opt/sqlite/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/sqlite/include $CPPFLAGS"
+# For pkg-config to find sqlite you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
+
+# For compilers to find postgresql@16 you may need to set:
+export LDFLAGS="-L/usr/local/opt/postgresql@18/lib $LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/postgresql@18/include $CPPFLAGS"
+# For pkg-config to find postgresql@16 you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/postgresql@16/lib/pkgconfig"
+
+# Zlib
+# For compilers to find zlib you may need to set:
+# export LDFLAGS="-L/usr/local/opt/zlib/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/zlib/include $CPPFLAGS"
+# For pkg-config to find zlib
+# export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+
+# Bzip2
+# If you need to have bzip2 first in your PATH, run:
+# export PATH="/usr/local/opt/bzip2/bin:$PATH"
+# For compilers to find bzip2 you may need to set:
+# export LDFLAGS="-L/usr/local/opt/bzip2/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/bzip2/include $PPFLAGS"
+
+# OpenBlas
+# For compilers to find openblas you may need to set:
+# export LDFLAGS="-L/usr/local/opt/openblas/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/openblas/include $CPPFLAGS"
+# For pkg-config to find openblas you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig"
+
+# ncurses
+# If you need to have ncurses first in your PATH, run:
+# export PATH="/usr/local/opt/ncurses/bin:$PATH"
+# For compilers to find ncurses you may need to set:
+# export LDFLAGS="-L/usr/local/opt/ncurses/lib $LFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/ncurses/include $CPPFLAGS"
+# For pkgconf to find ncurses you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
+
+# Tcl programming language and Tk graphical user interface toolkit (Version 8)
+# If you need to have tcl-tk@8 first in your PATH, run:
+# export PATH="/usr/local/opt/tcl-tk@8/bin:$PATH"
+# For compilers to find tcl-tk@8 you may need to et:
+# export LDFLAGS="-L/usr/local/opt/tcl-tk@8/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/tcl-tk@8/include $CPPFLAGS"
+# For pkgconf to find tcl-tk@8 you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk@8/lib/pkgconfig"
+
+# srtp - Implementation of the Secure Real-time Transport Protocol
+export CFLAGS="-I/usr/local/opt/srtp/include $CFLAGS"
+export LDFLAGS="-L/usr/local/opt/srtp/lib $LDFLAGS"
+
+# Linear Algebra PACKage
+# For compilers to find lapack you may need to set:
+# export LDFLAGS="-L/usr/local/opt/lapack/lib"
+# export CPPFLAGS="-I/usr/local/opt/lapack/include"
+# For pkgconf to find lapack you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/lapack/lib/pkgconfig"
+# For cmake to find lapack you may need to set:
+# export CMAKE_PREFIX_PATH="/usr/local/opt/lapack"
+
+# Comment LLVM settings to only use Apple `clang` (from Xcode Developer Toolchains)
+# Homebrew `clang` (from LLVM)
+# If you need to have llvm first in your PATH, run:
+# export PATH="/usr/local/opt/llvm/bin:$PATH"
+# To use the bundled libc++ please add the following LDFLAGS:
+# export LDFLAGS="-L/usr/local/opt/llvm/lib/c++ -Wl,-rpath,/usr/local/opt/llvm/lib/c++ $LDFLAGS"
+# For compilers to find llvm you may need to set:
+# export LDFLAGS="-L/usr/local/opt/llvm/lib $LDFLAGS"
+# export CPPFLAGS="-I/usr/local/opt/llvm/include $CPPFLAGS"
+# For cmake to find llvm you may need to set:
+# export CMAKE_PREFIX_PATH="/usr/local/opt/llvm"
+
+# ccache - Object-file caching compiler wrapper
+# export PATH="/usr/local/opt/ccache/libexec:$PATH"
+
+# C and C++ Compilers with `ccache` an Object-file caching compiler wrapper
+# export CC="ccache clang"
+# export CXX="ccache clang++"
+
+# Headers without ccache
+export CC="clang"
+export CXX="clang++"
+
+# Fallback Library
+# export DYLD_FALLBACK_LIBRARY_PATH="$HOMEBREW_PREFIX/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+
+#
+# ---------------------------------------------------------
+###
+{{ end }}
 
 # ---------------------------------------------------------
 # Language / Toolchains
 # ---------------------------------------------------------
 
-# Node (fnm)
-source <(fnm env)
-
 # Python (pyenv)
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+if which pyenv-virtualenv-init >/dev/null; then
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+# Anaconda Initialization (Python)
+export CONDA_AUTO_ACTIVATE_BASE=false
+eval "$(/usr/local/anaconda3/bin/conda shell.zsh hook)"
+
+# Poetry Apps (Python Packages)
+export POETRY_CACHE_DIR="$XDG_CACHE_HOME/pypoetry"
+export POETRY_VIRTUALENVS_PREFER_ACTIVE_PYTHON="true"
+export POETRY_VIRTUALENVS_OPTIONS_ALWAYS_COPY="true"
+if ! [[ -e "$ZSH_CACHE_DIR/completions/_poetry" ]]; then
+  poetry completions zsh > $ZSH_CACHE_DIR/completions/_poetry
+fi
+
+# Node (fnm)
+source <(fnm env)
 
 # Ruby (rbenv)
 eval "$(rbenv init - zsh)"
+
+# Perl Initialization
+[[ ! -d $HOME/.perl5 ]] && PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5" cpan local::lib
+eval "$(perl -I$HOME/.perl5/lib/perl5 -Mlocal::lib=$HOME/.perl5)"
+{{ if eq .chezmoi.os "darwin" }}
+export PERL5LIB="/Library/Developer/CommandLineTools/usr/share/git-core/perl:$PERL5LIB"
+{{ end }}
+
+# Directory Enviornment Varaibles `reads .envrc or .env`
+eval "$(direnv hook zsh)"
+
+# Docker Client Version Manager
+[ -f ${HOMEBREW_PREFIX}/opt/dvm/dvm.sh ] && . ${HOMEBREW_PREFIX}/opt/dvm/dvm.sh
+
+# vfox Hook
+eval "$(vfox activate zsh)"
+
+# mise activate
+export MISE_ACTIVATE_AGGRESSIVE=1
+eval "$(mise activate zsh)"
 
 # Go
 export PATH="$HOME/go/bin:$PATH"
@@ -164,51 +405,130 @@ export PATH="$HOME/.luarocks/bin:$PATH"
 # User binaries
 export PATH="$HOME/.local/bin:$PATH"
 
+# Kubernetes Plugin Manager
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # Mason (Neovim/LazyVim) Binaries
 export PATH="${XDG_DATA_HOME:-$HOME}/${NVIM_APPNAME}/mason/bin:$PATH"
 
-# vfox Hook
-eval "$(vfox activate zsh)"
-
-# mise activate
-export MISE_ACTIVATE_AGGRESSIVE=1
-eval "$(mise activate zsh)"
-
-# ---------------------------------------------------------
-# macOS-Specific Toolchain Tweaks
-# ---------------------------------------------------------
-
 {{ if eq .chezmoi.os "darwin" }}
-# Compiler
-export CC="clang"
-export CXX="clang++"
+# Define the directory to search (change as needed)
+source_dir=~/.scripts/autoload
+# Loop through all files ending with *.source.sh recursively
+for source_file in $(find "$source_dir" -type l -name "*.source.sh" -print); do
+  source "$source_file"
+done
+export PATH="$PATH:$HOME/.scripts/bin"
 
-# Example: OpenSSL (Homebrew)
-export LDFLAGS="-L$HOMEBREW_PREFIX/opt/openssl/lib $LDFLAGS"
-export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/openssl/include $CPPFLAGS"
+# fabric is an open-source framework for augmenting humans using AI.
+if [ -f "$HOME/.config/fabric/fabric-bootstrap.inc" ]; then
+  . "$HOME/.config/fabric/fabric-bootstrap.inc"
+fi
+
+# Git Scripts
+export PATH="$PATH:$HOME/Projects/contribute/git-scripts"
 {{ end }}
 
 # ---------------------------------------------------------
 # Aliases
 # ---------------------------------------------------------
 
+# ls colors
+# export LSCOLORS="ExGxFxDxCxDxDxhbhdacEc"
+# export LS_COLORS=${LSCOLORS}
+# WARNING: Vivid is not working Properly on macOS Terminal
+# export LS_COLORS="$(vivid generate zenburn)"
+# Alias (`ls` with colors)
+# alias ls="ls --color"
+
+# TODO: Evaluate the Functionality (`lsd` has the features I need for now)
+# INFO: Winning in Terms of Speed using `hyperfine "eza -la --icons" "lsd -la"`
+# eza - A modern replacement for ls.
+# alias ls='eza -la --icons'
+
+# LSD (LSDeluxe)
 alias ls='lsd'
+
 alias lg='lazygit'
 alias zsh_history="fc -il 1"
 
-# ---------------------------------------------------------
-# Completion System
-# ---------------------------------------------------------
+# Alias (others)
+alias zsh_history="fc -il 1"
 
+{{ if eq .chezmoi.os "darwin" }}
+alias meld="/Applications/Meld.app/Contents/MacOS/Meld"
+{{ end }}
+
+# =========================================================
+# ZSH Completion System Setup
+# =========================================================
+
+# =========================================================
+# Zsh Native Completion Initialization
+# =========================================================
 autoload -Uz compinit
 compinit -C
 
+# =========================================================
+# Bash-Compatible Completion
+# =========================================================
 autoload -Uz bashcompinit
 bashcompinit
 
-# Homebrew completions
-if [ -x "$HOMEBREW_PREFIX/bin/brew" ]; then
-  fpath=("$($HOMEBREW_PREFIX/bin/brew --prefix)/share/zsh/site-functions" $fpath)
+# ---------------------------
+# Completion Search Paths
+# ---------------------------
+
+# Homebrew-installed completions
+if [[ -e "$HOMEBREW_PREFIX/share/zsh/site-functions" ]]; then
+  fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
+fi
+
+# Cache directory for pre-generated custom completions
+if [[ -e "$ZSH_CACHE_DIR/completions" ]]; then
+  fpath=("$ZSH_CACHE_DIR/completions" $fpath)
+fi
+
+# Vagrant Zsh completions
+VAGRANT_VERSION=${VAGRANT_VERSION:-$(vagrant --version | awk '{print $2}')}
+fpath=("/opt/vagrant/embedded/gems/gems/vagrant-${VAGRANT_VERSION}/contrib/zsh" $fpath)
+
+# ASDF plugin completions (pre-generated, e.g., kubectx/kubens)
+if command -v asdf &> /dev/null; then
+  if [[ -e "$(asdf where kubectx)/completion" ]]; then
+    fpath=($(asdf where kubectx)/completion $fpath)
+  fi
+fi
+
+# =========================================================
+# Source Native CLI Completion Scripts
+# =========================================================
+source <(pritunl-client completion zsh)
+source <(argocd completion zsh)
+source <(eksctl completion zsh)
+source <(helm completion zsh)
+source <(kind completion zsh)
+source <(kompose completion zsh)
+source <(kubectl completion zsh)
+source <(kustomize completion zsh)
+source <(minikube completion zsh)
+source <(tilt completion zsh)
+source <(helmfile completion zsh)
+source <(ct completion zsh)  # helm-ct
+
+# =========================================================
+# Register Bash-Style Completions
+# =========================================================
+complete -o nospace -C terraform terraform
+complete -o nospace -C packer packer
+complete -o nospace -C aws_completer aws
+complete -o nospace -C tofu tofu
+
+# =========================================================
+# Optional/Conditional Completions
+# =========================================================
+if command -v ngrok &> /dev/null; then
+  eval "$(ngrok completion)"
 fi
 
 # ---------------------------------------------------------
@@ -221,10 +541,23 @@ export KITTY_LISTEN_ON=unix:/tmp/kitty
 # LazyGit config
 export LG_CONFIG_FILE="$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/themes/mocha/blue.yml"
 
+# ASDF Tools Version Manager
+export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/.asdfrc"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 # Neovim launcher
 lazyvim() {
   NVIM_APPNAME=lazyvim nvim "$@"
 }
+
+# See `~/.config/vim/vimrc` for Cursor Escape Codes
+# Fixes Terminal Cursor in a Tmux with a VI Mode Keys Enabled
+if [ -n "$TMUX" ]; then
+  _fix_cursor() {
+    echo -ne '\e[6 q'
+  }
+  precmd_functions+=(_fix_cursor)
+fi
 
 {{- if eq .chezmoi.os "linux" -}}
 {{- if .chezmoi.kernel.osrelease | contains "WSL" }}
