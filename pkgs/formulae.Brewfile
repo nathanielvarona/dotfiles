@@ -158,6 +158,8 @@ brew "luarocks"
 brew "mas"
 # CLI for Mermaid library
 brew "mermaid-cli"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Fast TUI and CLI for browsing AI models, benchmarks, and coding agents
 brew "models"
 # Ping Tool in Rust with Real-Time Data and Visualizations
@@ -262,6 +264,8 @@ brew "utftex"
 brew "uv"
 # Visual Binary Diff
 brew "vbindiff"
+# Version manager with support for Java, Node.js, Flutter, .NET & more
+brew "vfox"
 # Simple terminal image viewer written in Rust
 brew "viu"
 # Generator for LS_COLORS with support for multiple color themes
