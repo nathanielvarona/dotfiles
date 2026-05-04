@@ -356,8 +356,8 @@ if which pyenv-virtualenv-init >/dev/null; then
 fi
 
 # Anaconda Initialization (Python)
-export CONDA_AUTO_ACTIVATE_BASE=false
-eval "$(/usr/local/anaconda3/bin/conda shell.zsh hook)"
+# export CONDA_AUTO_ACTIVATE_BASE=false
+# eval "$(/usr/local/anaconda3/bin/conda shell.zsh hook)"
 
 # Poetry Apps (Python Packages)
 export POETRY_CACHE_DIR="$XDG_CACHE_HOME/pypoetry"
@@ -489,9 +489,11 @@ if [[ -e "$ZSH_CACHE_DIR/completions" ]]; then
   fpath=("$ZSH_CACHE_DIR/completions" $fpath)
 fi
 
+{{ if eq .chezmoi.os "darwin" -}}
 # Vagrant Zsh completions
 VAGRANT_VERSION=${VAGRANT_VERSION:-$(vagrant --version | awk '{print $2}')}
 fpath=("/opt/vagrant/embedded/gems/gems/vagrant-${VAGRANT_VERSION}/contrib/zsh" $fpath)
+{{- end }}
 
 # ASDF plugin completions (pre-generated, e.g., kubectx/kubens)
 if command -v asdf &> /dev/null; then
@@ -503,7 +505,9 @@ fi
 # =========================================================
 # Source Native CLI Completion Scripts
 # =========================================================
+{{- if eq .chezmoi.os "darwin" }}
 source <(pritunl-client completion zsh)
+{{- end }}
 source <(argocd completion zsh)
 source <(eksctl completion zsh)
 source <(helm completion zsh)
