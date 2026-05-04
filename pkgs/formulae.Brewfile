@@ -188,6 +188,8 @@ brew "pnpm"
 brew "poppler"
 # Object-relational database system
 brew "postgresql@18"
+# Command-line shell and scripting language
+brew "powershell"
 # Password generator
 brew "pwgen"
 # Python version management
