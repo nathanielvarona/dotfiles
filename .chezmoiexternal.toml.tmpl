@@ -38,3 +38,10 @@
   url = "https://github.com/catppuccin/lazygit/archive/main.tar.gz"
   stripComponents = 2
   include = ["*/themes-mergable/**"]
+
+{{ if or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux") -}}
+[".config/fzf/fzf-git.sh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/junegunn/fzf-git.sh/refs/heads/main/fzf-git.sh"
+    refreshPeriod = "168h"
+{{- end }}

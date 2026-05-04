@@ -72,7 +72,7 @@ _fzf_comprun() {
 # "CTRL-G + CTRL-H" - for commit Hashes
 #
 
-source ~/Projects/contribute/fzf-git.sh/fzf-git.sh
+source ${XDG_CONFIG_HOME}/fzf/fzf-git.sh
 
 _fzf_git_fzf() {
   fzf-tmux -p80%,60% -- \
