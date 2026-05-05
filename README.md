@@ -1,263 +1,81 @@
 # dotfiles
 
-Personal dotfiles repository for reproducible development environments across macOS, Linux, and Windows (PowerShell / WSL).
+Personal dotfiles repository for reproducible development environments across macOS, Linux, and Windows (CMD / PowerShell / WSL).
 
 This repository is built around:
 
-- **Templating & State Management** (chezmoi)
-- **Reproducibility** (`pkgs/` as state manifests)
-- **Automation** (`Justfile`)
-- **Cross-platform consistency**
-- **Infrastructure-as-Code philosophy**
+- **Templating & State Management**: [chezmoi](https://chezmoi.io)
+- **Reproducibility**: `pkgs/` as declarative state manifests
+- **Automation**: `Justfile` task runner
+- **Cross-platform consistency**: Unified configs for Zsh, PowerShell, and various CLIs
 
 ---
 
 ## Core Architecture
 
-This repository is structured around three pillars:
-
-1. **Dotfile management** → chezmoi
-2. **Package state management** → `pkgs/`
-3. **Task orchestration** → `Justfile`
-
-All configuration is declarative and reproducible across environments.
+1. **Dotfile management** → `chezmoi` handles symlinking and templating.
+2. **Package state management** → `pkgs/` directory tracks installed software.
+3. **Task orchestration** → `Justfile` simplifies complex maintenance workflows.
 
 ---
 
 ## Requirements
 
-Ensure the following are installed before setup:
-
-- `git`
-- `curl` or `wget`
-- `zsh` (recommended shell)
-- `just` (optional but recommended)
-- `brew` (macOS / Linux)
-
-> chezmoi will be installed automatically by the bootstrap script if missing.
+- `git`, `curl` or `wget`
+- `zsh` (primary shell for Unix-like systems)
+- `just` (command runner)
+- `brew` (macOS / Linux) or `scoop`/`winget` (Windows)
 
 ---
 
 ## Quick Start
 
-### Bootstrap (Recommended)
+### Bootstrap (Automated)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nathanielvarona/dotfiles/refs/heads/master/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/nathanielvarona/dotfiles/main/install.sh \
+  | sh
 ```
-
-This will:
-
-- Install Homebrew (if missing)
-- Install dependencies (including chezmoi)
-- Apply dotfiles
-- Configure Zsh (Linux/WSL)
-- Apply system settings
-
----
 
 ### Manual Setup
 
 ```bash
-git clone https://github.com/nathanielvarona/dotfiles.git dotfiles
-cd dotfiles
+# Install chezmoi
 
+# macOS or Linux
+sh -c "$(curl -fsLS https://get.chezmoi.io)"
+
+# Windows PowerShell
+iex "&{$(irm 'https://get.chezmoi.io/ps1')}"
+
+# Initialize and apply
 chezmoi init --apply nathanielvarona
 ```
 
 ---
 
-## Chezmoi Workflow
-
-### Apply changes
-
-```bash
-chezmoi apply
-```
-
-### Preview changes
-
-```bash
-chezmoi diff
-```
-
-### Edit a managed file
-
-```bash
-chezmoi edit ~/.zshrc
-```
-
-### Re-run templates / scripts
-
-```bash
-chezmoi apply --force
-```
-
----
-
-## Templating System
-
-This repository heavily uses chezmoi templating:
-
-- `.tmpl` → dynamic, OS-aware files
-- `.chezmoitemplates/` → reusable config templates
-- `.chezmoi.toml.tmpl` → central configuration
-
-Example:
-
-- OS-aware shell configs
-- Shared VS Code settings
-- PowerShell / Zsh unified behavior
-
----
-
-## Cross-Platform Design
-
-| Platform | Behavior                          |
-| -------- | --------------------------------- |
-| macOS    | Native Homebrew + Zsh             |
-| Linux    | Homebrew (Linuxbrew) + Zsh        |
-| WSL      | Linuxbrew + Zsh (auto-configured) |
-| Windows  | PowerShell + AppData mapping      |
-
----
-
-## VS Code Configuration Strategy
-
-Single source of truth:
-
-```text
-~/.config/Code/User/
-```
-
-Handled via:
-
-- `.chezmoitemplates/vscode/`
-- Windows AppData mirroring via chezmoi
-
-Ensures consistent editor experience across platforms.
-
----
-
 ## Package Management
 
-> [!NOTE]
-> This repository follows a **Dump → Commit → Restore** model.
+This repo uses a **Dump → Commit → Restore** model to keep software synchronized across machines.
 
-All package state is stored in:
+| Platform        | Managers Supported                                           |
+| :-------------- | :----------------------------------------------------------- |
+| **macOS/Linux** | Homebrew (Formulae/Casks), asdf, pyenv, pipx, krew, cargo    |
+| **Windows**     | Scoop, WinGet, PowerShell modules                            |
+| **Universal**   | GitHub CLI Extensions, Helm, Ollama, Hugging Face, Whalebrew |
 
-```text
-./pkgs/
-```
+**Usage:**
 
----
-
-### Supported Package Managers
-
-- Homebrew (formulae, casks, taps, mas, vscode)
-- asdf
-- pyenv
-- pipx
-- kubectl krew
-- Helm repos
-- Cargo
-- GitHub CLI extensions
-- Whalebrew
-- Ollama models
-- Hugging Face models
-- Perl modules
-
----
-
-## Dump Installed State
-
-```bash
-just dump-all
-```
-
-Individual:
-
-```bash
-just dump-brew
-just dump-asdf
-just dump-pyenv
-just dump-pipx
-just dump-krew
-just dump-helm
-just dump-cargo
-just dump-gh-ext
-just dump-whalebrew
-just dump-ollama
-just dump-hugging-face
-just dump-perl-modules
-```
-
----
-
-## Restore State
-
-```bash
-just restore-all
-```
-
----
-
-## Directory Structure
-
-```text
-.
-├── .chezmoitemplates        # Reusable config templates (e.g., VS Code)
-├── dot_config               # XDG-based configuration (primary source)
-├── AppData                  # Windows-specific targets (chezmoi-managed)
-├── Documents                # PowerShell profiles
-├── dot_scripts              # Custom scripts (autoload/bin/source)
-├── private_dot_ssh          # SSH configs (private)
-├── pkgs                     # Package state manifests
-├── run_once_*               # One-time bootstrap scripts
-├── .chezmoiexternal.toml    # External resources (themes, configs)
-├── .chezmoiignore           # Ignore rules
-├── Justfile                 # Task automation
-└── README.md
-```
-
----
-
-## Workflow
-
-### Fresh Machine
-
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/nathanielvarona/dotfiles/main/install.sh)"
-```
-
----
-
-### After Installing New Tools
-
-```bash
-just dump-all
-git commit -m "update package state"
-```
-
----
-
-## Design Principles
-
-- Declarative environment configuration
-- Idempotent automation
-- Cross-platform consistency
-- Minimal manual setup
-- Separation of config vs state
+- `just dump-all`: Save current system state to `pkgs/`
+- `just restore-all`: Install all missing packages from `pkgs/`
 
 ---
 
 ## Key Features
 
-- Single source of truth for configs
-- OS-aware templating (chezmoi)
-- Unified Zsh + PowerShell environments
-- Automated bootstrap (Homebrew + shell + locale)
-- Reproducible package environments
+- **Editor**: [LazyVim](https://lazyvim.org) ([Neovim](https://neovim.io/)) and [VSCode](https://code.visualstudio.com/) with [VSCode Neovim](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim) extension configuration.
+- **Terminal**: [Kitty](https://sw.kovidgoyal.net/kitty/), and Windows [Terminal](https://github.com/microsoft/terminal) support.
+- **Shell**: [Oh My Posh](https://ohmyposh.dev/) themed [Zsh](https://www.zsh.org/) and [PowerShell](https://github.com/powershell/powershell).
 
 ---
 
