@@ -1,0 +1,30 @@
+{{- /*
+  macOS Global Environment Variables (EnvPane)
+
+  This file defines system-wide environment variables using a LaunchServices-compatible
+  plist, managed via EnvPane:
+
+    https://github.com/hschmidt/EnvPane
+
+  Why this exists:
+  - Ensures GUI applications (Finder-launched apps) inherit environment variables
+  - Aligns macOS behavior with XDG-style configuration used across platforms
+  - Provides a single, declarative source of truth for global environment variables
+
+  Notes:
+  - Changes require restarting affected applications (or logout/login) to take effect
+  - This is macOS-specific and ignored on other platforms via chezmoi
+*/ -}}
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>GIT_CONFIG_GLOBAL</key>
+  <string>$HOME/.config/git/config</string>
+  <key>GNUPGHOME</key>
+  <string>$HOME/.config/gnupg</string>
+  <key>VSCODE_APPDATA</key>
+  <string>$HOME/.config</string>
+</dict>
+</plist>
