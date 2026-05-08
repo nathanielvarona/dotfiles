@@ -1,0 +1,41 @@
+{{ if eq .chezmoi.os "windows" -}}
+# ============================================================
+# Windows Documents Shell Folder
+# ============================================================
+# Configure the Windows "Documents" directory to use:
+#   %USERPROFILE%\Documents
+#
+# This ensures PowerShell profiles and modules resolve
+# from the local user profile directory for faster startup.
+#
+# Managed by chezmoi as a one-time configuration.
+# ============================================================
+
+$registryPath = 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders'
+$propertyName = 'Personal'
+$propertyValue = '%USERPROFILE%\Documents'
+
+$currentValue = (Get-ItemProperty -Path $registryPath -Name $propertyName).$propertyName
+
+Write-Host ""
+Write-Host "󰉋 Windows Documents Configuration" -ForegroundColor Cyan
+Write-Host "─────────────────────────────────" -ForegroundColor DarkGray
+
+if ($currentValue -ne $propertyValue) {
+  Set-ItemProperty `
+    -Path $registryPath `
+    -Name $propertyName `
+    -Value $propertyValue
+
+  Write-Host "✓ Updated Shell Folder" -ForegroundColor Green
+  Write-Host "  Name : $propertyName" -ForegroundColor DarkGray
+  Write-Host "  Value: $propertyValue" -ForegroundColor White
+}
+else {
+  Write-Host "✓ Already Configured" -ForegroundColor Green
+  Write-Host "  Name : $propertyName" -ForegroundColor DarkGray
+  Write-Host "  Value: $currentValue" -ForegroundColor White
+}
+
+Write-Host ""
+{{- end }}

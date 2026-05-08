@@ -1,0 +1,35 @@
+{{ if eq .chezmoi.os "windows" -}}
+# ============================================================
+# VSCode XDG Configuration
+# ============================================================
+# Configure VSCode to use:
+#   %USERPROFILE%\.config
+#
+# This is a one-time setup managed by chezmoi.
+# Avoids modifying environment variables during shell startup.
+# ============================================================
+
+$varName  = "VSCODE_APPDATA"
+$varValue = "$env:USERPROFILE\.config"
+
+$currentValue = [Environment]::GetEnvironmentVariable($varName, "User")
+
+Write-Host ""
+Write-Host "󰨞 VSCode Environment Configuration" -ForegroundColor Cyan
+Write-Host "──────────────────────────────────" -ForegroundColor DarkGray
+
+if ($currentValue -ne $varValue) {
+  [Environment]::SetEnvironmentVariable($varName, $varValue, "User")
+
+  Write-Host "✓ Updated Environment Variable" -ForegroundColor Green
+  Write-Host "  Name : $varName" -ForegroundColor DarkGray
+  Write-Host "  Value: $varValue" -ForegroundColor White
+}
+else {
+  Write-Host "✓ Already Configured" -ForegroundColor Green
+  Write-Host "  Name : $varName" -ForegroundColor DarkGray
+  Write-Host "  Value: $currentValue" -ForegroundColor White
+}
+
+Write-Host ""
+{{- end }}
