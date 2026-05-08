@@ -32,23 +32,41 @@ This repository is built around:
 
 ### Bootstrap (Automated)
 
+#### macOS or Linux
+
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nathanielvarona/dotfiles/main/install.sh \
-  | sh
+curl -fsSL \
+  https://raw.githubusercontent.com/nathanielvarona/dotfiles/main/install.sh \
+    | sh
+```
+
+#### Windows (PowerShell)
+
+```powershell
+irm `
+  https://raw.githubusercontent.com/nathanielvarona/dotfiles/main/install.ps1 `
+    | iex
 ```
 
 ### Manual Setup
 
+#### 1. Install chezmoi
+
+##### macOS or Linux
+
 ```bash
-# Install chezmoi
-
-# macOS or Linux
 sh -c "$(curl -fsLS https://get.chezmoi.io)"
+```
 
-# Windows PowerShell
+##### Windows PowerShell
+
+```powershell
 iex "&{$(irm 'https://get.chezmoi.io/ps1')}"
+```
 
-# Initialize and apply
+##### 2. Initialize and apply
+
+```bash
 chezmoi init --apply nathanielvarona
 ```
 
