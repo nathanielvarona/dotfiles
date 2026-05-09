@@ -1,3 +1,9 @@
+{{- /*
+
+  PowerShell Version 5 and 7+ Compatible Profile
+
+*/ -}}
+
 # ============================================================
 # PowerShell Profile (Managed by chezmoi)
 # Cross-platform: macOS / Linux / Windows
@@ -5,16 +11,11 @@
 # ============================================================
 
 # ------------------------------------------------------------
-# XDG Base Directory (Normalized across platforms)
+# XDG Base Directory
 # ------------------------------------------------------------
 
-{{ if eq .chezmoi.os "windows" }}
-$env:XDG_CONFIG_HOME = "$HOME\.config"
-$env:XDG_CACHE_HOME  = "$HOME\.cache"
-{{ else }}
 $env:XDG_CONFIG_HOME = "$HOME/.config"
 $env:XDG_CACHE_HOME  = "$HOME/.cache"
-{{ end }}
 
 # ------------------------------------------------------------
 # Cursor Shape (PowerShell 7+ only)
@@ -138,10 +139,10 @@ $env:BAT_CONFIG_PATH = "$env:XDG_CONFIG_HOME/bat/config"
 
 # Custom PATH
 # UserProifle Local Path (uv)
-$env:Path = "$env:USERPROFILE\.local\bin;$env:Path"
+$env:Path = "$env:USERPROFILE/.local/bin;$env:Path"
 
 # LazyVim Mason Path
-$env:Path = "$env:LOCALAPPDATA\$env:NVIM_APPNAME-data\mason\bin;$env:Path"
+$env:Path = "$env:LOCALAPPDATA/$env:NVIM_APPNAME-data/mason/bin;$env:Path"
 
 {{ if eq .chezmoi.os "windows" }}
 # Hooks and Activation

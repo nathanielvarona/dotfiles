@@ -58,7 +58,7 @@ irm `
 sh -c "$(curl -fsLS https://get.chezmoi.io)"
 ```
 
-##### Windows PowerShell
+##### Windows (PowerShell)
 
 ```powershell
 iex "&{$(irm 'https://get.chezmoi.io/ps1')}"
