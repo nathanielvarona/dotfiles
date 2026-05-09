@@ -13,8 +13,8 @@ This repository is built around:
 
 ## Core Architecture
 
-1. **Dotfile management** → `chezmoi` handles symlinking and templating.
-2. **Package state management** → `pkgs/` directory tracks installed software.
+1. **Dotfile management** → `chezmoi` handles configuration templating and symlinking.
+2. **Package state management** → `pkgs/` directory tracks installed tooling software.
 3. **Task orchestration** → `Justfile` simplifies complex maintenance workflows.
 
 ---
@@ -76,6 +76,8 @@ chezmoi init --apply nathanielvarona
 
 This repo uses a **Dump → Commit → Restore** model to keep software synchronized across machines.
 
+**Example:**
+
 | Platform        | Managers Supported                                           |
 | :-------------- | :----------------------------------------------------------- |
 | **macOS/Linux** | Homebrew (Formulae/Casks), asdf, pyenv, pipx, krew, cargo    |
@@ -84,16 +86,16 @@ This repo uses a **Dump → Commit → Restore** model to keep software synchron
 
 **Usage:**
 
-- `just dump-all`: Save current system state to `pkgs/`
-- `just restore-all`: Install all missing packages from `pkgs/`
+- `just dump-[TOOLING]`: Save tooling state to `pkgs/`
+- `just restore-[TOOLING]`: Install missing tooling from `pkgs/`
 
 ---
 
 ## Key Features
 
-- **Editor**: [LazyVim](https://lazyvim.org) ([Neovim](https://neovim.io/)) and [VSCode](https://code.visualstudio.com/) with [VSCode Neovim](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim) extension configuration.
+- **Editor**: [LazyVim](https://lazyvim.org) ([Neovim](https://neovim.io/)), and [VSCode](https://code.visualstudio.com/) with [VSCode Neovim](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim) extension configuration.
 - **Terminal**: [Kitty](https://sw.kovidgoyal.net/kitty/), and Windows [Terminal](https://github.com/microsoft/terminal) support.
-- **Shell**: [Oh My Posh](https://ohmyposh.dev/) themed [Zsh](https://www.zsh.org/) and [PowerShell](https://github.com/powershell/powershell).
+- **Shell**: [Oh My Posh](https://ohmyposh.dev/) themed [Zsh](https://www.zsh.org/), and [PowerShell](https://github.com/powershell/powershell).
 
 ---
 
