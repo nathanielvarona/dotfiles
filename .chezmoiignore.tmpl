@@ -2,22 +2,58 @@
 # Global ignores (all platforms)
 # ============================================================
 
-.github
-install.sh
+.editorconfig
+.tmuxp.yaml
 install.ps1
+install.sh
+Justfile
 LICENSE
 README.md
 
-pkgs
-.tmuxp.yaml
-.editorconfig
+.github
 .gitmodules
-Justfile
+pkgs
 
 **/lazy-lock.json
 
 # ============================================================
 # Platform-specific ignores
+# ============================================================
+
+# ============================================================
+# macOS and Linux ignores
+# ============================================================
+
+{{- if or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux") }}
+
+# Ignore Windows-only configs
+AppData
+Documents
+
+{{- end }}
+
+# ============================================================
+# macOS-specific ignores
+# ============================================================
+
+{{- if eq .chezmoi.os "darwin" }}
+
+{{- end }}
+
+# ============================================================
+# Linux-specific ignores
+# ============================================================
+
+{{- if eq .chezmoi.os "linux" }}
+
+# macOS-specific leftovers
+.MacOSX
+.scripts
+
+{{- end }}
+
+# ============================================================
+# Windows-specific ignores
 # ============================================================
 
 {{- if eq .chezmoi.os "windows" }}
@@ -28,24 +64,6 @@ Justfile
 
 .config/{aerospace,alacritty,asdf,atuin,fzf,gh-dash,ghostty,kitty,luarocks,opencode,powerlevel10k,gnupg,scooter,tmux,ueberzugpp,vim,wezterm,yazi,zed,zellij,zsh}
 
-.scripts
-
-{{- else }}
-
-# Windows-only configs
-AppData
-Documents
-
-{{- end }}
-
-# ============================================================
-# Linux-specific overrides
-# ============================================================
-
-{{- if eq .chezmoi.os "linux" }}
-
-# macOS-specific leftovers
-.MacOSX
 .scripts
 
 {{- end }}
