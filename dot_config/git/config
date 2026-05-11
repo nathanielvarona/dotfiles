@@ -66,7 +66,11 @@
 
 	# Use delta as the default pager for diffs and logs
 	pager = delta
+	{{ if or (eq .chezmoi.os "darwin") (eq .chezmoi.os "linux") -}}
 	autocrlf = input
+	{{ else if (eq .chezmoi.os "windows") -}}
+	autocrlf = true
+	{{- end }}
 
 # ================
 # Diff / Pager Enhancements (delta)
