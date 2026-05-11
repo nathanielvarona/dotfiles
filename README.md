@@ -76,13 +76,13 @@ chezmoi init --apply nathanielvarona
 
 This repo uses a **Dump → Commit → Restore** model to keep software synchronized across machines.
 
-**Example:**
+**Such as:**
 
-| Platform        | Managers Supported                                           |
-| :-------------- | :----------------------------------------------------------- |
-| **macOS/Linux** | Homebrew (Formulae/Casks), asdf, pyenv, pipx, krew, cargo    |
-| **Windows**     | Scoop, WinGet, PowerShell modules                            |
-| **Universal**   | GitHub CLI Extensions, Helm, Ollama, Hugging Face, Whalebrew |
+| Platform        | Managers Supported            |
+| :-------------- | :---------------------------- |
+| **macOS/Linux** | Homebrew (Formulae and Casks) |
+| **Windows**     | Winget and Scoop              |
+| **Universal**   | mise and fox                  |
 
 **Usage:**
 
@@ -93,9 +93,9 @@ This repo uses a **Dump → Commit → Restore** model to keep software synchron
 
 ## Key Features
 
-- **Editor**: [LazyVim](https://lazyvim.org) ([Neovim](https://neovim.io/)), and [VSCode](https://code.visualstudio.com/) with [VSCode Neovim](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim) extension configuration.
-- **Terminal**: [Kitty](https://sw.kovidgoyal.net/kitty/), and Windows [Terminal](https://github.com/microsoft/terminal) support.
-- **Shell**: [Oh My Posh](https://ohmyposh.dev/) themed [Zsh](https://www.zsh.org/), and [PowerShell](https://github.com/powershell/powershell).
+- **Editor**: [LazyVim](https://lazyvim.org) ([Neovim](https://neovim.io/)) and [VSCode](https://code.visualstudio.com/) with [VSCode Neovim](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim) extension configuration.
+- **Terminal**: [Kitty](https://sw.kovidgoyal.net/kitty/) and Windows [Terminal](https://github.com/microsoft/terminal) support.
+- **Shell**: [Oh My Posh](https://ohmyposh.dev/) themed [Zsh](https://www.zsh.org/) and [PowerShell](https://github.com/powershell/powershell).
 
 ---
 
