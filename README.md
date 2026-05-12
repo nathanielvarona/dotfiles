@@ -78,11 +78,12 @@ This repo uses a **Dump → Commit → Restore** model to keep software synchron
 
 **Such as:**
 
-| Platform        | Managers Supported            |
-| :-------------- | :---------------------------- |
-| **macOS/Linux** | Homebrew (Formulae and Casks) |
-| **Windows**     | Winget and Scoop              |
-| **Universal**   | mise and fox                  |
+| Platform             | Managers Supported            |
+| :------------------- | :---------------------------- |
+| **macOS/Linux**      | Homebrew (Formulae and Casks) |
+| **Windows**          | Winget and Scoop              |
+| **Universal**        | mise, vfox, and asdf          |
+| **Version Managers** | pyenv, fnm, and rbenv         |
 
 **Usage:**
 
@@ -95,7 +96,7 @@ This repo uses a **Dump → Commit → Restore** model to keep software synchron
 
 - **Editor**: [LazyVim](https://lazyvim.org) ([Neovim](https://neovim.io/)) and [VSCode](https://code.visualstudio.com/) with [VSCode Neovim](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim) extension configuration.
 - **Terminal**: [Kitty](https://sw.kovidgoyal.net/kitty/) and Windows [Terminal](https://github.com/microsoft/terminal) support.
-- **Shell**: [Oh My Posh](https://ohmyposh.dev/) themed [Zsh](https://www.zsh.org/) and [PowerShell](https://github.com/powershell/powershell).
+- **Shell**: [Zsh](https://www.zsh.org/) and [PowerShell](https://github.com/powershell/powershell) with [Oh My Posh](https://ohmyposh.dev/) theme.
 
 ---
 
