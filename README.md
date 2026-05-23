@@ -1,13 +1,18 @@
 # dotfiles
 
-Personal dotfiles repository for reproducible development environments across macOS, Linux, and Windows (CMD / PowerShell / WSL).
+Personal cross-platform dotfiles repository for reproducible development environments across macOS, Windows (CMD / PowerShell / WSL), and Native Linux powered by [chezmoi](https://chezmoi.io).
 
 This repository is built around:
 
-- **Templating & State Management**: [chezmoi](https://chezmoi.io)
+- **Templating & State Management**: `chezmoi` provides many features beyond symlinking
 - **Reproducibility**: `pkgs/` as declarative state manifests
 - **Automation**: `Justfile` task runner
-- **Cross-platform consistency**: Unified configs for Zsh, PowerShell, and various CLIs
+- **Cross-platform consistency**: Unified configs for `Zsh`, `PowerShell`, and various CLIs
+
+> [!NOTE]
+> **Legacy GNU Stow Version**
+> For historical reference, the previous GNU Stow-managed version of this repository is preserved here:
+> <https://github.com/nathanielvarona/dotfiles/tree/old-gnu-stow-managed-for-reference-only>
 
 ---
 
