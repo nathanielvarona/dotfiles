@@ -1,41 +1,30 @@
 # dotfiles
 
-Personal cross-platform dotfiles repository for reproducible development environments across macOS, Windows (CMD / PowerShell / WSL), and Native Linux powered by [chezmoi](https://chezmoi.io).
+Personal cross-platform dotfiles repository for reproducible development environments across macOS, Native Linux, and Windows (CMD / PowerShell / WSL), powered by [chezmoi](https://chezmoi.io).
 
-This repository is built around:
+This repository focuses on:
 
-- **Templating & State Management**: `chezmoi` provides many features beyond symlinking
-- **Reproducibility**: `pkgs/` as declarative state manifests
-- **Automation**: `Justfile` task runner
-- **Cross-platform consistency**: Unified configs for `Zsh`, `PowerShell`, and various CLIs
-
-> [!NOTE]
-> **Legacy GNU Stow Version**
-> For historical reference, the previous GNU Stow-managed version of this repository is preserved here:
-> <https://github.com/nathanielvarona/dotfiles/tree/old-gnu-stow-managed-for-reference-only>
-
----
-
-## Core Architecture
-
-1. **Dotfile management** → `chezmoi` handles configuration templating and symlinking.
-2. **Package state management** → `pkgs/` directory tracks installed tooling software.
-3. **Task orchestration** → `Justfile` simplifies complex maintenance workflows.
+- **Templating & State Management** using `chezmoi`
+- **Reproducibility** through declarative `pkgs/` manifests
+- **Automation** with `Justfile`
+- **Cross-platform consistency** for `Zsh`, `PowerShell`, editors, terminals, and CLI tooling
 
 ---
 
 ## Requirements
 
-- `git`, `curl` or `wget`
-- `zsh` (primary shell for Unix-like systems)
-- `just` (command runner)
-- `brew` (macOS / Linux) or `scoop`/`winget` (Windows)
+- `git`
+- `curl` or `wget`
+- `zsh` (recommended for Unix-like systems)
+- `just` (optional but recommended)
+- `brew` (macOS/Linux)
+- `scoop` or `winget` (Windows)
 
 ---
 
 ## Quick Start
 
-### Bootstrap (Automated)
+### Automated Bootstrap
 
 #### macOS or Linux
 
@@ -53,9 +42,11 @@ irm `
     | iex
 ```
 
+---
+
 ### Manual Setup
 
-#### 1. Install chezmoi
+#### Install chezmoi
 
 ##### macOS or Linux
 
@@ -69,7 +60,7 @@ sh -c "$(curl -fsLS https://get.chezmoi.io)"
 iex "&{$(irm 'https://get.chezmoi.io/ps1')}"
 ```
 
-##### 2. Initialize and apply
+#### Initialize and apply
 
 ```bash
 chezmoi init --apply nathanielvarona
@@ -79,21 +70,34 @@ chezmoi init --apply nathanielvarona
 
 ## Package Management
 
-This repo uses a **Dump → Commit → Restore** model to keep software synchronized across machines.
+This repository follows a:
 
-**Such as:**
+```text
+Dump → Commit → Restore
+```
 
-| Platform             | Managers Supported            |
-| :------------------- | :---------------------------- |
-| **macOS/Linux**      | Homebrew (Formulae and Casks) |
-| **Windows**          | Winget and Scoop              |
-| **Universal**        | mise, vfox, and asdf          |
-| **Version Managers** | pyenv, fnm, and rbenv         |
+workflow to keep tooling reproducible across machines.
 
-**Usage:**
+| Platform         | Managers Supported |
+| :--------------- | :----------------- |
+| macOS / Linux    | Homebrew           |
+| Windows          | Winget, Scoop      |
+| Universal        | mise, vfox, asdf   |
+| Version Managers | pyenv, fnm, rbenv  |
 
-- `just dump-[TOOLING]`: Save tooling state to `pkgs/`
-- `just restore-[TOOLING]`: Install missing tooling from `pkgs/`
+### Usage
+
+```bash
+just dump-[TOOLING]
+just restore-[TOOLING]
+```
+
+Examples:
+
+```bash
+just dump-brew
+just restore-brew
+```
 
 ---
 
@@ -102,6 +106,14 @@ This repo uses a **Dump → Commit → Restore** model to keep software synchron
 - **Editor**: [LazyVim](https://lazyvim.org) ([Neovim](https://neovim.io/)) and [VSCode](https://code.visualstudio.com/) with [VSCode Neovim](https://marketplace.visualstudio.com/items?itemName=asvetliakov.vscode-neovim) extension configuration.
 - **Terminal**: [Kitty](https://sw.kovidgoyal.net/kitty/) and Windows [Terminal](https://github.com/microsoft/terminal) support.
 - **Shell**: [Zsh](https://www.zsh.org/) and [PowerShell](https://github.com/powershell/powershell) with [Oh My Posh](https://ohmyposh.dev/) theme.
+
+---
+
+## Historical Reference
+
+The previous GNU Stow-managed version of this repository is preserved for historical reference:
+
+<https://github.com/nathanielvarona/dotfiles/tree/old-gnu-stow-managed-for-reference-only>
 
 ---
 
