@@ -144,6 +144,9 @@ $env:Path = "$env:USERPROFILE/.local/bin;$env:Path"
 # LazyVim Mason Path
 $env:Path = "$env:LOCALAPPDATA/$env:NVIM_APPNAME-data/mason/bin;$env:Path"
 
+# Rust Cargo Path
+$env:Path = "$env:USERPROFILE/.cargo/bin;$env:Path"
+
 {{ if eq .chezmoi.os "windows" }}
 # Hooks and Activation
 # mise Package Manager
