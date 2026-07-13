@@ -11,7 +11,9 @@
     "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.cmake",
     "lazyvim.plugins.extras.lang.docker",
+    {{ if or (eq .chezmoi.os "darwin") (eq .chezmoi.os "windows") -}}
     "lazyvim.plugins.extras.lang.git",
+    {{ end -}}
     "lazyvim.plugins.extras.lang.go",
     "lazyvim.plugins.extras.lang.helm",
     "lazyvim.plugins.extras.lang.json",
