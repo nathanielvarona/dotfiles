@@ -124,3 +124,9 @@ end
 vim.opt.clipboard = "unnamedplus"
 {{- end }}
 {{- end -}}
+
+-- Try to recognize unix (LF) formats first, then dos (CRLF)
+vim.opt.fileformats = "unix,dos"
+
+-- Default fallback format for entirely new files
+vim.opt.fileformat = "unix"
