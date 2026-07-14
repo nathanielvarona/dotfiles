@@ -3,7 +3,11 @@
 # Justfile – Modern Make Alternative
 # https://just.systems/
 
-set shell := ["bash", "-cu"]
+# Fallback shell for Linux, macOS, and Unix-like OSes
+set shell := ["bash", "-uc"]
+
+# Override shell strictly for Windows operating systems
+set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
 # ================
 # Global Variables
