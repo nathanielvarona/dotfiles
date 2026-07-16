@@ -14,7 +14,7 @@ set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 # ================
 
 PACKAGES := "./pkgs"
-BREW_BUNDLE_DUMP := "brew bundle dump --describe --force --file"
+BREW_BUNDLE_DUMP := "brew bundle dump --force --file"
 BREW_BUNDLE_RESTORE := "brew bundle --file"
 
 # ================
