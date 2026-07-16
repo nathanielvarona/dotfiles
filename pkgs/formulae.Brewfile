@@ -44,6 +44,8 @@ brew "csvlens"
 brew "ctop"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
+# Portable Foreign Function Interface library
+brew "libffi"
 # Reference implementation for the Development Containers specification
 brew "devcontainer"
 # Diff that understands syntax
@@ -107,7 +109,7 @@ brew "go"
 # Generate introspection data for GObject libraries
 brew "gobject-introspection"
 # Ping, but with a graph
-brew "gping", link: false
+brew "gping"
 # Toolkit for creating graphical user interfaces
 brew "gtk+3"
 # Grammar Checker for Developers
@@ -127,7 +129,7 @@ brew "libheif"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # GNU utilities for networking
-brew "inetutils"
+brew "inetutils", link: false
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "iperf3"
 # Image manipulation library
@@ -144,8 +146,6 @@ brew "lapack"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Portable Foreign Function Interface library
-brew "libffi"
 # LLM inference in C/C++
 brew "llama.cpp"
 # Find what models run on your hardware
@@ -167,11 +167,11 @@ brew "nbping"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Port scanning utility for large networks
-brew "nmap", link: false
+brew "nmap"
 # Prompt theme engine for any shell
 brew "oh-my-posh"
 # Create, run, and share large language models (LLMs)
-brew "ollama", restart_service: :changed
+brew "ollama"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # AI coding agent, built for the terminal
@@ -182,6 +182,8 @@ brew "opencv"
 brew "pass"
 # Open-source vector similarity search for Postgres
 brew "pgvector"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # Fast, disk space efficient package manager
@@ -212,7 +214,7 @@ brew "ranger"
 brew "rbenv"
 # Makes shims aware of bundle install paths
 brew "rbenv-bundler"
-# KISS yet powerful gem / gemset management for rbenv
+# KISS yet powerful gem/set management for curious engineers and Ruby hackers
 brew "rbenv-gemset"
 # Persistent key-value database, with built-in net interface
 brew "redis"
@@ -242,6 +244,8 @@ brew "tcl-tk@8"
 brew "tectonic"
 # General purpose fuzzy finder TUI
 brew "television"
+# User interface to the TELNET protocol
+brew "telnet"
 # Programmatically correct mistyped console commands
 brew "thefuck"
 # Simplified and community-driven man pages
@@ -310,6 +314,8 @@ brew "zsh-completions"
 brew "amar1729/formulae/browserpass"
 # Prefer the tty when using pinentry, fallback to GUI
 brew "amar1729/formulae/pinentry-prefer-tty"
+# TUI for chezmoi
+brew "djetelina/tap/cheznav", trusted: true
 # Interactive TUI for Homebrew
 brew "gromgit/brewtils/taproom"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.

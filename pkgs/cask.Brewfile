@@ -4,8 +4,6 @@ cask "nikitabobko/tap/aerospace"
 cask "airdroid"
 # GPU-accelerated terminal emulator
 cask "alacritty"
-# Distribution of the Python and R programming languages for scientific computing
-cask "anaconda"
 # Android SDK component
 cask "android-platform-tools"
 # Redis desktop manager
@@ -41,6 +39,8 @@ cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
 cask "font-symbols-only-nerd-font"
+# 3D parametric modeller
+cask "freecad"
 # Kubernetes IDE
 cask "freelens"
 # Update maps and software, sync with Garmin Connect and register your device
@@ -69,6 +69,8 @@ cask "itermbrowserplugin"
 cask "jordanbaird-ice"
 # Password manager app
 cask "keepassxc"
+# File archiver
+cask "keka"
 # End-to-end encryption software
 cask "keybase"
 # GPU-based terminal emulator
@@ -113,6 +115,8 @@ cask "vagrant"
 cask "virtualbox"
 # Open-source code editor
 cask "visual-studio-code"
+# Visually compare folders and files
+cask "visualdiffer"
 # Multimedia player
 cask "vlc"
 # Remote desktop application focusing on security
