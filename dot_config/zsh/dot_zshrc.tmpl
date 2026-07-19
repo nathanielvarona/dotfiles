@@ -506,7 +506,9 @@ fi
 # Source Native CLI Completion Scripts
 # =========================================================
 {{- if eq .chezmoi.os "darwin" }}
-source <(pritunl-client completion zsh)
+if command -v pritunl-client &> /dev/null; then
+  source <(pritunl-client completion zsh)
+fi
 {{- end }}
 source <(argocd completion zsh)
 source <(eksctl completion zsh)
