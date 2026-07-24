@@ -1,41 +1,28 @@
 {{ if eq .chezmoi.os "windows" -}}
-# ============================================================
-# Windows Documents Shell Folder
-# ============================================================
-# Configure the Windows "Documents" directory to use:
+# Configure the Windows "Documents" shell folder.
+#
+# This ensures PowerShell profiles resolve from:
 #   %USERPROFILE%\Documents
 #
-# This ensures PowerShell profiles and modules resolve
-# from the local user profile directory for faster startup.
-#
-# Managed by chezmoi as a one-time configuration.
-# ============================================================
+# This script is intended to run once via chezmoi.
 
 $registryPath = 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders'
-$propertyName = 'Personal'
-$propertyValue = '%USERPROFILE%\Documents'
+$name = 'Personal'
+$value = '%USERPROFILE%\Documents'
 
-$currentValue = (Get-ItemProperty -Path $registryPath -Name $propertyName).$propertyName
+$current = (Get-ItemProperty -Path $registryPath -Name $name -ErrorAction Stop).$name
 
-Write-Host ""
-Write-Host "󰉋 Windows Documents Configuration" -ForegroundColor Cyan
-Write-Host "─────────────────────────────────" -ForegroundColor DarkGray
+if ($current -eq $value) {
+    Write-Host "Windows Documents folder is already configured."
+    return
+}
 
-if ($currentValue -ne $propertyValue) {
-  Set-ItemProperty `
+Set-ItemProperty `
     -Path $registryPath `
-    -Name $propertyName `
-    -Value $propertyValue
+    -Name $name `
+    -Type ExpandString `
+    -Value $value
 
-  Write-Host "✓ Updated Shell Folder" -ForegroundColor Green
-  Write-Host "  Name : $propertyName" -ForegroundColor DarkGray
-  Write-Host "  Value: $propertyValue" -ForegroundColor White
-}
-else {
-  Write-Host "✓ Already Configured" -ForegroundColor Green
-  Write-Host "  Name : $propertyName" -ForegroundColor DarkGray
-  Write-Host "  Value: $currentValue" -ForegroundColor White
-}
-
-Write-Host ""
+Write-Host "Configured Windows Documents folder:"
+Write-Host "  $name = $value"
 {{- end }}
