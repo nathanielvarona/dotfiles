@@ -14,6 +14,12 @@ $Repo = "nathanielvarona"
 function Test-Command
 {
   param([string]$Name)
+
+  if (-not $Name)
+  {
+    return $false
+  }
+
   return $null -ne (Get-Command $Name -ErrorAction SilentlyContinue)
 }
 
@@ -24,7 +30,7 @@ function Install-WingetPackage
     [string]$WingetId
   )
 
-  if (Test-Command $Command)
+  if ($Command -and (Test-Command $Command))
   {
     Write-Host "✓ $Command already installed."
     return
