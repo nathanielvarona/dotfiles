@@ -65,12 +65,18 @@ Install-WingetPackage delta       dandavison.delta
 Install-WingetPackage fzf         junegunn.fzf
 Install-WingetPackage oh-my-posh  JanDeDobbeleer.OhMyPosh
 Install-WingetPackage chezmoi     twpayne.chezmoi
-Install-WingetPackage ""          DEVCOM.JetBrainsMonoNerdFont
+Install-WingetPackage choco       Chocolatey.Chocolatey
 
 # Refresh PATH for current session
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") +
 ";" +
 [System.Environment]::GetEnvironmentVariable("Path", "User")
+
+# Install Nerd Font Symbols
+if (Test-Command choco)
+{
+  choco install nerd-fonts-nerdfontssymbolsonly --confirm --accept-license
+}
 
 # Verify chezmoi
 $Chezmoi = (Get-Command chezmoi -ErrorAction Stop).Source

@@ -30,7 +30,15 @@ if (-not (Test-Path $settingsPath)) {
 }
 
 $patch = @'
-{{ template "helpers/windows-terminal-patch.json.tmpl" . }}
+{
+  "profiles": {
+    "defaults": {
+      "font": {
+        "face": "Cascadia Mono, Symbols Nerd Font Mono"
+      }
+    }
+  }
+}
 '@ | ConvertFrom-Json
 
 $settings = Get-Content -Raw -Path $settingsPath | ConvertFrom-Json
