@@ -7,7 +7,7 @@
 
 [diff]
 {{- if eq .chezmoi.os "windows" }}
-    command = "{{ .chezmoi.sourceDir }}/.helpers/win-chezmoi-diff-delta-compat.bat"
+    command = "{{ .chezmoi.sourceDir }}/.win-compat-scripts/chezmoi-diff-delta.bat"
 {{- else }}
     command = "delta"
     args = ["--paging=never", "--line-numbers"]

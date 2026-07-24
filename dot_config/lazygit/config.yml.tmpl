@@ -1,7 +1,7 @@
 git:
   pagers:
 {{- if eq .chezmoi.os "windows" }}
-    - externalDiffCommand: "~/.config/lazygit/win-git-delta-compat.bat"
+    - externalDiffCommand: "{{ .chezmoi.sourceDir }}/.win-compat-scripts/lazygit-diff-delta.bat"
 {{- else }}
     - pager: delta --paging=never --line-numbers
       colorArg: always
