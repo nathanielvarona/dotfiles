@@ -18,6 +18,17 @@ $env:XDG_CONFIG_HOME = "$HOME/.config"
 $env:XDG_CACHE_HOME  = "$HOME/.cache"
 
 # ------------------------------------------------------------
+# User Secrets
+# ------------------------------------------------------------
+
+$SecretsFile = Join-Path $HOME ".secrets.ps1"
+
+if (Test-Path $SecretsFile)
+{
+    . $SecretsFile
+}
+
+# ------------------------------------------------------------
 # Cursor Shape (PowerShell 7+ only)
 # ------------------------------------------------------------
 
