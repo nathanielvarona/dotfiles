@@ -1,77 +1,72 @@
+
 {{ if eq .chezmoi.os "windows" -}}
-# ============================================================
-# Windows Terminal
-# ============================================================
-# Ensure Windows Terminal is installed and up to date, then
-# configure the default font.
-# ============================================================
+# Ensure Windows Terminal is installed and up to date.
 
 Write-Host ""
 Write-Host "Windows Terminal"
 
-winget install `
-    --id Microsoft.WindowsTerminal `
-    --accept-package-agreements `
-    --accept-source-agreements | Out-Null
+winget install --id Microsoft.WindowsTerminal `
+  --accept-package-agreements `
+  --accept-source-agreements
 
 if ($LASTEXITCODE -ne 0) {
-    winget upgrade `
-        --id Microsoft.WindowsTerminal `
-        --accept-package-agreements `
-        --accept-source-agreements | Out-Null
+  winget upgrade --id Microsoft.WindowsTerminal `
+    --accept-package-agreements `
+    --accept-source-agreements
 }
 
+# Locate settings.json
 $settingsPath = Join-Path `
-    $env:LOCALAPPDATA `
-    "Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+  $env:LOCALAPPDATA `
+  "Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 
 if (-not (Test-Path $settingsPath)) {
-    Write-Host "Windows Terminal settings not found."
-    Write-Host ""
-    return
+  Write-Host "settings.json not found."
+  Write-Host ""
+  exit 0
 }
 
-$settings = Get-Content -Raw $settingsPath | ConvertFrom-Json
+$settings = Get-Content -Raw -Path $settingsPath | ConvertFrom-Json
 
+# Ensure profiles exists
 if ($null -eq $settings.profiles) {
-    $settings | Add-Member NoteProperty profiles ([pscustomobject]@{})
+  $settings | Add-Member `
+    -MemberType NoteProperty `
+    -Name profiles `
+    -Value ([pscustomobject]@{})
 }
 
+# Ensure defaults exists
 if ($null -eq $settings.profiles.defaults) {
-    $settings.profiles | Add-Member NoteProperty defaults ([pscustomobject]@{})
+  $settings.profiles | Add-Member `
+    -MemberType NoteProperty `
+    -Name defaults `
+    -Value ([pscustomobject]@{})
 }
 
+# Ensure font exists
 if ($null -eq $settings.profiles.defaults.font) {
-    $settings.profiles.defaults | Add-Member NoteProperty font ([pscustomobject]@{})
+  $settings.profiles.defaults | Add-Member `
+    -MemberType NoteProperty `
+    -Name font `
+    -Value ([pscustomobject]@{})
 }
 
-$desiredFont = @(
-    "Cascadia Mono",
-    "Symbols Nerd Font Mono"
-)
+$fontFace = "Cascadia Mono, Symbols Nerd Font Mono"
 
-$currentFont = $settings.profiles.defaults.font.face
+if ($settings.profiles.defaults.font.face -ne $fontFace) {
+  $settings.profiles.defaults.font.face = $fontFace
 
-$needsUpdate = $true
+  $settings |
+    ConvertTo-Json -Depth 100 |
+    Set-Content -Path $settingsPath -Encoding UTF8
 
-if ($currentFont -is [System.Array]) {
-    if (($currentFont -join "`n") -eq ($desiredFont -join "`n")) {
-        $needsUpdate = $false
-    }
-}
-
-if ($needsUpdate) {
-    $settings.profiles.defaults.font.face = $desiredFont
-
-    $settings |
-        ConvertTo-Json -Depth 100 |
-        Set-Content -Encoding UTF8 $settingsPath
-
-    Write-Host "Updated default font."
+  Write-Host "Updated font.face."
 }
 else {
-    Write-Host "Default font already configured."
+  Write-Host "Already configured."
 }
 
+Write-Host "Done."
 Write-Host ""
 {{- end }}
