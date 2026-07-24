@@ -2,17 +2,22 @@
 # Ensure Windows Terminal is installed and apply the managed settings patch.
 
 Write-Host ""
-Write-Host "Windows Terminal"
+Write-Host "Checking Windows Termianl Requirements..."
 
-winget install --id Microsoft.WindowsTerminal `
-  --accept-package-agreements `
-  --accept-source-agreements
+$packageIds = @(
+  "Microsoft.WindowsTerminal"
+)
 
-if ($LASTEXITCODE -ne 0) {
-  winget upgrade --id Microsoft.WindowsTerminal `
+foreach ($packageId in $packageIds) {
+  Write-Host "Installing $packageId..."
+
+  winget install `
+    --id $packageId `
     --accept-package-agreements `
     --accept-source-agreements
 }
+
+Write-Host ""
 
 $settingsPath = Join-Path `
   $env:LOCALAPPDATA `
