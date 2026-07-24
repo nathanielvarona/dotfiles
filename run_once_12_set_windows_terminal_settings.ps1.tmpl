@@ -1,6 +1,5 @@
-
 {{ if eq .chezmoi.os "windows" -}}
-# Ensure Windows Terminal is installed and up to date.
+# Ensure Windows Terminal is installed and apply the managed settings patch.
 
 Write-Host ""
 Write-Host "Windows Terminal"
@@ -15,7 +14,6 @@ if ($LASTEXITCODE -ne 0) {
     --accept-source-agreements
 }
 
-# Locate settings.json
 $settingsPath = Join-Path `
   $env:LOCALAPPDATA `
   "Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
@@ -26,47 +24,63 @@ if (-not (Test-Path $settingsPath)) {
   exit 0
 }
 
+$patch = @'
+{
+  "profiles": {
+    "defaults": {
+      "font": {
+        "face": "Cascadia Mono, Symbols Nerd Font Mono"
+      }
+    }
+  }
+}
+'@ | ConvertFrom-Json
+
 $settings = Get-Content -Raw -Path $settingsPath | ConvertFrom-Json
 
-# Ensure profiles exists
-if ($null -eq $settings.profiles) {
-  $settings | Add-Member `
-    -MemberType NoteProperty `
-    -Name profiles `
-    -Value ([pscustomobject]@{})
+function Merge-Json {
+  param(
+    [Parameter(Mandatory = $true)]
+    $Target,
+
+    [Parameter(Mandatory = $true)]
+    $Patch
+  )
+
+  foreach ($property in $Patch.PSObject.Properties) {
+    $name = $property.Name
+    $value = $property.Value
+
+    if ($value -is [pscustomobject]) {
+      if ($null -eq $Target.$name) {
+        $Target | Add-Member `
+          -MemberType NoteProperty `
+          -Name $name `
+          -Value ([pscustomobject]@{})
+      }
+
+      Merge-Json -Target $Target.$name -Patch $value
+    }
+    else {
+      if ($Target.PSObject.Properties.Match($name).Count -eq 0) {
+        $Target | Add-Member `
+          -MemberType NoteProperty `
+          -Name $name `
+          -Value $value
+      }
+      else {
+        $Target.$name = $value
+      }
+    }
+  }
 }
 
-# Ensure defaults exists
-if ($null -eq $settings.profiles.defaults) {
-  $settings.profiles | Add-Member `
-    -MemberType NoteProperty `
-    -Name defaults `
-    -Value ([pscustomobject]@{})
-}
+Merge-Json -Target $settings -Patch $patch
 
-# Ensure font exists
-if ($null -eq $settings.profiles.defaults.font) {
-  $settings.profiles.defaults | Add-Member `
-    -MemberType NoteProperty `
-    -Name font `
-    -Value ([pscustomobject]@{})
-}
+$settings |
+  ConvertTo-Json -Depth 100 |
+  Set-Content -Path $settingsPath -Encoding UTF8
 
-$fontFace = "Cascadia Mono, Symbols Nerd Font Mono"
-
-if ($settings.profiles.defaults.font.face -ne $fontFace) {
-  $settings.profiles.defaults.font.face = $fontFace
-
-  $settings |
-    ConvertTo-Json -Depth 100 |
-    Set-Content -Path $settingsPath -Encoding UTF8
-
-  Write-Host "Updated font.face."
-}
-else {
-  Write-Host "Already configured."
-}
-
-Write-Host "Done."
+Write-Host "Applied settings patch."
 Write-Host ""
 {{- end }}
