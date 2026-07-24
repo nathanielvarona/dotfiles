@@ -4,75 +4,77 @@
 
 $ErrorActionPreference = "Stop"
 
-# ------------------------------------------------------------
-# Platform Safety Check
-# ------------------------------------------------------------
-
 if (-not $IsWindows -and $env:OS -ne "Windows_NT")
 {
-  Write-Error "install.ps1 only supports Windows PowerShell or PowerShell on Windows"
-  exit 1
+  throw "install.ps1 only supports Windows."
 }
 
 $Repo = "nathanielvarona"
 
+function Test-Command
+{
+  param([string]$Name)
+  return $null -ne (Get-Command $Name -ErrorAction SilentlyContinue)
+}
+
+function Install-WingetPackage
+{
+  param(
+    [string]$Command,
+    [string]$WingetId
+  )
+
+  if (Test-Command $Command)
+  {
+    Write-Host "✓ $Command already installed."
+    return
+  }
+
+  Write-Host "Installing $WingetId..."
+
+  winget install `
+    --id $WingetId `
+    --exact `
+    --accept-package-agreements `
+    --accept-source-agreements
+}
+
+# ------------------------------------------------------------
+# Requirements
+# ------------------------------------------------------------
+
+if (-not (Test-Command winget))
+{
+  throw "winget is required. Please install App Installer from the Microsoft Store."
+}
+
 Write-Host ""
-Write-Host "Installing dotfiles from $Repo..."
+Write-Host "Configuring PowerShell..."
 Write-Host ""
 
-# ------------------------------------------------------------
-# Ensure ~/.local/bin exists
-# ------------------------------------------------------------
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 
-$BinDir = Join-Path $HOME ".local\bin"
+Install-WingetPackage git         Microsoft.Git
+Install-WingetPackage fzf         junegunn.fzf
+Install-WingetPackage oh-my-posh  JanDeDobbeleer.OhMyPosh
+Install-WingetPackage chezmoi     twpayne.chezmoi
 
-if (-not (Test-Path $BinDir))
+# Refresh PATH for current session
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") +
+";" +
+[System.Environment]::GetEnvironmentVariable("Path", "User")
+
+# Install Nerd Font Symbols
+if (Test-Command oh-my-posh)
 {
-  New-Item -ItemType Directory -Path $BinDir -Force | Out-Null
-
-  Write-Host "Created local bin directory"
-  Write-Host "  Path : $BinDir"
-  Write-Host ""
+  oh-my-posh font install NerdFontsSymbolsOnly
 }
 
-# Add to current session PATH
-if ($env:Path -notlike "*$BinDir*")
-{
-  $env:Path = "$BinDir;$env:Path"
-}
+# Verify chezmoi
+$Chezmoi = (Get-Command chezmoi -ErrorAction Stop).Source
 
-# ------------------------------------------------------------
-# Install chezmoi if missing
-# ------------------------------------------------------------
-
-if (-not (Get-Command chezmoi -ErrorAction SilentlyContinue))
-{
-  Write-Host "Installing chezmoi..."
-
-  $chezmoiInstallScript = Join-Path $env:TEMP "chezmoi-install.ps1"
-
-  Invoke-WebRequest `
-    -Uri "https://chezmoi.io/get.ps1" `
-    -OutFile $chezmoiInstallScript
-
-  & powershell.exe `
-    -NoProfile `
-    -ExecutionPolicy Bypass `
-    -File $chezmoiInstallScript `
-    -BinDir $BinDir
-
-  Write-Host "Installed chezmoi"
-  Write-Host ""
-}
-
-$Chezmoi = (Get-Command chezmoi).Source
-
-# ------------------------------------------------------------
-# Apply Dotfiles (Remote Source)
-# ------------------------------------------------------------
-
+Write-Host ""
 Write-Host "Applying dotfiles..."
-Write-Host "  Repository : $Repo"
 Write-Host ""
 
 & $Chezmoi init --apply $Repo
