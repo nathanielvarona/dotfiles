@@ -55,6 +55,7 @@ Write-Host ""
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 
 Install-WingetPackage git         Microsoft.Git
+Install-WingetPackage delta       dandavison.delta
 Install-WingetPackage fzf         junegunn.fzf
 Install-WingetPackage oh-my-posh  JanDeDobbeleer.OhMyPosh
 Install-WingetPackage chezmoi     twpayne.chezmoi
