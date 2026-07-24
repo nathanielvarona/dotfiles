@@ -59,17 +59,12 @@ Install-WingetPackage delta       dandavison.delta
 Install-WingetPackage fzf         junegunn.fzf
 Install-WingetPackage oh-my-posh  JanDeDobbeleer.OhMyPosh
 Install-WingetPackage chezmoi     twpayne.chezmoi
+Install-WingetPackage ""          DEVCOM.JetBrainsMonoNerdFont
 
 # Refresh PATH for current session
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") +
 ";" +
 [System.Environment]::GetEnvironmentVariable("Path", "User")
-
-# Install Nerd Font Symbols
-if (Test-Command oh-my-posh)
-{
-  oh-my-posh font install NerdFontsSymbolsOnly
-}
 
 # Verify chezmoi
 $Chezmoi = (Get-Command chezmoi -ErrorAction Stop).Source
