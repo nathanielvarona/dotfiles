@@ -5,6 +5,9 @@
 
 {{ end -}}
 
+{{- if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") -}}
 [diff]
     command = "delta"
     args = ["--paging", "never"]
+
+{{ end -}}
