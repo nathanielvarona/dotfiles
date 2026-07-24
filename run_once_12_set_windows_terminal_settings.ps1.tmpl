@@ -1,21 +1,77 @@
 {{ if eq .chezmoi.os "windows" -}}
-# Ensure Windows Terminal is installed and up to date.
-# Configuration is managed by:
-#   AppData/Local/Microsoft/Windows Terminal/settings.json.tmpl
+# ============================================================
+# Windows Terminal
+# ============================================================
+# Ensure Windows Terminal is installed and up to date, then
+# configure the default font.
+# ============================================================
 
 Write-Host ""
 Write-Host "Windows Terminal"
 
-winget install --id Microsoft.WindowsTerminal `
+winget install `
+    --id Microsoft.WindowsTerminal `
     --accept-package-agreements `
-    --accept-source-agreements
+    --accept-source-agreements | Out-Null
 
 if ($LASTEXITCODE -ne 0) {
-    winget upgrade --id Microsoft.WindowsTerminal `
+    winget upgrade `
+        --id Microsoft.WindowsTerminal `
         --accept-package-agreements `
-        --accept-source-agreements
+        --accept-source-agreements | Out-Null
 }
 
-Write-Host "Done."
+$settingsPath = Join-Path `
+    $env:LOCALAPPDATA `
+    "Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+
+if (-not (Test-Path $settingsPath)) {
+    Write-Host "Windows Terminal settings not found."
+    Write-Host ""
+    return
+}
+
+$settings = Get-Content -Raw $settingsPath | ConvertFrom-Json
+
+if ($null -eq $settings.profiles) {
+    $settings | Add-Member NoteProperty profiles ([pscustomobject]@{})
+}
+
+if ($null -eq $settings.profiles.defaults) {
+    $settings.profiles | Add-Member NoteProperty defaults ([pscustomobject]@{})
+}
+
+if ($null -eq $settings.profiles.defaults.font) {
+    $settings.profiles.defaults | Add-Member NoteProperty font ([pscustomobject]@{})
+}
+
+$desiredFont = @(
+    "Cascadia Mono",
+    "Symbols Nerd Font Mono"
+)
+
+$currentFont = $settings.profiles.defaults.font.face
+
+$needsUpdate = $true
+
+if ($currentFont -is [System.Array]) {
+    if (($currentFont -join "`n") -eq ($desiredFont -join "`n")) {
+        $needsUpdate = $false
+    }
+}
+
+if ($needsUpdate) {
+    $settings.profiles.defaults.font.face = $desiredFont
+
+    $settings |
+        ConvertTo-Json -Depth 100 |
+        Set-Content -Encoding UTF8 $settingsPath
+
+    Write-Host "Updated default font."
+}
+else {
+    Write-Host "Default font already configured."
+}
+
 Write-Host ""
 {{- end }}
