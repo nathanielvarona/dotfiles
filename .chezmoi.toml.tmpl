@@ -1,13 +1,14 @@
-{{- if eq .chezmoi.os "windows" -}}
+{{- if (eq .chezmoi.os "windows") -}}
 [cd]
     command = "pwsh"
     args = ["-NoLogo"]
 
 {{ end -}}
 
-{{- if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") -}}
 [diff]
+{{- if eq .chezmoi.os "windows" }}
+    command = "{{ .chezmoi.sourceDir }}/.helpers/win-chezmoi-diff-delta-compat.bat"
+{{- else }}
     command = "delta"
-    args = ["--paging", "never"]
-
-{{ end -}}
+    args = ["--paging=never", "--line-numbers"]
+{{- end }}
