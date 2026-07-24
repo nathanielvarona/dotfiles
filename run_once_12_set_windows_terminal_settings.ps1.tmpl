@@ -1,0 +1,21 @@
+{{ if eq .chezmoi.os "windows" -}}
+# Ensure Windows Terminal is installed and up to date.
+# Configuration is managed by:
+#   AppData/Local/Microsoft/Windows Terminal/settings.json.tmpl
+
+Write-Host ""
+Write-Host "Windows Terminal"
+
+winget install --id Microsoft.WindowsTerminal `
+    --accept-package-agreements `
+    --accept-source-agreements
+
+if ($LASTEXITCODE -ne 0) {
+    winget upgrade --id Microsoft.WindowsTerminal `
+        --accept-package-agreements `
+        --accept-source-agreements
+}
+
+Write-Host "Done."
+Write-Host ""
+{{- end }}
