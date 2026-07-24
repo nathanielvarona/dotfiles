@@ -252,6 +252,50 @@ restore-winget:
 	}
 
 [windows]
+dump-choco:
+	#!pwsh.exe
+	$output = "pkgs/windows-choco"
+
+	Write-Host ""
+	Write-Host "Dumping Chocolatey packages..."
+	Write-Host "Output: $output"
+	Write-Host ""
+
+	choco list --local-only --limit-output |
+		Where-Object {
+			$_ -notmatch '^chocolatey\|' -and
+			$_ -notmatch '^chocolatey-.*\.extension\|'
+		} |
+		Sort-Object |
+		Set-Content $output
+
+	Write-Host "Done."
+	Write-Host ""
+
+[windows]
+restore-choco:
+	#!pwsh.exe
+	Get-Content pkgs/windows-choco | ForEach-Object {
+		if (-not $_) { return }
+
+		$package, $version = $_ -split '\|', 2
+
+		if (choco list --local-only --exact $package --limit-output | Select-String "^$package\|") {
+			Write-Host "✓ $package already installed."
+			return
+		}
+
+		Write-Host "Installing $package..."
+
+		if ($version) {
+			choco install $package --version $version -y
+		}
+		else {
+			choco install $package -y
+		}
+	}
+
+[windows]
 restore-vscode-extension-windows:
     #!pwsh.exe
     $brewfile = "{{PACKAGES}}/vscode.Brewfile"
