@@ -1,4 +1,5 @@
 @echo off
+
 set "old=%~1"
 set "new=%~2"
 set "old=%old:\=/%"
