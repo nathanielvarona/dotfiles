@@ -1,35 +1,26 @@
 {{ if eq .chezmoi.os "windows" -}}
-# ============================================================
-# VSCode XDG Configuration
-# ============================================================
-# Configure VSCode to use:
-#   %USERPROFILE%\.config
+# Configure Visual Studio Code to use an XDG-style configuration directory.
 #
-# This is a one-time setup managed by chezmoi.
-# Avoids modifying environment variables during shell startup.
-# ============================================================
+# Sets the user environment variable:
+#   VSCODE_APPDATA=%USERPROFILE%\.config
+#
+# This script is intended to run once via chezmoi.
 
-$varName  = "VSCODE_APPDATA"
-$varValue = "$env:USERPROFILE\.config"
+$name = 'VSCODE_APPDATA'
+$value = "$env:USERPROFILE\.config"
 
-$currentValue = [Environment]::GetEnvironmentVariable($varName, "User")
+$current = [Environment]::GetEnvironmentVariable($name, 'User')
 
-Write-Host ""
-Write-Host "󰨞 VSCode Environment Configuration" -ForegroundColor Cyan
-Write-Host "──────────────────────────────────" -ForegroundColor DarkGray
-
-if ($currentValue -ne $varValue) {
-  [Environment]::SetEnvironmentVariable($varName, $varValue, "User")
-
-  Write-Host "✓ Updated Environment Variable" -ForegroundColor Green
-  Write-Host "  Name : $varName" -ForegroundColor DarkGray
-  Write-Host "  Value: $varValue" -ForegroundColor White
-}
-else {
-  Write-Host "✓ Already Configured" -ForegroundColor Green
-  Write-Host "  Name : $varName" -ForegroundColor DarkGray
-  Write-Host "  Value: $currentValue" -ForegroundColor White
+if ($current -eq $value) {
+    Write-Host "VSCODE_APPDATA is already configured."
+    return
 }
 
+[Environment]::SetEnvironmentVariable($name, $value, 'User')
+
+Write-Host "Configured user environment variable:"
+Write-Host "  $name = $value"
+
 Write-Host ""
+Write-Host "Restart Visual Studio Code (and any open terminals) for the change to take effect."
 {{- end }}
