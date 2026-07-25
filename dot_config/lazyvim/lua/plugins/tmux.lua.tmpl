@@ -1,8 +1,5 @@
-{{- if eq .chezmoi.os "windows" -}}
-if true then return {} end
-
-{{ end -}}
 return {
+  {{ if or (eq .chezmoi.os "dawin") (eq .chezmoi.os "linux") -}}
   {
     "aserowy/tmux.nvim",
     config = function()
@@ -16,6 +13,7 @@ return {
       })
     end,
   },
+  {{ end -}}
   {
     "christoomey/vim-tmux-navigator",
     cmd = {
