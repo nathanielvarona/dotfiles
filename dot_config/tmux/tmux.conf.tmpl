@@ -122,5 +122,8 @@ is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
 set -g @vim_navigator_check "${is_vim}"
 
 # Initialize TMUX plugin manager
+{{ if or ( eq .chezmoi.os "linux") -}}
+run '/home/linuxbrew/.linuxbrew/opt/tpm/share/tpm/tpm'
+{{ else -}}
 run '~/.config/tmux/plugins/tpm/tpm'
-
+{{ end -}}
