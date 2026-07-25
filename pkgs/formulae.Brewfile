@@ -12,6 +12,8 @@ brew "asdf"
 brew "ast-grep"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
+# Sync server for atuin - Improved shell history for zsh, bash, fish and nushell
+brew "atuin-server"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Searches a binary image for embedded files and executable code
