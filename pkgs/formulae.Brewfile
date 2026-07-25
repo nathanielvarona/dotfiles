@@ -258,6 +258,8 @@ brew "tmux"
 brew "tmuxp"
 # Convert TOML to JSON
 brew "toml2json"
+# Plugin manager for tmux
+brew "tpm"
 # CLI tool that moves files or folder to the trash
 brew "trash", link: true
 # Parser generator tool
