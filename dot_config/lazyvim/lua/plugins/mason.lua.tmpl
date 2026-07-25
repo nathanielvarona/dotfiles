@@ -1,6 +1,6 @@
 {{- if eq .chezmoi.os "linux" -}}
 {{- if not (.chezmoi.kernel.osrelease | contains "WSL2") }}
-if true then return {} else
+if true then return {} end
 {{ end -}}
 {{- end -}}
 return {

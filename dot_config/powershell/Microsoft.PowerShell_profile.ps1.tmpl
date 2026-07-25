@@ -100,7 +100,9 @@ if (Get-Module -ListAvailable PSReadLine)
 {
   Import-Module PSReadLine
 
-  Set-PSReadLineOption -PredictionSource History
+  # Set-PSReadLineOption -PredictionSource History
+  Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+  # Set-PSReadLineOption -PredictionViewStyle ListView
   Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 
   Set-PSReadLineKeyHandler -Key UpArrow   -Function HistorySearchBackward
@@ -186,3 +188,27 @@ function ls_alias {
 }
 Set-Alias -Name ls -Value ls_alias -Option AllScope -Force
 
+function psmux-load {
+    param(
+        [string]$Path = ".psmux.ps1"
+    )
+
+    # 1. Resolve path relative to where your shell is currently looking
+    $TargetScript = Resolve-Path $Path -ErrorAction SilentlyContinue
+
+    if ($TargetScript -and (Test-Path $TargetScript.Path)) {
+        try {
+            # 2. Unlock authorization variable in the current environment scope
+            $env:PSMUX_LOAD_ACTIVE = "True"
+
+            # 3. Dot-source the configuration file securely
+            . $TargetScript.Path
+        }
+        finally {
+            # 4. Instantly revoke authorization variable to clean up the environment
+            Remove-Item env:PSMUX_LOAD_ACTIVE -ErrorAction SilentlyContinue
+        }
+    } else {
+        Write-Error "Could not find a valid target script layout at: '$Path'"
+    }
+}
