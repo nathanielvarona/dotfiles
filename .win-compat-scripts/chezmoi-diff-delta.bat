@@ -7,7 +7,7 @@ set "new=%~2"
 :: Use virtual empty file
 set "black_hole=NUL"
 
-:: Substitute missing files with the empty temporary file
+:: Substitute missing files with the virtual empty file
 if not exist "%old%" set "old=%black_hole%"
 if not exist "%new%" set "new=%black_hole%"
 
