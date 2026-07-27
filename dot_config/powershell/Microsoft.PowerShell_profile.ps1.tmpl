@@ -136,7 +136,14 @@ if (-not (Get-Module -ListAvailable Terminal-Icons))
 
 if (Get-Module -ListAvailable Terminal-Icons)
 {
-  Import-Module Terminal-Icons
+  try {
+    Import-Module Terminal-Icons -ErrorAction Stop
+  } catch {
+    # Wipe the corrupted cache if Import-CliXml throws an exception
+    Remove-Item -Path "$env:APPDATA\powershell\Community\Terminal-Icons" -Recurse -Force -ErrorAction SilentlyContinue
+    # Retry loading the module cleanly
+    Import-Module Terminal-Icons -ErrorAction SilentlyContinue
+  }
 }
 
 # Environment Variables
