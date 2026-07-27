@@ -100,10 +100,9 @@ if (Get-Module -ListAvailable PSReadLine)
 {
   Import-Module PSReadLine
 
-  # Set-PSReadLineOption -PredictionSource History
-  Set-PSReadLineOption -PredictionSource HistoryAndPlugin
-  # Set-PSReadLineOption -PredictionViewStyle ListView
+  Set-PSReadLineOption -PredictionSource History
   Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+  # Set-PSReadLineOption -PredictionViewStyle ListView
 
   Set-PSReadLineKeyHandler -Key UpArrow   -Function HistorySearchBackward
   Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
