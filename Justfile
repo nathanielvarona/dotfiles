@@ -296,6 +296,33 @@ restore-choco:
 	}
 
 [windows]
+dump-scoop:
+	#!pwsh.exe
+	$output = "pkgs/windows-scoop.json"
+
+	Write-Host ""
+	Write-Host "Dumping Scoop packages..."
+	Write-Host "Output: $output"
+	Write-Host ""
+
+	scoop export | Set-Content $output
+
+	Write-Host "Done."
+	Write-Host ""
+
+[windows]
+restore-scoop:
+	#!pwsh.exe
+	Write-Host ""
+	Write-Host "Restoring Scoop packages..."
+	Write-Host ""
+
+	scoop import pkgs/windows-scoop.json
+
+	Write-Host ""
+	Write-Host "Done."
+
+[windows]
 restore-vscode-extension-windows:
     #!pwsh.exe
     $brewfile = "{{PACKAGES}}/vscode.Brewfile"
