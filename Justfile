@@ -22,305 +22,323 @@ BREW_BUNDLE_RESTORE := "brew bundle --file"
 # ================
 
 default:
-	@just --list
+    @just --list
 
 # ================
 # Init
 # ================
 
 init:
-	mkdir -p {{PACKAGES}}
+    mkdir -p {{PACKAGES}}
 
 # ================
 # Homebrew
 # ================
 
 dump-brew: init
-	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/formulae.Brewfile --formulae
-	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/cask.Brewfile --cask
-	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/tap.Brewfile --tap
-	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/mas.Brewfile --mas
-	{{BREW_BUNDLE_DUMP}} {{PACKAGES}}/vscode.Brewfile --vscode
+    {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/formulae.Brewfile --formulae
+    {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/cask.Brewfile --cask
+    {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/tap.Brewfile --tap
+    {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/mas.Brewfile --mas
+    {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/vscode.Brewfile --vscode
 
 restore-brew:
-	@if [ -f {{PACKAGES}}/formulae.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/formulae.Brewfile; fi || true
-	@if [ -f {{PACKAGES}}/cask.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/cask.Brewfile; fi || true
-	@if [ -f {{PACKAGES}}/tap.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/tap.Brewfile; fi || true
-	@if [ -f {{PACKAGES}}/mas.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/mas.Brewfile; fi || true
-	@if [ -f {{PACKAGES}}/vscode.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/vscode.Brewfile; fi || true
+    @if [ -f {{PACKAGES}}/formulae.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/formulae.Brewfile; fi || true
+    @if [ -f {{PACKAGES}}/cask.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/cask.Brewfile; fi || true
+    @if [ -f {{PACKAGES}}/tap.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/tap.Brewfile; fi || true
+    @if [ -f {{PACKAGES}}/mas.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/mas.Brewfile; fi || true
+    @if [ -f {{PACKAGES}}/vscode.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/vscode.Brewfile; fi || true
 
 # ================
 # ASDF
 # ================
 
 dump-asdf: init
-	asdf plugin list --urls | awk 'NF{$1=$1;print}' | column -t > {{PACKAGES}}/asdf-plugins || true
+    asdf plugin list --urls | awk 'NF{$1=$1;print}' | column -t > {{PACKAGES}}/asdf-plugins || true
 
 restore-asdf:
-	@if [ -f {{PACKAGES}}/asdf-plugins ]; then \
-		while read -r plugin url; do \
-			asdf plugin add "$plugin" "$url" || true; \
-		done < {{PACKAGES}}/asdf-plugins ; \
-	fi
-	asdf install || true
+    @if [ -f {{PACKAGES}}/asdf-plugins ]; then \
+        while read -r plugin url; do \
+            asdf plugin add "$plugin" "$url" || true; \
+        done < {{PACKAGES}}/asdf-plugins ; \
+    fi
+    asdf install || true
 
 # ================
 # Pyenv
 # ================
 
 dump-pyenv: init
-	pyenv versions --bare > {{PACKAGES}}/pyenv-versions || true
+    pyenv versions --bare > {{PACKAGES}}/pyenv-versions || true
 
 restore-pyenv:
-	@if [ -f {{PACKAGES}}/pyenv-versions ]; then \
-		cat {{PACKAGES}}/pyenv-versions | xargs -I{} pyenv install {} || true ; \
-	fi
+    @if [ -f {{PACKAGES}}/pyenv-versions ]; then \
+        cat {{PACKAGES}}/pyenv-versions | xargs -I{} pyenv install {} || true ; \
+    fi
 
 # ================
 # Pipx
 # ================
 
 dump-pipx: init
-	pipx list --short | column -t > {{PACKAGES}}/pipx-apps || true
+    pipx list --short | column -t > {{PACKAGES}}/pipx-apps || true
 
 restore-pipx:
-	@if [ -f {{PACKAGES}}/pipx-apps ]; then \
-		awk '{print $1}' {{PACKAGES}}/pipx-apps | xargs -I{} pipx install {} ; \
-	fi
+    @if [ -f {{PACKAGES}}/pipx-apps ]; then \
+        awk '{print $1}' {{PACKAGES}}/pipx-apps | xargs -I{} pipx install {} ; \
+    fi
 
 # ================
 # Krew
 # ================
 
 dump-krew: init
-	kubectl krew list > {{PACKAGES}}/krew-plugins || true
+    kubectl krew list > {{PACKAGES}}/krew-plugins || true
 
 restore-krew:
-	@if [ -f {{PACKAGES}}/krew-plugins ]; then \
-		cat {{PACKAGES}}/krew-plugins | xargs -I{} kubectl krew install {} || true ; \
-	fi
+    @if [ -f {{PACKAGES}}/krew-plugins ]; then \
+        cat {{PACKAGES}}/krew-plugins | xargs -I{} kubectl krew install {} || true ; \
+    fi
 
 # ================
 # Helm
 # ================
 
 dump-helm: init
-	helm repo list | sed '1d' | column -t > {{PACKAGES}}/helm-repos || true
+    helm repo list | sed '1d' | column -t > {{PACKAGES}}/helm-repos || true
 
 restore-helm:
-	@if [ -f {{PACKAGES}}/helm-repos ]; then \
-		while read -r name url; do \
-			helm repo add "$name" "$url" || true; \
-		done < {{PACKAGES}}/helm-repos ; \
-	fi
-	helm repo update || true
+    @if [ -f {{PACKAGES}}/helm-repos ]; then \
+        while read -r name url; do \
+            helm repo add "$name" "$url" || true; \
+        done < {{PACKAGES}}/helm-repos ; \
+    fi
+    helm repo update || true
 
 # ================
 # Cargo
 # ================
 
 dump-cargo: init
-	cargo install --list | awk '/^[a-zA-Z0-9_-]+ v/ {print $1}' > {{PACKAGES}}/rust-cargo-packages || true
+    cargo install --list | awk '/^[a-zA-Z0-9_-]+ v/ {print $1}' > {{PACKAGES}}/rust-cargo-packages || true
 
 restore-cargo:
-	@if [ -f {{PACKAGES}}/rust-cargo-packages ]; then \
-		cat {{PACKAGES}}/rust-cargo-packages | xargs -I{} cargo install {} || true ; \
-	fi
+    @if [ -f {{PACKAGES}}/rust-cargo-packages ]; then \
+        cat {{PACKAGES}}/rust-cargo-packages | xargs -I{} cargo install {} || true ; \
+    fi
 
 # ================
 # GitHub CLI
 # ================
 
 dump-gh-ext: init
-	gh extension list | grep -Eo '[[:alnum:]_-]+/[[:alnum:]_.-]+' > {{PACKAGES}}/github-cli-extensions || true
+    gh extension list | grep -Eo '[[:alnum:]_-]+/[[:alnum:]_.-]+' > {{PACKAGES}}/github-cli-extensions || true
 
 restore-gh-ext:
-	@if [ -f {{PACKAGES}}/github-cli-extensions ]; then \
-		cat {{PACKAGES}}/github-cli-extensions | xargs -I{} gh extension install {} || true ; \
-	fi
+    @if [ -f {{PACKAGES}}/github-cli-extensions ]; then \
+        cat {{PACKAGES}}/github-cli-extensions | xargs -I{} gh extension install {} || true ; \
+    fi
 
 # ================
 # Whalebrew
 # ================
 
 dump-whalebrew: init
-	whalebrew list --no-headers > {{PACKAGES}}/whalebrew || true
+    whalebrew list --no-headers > {{PACKAGES}}/whalebrew || true
 
 restore-whalebrew:
-	@if [ -f {{PACKAGES}}/whalebrew ]; then \
-		cat {{PACKAGES}}/whalebrew | xargs -L1 whalebrew install || true ; \
-	fi
+    @if [ -f {{PACKAGES}}/whalebrew ]; then \
+        cat {{PACKAGES}}/whalebrew | xargs -L1 whalebrew install || true ; \
+    fi
 
 # ================
 # Ollama
 # ================
 
 dump-ollama: init
-	ollama list | awk 'NR>1 {print $1}' > {{PACKAGES}}/ollama-models || true
+    ollama list | awk 'NR>1 {print $1}' > {{PACKAGES}}/ollama-models || true
 
 restore-ollama:
-	@if [ -f {{PACKAGES}}/ollama-models ]; then \
-		cat {{PACKAGES}}/ollama-models | xargs -I{} ollama pull {} || true ; \
-	fi
+    @if [ -f {{PACKAGES}}/ollama-models ]; then \
+        cat {{PACKAGES}}/ollama-models | xargs -I{} ollama pull {} || true ; \
+    fi
 
 # ================
 # Hugging Face
 # ================
 
 dump-hugging-face: init
-	hf models ls --format json | jq -r ".[].id" > {{PACKAGES}}/hugging-face-models || true
+    hf models ls --format json | jq -r ".[].id" > {{PACKAGES}}/hugging-face-models || true
 
 restore-hugging-face:
-	@if [ -f {{PACKAGES}}/hugging-face-models ]; then \
-		cat {{PACKAGES}}/hugging-face-models | xargs -I{} hf download {} || true ; \
-	fi
+    @if [ -f {{PACKAGES}}/hugging-face-models ]; then \
+        cat {{PACKAGES}}/hugging-face-models | xargs -I{} hf download {} || true ; \
+    fi
 
 # ================
 # Perl CPAN
 # ================
 
 dump-perl-modules: init
-	#!/usr/bin/env bash
-	set -euo pipefail
+    #!/usr/bin/env bash
+    set -euo pipefail
 
-	OUT="{{PACKAGES}}/cpanfile"
+    OUT="{{PACKAGES}}/cpanfile"
 
-	echo "→ Dumping user-installed Perl modules with versions to $OUT"
+    echo "→ Dumping user-installed Perl modules with versions to $OUT"
 
-	perl -MExtUtils::Installed -MModule::CoreList -e '
-		my $inst = ExtUtils::Installed->new();
-		my %core = map { $_ => 1 } Module::CoreList->find_modules(qr/.*/, $]);
+    perl -MExtUtils::Installed -MModule::CoreList -e '
+        my $inst = ExtUtils::Installed->new();
+        my %core = map { $_ => 1 } Module::CoreList->find_modules(qr/.*/, $]);
 
-		for my $mod (sort $inst->modules()) {
-			next if $mod eq "Perl";
-			next if exists $core{$mod};
+        for my $mod (sort $inst->modules()) {
+            next if $mod eq "Perl";
+            next if exists $core{$mod};
 
-			my $ver = $inst->version($mod) || 0;
-			print "requires '\''$mod'\'', '\''$ver'\'';\n";
-		}
-	' > "$OUT" || true
+            my $ver = $inst->version($mod) || 0;
+            print "requires '\''$mod'\'', '\''$ver'\'';\n";
+        }
+    ' > "$OUT" || true
 
 restore-perl-modules:
-	#!/usr/bin/env bash
-	set -euo pipefail
+    #!/usr/bin/env bash
+    set -euo pipefail
 
-	CPANFILE="{{PACKAGES}}/cpanfile"
+    CPANFILE="{{PACKAGES}}/cpanfile"
 
-	# Bootstrap cpanm if not installed
-	if ! command -v cpanm >/dev/null 2>&1; then
-		echo "→ cpanm not found, installing via cpan"
-		PERL_MM_USE_DEFAULT=1 cpan App::cpanminus || true
-	fi
+    # Bootstrap cpanm if not installed
+    if ! command -v cpanm >/dev/null 2>&1; then
+        echo "→ cpanm not found, installing via cpan"
+        PERL_MM_USE_DEFAULT=1 cpan App::cpanminus || true
+    fi
 
-	# Restore modules using cpanfile
-	if [ -f "$CPANFILE" ]; then
-		echo "→ Installing Perl modules from $CPANFILE"
-		cpanm --quiet --notest --installdeps "{{PACKAGES}}" || true
-	else
-		echo "→ No cpanfile found at $CPANFILE (skipping)"
-	fi
+    # Restore modules using cpanfile
+    if [ -f "$CPANFILE" ]; then
+        echo "→ Installing Perl modules from $CPANFILE"
+        cpanm --quiet --notest --installdeps "{{PACKAGES}}" || true
+    else
+        echo "→ No cpanfile found at $CPANFILE (skipping)"
+    fi
 
 [windows]
 dump-winget:
-	#!pwsh.exe
-	winget export -o apps.json --include-versions --ignore-warnings --disable-interactivity --accept-source-agreements
-	jq -r '.Sources[].Packages[] | "\(.PackageIdentifier)\t\(.Version)"' apps.json |
-		ConvertFrom-Csv -Delimiter "`t" -Header "Application", "Version" |
-		Format-Table -AutoSize |
-		Out-String |
-		ForEach-Object { $_.Trim() } |
-		Where-Object { $_ -ne "" } |
-		Set-Content {{PACKAGES}}/windows-winget
-	rm -r -fo apps.json
+    #!pwsh.exe
+    winget export -o apps.json --include-versions --ignore-warnings --disable-interactivity --accept-source-agreements
+    jq -r '.Sources[].Packages[] | "\(.PackageIdentifier)\t\(.Version)"' apps.json |
+        ConvertFrom-Csv -Delimiter "`t" -Header "Application", "Version" |
+        Format-Table -AutoSize |
+        Out-String |
+        ForEach-Object { $_.Trim() } |
+        Where-Object { $_ -ne "" } |
+        Set-Content {{PACKAGES}}/windows-winget
+    rm -r -fo apps.json
 
 [windows]
 restore-winget:
-	#!pwsh.exe
-	if (Test-Path {{PACKAGES}}/windows-winget) {
-		# Read the file, skip the Header and Table separator lines
-		$apps = Get-Content {{PACKAGES}}/windows-winget | Select-Object -Skip 2
-		foreach ($line in $apps) {
-			# Extract the first column (Package ID) before the whitespace
-			$appId = $line.Split(" ", [System.StringSplitOptions]::RemoveEmptyEntries)[0]
-			if ($appId) {
-				Write-Host "--> Installing: $appId" -ForegroundColor Cyan
-				winget install --id $appId --exact --accept-source-agreements --accept-package-agreements
-			}
-		}
-	} else {
-		Write-Error "Dump file not found at {{PACKAGES}}/windows-winget"
-	}
+    #!pwsh.exe
+    if (Test-Path {{PACKAGES}}/windows-winget) {
+        # Read the file, skip the Header and Table separator lines
+        $apps = Get-Content {{PACKAGES}}/windows-winget | Select-Object -Skip 2
+        foreach ($line in $apps) {
+            # Extract the first column (Package ID) before the whitespace
+            $appId = $line.Split(" ", [System.StringSplitOptions]::RemoveEmptyEntries)[0]
+            if ($appId) {
+                Write-Host "--> Installing: $appId" -ForegroundColor Cyan
+                winget install --id $appId --exact --accept-source-agreements --accept-package-agreements
+            }
+        }
+    } else {
+        Write-Error "Dump file not found at {{PACKAGES}}/windows-winget"
+    }
 
 [windows]
 dump-choco:
-	#!pwsh.exe
-	$output = "pkgs/windows-choco"
+    #!pwsh.exe
+    $output = "pkgs/windows-choco"
 
-	Write-Host ""
-	Write-Host "Dumping Chocolatey packages..."
-	Write-Host "Output: $output"
-	Write-Host ""
+    Write-Host ""
+    Write-Host "Dumping Chocolatey packages..."
+    Write-Host "Output: $output"
+    Write-Host ""
 
-	choco list --local-only --limit-output |
-		Where-Object {
-			$_ -notmatch '^chocolatey\|' -and
-			$_ -notmatch '^chocolatey-.*\.extension\|'
-		} |
-		Sort-Object |
-		Set-Content $output
+    choco list --local-only --limit-output |
+        Where-Object {
+            $_ -notmatch '^chocolatey\|' -and
+            $_ -notmatch '^chocolatey-.*\.extension\|'
+        } |
+        Sort-Object |
+        Set-Content $output
 
-	Write-Host "Done."
-	Write-Host ""
+    Write-Host "Done."
+    Write-Host ""
 
 [windows]
 restore-choco:
-	#!pwsh.exe
-	Get-Content pkgs/windows-choco | ForEach-Object {
-		if (-not $_) { return }
+    #!pwsh.exe
+    Get-Content pkgs/windows-choco | ForEach-Object {
+        if (-not $_) { return }
 
-		$package, $version = $_ -split '\|', 2
+        $package, $version = $_ -split '\|', 2
 
-		if (choco list --local-only --exact $package --limit-output | Select-String "^$package\|") {
-			Write-Host "✓ $package already installed."
-			return
-		}
+        if (choco list --local-only --exact $package --limit-output | Select-String "^$package\|") {
+            Write-Host "✓ $package already installed."
+            return
+        }
 
-		Write-Host "Installing $package..."
+        Write-Host "Installing $package..."
 
-		if ($version) {
-			choco install $package --version $version -y
-		}
-		else {
-			choco install $package -y
-		}
-	}
+        if ($version) {
+            choco install $package --version $version -y
+        }
+        else {
+            choco install $package -y
+        }
+    }
 
 [windows]
 dump-scoop:
-	#!pwsh.exe
-	$output = "pkgs/windows-scoop.json"
+    #!pwsh.exe
+    $output = "pkgs/windows-scoop"
 
-	Write-Host ""
-	Write-Host "Dumping Scoop packages..."
-	Write-Host "Output: $output"
-	Write-Host ""
+    Write-Host ""
+    Write-Host "Dumping Scoop packages..."
+    Write-Host "Output: $output"
+    Write-Host ""
 
-	scoop export | Set-Content $output
+    scoop export |
+        ConvertFrom-Json |
+        Select-Object -ExpandProperty apps |
+        ForEach-Object {
+            "{0}|{1}|{2}" -f $_.Source, $_.Name, $_.Version
+        } |
+        Sort-Object |
+        Set-Content $output
 
-	Write-Host "Done."
-	Write-Host ""
+        Write-Host "Done."
+        Write-Host ""
 
 [windows]
 restore-scoop:
-	#!pwsh.exe
-	Write-Host ""
-	Write-Host "Restoring Scoop packages..."
-	Write-Host ""
+    #!pwsh.exe
+    Get-Content pkgs/windows-scoop | ForEach-Object {
+        if (-not $_) { return }
 
-	scoop import pkgs/windows-scoop.json
+        $bucket, $package, $version = $_ -split '\|', 3
 
-	Write-Host ""
-	Write-Host "Done."
+        if (scoop list $package 2>$null | Select-String "^\s*$package\s") {
+            Write-Host "✓ $package already installed."
+            return
+        }
+
+        # Ensure bucket exists
+        if (-not (scoop bucket list | Select-String "^\s*$bucket\s")) {
+            Write-Host "Adding bucket $bucket..."
+            scoop bucket add $bucket
+        }
+
+        Write-Host "Installing $bucket/$package..."
+        scoop install "$bucket/$package"
+    }
 
 [windows]
 restore-vscode-extension-windows:
@@ -351,30 +369,30 @@ restore-vscode-extension-windows:
 # ================
 
 dump-all: \
-	dump-brew \
-	dump-asdf \
-	dump-pyenv \
-	dump-pipx \
-	dump-krew \
-	dump-helm \
-	dump-cargo \
-	dump-gh-ext \
-	dump-whalebrew \
-	dump-ollama \
-	dump-hugging-face \
-	dump-perl-modules
+    dump-brew \
+    dump-asdf \
+    dump-pyenv \
+    dump-pipx \
+    dump-krew \
+    dump-helm \
+    dump-cargo \
+    dump-gh-ext \
+    dump-whalebrew \
+    dump-ollama \
+    dump-hugging-face \
+    dump-perl-modules
 
 restore-all: \
-	restore-brew \
-	restore-asdf \
-	restore-pyenv \
-	restore-pipx \
-	restore-krew \
-	restore-helm \
-	restore-cargo \
-	restore-gh-ext \
-	restore-whalebrew \
-	restore-ollama \
-	restore-hugging-face \
-	restore-perl-modules
+    restore-brew \
+    restore-asdf \
+    restore-pyenv \
+    restore-pipx \
+    restore-krew \
+    restore-helm \
+    restore-cargo \
+    restore-gh-ext \
+    restore-whalebrew \
+    restore-ollama \
+    restore-hugging-face \
+    restore-perl-modules
 
