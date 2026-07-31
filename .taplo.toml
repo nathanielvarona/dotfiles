@@ -3,3 +3,4 @@
   indent_tables = true
   indent_entries = true
   indent_string = "  "
+  exclude = ["dot_config/mise/**/*.toml"]
