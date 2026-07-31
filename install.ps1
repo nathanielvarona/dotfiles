@@ -66,6 +66,13 @@ Install-WingetPackage fzf         junegunn.fzf
 Install-WingetPackage oh-my-posh  JanDeDobbeleer.OhMyPosh
 Install-WingetPackage chezmoi     twpayne.chezmoi
 Install-WingetPackage choco       Chocolatey.Chocolatey
+Install-WingetPackage just        Casey.Just
+Install-WingetPackage pwsh        Microsoft.PowerShell
+Install-WingetPackage gcc         BrechtSanders.WinLibs.POSIX.UCRT
+Install-WingetPackage nvim        Neovim.Neovim
+Install-WingetPackage lazygit     JesseDuffield.lazygit
+Install-WingetPackage gh          GitHub.cli
+Install-WingetPackage ""          Google.Chrome
 
 # Refresh PATH for current session
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") +
