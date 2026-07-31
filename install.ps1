@@ -70,10 +70,13 @@ Install-WingetPackage just        Casey.Just
 Install-WingetPackage pwsh        Microsoft.PowerShell
 Install-WingetPackage rg          BurntSushi.ripgrep.MSVC
 Install-WingetPackage fd          sharkdp.fd
+Install-WingetPackage tree-sitter tree-sitter.tree-sitter-cli
+Install-WingetPackage lua         rjpcomputing.luaforwindows
 Install-WingetPackage gcc         BrechtSanders.WinLibs.POSIX.UCRT
 Install-WingetPackage nvim        Neovim.Neovim
 Install-WingetPackage lazygit     JesseDuffield.lazygit
 Install-WingetPackage gh          GitHub.cli
+Install-WingetPackage ""          Microsoft.VisualStudio.BuildTools
 Install-WingetPackage ""          Google.Chrome
 
 # Refresh PATH for current session
