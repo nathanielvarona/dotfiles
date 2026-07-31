@@ -6,70 +6,78 @@ set -eu
 # Dotfiles Installer (macOS / Linux)
 # ============================================================
 
-# ------------------------------------------------------------
-# Platform Safety Check
-# ------------------------------------------------------------
-
 case "$(uname -s)" in
-  Linux | Darwin)
+  Darwin | Linux)
     ;;
   *)
-    printf "Error: install.sh only supports macOS and Linux\n" >&2
+    printf 'Error: install.sh only supports macOS and Linux.\n' >&2
     exit 1
     ;;
 esac
 
 REPO="nathanielvarona"
 
-printf "\n"
-printf "Installing dotfiles from %s...\n" "$REPO"
-printf "\n"
+test_command() {
+  command -v "$1" > /dev/null 2>&1
+}
 
-# ------------------------------------------------------------
-# Ensure ~/.local/bin exists
-# ------------------------------------------------------------
+install_brew_package() {
+  package="$1"
+  command="${2:-$1}"
 
-BIN_DIR="${HOME}/.local/bin"
-
-if [ ! -d "${BIN_DIR}" ]; then
-  mkdir -p "${BIN_DIR}"
-
-  printf "Created local bin directory\n"
-  printf "  Path : %s\n" "${BIN_DIR}"
-  printf "\n"
-fi
-
-# Add to current session PATH
-export PATH="${BIN_DIR}:$PATH"
-
-# ------------------------------------------------------------
-# Install chezmoi if missing
-# ------------------------------------------------------------
-
-if ! command -v chezmoi > /dev/null 2>&1; then
-  printf "Installing chezmoi...\n"
-
-  if command -v curl > /dev/null 2>&1; then
-    sh -c "$(curl -fsSL https://chezmoi.io/get)" -- -b "${BIN_DIR}"
-  elif command -v wget > /dev/null 2>&1; then
-    sh -c "$(wget -qO- https://chezmoi.io/get)" -- -b "${BIN_DIR}"
-  else
-    printf "Error: curl or wget is required\n" >&2
-    exit 1
+  if test_command "$command"; then
+    printf '✓ %s already installed.\n' "$command"
+    return
   fi
 
-  printf "Installed chezmoi\n"
-  printf "\n"
+  printf 'Installing %s...\n' "$package"
+  brew install "$package"
+}
+
+# ------------------------------------------------------------
+# Homebrew
+# ------------------------------------------------------------
+
+if ! test_command brew; then
+  printf '\nInstalling Homebrew...\n\n'
+
+  if [ "$(id -u)" -ne 0 ] && command -v sudo > /dev/null 2>&1; then
+    sudo -v
+  fi
+
+  /bin/bash -c "$(
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+  )" < /dev/tty
+
+  if [ -x /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  elif [ -x /usr/local/bin/brew ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
 fi
+
+# ------------------------------------------------------------
+# Requirements
+# ------------------------------------------------------------
+
+printf '\nBootstrapping development tools...\n\n'
+
+install_brew_package zsh
+install_brew_package git
+install_brew_package delta
+install_brew_package fzf
+install_brew_package zoxide
+install_brew_package oh-my-posh
+install_brew_package zinit
+install_brew_package chezmoi
+
+# Refresh PATH
+eval "$(brew shellenv)"
 
 CHEZMOI="$(command -v chezmoi)"
 
-# ------------------------------------------------------------
-# Apply Dotfiles (Remote Source)
-# ------------------------------------------------------------
+printf '\nApplying dotfiles...\n\n'
 
-printf "Applying dotfiles...\n"
-printf "  Repository : %s\n" "${REPO}"
-printf "\n"
-
-exec "${CHEZMOI}" init --apply "${REPO}"
+exec "$CHEZMOI" init --apply "$REPO"
