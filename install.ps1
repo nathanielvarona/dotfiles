@@ -68,6 +68,8 @@ Install-WingetPackage chezmoi     twpayne.chezmoi
 Install-WingetPackage choco       Chocolatey.Chocolatey
 Install-WingetPackage just        Casey.Just
 Install-WingetPackage pwsh        Microsoft.PowerShell
+Install-WingetPackage rg          BurntSushi.ripgrep.MSVC
+Install-WingetPackage fd          sharkdp.fd
 Install-WingetPackage gcc         BrechtSanders.WinLibs.POSIX.UCRT
 Install-WingetPackage nvim        Neovim.Neovim
 Install-WingetPackage lazygit     JesseDuffield.lazygit
