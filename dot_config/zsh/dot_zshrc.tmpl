@@ -348,12 +348,12 @@ export CXX="clang++"
 # ---------------------------------------------------------
 
 # Python (pyenv)
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-if which pyenv-virtualenv-init >/dev/null; then
-  eval "$(pyenv virtualenv-init -)"
-fi
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# if which pyenv-virtualenv-init >/dev/null; then
+#   eval "$(pyenv virtualenv-init -)"
+# fi
 
 # Anaconda Initialization (Python)
 # export CONDA_AUTO_ACTIVATE_BASE=false
@@ -368,10 +368,10 @@ if ! [[ -e "$ZSH_CACHE_DIR/completions/_poetry" ]]; then
 fi
 
 # Node (fnm)
-source <(fnm env)
+# source <(fnm env)
 
 # Ruby (rbenv)
-eval "$(rbenv init - zsh)"
+# eval "$(rbenv init - zsh)"
 
 # Perl Initialization
 [[ ! -d $HOME/.perl5 ]] && PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5" cpan local::lib
