@@ -21,6 +21,23 @@ test_command() {
   command -v "$1" > /dev/null 2>&1
 }
 
+# ------------------------------------------------------------
+# Debian/Ubuntu Prerequisites
+# ------------------------------------------------------------
+
+if test_command apt-get; then
+  printf "\nChecking system dependencies...\n\n"
+
+  sudo apt-get update
+
+  sudo apt-get install -y \
+    build-essential \
+    procps \
+    curl \
+    file \
+    git
+fi
+
 install_brew_package() {
   package="$1"
   command="${2:-$1}"
