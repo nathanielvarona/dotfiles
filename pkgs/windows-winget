@@ -1,8 +1,8 @@
 Application                        Version
 -----------                        -------
-Docker.DockerDesktop               4.83.0
+Docker.DockerDesktop               4.84.0
 Microsoft.Git                      2.54.0.0.5
-Mozilla.Firefox                    153.0
+Mozilla.Firefox                    153.0.1
 RARLab.WinRAR                      7.23.0
 version-fox.vfox                   1.0.11
 Google.Chrome                      150.0.7871.187
@@ -17,15 +17,15 @@ Nvidia.PhysX                       9.23.1019
 Neovim.Neovim                      0.12.4
 BornToBeRoot.NETworkManager        2026.7.7.0
 Alacritty.Alacritty                0.17.0
-AnyDesk.AnyDesk                    ad 9.7.11
+AnyDesk.AnyDesk                    ad 9.7.12
 Catacombae.HFSExplorer             2026.4.9
 rjpcomputing.luaforwindows         5.1.5.52
-Microsoft.Edge                     150.0.4078.83
-Microsoft.VisualStudio.BuildTools  18.8.1
+Microsoft.Edge                     150.0.4078.105
+Microsoft.VisualStudio.BuildTools  18.8.2
 chrisant996.Clink                  1.9.30
-Garmin.Express                     7.29.0.0
 Chocolatey.Chocolatey              2.7.3.0
 Microsoft.VCRedist.2015+.x64       14.51.36247.0
+Garmin.Express                     7.29.1.0
 Microsoft.VCRedist.2005.x86        8.0.61001
 Microsoft.DotNet.DesktopRuntime.10 10.0.10
 Microsoft.VCRedist.2015+.x86       14.51.36247.0
@@ -42,7 +42,7 @@ Watfaq.PowerSession                0.1.16
 asciinema.agg                      1.9.0
 dandavison.delta                   0.19.2
 equalsraf.win32yank                0.1.1
-jdx.mise                           2026.7.11
+jdx.mise                           2026.7.12
 jqlang.jq                          1.8.2
 junegunn.fzf                       0.74.1
 lsd-rs.lsd                         1.2.0
@@ -52,7 +52,7 @@ sharkdp.fd                         10.4.2
 thomasschafer.scooter              0.9.1
 twpayne.chezmoi                    2.71.1
 LocalSend.LocalSend                1.17.0
-Microsoft.VisualStudioCode         1.127.0
+Microsoft.VisualStudioCode         1.130.0
 Microsoft.Teams                    26183.1903.4892.4448
 Microsoft.AppInstaller             1.29.280.0
 Microsoft.DotNet.Native.Runtime    2.2.28604.0
@@ -66,6 +66,7 @@ Microsoft.WindowsAppRuntime.1.2    1.2.5
 Microsoft.WindowsAppRuntime.1.5    1.5.9
 Microsoft.WindowsAppRuntime.1.7    1.7.9
 Microsoft.WindowsAppRuntime.1.8    > 1.8.9
+Microsoft.WindowsAppRuntime.2      2.3.1.0
 Microsoft.WindowsTerminal          1.24.11911.0
-Microsoft.WSL                      2.7.10.0
-JanDeDobbeleer.OhMyPosh            29.35.1.0
+Microsoft.WSL                      2.7.11.0
+JanDeDobbeleer.OhMyPosh            29.36.0.0
