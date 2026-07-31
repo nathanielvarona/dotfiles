@@ -75,6 +75,8 @@ Install-WingetPackage lua         rjpcomputing.luaforwindows
 Install-WingetPackage gcc         BrechtSanders.WinLibs.POSIX.UCRT
 Install-WingetPackage nvim        Neovim.Neovim
 Install-WingetPackage psmux       marlocarlo.psmux
+Install-WingetPackage lsd         lsd-rs.lsd
+Install-WingetPackage bat         sharkdp.bat
 Install-WingetPackage lazygit     JesseDuffield.lazygit
 Install-WingetPackage gh          GitHub.cli
 Install-WingetPackage ""          Microsoft.VisualStudio.BuildTools
