@@ -43,7 +43,7 @@ CURRENT_SHELL="$(getent passwd "$(whoami)" | cut -d: -f7)"
 
 if [ "$CURRENT_SHELL" != "$ZSH_PATH" ]; then
   echo "[chezmoi] Setting zsh as default shell..."
-  chsh -s "$ZSH_PATH"
+  sudo chsh -s "$ZSH_PATH" $(whoami)
 else
   echo "[chezmoi] zsh already default shell"
 fi
