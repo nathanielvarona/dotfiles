@@ -20,7 +20,7 @@ JanDeDobbeleer.OhMyPosh|30.0.0.0
 jdx.mise|2026.7.15
 JesseDuffield.lazygit|0.63.1
 jqlang.jq|1.8.2
-junegunn.fzf|0.74.1
+junegunn.fzf|0.74.2
 LocalSend.LocalSend|1.17.0
 lsd-rs.lsd|1.2.0
 marlocarlo.psmux|3.3.7
@@ -39,7 +39,7 @@ Microsoft.UI.Xaml.2.7|7.2409.9001.0
 Microsoft.UI.Xaml.2.8|8.2511.26001.0
 Microsoft.VCLibs.14|14.0.33519.0
 Microsoft.VCLibs.Desktop.14|14.0.33728.0
-Microsoft.VCRedist.2005.x86|8.0.56336
+Microsoft.VCRedist.2005.x86|8.0.61001
 Microsoft.VCRedist.2015+.x64|14.51.36247.0
 Microsoft.VCRedist.2015+.x86|14.51.36247.0
 Microsoft.VisualStudio.BuildTools|18.8.2
@@ -51,10 +51,10 @@ Microsoft.WindowsAppRuntime.1.8|> 1.8.9
 Microsoft.WindowsAppRuntime.2|2.3.1.0
 Microsoft.WindowsTerminal|1.24.11911.0
 Microsoft.WSL|2.7.11.0
-Mozilla.Firefox|88.0
+Mozilla.Firefox|153.0.1
 Neovim.Neovim|0.12.4
 Nvidia.CUDA|13.3
-Nvidia.PhysX|9.20.0221
+Nvidia.PhysX|9.23.1019
 Oracle.JavaRuntimeEnvironment|8.0.5010.8
 rjpcomputing.luaforwindows|5.1.5.52
 Rufus.Rufus|4.15
