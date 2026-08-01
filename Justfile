@@ -375,28 +375,61 @@ restore-scoop:
     }
 
 [windows]
-restore-vscode-extension-windows:
+restore-vscode-extension-from-homebrew:
     #!pwsh.exe
+
     $brewfile = "{{PACKAGES}}/vscode.Brewfile"
+
     if (-not (Test-Path $brewfile)) {
-        Write-Error "Brewfile not found at $brewfile"
+        Write-Error "Brewfile not found: $brewfile"
         return
     }
-    # 1. Fetch current extensions once (huge performance boost)
-    Write-Host "Checking current environment..." -ForegroundColor Gray
+
+    Write-Host ""
+    Write-Host "Restoring VS Code extensions..."
+    Write-Host ""
+
+    # Get currently installed extensions once
     $installed = code --list-extensions
-    # 2. Extract extension IDs from Brewfile
-    $desired = Select-String -Path $brewfile -Pattern '^vscode "(.*)"' | ForEach-Object { $_.Matches.Groups[1].Value }
-    foreach ($ext in $desired) {
-        if ($installed -contains $ext) {
-            Write-Host "--> Skipping (Already Installed): $ext" -ForegroundColor DarkGray
-        } else {
-            Write-Host "--> Installing: $ext" -ForegroundColor Cyan
-            # The CLI will show its own download progress here
+
+    # Parse Brewfile
+    $desired = Select-String `
+        -Path $brewfile `
+        -Pattern '^vscode "(.*)"' |
+        ForEach-Object { $_.Matches.Groups[1].Value }
+
+    # Suppress Node.js deprecation warnings emitted by the VS Code CLI
+    $oldNodeNoWarnings = $env:NODE_NO_WARNINGS
+    $env:NODE_NO_WARNINGS = "1"
+
+    try {
+        foreach ($ext in $desired) {
+            if ($installed -contains $ext) {
+                Write-Host "✓ $ext"
+                continue
+            }
+
+            Write-Host "Installing $ext..."
+
             code --install-extension $ext --force
+
+            if ($LASTEXITCODE -ne 0) {
+                Write-Warning "Failed to install $ext"
+            }
         }
     }
-    Write-Host "VS Code restoration complete." -ForegroundColor Green
+    finally {
+        if ($null -eq $oldNodeNoWarnings) {
+            Remove-Item Env:NODE_NO_WARNINGS -ErrorAction SilentlyContinue
+        }
+        else {
+            $env:NODE_NO_WARNINGS = $oldNodeNoWarnings
+        }
+    }
+
+    Write-Host ""
+    Write-Host "Done."
+    Write-Host ""
 
 # ================
 # Aggregate
