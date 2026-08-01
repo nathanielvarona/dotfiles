@@ -375,6 +375,86 @@ restore-scoop:
     }
 
 [windows]
+dump-vscode-extension:
+    #!pwsh.exe
+
+    $output = "pkgs/windows-vscode"
+
+    Write-Host ""
+    Write-Host "Dumping VS Code extensions..."
+    Write-Host "Output: $output"
+    Write-Host ""
+
+    code --list-extensions --show-versions |
+        Sort-Object |
+        ForEach-Object {
+            $parts = $_ -split '@', 2
+
+            if ($parts.Count -eq 2) {
+                "{0}|{1}" -f $parts[0], $parts[1]
+            }
+            else {
+                "{0}|" -f $parts[0]
+            }
+        } |
+        Set-Content $output
+
+    Write-Host "Done."
+    Write-Host ""
+
+[windows]
+restore-vscode-extension:
+    #!pwsh.exe
+
+    $input = "pkgs/windows-vscode"
+
+    if (-not (Test-Path $input)) {
+        Write-Error "Dump file not found: $input"
+        return
+    }
+
+    Write-Host ""
+    Write-Host "Restoring VS Code extensions..."
+    Write-Host ""
+
+    $installed = @{}
+
+    code --list-extensions --show-versions |
+        ForEach-Object {
+            $parts = $_ -split '@', 2
+            $installed[$parts[0]] = if ($parts.Count -eq 2) { $parts[1] } else { "" }
+        }
+
+    Get-Content $input | ForEach-Object {
+
+        if (-not $_) { return }
+
+        $parts = $_ -split '\|', 2
+
+        $name = $parts[0]
+        $version = if ($parts.Count -eq 2) { $parts[1] } else { "" }
+
+        if ($installed.ContainsKey($name)) {
+
+            if ($installed[$name] -eq $version) {
+                Write-Host "Skipping: $name ($version)"
+                return
+            }
+
+            Write-Host "Updating: $name"
+        }
+        else {
+            Write-Host "Installing: $name"
+        }
+
+        code --install-extension $name --force
+    }
+
+    Write-Host ""
+    Write-Host "Done."
+    Write-Host ""
+
+[windows]
 restore-vscode-extension-from-homebrew:
     #!pwsh.exe
 
