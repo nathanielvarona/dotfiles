@@ -496,10 +496,16 @@ fpath=("/opt/vagrant/embedded/gems/gems/vagrant-${VAGRANT_VERSION}/contrib/zsh" 
 {{- end }}
 
 # ASDF plugin completions (pre-generated, e.g., kubectx/kubens)
-if command -v asdf &> /dev/null; then
-  if [[ -e "$(asdf where kubectx)/completion" ]]; then
-    fpath=($(asdf where kubectx)/completion $fpath)
-  fi
+# if command -v asdf &> /dev/null; then
+#   if [[ -e "$(asdf where kubectx)/completion" ]]; then
+#     fpath=($(asdf where kubectx)/completion $fpath)
+#   fi
+# fi
+
+# Aqua Package Manager
+export AQUA_GLOBAL_CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}/aquaproj-aqua/aqua.yaml
+if command -v aqua &> /dev/null; then
+    source <(aqua completion zsh)
 fi
 
 # =========================================================
