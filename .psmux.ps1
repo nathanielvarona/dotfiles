@@ -1,68 +1,81 @@
 # -----------------------------------------------------------------------------
-# Ensure this layout is only executed via the `psmux-load` helper.
-# This prevents accidental execution outside of the PSMUX initialization flow.
+# Safety Check: PSMUX Loader
+# -----------------------------------------------------------------------------
+# This layout must be executed through the `psmux-load` helper.
+# Running the file directly is blocked to prevent accidental session creation.
 # -----------------------------------------------------------------------------
 if ($env:PSMUX_LOAD_ACTIVE -ne "True")
 {
-  Write-Warning "Execution blocked: This layout file must be loaded through the 'psmux-load' function."
-  return
+    Write-Warning "Execution blocked: This layout file must be loaded through the 'psmux-load' function."
+    return
 }
 
 # -----------------------------------------------------------------------------
-# Prevent loading this layout from within an existing PSMUX session.
-# Layouts create and attach to sessions, so running one from inside another
-# session could result in nested sessions or unexpected behavior.
+# Safety Check: Existing PSMUX Session
+# -----------------------------------------------------------------------------
+# PSMUX exposes TMUX inside its panes for tmux compatibility.
+# Prevent this layout from creating a nested PSMUX session.
 # -----------------------------------------------------------------------------
 if ($env:TMUX)
 {
-  Write-Warning "Execution blocked: Already running inside a PSMUX session. Detach from the current session before loading this layout."
-  return
+    Write-Warning "Execution blocked: Already running inside a PSMUX session. Detach from the current session before loading this layout."
+    return
 }
 
-# -----------------------------------------------------------------------------
-# Create a new detached session named "dotfiles".
-# The initial window is named "editor" to prevent automatic process-based names.
-# -----------------------------------------------------------------------------
+# =============================================================================
+# Session: dotfiles
+# =============================================================================
+
+# Create the detached session.
+# The first window is explicitly named "editor".
 psmux new-session -d -s 'dotfiles' -n 'editor'
 
 # =============================================================================
-# Window: editor
+# Window 1: editor
 # =============================================================================
 
-# Split the window vertically, allocating 20% of the height to the bottom pane.
-psmux split-window -v -p 20 -t 'dotfiles:editor'
+# The newly created session starts with one active pane.
+# Send Neovim to that pane without explicitly specifying a pane target.
+psmux send-keys 'nvim .' Enter
 
-# Launch Neovim in the primary (top) pane.
-psmux send-keys -t 'dotfiles:editor.0' 'nvim .' Enter
+# Split the editor window vertically.
+# The new bottom pane receives 20% of the height.
+psmux split-window -v -p 20
 
-# Display the directory contents in the secondary (bottom) pane.
-psmux send-keys -t 'dotfiles:editor.1' 'ls -a' Enter
+# The newly created pane becomes the active pane.
+# Display hidden files here.
+psmux send-keys 'ls -a' Enter
 
-# Return focus to the editor pane.
-psmux select-pane -t 'dotfiles:editor.0'
+# Select the top/editor pane.
+psmux select-pane -U
 
 # =============================================================================
-# Window: vcs
+# Window 2: vcs
 # =============================================================================
 
-# Create a dedicated window for version control tasks.
+# Create the VCS window.
 psmux new-window -t 'dotfiles' -n 'vcs'
 
-# Split the window vertically, allocating 20% of the height to the bottom pane.
-psmux split-window -v -p 20 -t 'dotfiles:vcs'
+# The new window starts with one active pane.
+# Launch LazyGit there.
+psmux send-keys 'lazygit' Enter
 
-# Launch LazyGit in the primary (top) pane.
-psmux send-keys -t 'dotfiles:vcs.0' 'lazygit' Enter
+# Split the VCS window vertically.
+psmux split-window -v -p 20
 
-# Display the installed Git version in the secondary (bottom) pane.
-psmux send-keys -t 'dotfiles:vcs.1' 'git --version' Enter
+# The newly created bottom pane becomes active.
+# Display the installed Git version.
+psmux send-keys 'git --version' Enter
+
+# Return to the LazyGit pane.
+psmux select-pane -U
 
 # =============================================================================
-# Attach Session
+# Finalize Layout
 # =============================================================================
 
-# Select the editor window before attaching so the session always starts there.
-psmux select-window -t 'dotfiles:editor'
+# Select the editor window.
+psmux select-window -t 'dotfiles:1'
 
-# Attach to the newly created session.
+# Attach to the session.
 psmux attach-session -t 'dotfiles'
