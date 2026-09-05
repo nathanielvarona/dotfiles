@@ -582,5 +582,9 @@ export IS_WSL=1
 # Use System Clipboard
 alias pbcopy='clip.exe'
 alias pbpaste='powershell.exe -command "Get-Clipboard" | tr -d "\r"'
+
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+
 {{- end }}
 {{- end }}
