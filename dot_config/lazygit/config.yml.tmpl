@@ -1,11 +1,9 @@
 git:
-  pagers:
+  diffRenderers:
 {{- if eq .chezmoi.os "windows" }}
-    - externalDiffCommand: "{{ .chezmoi.sourceDir }}/.win-compat-scripts/lazygit-diff-delta.bat"
+    - command: "{{ .chezmoi.sourceDir }}/.win-compat-scripts/lazygit-diff-delta.bat"
 {{- else }}
-    - pager: delta --paging=never --line-numbers
-      colorArg: always
+    - command: delta --paging=never --line-numbers
 {{- end }}
-
 os:
   editPreset: "vscode"
