@@ -120,8 +120,20 @@ end
 -- Integrate Sysmtem Clipboard
 {{- if eq .chezmoi.os "linux" -}}
 {{- if .chezmoi.kernel.osrelease | contains "WSL2" }}
--- Make sure to install `winget install equalsraf.win32yank`
-vim.opt.clipboard = "unnamedplus"
+vim.g.clipboard = {
+  name = 'win32yank-wsl',
+  copy = {
+    ['+'] = 'win32yank.exe -i --crlf',
+    ['*'] = 'win32yank.exe -i --crlf',
+  },
+  paste = {
+    ['+'] = 'win32yank.exe -o --lf',
+    ['*'] = 'win32yank.exe -o --lf',
+  },
+  cache_enabled = 0,
+}
+
+vim.opt.clipboard = "unnamedplus" -- syncs Neovim's clipboard with the system clipboard
 {{- end }}
 {{- end -}}
 
