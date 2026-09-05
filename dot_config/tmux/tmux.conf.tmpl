@@ -56,6 +56,7 @@ set -g @plugin 'aserowy/tmux.nvim'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'tmux-plugins/tmux-battery'
 set -g @plugin 'hendrikmi/tmux-cpu-mem-monitor'
+set -g @plugin 'tmux-plugins/tmux-cpu' # Using the GPU Monitoring Only
 set -g @plugin 'catppuccin/tmux'
 set -g @plugin 'alexwforsythe/tmux-which-key'
 
@@ -74,7 +75,7 @@ set -g status-left-length 100
 set -g status-right-length 100
 
 set -g status-left "#{?client_prefix,#{#[bg=$thm_bg,fg=#{@thm_teal},bold]  #S },#{#[bg=$thm_bg,fg=#{@thm_overlay_1}]  #S }} #[bg=$thm_bg,fg=#{@thm_overlay_0}]│"
-set -g status-right "#[bg=$thm_bg,fg=#{@thm_surface_2}]  #{cpu}  #{mem} 󰋊 #{disk} #{battery_icon} #{battery_percentage} 󰭦 %Y-%m-%d 󰅐 %H:%M/%I:%M %p "
+set -g status-right "#[bg=$thm_bg,fg=#{@thm_surface_2}]  #{cpu}  #{gpu_percentage} #{gram_percentage} #{gpu_temp}  #{mem} 󰋊 #{disk} #{battery_icon} #{battery_percentage} 󰭦 %Y-%m-%d 󰅐 %H:%M/%I:%M %p "
 
 # Pane Border
 setw -g pane-border-status bottom
