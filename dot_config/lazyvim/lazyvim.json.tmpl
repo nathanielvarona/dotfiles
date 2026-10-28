@@ -27,6 +27,10 @@
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.ui.indent-blankline",
+    {{ if eq .chezmoi.os "windows" -}}
+    "lazyvim.plugins.extras.ui.mini-animate",
+    "lazyvim.plugins.extras.ui.smear-cursor",
+    {{ end -}}
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.chezmoi",
     "lazyvim.plugins.extras.util.mini-hipatterns",
