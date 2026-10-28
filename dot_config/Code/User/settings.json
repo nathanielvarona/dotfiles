@@ -264,7 +264,14 @@
     "**/.forgejo/workflows/*.yml",
     "**/.forgejo/workflows/*.yaml"
   ],
-  "docker.extension.enableComposeLanguageServer": false
+  "docker.extension.enableComposeLanguageServer": false,
+  "lazygit.command": "lazygit; exit"
+  // "lazygit-vscode.nativeFileOpening": "false",
+  // "terminal.integrated.sendKeybindingsToShell": false,
+  // "terminal.integrated.commandsToSkipShell": [
+  //   "lazygit-vscode.toggle",
+  //   "workbench.action.closeWindow"
+  // ]
 
   // Test Todo Highlight
   /*
