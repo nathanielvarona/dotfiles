@@ -1,7 +1,6 @@
 [general]
   live_config_reload = true
 {{- if (eq .chezmoi.os "windows") }}
-  working_directory = "%USERPROFILE%"
   import = [
     "~/AppData/Roaming/alacritty/fonts.toml",
     "~/AppData/Roaming/alacritty/themes/github_dark_high_contrast.toml",
