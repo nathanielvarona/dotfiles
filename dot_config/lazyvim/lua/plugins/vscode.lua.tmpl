@@ -16,5 +16,9 @@ if not vim.g.vscode then
 end
 
 return {
+  {{ if eq .chezmoi.os "windows" -}}
+  vim.notify("Neovim: LazyVim (Win)", vim.log.levels.INFO),
+  {{- else -}}
   vim.notify("Neovim: LazyVim", vim.log.levels.INFO),
+  {{- end }}
 }

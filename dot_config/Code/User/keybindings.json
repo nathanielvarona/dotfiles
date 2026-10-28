@@ -27,6 +27,13 @@
     "when": "editorFocus && neovim.mode == 'normal' || !editorFocus && !inputFocus && !terminalFocus && neovim.mode != 'insert'",
     "description": "Cycle through relative line numbers in the editor or when not in focus"
   },
+  // Toggle useWSL for `vscode-neovim` plugin
+  {
+    "key": "ctrl+w",
+    "command": "settings.cycle.useWSL",
+    "when": "editorFocus && neovim.mode == 'normal' || !editorFocus && !inputFocus && !terminalFocus && neovim.mode != 'insert'",
+    "description": "Cycle through useWSL for `vscode-neovim` plugin"
+  },
 
   // File Explorer
   // Neo-tree-like remaps
