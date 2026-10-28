@@ -1,10 +1,5 @@
 git:
   diffRenderers:
-{{- if eq .chezmoi.os "windows" }}
-    - command: "{{ .chezmoi.sourceDir }}/.win-compat-scripts/lazygit-diff-delta.bat"
-      type: extDiff
-{{- else }}
     - command: delta --paging=never --line-numbers
-{{- end }}
 os:
   editPreset: "vscode"
