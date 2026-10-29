@@ -1,5 +1,6 @@
 7zip.7zip|26.05.00.0
 Alacritty.Alacritty|0.17.0
+AmN.yasb|2.0.7
 AnyDesk.AnyDesk|ad 9.8.3
 aquaproj.aqua|2.65.2
 asciinema.agg|1.9.0
@@ -52,7 +53,7 @@ Microsoft.VCRedist.2005.x86|8.0.61001
 Microsoft.VCRedist.2015+.x64|14.51.36247.0
 Microsoft.VCRedist.2015+.x86|14.51.36247.0
 Microsoft.VisualStudio.BuildTools|18.11.2
-Microsoft.VisualStudioCode|1.143.1
+Microsoft.VisualStudioCode|1.144.0
 Microsoft.WindowsAppRuntime.1.1|1.1.5
 Microsoft.WindowsAppRuntime.1.2|1.2.5
 Microsoft.WindowsAppRuntime.1.5|1.5.9
