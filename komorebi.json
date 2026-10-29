@@ -3,14 +3,14 @@
   "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
-  "default_workspace_padding": 0,
-  "default_container_padding": 0,
+  "default_workspace_padding": -1,
+  "default_container_padding": -1,
   "border": true,
-  "border_width": 8,
+  "border_width": 6,
   "border_offset": -1,
   "theme": {
     "palette": "Base16",
-    "name": "TokyoNightTerminalStorm",
+    "name": "BlackMetal",
     "unfocused_border": "Base03",
     "bar_accent": "Base0D"
   },

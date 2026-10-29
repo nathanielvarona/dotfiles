@@ -3,9 +3,10 @@
   "font_family": "JetBrains Mono",
   "theme": {
     "palette": "Base16",
-    "name": "Ashes",
+    "name": "BlackMetal",
     "accent": "Base0D"
   },
+  "height": 25,
   "left_widgets": [
     {
       "Komorebi": {
