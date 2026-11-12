@@ -31,7 +31,11 @@ return {
         },
       },
       image = {
+        {{- if or ((includeTemplate "helpers/is_native_unix_like.tmpl" .) | trim | eq "true") (eq .chezmoi.os "windows") }}
         enabled = true,
+        {{- else }}
+        enabled = false,
+        {{- end }}
         doc = {
           inline = false,
           float = true,
