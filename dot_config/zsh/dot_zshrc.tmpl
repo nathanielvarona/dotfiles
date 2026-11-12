@@ -591,3 +591,10 @@ alias obsidian='$HOME/Applications/Obsidian.AppImage'
 
 {{- end }}
 {{- end }}
+
+# >>> LazyDB installer >>>
+case ":$PATH:" in
+    *:/home/nath/.local/bin:*) ;;
+    *) export PATH=/home/nath/.local/bin:"$PATH" ;;
+esac
+# <<< LazyDB installer <<<
