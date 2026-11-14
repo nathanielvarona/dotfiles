@@ -40,6 +40,9 @@ host    all             all             0.0.0.0/0               md5
 
 ### Allow PostgreSQL connection on Windows Firewall
 
+> [!NOTE]
+> Set only if the WSL2 Networking Mode is not Mirrored
+
 ```powershell
 New-NetFirewallRule -DisplayName "Allow WSL to PostgreSQL" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 5432
 ```
@@ -77,6 +80,9 @@ bind 0.0.0.0
 ```
 
 ### Allow Redis connection on Windows Firewall
+
+> [!NOTE]
+> Set only if the WSL2 Networking Mode is not Mirrored
 
 ```powershell
 New-NetFirewallRule -DisplayName "Allow WSL to Redis (Memurai Distribution)" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 6379
