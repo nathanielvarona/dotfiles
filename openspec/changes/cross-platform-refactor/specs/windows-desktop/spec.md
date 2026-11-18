@@ -53,3 +53,19 @@ GlazeWM, YASB, Scooter, and Clink targets SHALL be applied only on Windows. macO
 - **GIVEN** an apply runs on macOS
 - **WHEN** the home directory is inspected
 - **THEN** no Windows desktop configuration exists and AeroSpace remains the only tiling manager
+
+### Requirement: PowerToys DSC snapshot is captured
+
+The Windows desktop configuration SHALL include a PowerToys DSC v3 snapshot for the reviewed module set, and that path SHALL be applied only on Windows.
+
+#### Scenario: Applying on non-Windows
+
+- **GIVEN** an apply runs on macOS, Linux, or WSL
+- **WHEN** the home directory is inspected
+- **THEN** no `.config/powertoys` path exists
+
+#### Scenario: Reviewing the snapshot
+
+- **GIVEN** the PowerToys DSC snapshot exists
+- **WHEN** its App resource is tested with `PowerToys.DSC.exe`
+- **THEN** it reports `_inDesiredState: true`

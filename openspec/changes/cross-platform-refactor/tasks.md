@@ -33,7 +33,7 @@
 
 ## 5. Editors and shells
 
-- [ ] 5.1 Convert VS Code user settings to a per-platform template, remove commented path variants, and verify each platform render parses as JSONC
+- [x] 5.1 Convert VS Code user settings to a per-platform template, remove commented path variants, and verify each platform render parses as JSONC
 - [ ] 5.2 Scope WSL editor keys to the WSL render and verify Windows, macOS, and native Linux renders do not contain them
 - [ ] 5.3 Deduplicate the PowerShell module bootstrap into one helper, then verify a profile load with an optional module absent exits 0
 - [ ] 5.4 Register the Clink targets in the platform map and verify `chezmoi ignored` includes them on WSL and excludes them on Windows
@@ -70,6 +70,17 @@
 - [ ] 9.2 Apply on Windows and WSL and verify `chezmoi diff` is clean after apply
 - [ ] 9.3 Confirm the config/code line count dropped by at least 3,800 lines from the 17,324-line baseline and no emulator or unsupported tool was removed
 - [ ] 9.4 Verify `just doctor` passes on a clean checkout and fails on the planted-path case
+
+## 10. LazyVim and Windows desktop improvements
+
+- [ ] 10.1 Remove disabled and dead plugin specs (`example.lua`, `forced-immersion.lua`, `camouflage.lua`, `neo-tree.lua`) and verify Neovim starts cleanly
+- [x] 10.2 Guard `image.nvim` so it does not load on native Windows while remaining enabled on WSL2
+- [ ] 10.3 Consolidate the indentation stack into one implementation and verify indentation guides render once
+- [ ] 10.4 Remove stale commented-out configuration from `lspconfig.lua`, `options.lua.tmpl`, and `colorscheme.lua`
+- [ ] 10.5 Remove or document the native-Linux Mason disable in `mason.lua.tmpl`
+- [ ] 10.6 Remove startup notification noise from `vscode.lua.tmpl`
+- [ ] 10.7 Remove empty `autocmds.lua` until custom autocmds are needed
+- [x] 10.8 Capture and verify the PowerToys DSC v3 snapshot, including the non-Windows ignore rule
 
 ## Workflow follow-up
 

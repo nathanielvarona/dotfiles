@@ -53,3 +53,39 @@ The LazyVim configuration SHALL apply on all four platforms from one source, wit
 - **GIVEN** Neovim runs inside WSL
 - **WHEN** a yank is performed
 - **THEN** the Windows clipboard bridge is used, while native Linux uses its own provider
+
+### Requirement: LazyVim has no disabled or dead plugin specs
+
+Disabled plugin specs SHALL NOT remain as active files under `lua/plugins/`. Specs that are intentionally disabled MUST be removed rather than retained behind `if true then return {} end`.
+
+#### Scenario: Loading the plugin directory
+
+- **GIVEN** Neovim starts with the managed LazyVim configuration
+- **WHEN** the `lua/plugins` directory is imported
+- **THEN** no disabled or starter-example plugin spec is loaded
+
+### Requirement: LazyVim plugins respect platform support
+
+Plugins that do not support a platform SHALL be guarded so they do not load on that platform. Platform guards SHALL be explicit and SHALL NOT rely on runtime errors.
+
+#### Scenario: Native Windows Neovim
+
+- **GIVEN** Neovim runs on native Windows
+- **WHEN** the managed plugin specs are loaded
+- **THEN** `image.nvim` is not loaded and no unsupported terminal-size error is raised
+
+#### Scenario: WSL Neovim
+
+- **GIVEN** Neovim runs inside WSL2
+- **WHEN** the managed plugin specs are loaded
+- **THEN** `image.nvim` remains enabled for the working ImageMagick/FFmpeg setup
+
+### Requirement: LazyVim uses one indentation implementation
+
+The configuration SHALL use a single indentation/highlight implementation. Conflicting indentation plugins SHALL NOT be enabled together.
+
+#### Scenario: Rendering indentation
+
+- **GIVEN** a source buffer is opened in Neovim
+- **WHEN** indentation guides are rendered
+- **THEN** exactly one indentation plugin is active and no duplicate highlight definitions are applied
