@@ -1,0 +1,26 @@
+schema: spec-driven
+
+context: |
+  Personal, public dotfiles repository managed by chezmoi, applied to four
+  environments: Windows (PowerShell 7 primary, Clink-managed CMD),
+  WSL2 (first-class, separate apply inside the distro), native Linux
+  (Debian/Ubuntu reference, Linuxbrew), and macOS (occasional use).
+
+  Stack: chezmoi source state with Go templates, `just` recipes, GitHub
+  Actions, package manifests under `pkgs/`. No application runtime or test
+  framework; verification is template rendering plus config parsers.
+
+  Constraints:
+  - The repository IS the live chezmoi source directory on the author's
+    machine, so every intermediate commit must still `chezmoi apply`.
+  - chezmoi maps one source file to exactly one target; source entries
+    beginning with `.` are ignored, so repository-only docs must be listed
+    in `.chezmoiignore.tmpl` or they deploy to `$HOME`.
+  - Public repository: no usernames, home paths, or secrets in active config.
+  - The author prefers deleting configuration over preserving dead options.
+
+  Conventions:
+  - Platform branching goes through one helper; applicability goes through
+    one ignore map.
+  - Specs describe observable behavior, not file names. Implementation
+    details belong in design.md and tasks.md.
