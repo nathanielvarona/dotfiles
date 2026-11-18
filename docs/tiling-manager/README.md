@@ -25,6 +25,10 @@ Reload after editing the config:
 glazewm command wm-reload-config
 ```
 
+## Binding mode indicator
+
+YASB includes the GlazeWM Binding Mode widget. It appears next to the tiling-direction indicator only while a binding mode is active, such as `resize`. Left-click cycles modes, middle-click toggles the label, and right-click disables the active mode.
+
 ## Mental model
 
 - **Focus** changes which window receives input.

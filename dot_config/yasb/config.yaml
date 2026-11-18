@@ -40,6 +40,7 @@ bars:
         - quick_launch
         # - komorebi_workspaces
         - glazewm_tiling_direction
+        - glazewm_binding_mode
         - glazewm_workspaces
         - active_window
       center:
@@ -301,3 +302,22 @@ widgets:
     options:
       horizontal_label: "\udb81\udce1"
       vertical_label: "\udb81\udce2"
+
+  glazewm_binding_mode:
+    type: "glazewm.binding_mode.GlazewmBindingModeWidget"
+    options:
+      hide_if_no_active: true
+      label_if_no_active: "No binding mode active"
+      default_icon: "\uf071"
+      icons:
+        none: ""
+        resize: "\uf071"
+        pause: "\uf28c"
+      binding_modes_to_cycle_through:
+        - none
+        - resize
+        - pause
+      callbacks:
+        on_left: next_binding_mode
+        on_middle: toggle_label
+        on_right: disable_binding_mode

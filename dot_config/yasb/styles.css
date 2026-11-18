@@ -979,3 +979,33 @@
 .glazewm-tiling-direction .btn:hover {
   background-color: var(--yasb-white-alpha-08);
 }
+
+/* GlazeWM Binding Mode */
+
+.glazewm-binding-mode {
+  background-color: transparent;
+  padding: 0 6px;
+  margin: 0;
+}
+
+.glazewm-binding-mode .label {
+  color: var(--yasb-fg);
+  font-size: 12px;
+}
+
+.glazewm-binding-mode .label-offline {
+  color: var(--yasb-fg-muted);
+  font-size: 10px;
+}
+
+.glazewm-binding-mode .icon.none {
+  color: var(--yasb-accent);
+}
+
+.glazewm-binding-mode .icon.resize {
+  color: var(--yasb-accent-hover);
+}
+
+.glazewm-binding-mode .icon.pause {
+  color: var(--yasb-fg-muted);
+}
