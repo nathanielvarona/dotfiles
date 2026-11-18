@@ -51,6 +51,7 @@ bars:
         - cpu
         - gpu
         - memory
+        - disk
         - volume
         - notifications
         - power_menu
@@ -95,6 +96,33 @@ widgets:
         on_left: toggle_calendar
         on_middle: toggle_label
         on_right: context_menu
+  disk:
+    type: "yasb.disk.DiskWidget"
+    options:
+      label: "<span>\uf473</span> {space[free][gb]}"
+      label_alt: "{volume_label} {space[used][gb]} / {space[total][gb]}"
+      volume_label: "C"
+      update_interval: 60
+      decimal_display: 1
+      group_label:
+        volume_labels: ["C"]
+        show_label_name: true
+        blur: true
+        round_corners: true
+        round_corners_type: normal
+        border_color: System
+        alignment: right
+        direction: down
+        offset_top: 6
+      callbacks:
+        on_left: toggle_group
+        on_middle: toggle_label
+        on_right: exec explorer C:/
+      disk_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+
   volume:
     type: yasb.volume.VolumeWidget
     options:

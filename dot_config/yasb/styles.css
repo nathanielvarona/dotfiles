@@ -673,6 +673,59 @@
   padding: 0 4px 12px 4px;
 }
 
+/* Disk */
+.disk-widget:hover {
+  background-color: var(--yasb-white-alpha-08);
+}
+.disk-widget .icon {
+  padding-right: 4px;
+}
+.disk-widget .widget-container .label.status-low {
+  color: #9ece6a;
+}
+.disk-widget .widget-container .label.status-medium {
+  color: #e0af68;
+}
+.disk-widget .widget-container .label.status-high {
+  color: #ff9e64;
+}
+.disk-widget .widget-container .label.status-critical {
+  color: #f7768e;
+}
+.disk-group {
+  background-color: var(--yasb-popup-bg);
+}
+.disk-group-row {
+  min-width: 220px;
+  max-width: 220px;
+  max-height: 40px;
+  margin: 0;
+  padding: 0;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+.disk-group-row:hover {
+  background-color: var(--yasb-white-alpha-05);
+  border: 1px solid var(--yasb-white-alpha-10);
+}
+.disk-group-label-bar {
+  max-height: 8px;
+  border: none;
+  background-color: var(--yasb-white-alpha-10);
+  border-radius: 4px;
+}
+.disk-group-label-bar::chunk {
+  background-color: var(--yasb-accent);
+  border-radius: 4px;
+}
+.disk-group-label {
+  font-size: 10px;
+}
+.disk-group-label-size {
+  font-size: 10px;
+  color: var(--yasb-fg-muted);
+}
+
 /* CPU */
 .cpu-widget:hover {
   background-color: var(--yasb-white-alpha-08);
