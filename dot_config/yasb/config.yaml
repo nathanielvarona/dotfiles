@@ -19,8 +19,8 @@ bars:
       enabled: true
       duration: 300
     blur_effect:
-      enabled: true
-      round_corners: true
+      enabled: false
+      round_corners: false
       round_corners_type: normal
       border_color: system
     window_flags:
@@ -28,7 +28,7 @@ bars:
       windows_app_bar: true
     dimensions:
       width: 100%
-      height: 34
+      height: 30
     padding:
       top: 4
       left: 4

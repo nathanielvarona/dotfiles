@@ -5,12 +5,12 @@
 
 /* Root Variables */
 :root {
-  --yasb-bar-bg: rgba(36, 36, 36, 0.85);
-  --yasb-surface-alt: rgb(61, 61, 61);
-  --yasb-bar-border: #303030;
-  --yasb-popup-bg: rgba(36, 36, 36, 0.85);
-  --yasb-dialog-bg: rgb(43, 43, 43);
-  --yasb-dialog-surface: rgb(32, 32, 32);
+  --yasb-bar-bg: #1a1b26;
+  --yasb-surface-alt: #24283b;
+  --yasb-bar-border: #24283b;
+  --yasb-popup-bg: #1a1b26;
+  --yasb-dialog-bg: #1f2335;
+  --yasb-dialog-surface: #16161e;
   --yasb-white-alpha-03: rgba(255, 255, 255, 0.03);
   --yasb-white-alpha-04: rgba(255, 255, 255, 0.04);
   --yasb-white-alpha-05: rgba(255, 255, 255, 0.05);
@@ -25,17 +25,17 @@
   --yasb-white-alpha-70: rgba(255, 255, 255, 0.7);
   --yasb-white-alpha-80: rgba(255, 255, 255, 0.8);
   --yasb-white-alpha-85: rgba(255, 255, 255, 0.85);
-  --yasb-fg: rgba(255, 255, 255, 0.9);
-  --yasb-fg-muted: rgb(134, 134, 134);
-  --yasb-icon-fg: rgba(255, 255, 255, 0.9);
-  --yasb-tooltip-bg: rgba(31, 31, 31, 0.95);
-  --yasb-tooltip-border: rgb(44, 44, 44);
-  --yasb-accent: #4cc2ff;
-  --yasb-accent-hover: #40ace2;
-  --yasb-accent-fg: #000000;
+  --yasb-fg: #c0caf5;
+  --yasb-fg-muted: #565f89;
+  --yasb-icon-fg: #c0caf5;
+  --yasb-tooltip-bg: #16161e;
+  --yasb-tooltip-border: #24283b;
+  --yasb-accent: #33ccff;
+  --yasb-accent-hover: #00ff99;
+  --yasb-accent-fg: #1a1b26;
   --icons-font: "Segoe Fluent Icons";
   --icons-font-fallback: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo";
-  --system-font: "Segoe UI Variable", "Segoe UI";
+  --system-font: "JetBrainsMono NFP", "JetBrainsMono Nerd Font Propo", "Segoe UI Variable", "Segoe UI";
 }
 
 /* Global Defaults */
@@ -577,7 +577,7 @@
   min-height: 64px;
 }
 .cpu-popup .cpu-graph {
-  color: #0f6bff;
+  color: var(--yasb-accent);
 }
 .cpu-popup .cpu-graph-grid {
   color: var(--yasb-white-alpha-05);
@@ -652,7 +652,7 @@
   min-height: 64px;
 }
 .memory-popup .memory-graph {
-  color: #0f6bff;
+  color: var(--yasb-accent);
 }
 .memory-popup .memory-graph-grid {
   color: var(--yasb-white-alpha-05);
@@ -937,30 +937,27 @@
   border: none;
   padding: 0px 4px 0px 4px;
   margin: 0 2px 0 2px;
-  color: #cdd6f4;
+  color: var(--yasb-fg-muted);
 }
 
-.glazewm-workspaces .ws-btn.active_populated {
-  color: #c2daf7;
-  background-color: #727272;
-}
+.glazewm-workspaces .ws-btn.active_populated,
 .glazewm-workspaces .ws-btn.active_empty {
-  color: #7d8b9d;
-  background-color: #727272;
+  color: var(--yasb-accent);
+  background-color: rgba(51, 204, 255, 0.16);
 }
 
 .glazewm-workspaces .ws-btn.populated {
-  color: #c2daf7;
+  color: var(--yasb-fg);
 }
 
 .glazewm-workspaces .ws-btn.empty {
-  color: #7d8b9d;
+  color: var(--yasb-fg-muted);
 }
 
 .glazewm-workspaces .ws-btn:hover,
 .glazewm-workspaces .ws-btn.populated:hover,
 .glazewm-workspaces .ws-btn.empty:hover {
-  background-color: #727272;
+  background-color: var(--yasb-white-alpha-08);
 }
 
 /* GlazeWM Tiling Direction  */
@@ -975,10 +972,10 @@
   font-size: 18px;
   width: 14px;
   padding: 0 4px 0 4px;
-  color: #cdd6f4;
+  color: var(--yasb-fg);
   border: none;
 }
 
 .glazewm-tiling-direction .btn:hover {
-  background-color: #727272;
+  background-color: var(--yasb-white-alpha-08);
 }
