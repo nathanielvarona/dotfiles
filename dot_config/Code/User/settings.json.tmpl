@@ -1,3 +1,14 @@
+{{- $home := .chezmoi.homeDir | replace "\\" "/" -}}
+{{- $ripgrepPath := "" -}}
+{{- $kdlPath := printf "%s/.cargo/bin/kdl-lsp" $home -}}
+{{- if eq .chezmoi.os "windows" -}}
+{{-   $ripgrepPath = printf "%s/AppData/Local/Microsoft/WinGet/Links/rg.exe" $home -}}
+{{-   $kdlPath = printf "%s.exe" $kdlPath -}}
+{{- else if eq .chezmoi.os "darwin" -}}
+{{-   $ripgrepPath = "/usr/local/bin/rg" -}}
+{{- else -}}
+{{-   $ripgrepPath = "/home/linuxbrew/.linuxbrew/bin/rg" -}}
+{{- end -}}
 {
   // "workbench.settings.editor": "json",
   "workbench.colorTheme": "GitHub Dark Default",
@@ -263,8 +274,11 @@
   "python.terminal.activateEnvironment": false,
   "python-envs.terminal.showActivateButton": true,
   "chat.disableAIFeatures": true,
-  "todo-tree.ripgrep.ripgrep": "${userHome}/AppData/Local/Microsoft/WinGet/Links/rg.exe",
-  "kdl.command": "${userHome}/.cargo/bin/kdl-lsp.exe",
+  // VSCode settings have no OS conditions, so chezmoi renders these paths per
+  // platform: Windows uses the WinGet/cargo executables, WSL and Linux use the
+  // Linuxbrew/cargo binaries.
+  "todo-tree.ripgrep.ripgrep": "{{ $ripgrepPath }}",
+  "kdl.command": "{{ $kdlPath }}",
   "yaml.disableSchemaDetection": [
     "**/.github/workflows/*.yml",
     "**/.github/workflows/*.yaml",
@@ -274,7 +288,7 @@
     "**/.forgejo/workflows/*.yaml"
   ],
   "docker.extension.enableComposeLanguageServer": false,
-  "lazygit.command": "lazygit; exit"
+  "lazygit.command": "lazygit"
   // "lazygit-vscode.nativeFileOpening": "false",
   // "terminal.integrated.sendKeybindingsToShell": false,
   // "terminal.integrated.commandsToSkipShell": [
