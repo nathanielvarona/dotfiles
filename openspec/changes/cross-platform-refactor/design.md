@@ -10,6 +10,33 @@ See `proposal.md` for why. The relevant constraints:
 - Nested templates already exist under `.chezmoitemplates/` and are used by Alacritty, Scooter, and platform helpers.
 - The current applicability logic is prose in `.chezmoiignore.tmpl`; WSL detection is duplicated in two Lua templates.
 
+**Baseline metrics** (for the acceptance target of a net reduction): 183 files / ~19.4k lines total; 123 config and code files / 17,324 lines. The retired tiler stack alone is 3,465 lines, and the change targets at least 3,800 fewer config/code lines.
+
+## Interview Decisions
+
+These answers fixed the scope before the specs were written.
+
+| Topic | Decision | Implication |
+|---|---|---|
+| Platform priority | All four first-class | Docs, bootstrap, and CI for each |
+| Definition of done | Fewer files and lines | Deletion beats feature parity |
+| Structural change | Full rearchitecture | Logical redesign allowed; paths may move |
+| Layout model | Stay chezmoi-native | `dot_*` at root; platform map in templates |
+| macOS status | Occasional use | Kept working, not optimized first |
+| Terminals | Keep all; Windows Terminal primary on Windows, Kitty on macOS | One shared theme source |
+| Multiplexer | One shared tmux config | psmux renders the same template |
+| VS Code settings | Template per OS | No shared file with Linux-only paths |
+| WSL modeling | First-class fourth platform | Platform value, helper, and docs |
+| Entry point | Thin installers + `just` | Installers only bootstrap chezmoi/just |
+| Windows Terminal | Managed `settings.json` template | Pinned GUIDs; one-shot patch removed |
+| Terminal theming | One shared theme source | Token template consumed by every emulator |
+| `pkgs/` layout | Split by platform | `pkgs/unix/` and `pkgs/windows/` |
+| Verification | CI template render check | Matrix including WSL |
+| Personal paths | Hard rule + CI check | Fail on user home paths |
+| Migration | No broken window | Every phase still applies |
+| CMD support | Clink-managed | Supported but secondary |
+| Documentation | README + `docs/` per platform | Matrix plus four guides |
+
 ## Goals / Non-Goals
 
 **Goals**

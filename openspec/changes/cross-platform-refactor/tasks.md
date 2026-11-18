@@ -68,7 +68,7 @@
 
 - [ ] 9.1 Run the full CI matrix on a branch and verify all four jobs pass
 - [ ] 9.2 Apply on Windows and WSL and verify `chezmoi diff` is clean after apply
-- [ ] 9.3 Confirm the config/code line count dropped by at least 3,800 lines against the recorded baseline and no emulator or unsupported tool was removed
+- [ ] 9.3 Confirm the config/code line count dropped by at least 3,800 lines from the 17,324-line baseline and no emulator or unsupported tool was removed
 - [ ] 9.4 Verify `just doctor` passes on a clean checkout and fails on the planted-path case
 
 ## Workflow follow-up
