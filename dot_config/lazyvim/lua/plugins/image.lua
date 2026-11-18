@@ -1,3 +1,9 @@
+-- image.nvim does not support native Windows (terminal size queries fail).
+-- Keep it enabled on Linux/macOS, including WSL2.
+if vim.fn.has("win32") == 1 then
+  return {}
+end
+
 return {
   "3rd/image.nvim",
   build = false, -- Disables luarocks build since ImageMagick CLI handles Sixel
