@@ -167,6 +167,9 @@ $env:Path = "$env:LOCALAPPDATA/$env:NVIM_APPNAME-data/mason/bin;$env:Path"
 $env:Path = "$env:USERPROFILE/.cargo/bin;$env:Path"
 
 {{ if eq .chezmoi.os "windows" }}
+# Komorebi config directory (archived; not launched by default)
+$env:KOMOREBI_CONFIG_HOME = "$env:XDG_CONFIG_HOME/komorebi"
+
 # Hooks and Activation
 # mise Package Manager
 if (Get-Command mise -ErrorAction SilentlyContinue) {
