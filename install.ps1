@@ -69,6 +69,7 @@ Install-WingetPackage git         Microsoft.Git
 Install-WingetPackage chezmoi     twpayne.chezmoi
 Install-WingetPackage just        Casey.Just
 Install-WingetPackage pwsh        Microsoft.PowerShell
+Install-WingetPackage wt          Microsoft.WindowsTerminal
 
 # Shell and terminal tooling
 Install-WingetPackage delta       dandavison.delta

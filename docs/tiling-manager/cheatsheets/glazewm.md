@@ -94,8 +94,8 @@ Enter with `Alt+R`. Exit with `Esc` or `Enter`.
 
 | Binding | Action |
 | :--- | :--- |
-| `Alt+Enter` | Open Alacritty |
-| `Alt+Ctrl+Enter` | Open Alacritty with psmux |
+| `Alt+Enter` | Open Windows Terminal |
+| `Alt+Ctrl+Enter` | Open Windows Terminal with psmux |
 | `Alt+Shift+B` / `Alt+Shift+Enter` | Open Chrome |
 | `Alt+Shift+F` | Open Explorer |
 | `Alt+Shift+N` | Open VS Code |

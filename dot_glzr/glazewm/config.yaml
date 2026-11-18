@@ -175,7 +175,8 @@ keybindings:
     bindings: ["alt+shift+e"]
 
   # Launch common applications and terminals.
-  - commands: ["shell-exec alacritty"]
+  # Open Windows Terminal with the default PowerShell profile.
+  - commands: ["shell-exec wt"]
     bindings: ["alt+enter"]
   - commands: ["shell-exec chrome"]
     bindings: ["alt+shift+b", "alt+shift+return"]
@@ -185,7 +186,8 @@ keybindings:
     bindings: ["alt+shift+n"]
   - commands: ["shell-exec calc"]
     bindings: ["alt+shift+q"]
-  - commands: ["shell-exec alacritty -e psmux"]
+  # Open psmux in a new Windows Terminal tab.
+  - commands: ["shell-exec wt pwsh -NoExit -Command psmux"]
     bindings: ["alt+ctrl+return"]
 
   # Switch directly to workspace 1-9 with Alt+1..9 and workspace 10 with Alt+0.
