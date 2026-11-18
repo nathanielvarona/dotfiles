@@ -38,7 +38,9 @@ bars:
       left:
         - home
         - quick_launch
-        - komorebi_workspaces
+        # - komorebi_workspaces
+        - glazewm_tiling_direction
+        - glazewm_workspaces
         - active_window
       center:
         - clock
@@ -277,3 +279,25 @@ widgets:
         direction: down
         offset_top: 6
         offset_left: 0
+
+  glazewm_workspaces:
+    type: "glazewm.workspaces.GlazewmWorkspacesWidget"
+    options:
+      offline_label: "GlazeWM Offline"
+      hide_if_offline: false
+      monitor_exclusive: true
+      enable_scroll_switching: true
+      app_icons:
+        enabled_populated: false
+        enabled_active: false
+        size: 16
+        max_icons: 0
+        hide_label: false
+        hide_duplicates: false
+        hide_floating: false
+
+  glazewm_tiling_direction:
+    type: "glazewm.tiling_direction.GlazewmTilingDirectionWidget"
+    options:
+      horizontal_label: "\udb81\udce1"
+      vertical_label: "\udb81\udce2"

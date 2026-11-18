@@ -2,11 +2,13 @@ general:
   # Commands to run when the WM has started. This is useful for running a
   # script or launching another application.
   # Example: The below command launches Zebar.
-  startup_commands: ["shell-exec zebar"]
+  # startup_commands: ["shell-exec zebar"]
+  startup_commands: []
 
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills Zebar.
-  shutdown_commands: ["shell-exec taskkill /IM zebar.exe /F"]
+  # shutdown_commands: ["shell-exec taskkill /IM zebar.exe /F"]
+  shutdown_commands: []
 
   # Commands to run after the WM config is reloaded.
   config_reload_commands: []
@@ -49,7 +51,7 @@ gaps:
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: "40px"
+    top: "5px"
     right: "4px"
     bottom: "5px"
     left: "5px"
@@ -115,7 +117,7 @@ window_behavior:
     fullscreen:
       # Maximize the window if possible. If the window doesn't have a
       # maximize button, then it'll be fullscreen'ed normally instead.
-      maximized: false
+      maximized: true
 
       # Whether to show fullscreen windows as always on top.
       shown_on_top: false
@@ -259,7 +261,7 @@ keybindings:
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
   # Terminal and Git Bash respectively.
-  - commands: ["shell-exec cmd"]
+  - commands: ["shell-exec wt"]
     bindings: ["alt+enter"]
 
   # Focus the next/previous active workspace defined in `workspaces` config.
