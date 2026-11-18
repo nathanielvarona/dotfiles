@@ -538,6 +538,50 @@
   color: var(--yasb-accent-fg);
   background-color: var(--yasb-accent);
 }
+/* Libre Hardware Monitor */
+.libre-monitor-widget:hover {
+  background-color: var(--yasb-white-alpha-08);
+}
+.libre-monitor-widget .widget-container .label {
+  color: var(--yasb-fg);
+}
+.libre-monitor-widget .widget-container .label.alt {
+  color: var(--yasb-fg-muted);
+}
+.libre-menu {
+  background-color: var(--yasb-popup-bg);
+}
+.libre-menu .header {
+  color: var(--yasb-fg);
+  font-family: var(--system-font);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 20px 0 10px 0;
+  margin: 0 40px;
+}
+.libre-menu .sensor-item {
+  background-color: var(--yasb-white-alpha-03);
+  padding: 0px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--yasb-white-alpha-05);
+}
+.libre-menu .sensor-item:hover {
+  background-color: var(--yasb-white-alpha-08);
+}
+.libre-menu .sensor-name {
+  color: var(--yasb-fg-muted);
+  font-family: var(--system-font);
+  font-size: 12px;
+  font-weight: 600;
+}
+.libre-menu .sensor-value {
+  color: var(--yasb-fg);
+  font-family: var(--system-font);
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 60px;
+}
+
 /* CPU */
 .cpu-widget:hover {
   background-color: var(--yasb-white-alpha-08);

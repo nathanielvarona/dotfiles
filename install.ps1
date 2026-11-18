@@ -91,6 +91,7 @@ Install-WingetPackage psmux       marlocarlo.psmux
 
 # Package managers and extras
 Install-WingetPackage choco       Chocolatey.Chocolatey
+Install-WingetPackage " "         LibreHardwareMonitor.LibreHardwareMonitor
 Install-WingetPackage " "         Microsoft.VisualStudio.BuildTools
 Install-WingetPackage " "         Google.Chrome
 

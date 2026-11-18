@@ -47,6 +47,7 @@ bars:
         - clock
       right:
         - systray
+        - libre_cpu
         - cpu
         - memory
         - volume
@@ -180,6 +181,51 @@ widgets:
       label_zero_index: false
       hide_empty_workspaces: false
       hide_if_offline: true
+  libre_cpu:
+    type: "yasb.libre_monitor.LibreHardwareMonitorWidget"
+    options:
+      label: "<span>\udb82\udcae </span> {info[value]}{info[unit]}"
+      label_alt: "<span>\uf437 </span>{info[histogram]} {info[value]} ({info[min]}/{info[max]}) {info[unit]}"
+      class_name: "libre-monitor-widget"
+      sensor_id: "/amdcpu/0/temperature/2"
+      update_interval: 1000
+      precision: 1
+      history_size: 60
+      histogram_num_columns: 10
+      histogram_fixed_min: 0.0
+      histogram_fixed_max: 100.0
+      sensor_id_error_label: "CPU temp unavailable"
+      connection_error_label: "LHM offline"
+      callbacks:
+        on_left: toggle_label
+        on_middle: do_nothing
+        on_right: toggle_menu
+      libre_menu:
+        blur: true
+        round_corners: true
+        round_corners_type: normal
+        border_color: System
+        alignment: right
+        direction: down
+        header_label: "Hardware Monitor"
+        precision: 1
+        columns: 1
+        sensors:
+          - id: "/amdcpu/0/temperature/2"
+            name: "CPU Temp"
+          - id: "/amdcpu/0/load/0"
+            name: "CPU Load"
+          - id: "/amdcpu/0/power/0"
+            name: "CPU Package Power"
+          - id: "/gpu-nvidia/0/temperature/0"
+            name: "NVIDIA Temp"
+          - id: "/gpu-nvidia/0/load/0"
+            name: "NVIDIA Load"
+          - id: "/gpu-nvidia/0/power/0"
+            name: "NVIDIA Power"
+          - id: "/nvme/0/temperature/0"
+            name: "NVMe Temp"
+
   cpu:
     type: yasb.cpu.CpuWidget
     options:
