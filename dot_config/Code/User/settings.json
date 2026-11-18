@@ -25,6 +25,15 @@
   "terminal.integrated.cursorBlinking": false,
   "redhat.telemetry.enabled": false,
   "terminal.integrated.macOptionIsMeta": true,
+  "terminal.integrated.profiles.linux": {
+    "tmux-wsl": {
+      "path": "tmux",
+      "args": ["new-session", "-A", "-s", "vscode-${workspaceFolderBasename}"]
+    }
+  },
+  "terminal.integrated.defaultProfile.linux": "tmux-wsl",
+
+  "terminal.integrated.suggest.enabled": false,
   "go.toolsManagement.autoUpdate": true,
   "projectManager.git.baseFolders": ["~/Projects"],
   "projectManager.sortList": "Recent",
