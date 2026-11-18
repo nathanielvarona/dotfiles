@@ -1,3 +1,6 @@
+# GlazeWM configuration
+# Active Windows tiling manager. Keep in sync with docs/tiling-manager/.
+# Alt is the main modifier because Windows reserves many Super shortcuts.
 general:
   startup_commands: []
   shutdown_commands: []
@@ -10,6 +13,7 @@ general:
   hide_method: "cloak"
   show_all_in_taskbar: false
 
+# Inner and outer gaps between windows and screen edges.
 gaps:
   scale_with_dpi: true
   inner_gap: "5px"
@@ -19,6 +23,7 @@ gaps:
     bottom: "10px"
     left: "10px"
 
+# Borders and visual effects for focused and unfocused windows.
 window_effects:
   focused_window:
     border:
@@ -45,6 +50,7 @@ window_effects:
       enabled: false
       opacity: "0%"
 
+# New windows tile by default; floating windows open centered.
 window_behavior:
   initial_state: "tiling"
   state_defaults:
@@ -55,6 +61,7 @@ window_behavior:
       maximized: false
       shown_on_top: false
 
+# Ten named workspaces, switched with Alt+1 through Alt+0.
 workspaces:
   - name: "1"
   - name: "2"
@@ -67,6 +74,7 @@ workspaces:
   - name: "9"
   - name: "10"
 
+# Windows GlazeWM should ignore, such as status bars, overlays, and dialogs.
 window_rules:
   - commands: ["ignore"]
     match:
@@ -90,6 +98,7 @@ window_rules:
       - window_process: { equals: "yasb" }
       - window_process: { equals: "YASB" }
 
+# Resize mode: enter with Alt+R, adjust with H/J/K/L, exit with Esc or Enter.
 binding_modes:
   - name: "resize"
     keybindings:
@@ -104,6 +113,7 @@ binding_modes:
       - commands: ["wm-disable-binding-mode --name resize"]
         bindings: ["escape", "enter"]
 
+# Focus windows with Alt + H/J/K/L or the arrow keys.
 keybindings:
   - commands: ["focus --direction left"]
     bindings: ["alt+h", "alt+left"]
@@ -114,6 +124,7 @@ keybindings:
   - commands: ["focus --direction down"]
     bindings: ["alt+j", "alt+down"]
 
+  # Move the focused window with Alt+Shift + H/J/K/L or the arrow keys.
   - commands: ["move --direction left"]
     bindings: ["alt+shift+h", "alt+shift+left"]
   - commands: ["move --direction right"]
@@ -123,6 +134,7 @@ keybindings:
   - commands: ["move --direction down"]
     bindings: ["alt+shift+j", "alt+shift+down"]
 
+  # Resize directly with Alt + U/P/O/I (or the minus/plus keys with Shift).
   - commands: ["resize --width -2%"]
     bindings: ["alt+u", "alt+oem_minus"]
   - commands: ["resize --width +2%"]
@@ -132,9 +144,11 @@ keybindings:
   - commands: ["resize --height -2%"]
     bindings: ["alt+i", "alt+shift+oem_plus"]
 
+  # Enter resize mode for repeated H/J/K/L adjustments.
   - commands: ["wm-enable-binding-mode --name resize"]
     bindings: ["alt+r"]
 
+  # Window state: floating, tiling, fullscreen, minimized, close, and direction.
   - commands: ["toggle-floating --centered"]
     bindings: ["alt+shift+space", "alt+t"]
   - commands: ["toggle-tiling"]
@@ -150,6 +164,7 @@ keybindings:
   - commands: ["toggle-tiling-direction"]
     bindings: ["alt+v", "alt+j"]
 
+  # Session control: pause, reload, redraw, and exit GlazeWM.
   - commands: ["wm-toggle-pause"]
     bindings: ["alt+shift+p"]
   - commands: ["wm-reload-config"]
@@ -159,6 +174,7 @@ keybindings:
   - commands: ["wm-exit"]
     bindings: ["alt+shift+e"]
 
+  # Launch common applications and terminals.
   - commands: ["shell-exec alacritty"]
     bindings: ["alt+enter"]
   - commands: ["shell-exec chrome"]
@@ -172,6 +188,7 @@ keybindings:
   - commands: ["shell-exec alacritty -e psmux"]
     bindings: ["alt+ctrl+return"]
 
+  # Switch directly to workspace 1-9 with Alt+1..9 and workspace 10 with Alt+0.
   - commands: ["focus --workspace 1"]
     bindings: ["alt+1"]
   - commands: ["focus --workspace 2"]
@@ -193,6 +210,7 @@ keybindings:
   - commands: ["focus --workspace 10"]
     bindings: ["alt+0"]
 
+  # Move the focused window to a workspace and follow it there.
   - commands: ["move --workspace 1", "focus --workspace 1"]
     bindings: ["alt+shift+1"]
   - commands: ["move --workspace 2", "focus --workspace 2"]
@@ -214,6 +232,7 @@ keybindings:
   - commands: ["move --workspace 10", "focus --workspace 10"]
     bindings: ["alt+shift+0"]
 
+  # Jump between active and recent workspaces.
   - commands: ["focus --next-active-workspace"]
     bindings: ["alt+s"]
   - commands: ["focus --prev-active-workspace"]
@@ -221,6 +240,7 @@ keybindings:
   - commands: ["focus --recent-workspace"]
     bindings: ["alt+d"]
 
+  # Move an entire workspace between monitors.
   - commands: ["move-workspace --direction left"]
     bindings: ["alt+shift+a"]
   - commands: ["move-workspace --direction right"]
@@ -230,6 +250,7 @@ keybindings:
   - commands: ["move-workspace --direction down"]
     bindings: ["alt+shift+s"]
 
+  # Windows settings, lock screen, and clipboard shortcuts.
   - commands: ["shell-exec rundll32.exe user32.dll,LockWorkStation"]
     bindings: ["alt+ctrl+l"]
   - commands: ["shell-exec explorer.exe ms-settings:sound"]
@@ -245,5 +266,6 @@ keybindings:
   - commands: ["shell-exec explorer.exe ms-settings:clipboard"]
     bindings: ["alt+ctrl+v"]
 
+  # Capture a screenshot directly to the clipboard.
   - commands: ["shell-exec snippingtool /clip"]
     bindings: ["print_screen"]
