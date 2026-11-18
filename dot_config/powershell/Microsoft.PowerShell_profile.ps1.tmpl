@@ -177,7 +177,26 @@ if (Get-Command mise -ErrorAction SilentlyContinue) {
 if (Get-Command vfox -ErrorAction SilentlyContinue) {
   (&vfox activate pwsh) | Out-String | Invoke-Expression
 }
+
 {{ end }}
+
+# ------------------------------------------------------------
+# Zoxide (Directory Jumping)
+# ------------------------------------------------------------
+
+# Zoxide wraps the current prompt, but Oh My Posh redefines the prompt on
+# every profile load and zoxide's own "hooked" flag then blocks re-wrapping.
+# Clear the flag before initializing, and never wrap an already wrapped prompt.
+if ((Get-Command zoxide -ErrorAction SilentlyContinue) -and
+  (Get-Command prompt -ErrorAction SilentlyContinue).Definition -notlike '*__zoxide_hook*')
+{
+  Remove-Variable __zoxide_hooked -Scope Global -ErrorAction SilentlyContinue
+  Invoke-Expression (& { zoxide init powershell --cmd cd | Out-String })
+
+  # Keep `z`/`zi` alongside zoxide's `cd`/`cdi` aliases.
+  Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
+  Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
+}
 
 # ------------------------------------------------------------
 # Utilities
