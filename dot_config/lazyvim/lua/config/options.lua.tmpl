@@ -66,55 +66,42 @@ vim.filetype.add({
 -- vim.g.snacks_animate = false
 
 -- =========================================================
--- PowerShell (pwsh) as Neovim Shell on Windows
+-- PowerShell as Neovim Shell on Windows
 -- =========================================================
--- Configure Neovim to use PowerShell Core (`pwsh.exe`) instead of cmd.exe.
--- This ensures better scripting capabilities, UTF-8 handling, and consistency
--- with modern Windows terminal environments.
+-- Prefer PowerShell 7 (`pwsh.exe`) and fall back to the Windows PowerShell 5.1
+-- that ships with Windows when 7 is not installed. Using PowerShell instead of
+-- cmd.exe gives better scripting, UTF-8 handling, and consistency with modern
+-- Windows terminal environments.
 
 if vim.fn.has("win32") == 1 then
-  -- -------------------------------------------------------
-  -- Shell executable
-  -- -------------------------------------------------------
-  -- Use PowerShell Core. Do NOT include arguments here;
-  -- Neovim expects only the binary path for `shell`.
-  vim.opt.shell = "pwsh.exe"
+  -- Do not use `LazyVim.terminal.setup()` here: it re-checks pwsh with
+  -- `vim.fn.executable()`, which cannot see Windows App Execution Aliases (the
+  -- packaged pwsh that winget installs), so it silently falls back to 5.1.
+  -- `where.exe` sees the alias, and the list form bypasses `&shell`, so this
+  -- detection also works while options are loading.
+  local where = vim.fn.system({ "where.exe", "pwsh.exe" })
+  local has_pwsh = vim.v.shell_error == 0 and where:lower():find("pwsh.exe", 1, true) ~= nil
 
-  -- -------------------------------------------------------
-  -- Command execution flags
-  -- -------------------------------------------------------
-  -- -NoLogo        → Skip startup banner for faster execution
-  -- -NoProfile     → Avoid loading user profile (faster, deterministic behavior)
-  -- -ExecutionPolicy RemoteSigned
-  --                 → Allows running local scripts without prompts
-  -- -Command       → Execute the following string as a PowerShell command
-  vim.opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+  vim.o.shellquote = ""
+  vim.o.shellxquote = ""
 
-  -- -------------------------------------------------------
-  -- Output redirection (used by :! and system())
-  -- -------------------------------------------------------
-  -- 2>&1           → Merge stderr into stdout
-  -- Out-File       → Write output to a file (Neovim expects a file target)
-  -- -Encoding utf8 → Ensure proper encoding for Neovim buffers
-  -- %s             → Placeholder for temporary file path
-  -- exit $LASTEXITCODE
-  --               → Propagate the actual exit code back to Neovim
-  vim.opt.shellredir = "2>&1 | Out-File -Encoding utf8 %s; exit $LASTEXITCODE"
+  -- Neovim cannot spawn the pwsh App Execution Alias directly (E475), so use
+  -- the managed cmd shim, which jobstart, :terminal, and :! can all execute.
+  local shim = vim.fn.expand("~/.local/bin/pwsh-term.cmd")
 
-  -- -------------------------------------------------------
-  -- Pipeline output handling
-  -- -------------------------------------------------------
-  -- Tee-Object     → Writes output to file AND passes it through
-  -- Useful for commands that require both display and capture
-  vim.opt.shellpipe = "2>&1 | Tee-Object %s; exit $LASTEXITCODE"
-
-  -- -------------------------------------------------------
-  -- Quoting behavior
-  -- -------------------------------------------------------
-  -- Disable default quoting to prevent conflicts with PowerShell's
-  -- own parsing rules (especially for complex commands and paths).
-  vim.opt.shellquote = ""
-  vim.opt.shellxquote = ""
+  if has_pwsh and vim.fn.executable(shim) == 1 then
+    vim.o.shell = shim
+    vim.o.shellcmdflag = "-NoProfile -NoLogo -NonInteractive -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';$PSStyle.OutputRendering='plaintext';Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
+    vim.o.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+    vim.o.shellpipe = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
+  else
+    -- Windows PowerShell 5.1 rejects the PowerShell 7-only flags
+    -- (`$PSStyle`, `Remove-Alias`), so keep the 5.1-safe set.
+    vim.o.shell = "powershell"
+    vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+    vim.o.shellredir = "2>&1 | Out-File -Encoding utf8 %s; exit $LASTEXITCODE"
+    vim.o.shellpipe = "2>&1 | Tee-Object %s; exit $LASTEXITCODE"
+  end
 end
 
 -- Integrate Sysmtem Clipboard
