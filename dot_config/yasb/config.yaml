@@ -49,6 +49,7 @@ bars:
         - systray
         - libre_cpu
         - cpu
+        - gpu
         - memory
         - volume
         - notifications
@@ -243,6 +244,45 @@ widgets:
         on_left: toggle_menu
         on_middle: do_nothing
         on_right: toggle_label
+  gpu:
+    type: "yasb.gpu.GpuWidget"
+    options:
+      label: "<span>\uf4bc</span> {info[utilization]}%"
+      label_alt: "<span>\uf4bc</span> {info[temp]}°C | {info[mem_used]} / {info[mem_total]}"
+      gpu_index: 0
+      update_interval: 2000
+      hide_decimal: true
+      gpu_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+      histogram_num_columns: 8
+      histogram_icons:
+        - "\u2581"
+        - "\u2581"
+        - "\u2582"
+        - "\u2583"
+        - "\u2584"
+        - "\u2585"
+        - "\u2586"
+        - "\u2587"
+        - "\u2588"
+      callbacks:
+        on_left: toggle_label
+        on_middle: do_nothing
+        on_right: toggle_menu
+      menu:
+        enabled: true
+        blur: true
+        round_corners: true
+        round_corners_type: normal
+        border_color: System
+        alignment: right
+        direction: down
+        show_graph: true
+        show_graph_grid: true
+        graph_history_size: 60
+
   memory:
     type: yasb.memory.MemoryWidget
     options:

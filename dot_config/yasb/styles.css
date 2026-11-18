@@ -582,6 +582,97 @@
   min-width: 60px;
 }
 
+/* GPU */
+.gpu-widget:hover {
+  background-color: var(--yasb-white-alpha-08);
+}
+.gpu-widget .icon {
+  padding-right: 4px;
+}
+.gpu-widget .label.status-low {
+  color: var(--yasb-fg);
+}
+.gpu-widget .label.status-medium {
+  color: #e0af68;
+}
+.gpu-widget .label.status-high,
+.gpu-widget .label.status-critical {
+  color: #f7768e;
+}
+.gpu-popup {
+  background-color: var(--yasb-popup-bg);
+  min-width: 400px;
+}
+.gpu-popup .header {
+  background: transparent;
+  padding: 12px 16px;
+}
+.gpu-popup .header .text {
+  font-size: 16px;
+  font-family: var(--system-font);
+}
+.gpu-popup .header .pin-btn {
+  font-size: 14px;
+  background: transparent;
+  font-family: "Segoe Fluent Icons";
+  border: none;
+  padding: 6px;
+  color: var(--yasb-fg-muted);
+}
+.gpu-popup .header .pin-btn:hover,
+.gpu-popup .header .pin-btn.pinned {
+  color: var(--yasb-fg);
+}
+.gpu-popup .graph-container {
+  background: transparent;
+  min-height: 64px;
+}
+.gpu-popup .gpu-graph {
+  color: var(--yasb-accent);
+}
+.gpu-popup .gpu-graph-grid,
+.gpu-popup .gpu-temp-graph-grid {
+  color: var(--yasb-white-alpha-05);
+}
+.gpu-popup .gpu-temp-graph {
+  color: #ff9e64;
+}
+.gpu-popup .graph-title {
+  font-size: 12px;
+  color: var(--yasb-fg-muted);
+  font-family: var(--system-font);
+  padding: 0px 0px 4px 14px;
+  margin-top: 12px;
+}
+.gpu-popup .graph-title.first {
+  margin-top: 0px;
+}
+.gpu-popup .stats {
+  background: transparent;
+  padding: 16px;
+}
+.gpu-popup .stats .stat-item {
+  background-color: var(--yasb-white-alpha-03);
+  border: 1px solid var(--yasb-white-alpha-04);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 8px;
+}
+.gpu-popup .stats .stat-label {
+  font-size: 13px;
+  color: var(--yasb-fg-muted);
+  font-family: var(--system-font);
+  font-weight: 400;
+  padding: 6px 4px 2px 4px;
+}
+.gpu-popup .stats .stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--yasb-fg);
+  font-family: var(--system-font);
+  padding: 0 4px 12px 4px;
+}
+
 /* CPU */
 .cpu-widget:hover {
   background-color: var(--yasb-white-alpha-08);
