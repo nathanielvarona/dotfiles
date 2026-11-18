@@ -1,4 +1,4 @@
-# NeoVim Specific Resource
+# Neovim
 
 ## Troubleshooting
 
@@ -15,11 +15,11 @@ Default Neovim Directory
 rm -Rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 ```
 
-Isolated Neovim Applications using `$NVIM_APPNAME` Enviornment Variables
+Isolated Neovim Applications Using `$NVIM_APPNAME`
 
 See <https://neovim.io/doc/user/starting.html#%24NVIM_APPNAME>
 
-For macOS and Linux/WSL
+For macOS and Linux/WSL:
 
 ```bash
 export NVIM_APPNAME=lazyvim
