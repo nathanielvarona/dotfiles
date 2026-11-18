@@ -13,14 +13,18 @@ set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 # Global Variables
 # ================
 
+# Directory containing all package manifests
 PACKAGES := "./pkgs"
+# Homebrew dump command template
 BREW_BUNDLE_DUMP := "brew bundle dump --force --file"
+# Homebrew restore command template
 BREW_BUNDLE_RESTORE := "brew bundle --file"
 
 # ================
 # Default
 # ================
 
+# List available recipes when no target is provided
 default:
     @just --list
 
@@ -28,6 +32,7 @@ default:
 # Init
 # ================
 
+# Ensure the package manifest directory exists
 init:
     mkdir -p {{PACKAGES}}
 
@@ -35,6 +40,7 @@ init:
 # Homebrew
 # ================
 
+# Dump Brew package state
 dump-brew: init
     {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/formulae.Brewfile --formulae
     {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/cask.Brewfile --cask
@@ -42,6 +48,7 @@ dump-brew: init
     {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/mas.Brewfile --mas
     {{BREW_BUNDLE_DUMP}} {{PACKAGES}}/vscode.Brewfile --vscode
 
+# Restore Brew package state
 restore-brew:
     @if [ -f {{PACKAGES}}/formulae.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/formulae.Brewfile; fi || true
     @if [ -f {{PACKAGES}}/cask.Brewfile ]; then {{BREW_BUNDLE_RESTORE}} {{PACKAGES}}/cask.Brewfile; fi || true
@@ -53,9 +60,11 @@ restore-brew:
 # ASDF
 # ================
 
+# Dump Asdf package state
 dump-asdf: init
     asdf plugin list --urls | awk 'NF{$1=$1;print}' | column -t > {{PACKAGES}}/asdf-plugins || true
 
+# Restore Asdf package state
 restore-asdf:
     @if [ -f {{PACKAGES}}/asdf-plugins ]; then \
         while read -r plugin url; do \
@@ -68,9 +77,11 @@ restore-asdf:
 # Pyenv
 # ================
 
+# Dump Pyenv package state
 dump-pyenv: init
     pyenv versions --bare > {{PACKAGES}}/pyenv-versions || true
 
+# Restore Pyenv package state
 restore-pyenv:
     @if [ -f {{PACKAGES}}/pyenv-versions ]; then \
         cat {{PACKAGES}}/pyenv-versions | xargs -I{} pyenv install {} || true ; \
@@ -80,9 +91,11 @@ restore-pyenv:
 # Pipx
 # ================
 
+# Dump Pipx package state
 dump-pipx: init
     pipx list --short | column -t > {{PACKAGES}}/pipx-apps || true
 
+# Restore Pipx package state
 restore-pipx:
     @if [ -f {{PACKAGES}}/pipx-apps ]; then \
         awk '{print $1}' {{PACKAGES}}/pipx-apps | xargs -I{} pipx install {} ; \
@@ -92,9 +105,11 @@ restore-pipx:
 # Krew
 # ================
 
+# Dump Krew package state
 dump-krew: init
     kubectl krew list > {{PACKAGES}}/krew-plugins || true
 
+# Restore Krew package state
 restore-krew:
     @if [ -f {{PACKAGES}}/krew-plugins ]; then \
         cat {{PACKAGES}}/krew-plugins | xargs -I{} kubectl krew install {} || true ; \
@@ -104,9 +119,11 @@ restore-krew:
 # Helm
 # ================
 
+# Dump Helm package state
 dump-helm: init
     helm repo list | sed '1d' | column -t > {{PACKAGES}}/helm-repos || true
 
+# Restore Helm package state
 restore-helm:
     @if [ -f {{PACKAGES}}/helm-repos ]; then \
         while read -r name url; do \
@@ -119,9 +136,11 @@ restore-helm:
 # Cargo
 # ================
 
+# Dump Cargo package state
 dump-cargo: init
     cargo install --list | awk '/^[a-zA-Z0-9_-]+ v/ {print $1}' > {{PACKAGES}}/rust-cargo-packages || true
 
+# Restore Cargo package state
 restore-cargo:
     @if [ -f {{PACKAGES}}/rust-cargo-packages ]; then \
         cat {{PACKAGES}}/rust-cargo-packages | xargs -I{} cargo install {} || true ; \
@@ -131,9 +150,11 @@ restore-cargo:
 # GitHub CLI
 # ================
 
+# Dump Gh Ext package state
 dump-gh-ext: init
     gh extension list | grep -Eo '[[:alnum:]_-]+/[[:alnum:]_.-]+' > {{PACKAGES}}/github-cli-extensions || true
 
+# Restore Gh Ext package state
 restore-gh-ext:
     @if [ -f {{PACKAGES}}/github-cli-extensions ]; then \
         cat {{PACKAGES}}/github-cli-extensions | xargs -I{} gh extension install {} || true ; \
@@ -143,9 +164,11 @@ restore-gh-ext:
 # Whalebrew
 # ================
 
+# Dump Whalebrew package state
 dump-whalebrew: init
     whalebrew list --no-headers > {{PACKAGES}}/whalebrew || true
 
+# Restore Whalebrew package state
 restore-whalebrew:
     @if [ -f {{PACKAGES}}/whalebrew ]; then \
         cat {{PACKAGES}}/whalebrew | xargs -L1 whalebrew install || true ; \
@@ -155,9 +178,11 @@ restore-whalebrew:
 # Ollama
 # ================
 
+# Dump Ollama package state
 dump-ollama: init
     ollama list | awk 'NR>1 {print $1}' > {{PACKAGES}}/ollama-models || true
 
+# Restore Ollama package state
 restore-ollama:
     @if [ -f {{PACKAGES}}/ollama-models ]; then \
         cat {{PACKAGES}}/ollama-models | xargs -I{} ollama pull {} || true ; \
@@ -167,9 +192,11 @@ restore-ollama:
 # Hugging Face
 # ================
 
+# Dump Hugging Face package state
 dump-hugging-face: init
     hf models ls --format json | jq -r ".[].id" > {{PACKAGES}}/hugging-face-models || true
 
+# Restore Hugging Face package state
 restore-hugging-face:
     @if [ -f {{PACKAGES}}/hugging-face-models ]; then \
         cat {{PACKAGES}}/hugging-face-models | xargs -I{} hf download {} || true ; \
@@ -179,6 +206,7 @@ restore-hugging-face:
 # Perl CPAN
 # ================
 
+# Dump Perl Modules package state
 dump-perl-modules: init
     #!/usr/bin/env bash
     set -euo pipefail
@@ -200,6 +228,7 @@ dump-perl-modules: init
         }
     ' > "$OUT" || true
 
+# Restore Perl Modules package state
 restore-perl-modules:
     #!/usr/bin/env bash
     set -euo pipefail
@@ -220,6 +249,7 @@ restore-perl-modules:
         echo "→ No cpanfile found at $CPANFILE (skipping)"
     fi
 
+# Dump Winget package state (Windows-only)
 [windows]
 dump-winget:
     #!pwsh.exe
@@ -252,6 +282,7 @@ dump-winget:
     Write-Host "Done."
     Write-Host ""
 
+# Restore Winget package state (Windows-only)
 [windows]
 restore-winget:
     #!pwsh.exe
@@ -285,6 +316,7 @@ restore-winget:
         }
     }
 
+# Dump Choco package state (Windows-only)
 [windows]
 dump-choco:
     #!pwsh.exe
@@ -306,6 +338,7 @@ dump-choco:
     Write-Host "Done."
     Write-Host ""
 
+# Restore Choco package state (Windows-only)
 [windows]
 restore-choco:
     #!pwsh.exe
@@ -329,6 +362,7 @@ restore-choco:
         }
     }
 
+# Dump Scoop package state (Windows-only)
 [windows]
 dump-scoop:
     #!pwsh.exe
@@ -351,6 +385,7 @@ dump-scoop:
         Write-Host "Done."
         Write-Host ""
 
+# Restore Scoop package state (Windows-only)
 [windows]
 restore-scoop:
     #!pwsh.exe
@@ -374,6 +409,7 @@ restore-scoop:
         scoop install "$bucket/$package"
     }
 
+# Dump Vscode Extension package state (Windows-only)
 [windows]
 dump-vscode-extension:
     #!pwsh.exe
@@ -402,6 +438,7 @@ dump-vscode-extension:
     Write-Host "Done."
     Write-Host ""
 
+# Restore Vscode Extension package state (Windows-only)
 [windows]
 restore-vscode-extension:
     #!pwsh.exe
@@ -454,6 +491,7 @@ restore-vscode-extension:
     Write-Host "Done."
     Write-Host ""
 
+# Restore Vscode Extension From Homebrew package state (Windows-only)
 [windows]
 restore-vscode-extension-from-homebrew:
     #!pwsh.exe
@@ -515,6 +553,10 @@ restore-vscode-extension-from-homebrew:
 # Aggregate
 # ================
 
+# Dump all supported package managers
+# Restore all supported package managers
+
+# Dump All package state
 dump-all: \
     dump-brew \
     dump-asdf \
@@ -529,6 +571,7 @@ dump-all: \
     dump-hugging-face \
     dump-perl-modules
 
+# Restore All package state
 restore-all: \
     restore-brew \
     restore-asdf \
