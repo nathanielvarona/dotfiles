@@ -1,0 +1,16 @@
+git:
+  diffRenderers:
+    - command: delta --paging=never --line-numbers
+os:
+  editPreset: "vscode"
+# promptToReturnFromSubprocess: false
+
+customCommands:
+  - key: "<c-i>"
+    context: "files"
+    description: "Image diff (HEAD vs working tree)"
+    # `~/.local/bin/image-diff` composes both revisions with ImageMagick and
+    # draws them with chafa, falling back to block characters when the terminal
+    # has no sixel/kitty support.
+    command: '$HOME/.local/bin/image-diff "{{.SelectedFile.Name}}"'
+    output: terminal

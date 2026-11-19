@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+# Render a side-by-side comparison of an image in HEAD and in the working tree.
+# Built for lazygit's custom command `output: terminal`:
+#
+#   image-diff <path relative to the repo root>
+#
+# The image is composed with ImageMagick's `montage` and drawn with `chafa`, so
+# a sixel/kitty capable terminal shows real pixels and anything else falls back
+# to block characters.
+set -uo pipefail
+
+# `auto` lets chafa pick the best format the terminal actually supports
+# (sixel, kitty, iterm or block characters). Force one with
+# IMAGE_DIFF_FORMAT=sixels|kitty|iterm|symbols.
+format=${IMAGE_DIFF_FORMAT:-auto}
+
+die() {
+  printf '%s\n' "$*" >&2
+  exit 1
+}
+
+command -v git >/dev/null 2>&1 || die "image-diff: git not found"
+command -v chafa >/dev/null 2>&1 || die "image-diff: chafa not found"
+
+case $format in
+  sixel) format=sixels ;;
+esac
+
+path=${1:-}
+[ -n "$path" ] || die "usage: image-diff <image path>"
+
+root=$(git rev-parse --show-toplevel 2>/dev/null) || die "image-diff: not inside a git repository"
+case $path in
+  /*) abs=$path ;;
+  *) abs=$root/$path ;;
+esac
+
+ext=${abs##*.}
+case $(printf '%s' "$ext" | tr '[:upper:]' '[:lower:]') in
+  png | jpg | jpeg | gif | webp | bmp | ico | tif | tiff | avif | svg) ;;
+  *) die "image-diff: not an image: $path" ;;
+esac
+
+tmp=$(mktemp -d "${TMPDIR:-/tmp}/image-diff.XXXXXX") || die "image-diff: cannot create temp dir"
+trap 'rm -rf "$tmp"' EXIT INT TERM
+
+old=$tmp/head.$ext
+new=$tmp/work.$ext
+have_old=0
+have_new=0
+
+if git cat-file -e "HEAD:$path" 2>/dev/null; then
+  git show "HEAD:$path" >"$old" || die "image-diff: cannot read HEAD:$path"
+  have_old=1
+fi
+
+if [ -f "$abs" ]; then
+  cp "$abs" "$new" || die "image-diff: cannot read $abs"
+  have_new=1
+fi
+
+if [ "$have_old" -eq 1 ] && [ "$have_new" -eq 1 ] && cmp -s "$old" "$new"; then
+  printf 'No change vs HEAD: %s\n' "$path"
+  exit 0
+fi
+
+[ "$have_old" -eq 1 ] || [ "$have_new" -eq 1 ] || die "image-diff: $path is neither in HEAD nor on disk"
+
+# Labels are printed above the image rather than drawn by montage: that keeps
+# the output readable in block mode and avoids depending on a font being
+# installed for ImageMagick.
+compose() {
+  command -v montage >/dev/null 2>&1 || return 1
+  montage -background '#1e1e1e' "$@" -tile 2x1 -geometry '900x900+12+12' 'png:-'
+}
+
+render() {
+  if [ "$format" = auto ]; then
+    chafa - 2>/dev/null || return 1
+  else
+    chafa --format "$format" - 2>/dev/null || chafa - 2>/dev/null || return 1
+  fi
+}
+
+# Keep the picture on screen when the caller owns the terminal, but never
+# block a piped run.
+wait_for_key() {
+  [ -t 0 ] || return 0
+  printf '\nPress Enter to return...'
+  read -r _ || true
+}
+
+if [ "$have_old" -eq 1 ] && [ "$have_new" -eq 1 ]; then
+  printf 'HEAD  |  Working tree        %s\n\n' "$path"
+  compose "$old" "$new" | render ||
+    die "image-diff: rendering failed (ImageMagick 'montage' or 'chafa' unusable)"
+  wait_for_key
+elif [ "$have_new" -eq 1 ]; then
+  printf 'Working tree only (new file)  %s\n\n' "$path"
+  compose "$new" | render ||
+    die "image-diff: rendering failed (ImageMagick 'montage' or 'chafa' unusable)"
+  wait_for_key
+else
+  printf 'HEAD only (deleted from working tree)  %s\n\n' "$path"
+  compose "$old" | render ||
+    die "image-diff: rendering failed (ImageMagick 'montage' or 'chafa' unusable)"
+  wait_for_key
+fi
