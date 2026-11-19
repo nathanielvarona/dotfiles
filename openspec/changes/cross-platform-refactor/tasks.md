@@ -73,7 +73,7 @@
 
 ## 10. LazyVim and Windows desktop improvements
 
-- [ ] 10.1 Remove disabled and dead plugin specs (`example.lua`, `forced-immersion.lua`, `camouflage.lua`, `neo-tree.lua`) and verify Neovim starts cleanly
+- [ ] 10.1 Remove disabled and dead plugin specs (`example.lua`, `forced-immersion.lua`, `camouflage.lua`, `modes.lua`, `opencode.lua`, `vai.lua`, `neo-tree.lua`) and resolve the `chezmoi.lua` disable against the enabled `util.chezmoi` extra, then verify Neovim starts cleanly
 - [x] 10.2 Guard `image.nvim` so it does not load on native Windows while remaining enabled on WSL2
 - [ ] 10.3 Consolidate the indentation stack into one implementation and verify indentation guides render once
 - [ ] 10.4 Remove stale commented-out configuration from `lspconfig.lua`, `options.lua.tmpl`, and `colorscheme.lua`
@@ -81,6 +81,15 @@
 - [ ] 10.6 Remove startup notification noise from `vscode.lua.tmpl`
 - [ ] 10.7 Remove empty `autocmds.lua` until custom autocmds are needed
 - [x] 10.8 Capture and verify the PowerToys DSC v3 snapshot, including the non-Windows ignore rule
+- [ ] 10.9 Give every custom plugin spec a load trigger (`event`, `cmd`, `ft`, or `keys`) so that `defaults.lazy = false` no longer loads the whole `lua/plugins` tree at startup, then record before/after totals from `nvim --headless --startuptime` and confirm no spec loads before its trigger fires
+- [ ] 10.10 Move the scooter keymaps out of the `folke/snacks.nvim` spec in `scooter.lua` into a `keys`-triggered spec and drop the placeholder `opts` table, then verify `Snacks.setup` runs once and the scooter terminal still opens from normal mode and from a visual selection
+- [ ] 10.11 Lazy-load `neominimap.lua` on `VeryLazy` and move its `wrap`, `linebreak`, and `sidescrolloff` options out of `init`, then verify a fresh buffer keeps the default `wrap` and `sidescrolloff` values while the `Neominimap` commands still work
+- [ ] 10.12 Change the `ensure_installed` override in `treesitter.lua` to extend the inherited list, then verify the parsers contributed by the enabled `lang.*` extras are still present in `:TSInstallInfo`
+- [ ] 10.13 Move the rainbow highlight registration in `code-indentions.lua` into the `indent-blankline` spec's `config` and drop its redundant snacks `indent` override, then verify startup produces no module-not-found message and guides render with the configured palette
+- [ ] 10.14 Audit `lazyvim.json.tmpl` against the languages actually edited, remove extras for languages that are no longer used, and delete the `lazyvim_ruby_*` globals that no `lang.ruby` extra consumes, then verify `:LazyExtras` lists the pruned set and every remaining server still attaches to its filetypes
+- [ ] 10.15 Point `install.colorscheme` in `lazy.lua` at the active colorscheme and move the `loaded_netrwPlugin` disable from `yazi.lua` into `performance.rtp.disabled_plugins`, then verify a cold install shows no wrong-theme flash and `:Ex` still defers to yazi
+- [ ] 10.16 Track `lazy-lock.json` by removing both ignore rules, then verify `chezmoi apply` deploys it and `:Lazy restore` reproduces the same plugin revisions on a clean data directory
+- [ ] 10.17 Add a `just` recipe and CI step running `stylua --check` against `dot_config/lazyvim/lua`, then verify it fails on a deliberately misformatted file and passes after `stylua` formats it
 
 ## Workflow follow-up
 

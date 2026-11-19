@@ -54,6 +54,22 @@ A local task SHALL perform the same rendering, privacy, and lint checks as CI an
 - **WHEN** the same commit is pushed
 - **THEN** CI applies no additional checks beyond environment-specific rendering differences
 
+### Requirement: LazyVim Lua sources are format-checked
+
+The LazyVim Lua sources SHALL be checked against the repository's StyLua configuration by the same task that runs the other linters. The check MUST fail on a misformatted file and pass once it is formatted.
+
+#### Scenario: Misformatted Lua file
+
+- **GIVEN** a Lua plugin spec with indentation that violates `stylua.toml`
+- **WHEN** the lint task runs
+- **THEN** it names the file and returns a non-zero status
+
+#### Scenario: Formatted Lua file
+
+- **GIVEN** the same file after formatting
+- **WHEN** the lint task runs
+- **THEN** the check passes as part of the single local verification result
+
 ### Requirement: Documentation has one landing page and per-platform guides
 
 The README SHALL present the compatibility matrix and quick starts for all four platforms, and each platform SHALL have a dedicated guide covering bootstrap, primaries, and platform-specific caveats. Commands in the guides MUST run as written.

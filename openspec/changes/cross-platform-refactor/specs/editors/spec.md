@@ -80,6 +80,58 @@ Plugins that do not support a platform SHALL be guarded so they do not load on t
 - **WHEN** the managed plugin specs are loaded
 - **THEN** `image.nvim` remains enabled for the working ImageMagick/FFmpeg setup
 
+### Requirement: Custom plugin specs load on demand
+
+Every custom plugin spec SHALL declare a load trigger (`event`, `cmd`, `ft`, or `keys`). A plugin whose entry points are only commands, keymaps, or filetypes MUST NOT load before that trigger fires.
+
+#### Scenario: Cold start
+
+- **GIVEN** Neovim starts with no file arguments
+- **WHEN** the loaded plugin set is inspected immediately after startup
+- **THEN** no plugin reachable only through a command, keymap, or filetype is loaded
+
+#### Scenario: First use of a lazy plugin
+
+- **GIVEN** a plugin that is loaded on demand through a keymap or command
+- **WHEN** that keymap or command is used for the first time
+- **THEN** the plugin loads and the action completes as it does when loaded eagerly
+
+### Requirement: Parser configuration keeps the extra-provided set
+
+Treesitter parser configuration SHALL extend the set contributed by enabled `lang.*` extras. A local override MUST NOT remove a parser that an enabled extra requires.
+
+#### Scenario: Locally adding a parser
+
+- **GIVEN** two language extras are enabled and a local spec adds one more parser
+- **WHEN** the installed parser list is inspected
+- **THEN** the parsers from both extras and the local addition are all present
+
+### Requirement: Inactive plugins do not change editor defaults
+
+A plugin that is inactive by default at runtime SHALL NOT modify global editor options during startup.
+
+#### Scenario: Plugin disabled at runtime
+
+- **GIVEN** a plugin ships with its runtime feature disabled
+- **WHEN** a new buffer is opened after startup
+- **THEN** its `wrap`, `linebreak`, and `sidescrolloff` values are unchanged from Neovim's defaults
+
+### Requirement: Plugin revisions are reproducible
+
+The managed configuration SHALL include a committed plugin lockfile. Applying the repository on a fresh machine MUST resolve the revisions recorded in that lockfile.
+
+#### Scenario: Fresh machine
+
+- **GIVEN** an empty plugin data directory and the managed lockfile
+- **WHEN** the plugin manager restores from the lockfile
+- **THEN** every plugin resolves to the recorded revision
+
+#### Scenario: Upgrading plugins
+
+- **GIVEN** the author upgrades one plugin
+- **WHEN** the change is reviewed
+- **THEN** the lockfile diff shows only the intended revision changes
+
 ### Requirement: LazyVim uses one indentation implementation
 
 The configuration SHALL use a single indentation/highlight implementation. Conflicting indentation plugins SHALL NOT be enabled together.
