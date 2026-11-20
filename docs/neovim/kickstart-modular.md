@@ -51,7 +51,7 @@ Because `NVIM_APPNAME` is set per invocation, the two configurations have comple
 | Syntax highlighting | Regex-based | Tree-sitter (auto-installs available parsers) |
 | Git integration | None | gitsigns (gutter signs, hunk actions, blame) |
 | Formatting | Manual `=` / external commands | conform.nvim with manual `<leader>f`; LSP fallback |
-| File explorer | `netrw` | `netrw` (Neo-tree is available but disabled by default) |
+| File explorer | `netrw` | Oil.nvim, which edits directories as buffers and replaces `netrw` for directory buffers |
 | Statusline | None | `mini.statusline` (icons when a Nerd Font is enabled) |
 | Navigation aids | None | which-key, `mini.ai`, `mini.surround`, guess-indent, todo-comments, yank highlight |
 
@@ -94,6 +94,7 @@ Enabled modules are required from `lua/plugins.lua`. All plugins are managed wit
 | `todo-comments` | `folke/todo-comments.nvim` | Highlight `TODO`, `FIXME`, `NOTE`, etc. |
 | `mini` | `nvim-mini/mini.nvim` | `mini.ai`, `mini.surround`, `mini.statusline`, optional `mini.icons` |
 | `telescope` | `telescope.nvim`, `plenary.nvim`, `telescope-ui-select.nvim`, `telescope-fzf-native.nvim` (when `make` exists) | Fuzzy finding and pickers |
+| `oil` | `stevearc/oil.nvim` | File explorer and filesystem editing as a buffer |
 | `lspconfig` | `nvim-lspconfig`, `mason.nvim`, `mason-lspconfig.nvim`, `mason-tool-installer.nvim`, `fidget.nvim` | LSP client, server/tool installation, progress UI |
 | `conform` | `stevearc/conform.nvim` | Formatting with LSP fallback |
 | `blink-cmp` | `saghen/blink.cmp`, `L3MON4D3/LuaSnip` | Completion menu and snippets |
@@ -101,7 +102,7 @@ Enabled modules are required from `lua/plugins.lua`. All plugins are managed wit
 
 ### Included but disabled
 
-These modules exist in `lua/kickstart/plugins/` but are commented out in `lua/plugins.lua`: `autopairs`, `debug`, `indent_line`, `lint`, and `neo-tree`.
+These modules exist in `lua/kickstart/plugins/` but are commented out in `lua/plugins.lua`: `autopairs`, `debug`, `indent_line`, and `lint`.
 
 ### LSP and formatting defaults
 
@@ -145,6 +146,21 @@ These modules exist in `lua/kickstart/plugins/` but are commented out in `lua/pl
 | `<leader><leader>` | Find existing buffers |
 
 Inside a Telescope picker: `?` in normal mode or `<C-/>` in insert mode shows that picker's keymaps.
+
+### File explorer (Oil)
+
+Editing the listing and saving with `:w` applies the changes to the filesystem; quitting without saving discards them.
+
+| Key | Action |
+| :--- | :--- |
+| `-` | Open the parent directory of the current file (or the current directory) |
+| `-` (inside Oil) | Go to the parent directory |
+| `<CR>` | Open the entry under the cursor |
+| `<C-v>` / `<C-s>` / `<C-t>` | Open the entry in a vertical split / split / new tab |
+| `<C-p>` | Toggle the preview |
+| `<C-l>` | Refresh the listing |
+| `<C-c>` | Close Oil |
+| `g?` | Show Oil's help with all mappings |
 
 ### LSP (active buffers)
 
@@ -223,6 +239,7 @@ These are buffer-local and only exist after a language server attaches.
 
 - **Add a plugin:** drop a Lua file in `lua/custom/plugins/` and it is loaded automatically by `lua/custom/plugins/init.lua`. Keep plugins that depend on each other in the same file because load order is unspecified.
 - **Enable an optional kickstart module:** uncomment its `require` in `lua/plugins.lua`.
+- **Change or disable the file explorer:** edit `lua/kickstart/plugins/oil.lua`; set `default_file_explorer = false` to leave directory buffers to another plugin or `netrw`.
 - **Change the theme:** edit `lua/kickstart/plugins/github-theme.lua`, change `theme_style`, and update the `vim.cmd.colorscheme` name.
 - **Add a language server:** add it to the `servers` table in `lua/kickstart/plugins/lspconfig.lua` (and any required settings), then restart Neovim.
 - **Use a Nerd Font:** set `vim.g.have_nerd_font = true` in `lua/options.lua` to enable icons in mini and which-key.

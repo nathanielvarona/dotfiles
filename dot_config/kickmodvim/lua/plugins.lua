@@ -7,6 +7,7 @@ require 'kickstart.plugins.github-theme'
 require 'kickstart.plugins.todo-comments'
 require 'kickstart.plugins.mini'
 require 'kickstart.plugins.telescope'
+require 'kickstart.plugins.oil'
 require 'kickstart.plugins.lspconfig'
 require 'kickstart.plugins.conform'
 require 'kickstart.plugins.blink-cmp'
@@ -25,7 +26,6 @@ require 'kickstart.plugins.treesitter'
 -- require 'kickstart.plugins.indent_line'
 -- require 'kickstart.plugins.lint'
 -- require 'kickstart.plugins.autopairs'
--- require 'kickstart.plugins.neo-tree'
 
 -- NOTE: You can add your own plugins, configuration, etc. in `lua/custom/plugins/*.lua`.
 --
