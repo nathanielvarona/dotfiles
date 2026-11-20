@@ -51,7 +51,7 @@ Because `NVIM_APPNAME` is set per invocation, the two configurations have comple
 | Syntax highlighting | Regex-based | Tree-sitter (auto-installs available parsers) |
 | Git integration | None | gitsigns (gutter signs, hunk actions, blame) |
 | Formatting | Manual `=` / external commands | conform.nvim with manual `<leader>f`; LSP fallback |
-| File explorer | `netrw` | Oil.nvim, which edits directories as buffers and replaces `netrw` for directory buffers |
+| File explorer | `netrw` | Neo-tree sidebar (`\`) for browsing, plus Oil.nvim for editing directories as buffers (replaces `netrw` for directory buffers) |
 | Statusline | None | `mini.statusline` (icons when a Nerd Font is enabled) |
 | Navigation aids | None | which-key, `mini.ai`, `mini.surround`, guess-indent, todo-comments, yank highlight |
 
@@ -94,6 +94,7 @@ Enabled modules are required from `lua/plugins.lua`. All plugins are managed wit
 | `todo-comments` | `folke/todo-comments.nvim` | Highlight `TODO`, `FIXME`, `NOTE`, etc. |
 | `mini` | `nvim-mini/mini.nvim` | `mini.ai`, `mini.surround`, `mini.statusline`, optional `mini.icons` |
 | `telescope` | `telescope.nvim`, `plenary.nvim`, `telescope-ui-select.nvim`, `telescope-fzf-native.nvim` (when `make` exists) | Fuzzy finding and pickers |
+| `neo-tree` | `neo-tree.nvim`, `nui.nvim`, `plenary.nvim` | Sidebar file tree |
 | `oil` | `stevearc/oil.nvim` | File explorer and filesystem editing as a buffer |
 | `lspconfig` | `nvim-lspconfig`, `mason.nvim`, `mason-lspconfig.nvim`, `mason-tool-installer.nvim`, `fidget.nvim` | LSP client, server/tool installation, progress UI |
 | `conform` | `stevearc/conform.nvim` | Formatting with LSP fallback |
@@ -146,6 +147,21 @@ These modules exist in `lua/kickstart/plugins/` but are commented out in `lua/pl
 | `<leader><leader>` | Find existing buffers |
 
 Inside a Telescope picker: `?` in normal mode or `<C-/>` in insert mode shows that picker's keymaps.
+
+### File explorer (Neo-tree)
+
+| Key | Action |
+| :--- | :--- |
+| `\` | Reveal the current file in the Neo-tree sidebar |
+| `\` (inside Neo-tree) | Close the sidebar |
+| `<CR>` | Open the entry under the cursor |
+| `a` / `A` | Add a file / directory |
+| `d` | Delete the entry |
+| `r` | Rename the entry |
+| `y` / `x` / `p` | Copy / cut / paste entries |
+| `R` | Refresh the tree |
+| `H` | Toggle hidden files |
+| `q` | Close the sidebar |
 
 ### File explorer (Oil)
 
