@@ -10,7 +10,7 @@ An isolated [kickstart-modular.nvim](https://github.com/dam9000/kickstart-modula
 | Alias | `kickvim` |
 | Theme | `github_dark_high_contrast` from [github-nvim-theme](https://github.com/projekt0n/github-nvim-theme) |
 
-LazyVim remains the default configuration (`NVIM_APPNAME=lazyvim`). Launch this one with:
+Plain `nvim` uses the single-file kickstart config; LazyVim is launched with the `lazyvim` function (`NVIM_APPNAME=lazyvim`). Launch this one with:
 
 ```bash
 kickvim

@@ -10,6 +10,7 @@ Documentation for the current [chezmoi](https://chezmoi.io)-managed dotfiles rep
 - [Tiling Manager](./tiling-manager/README.md) — GlazeWM reference and keybinding cheatsheet
 - [Neovim](./neovim/README.md) — NeoVim/LazyVim notes
 - [Kickstart Modular](./neovim/kickstart-modular.md) — isolated `kickvim` setup, plugins, and keymaps
+- [Kickstart Single File](./neovim/kickstart-single-file.md) — default `nvim` config and remote `curl | sh` installer
 - [WSL](./wsl/HOST_SERVICES_ACCESS.md) — Windows host and WSL2 services
 - [Legacy GNU Stow Reference](./legacy-stow-reference.md) — historical reference only
 
@@ -19,6 +20,7 @@ Documentation for the current [chezmoi](https://chezmoi.io)-managed dotfiles rep
 | :--- | :--- |
 | LazyVim | `dot_config/lazyvim/` |
 | Kickstart Modular (`kickvim`) | `dot_config/kickmodvim/` — see [Kickstart Modular](./neovim/kickstart-modular.md) |
+| Kickstart Single File (default `nvim`) | `dot_config/nvim/` and `scripts/kickstart-nvim.sh` — see [Kickstart Single File](./neovim/kickstart-single-file.md) |
 | VSCode | `dot_config/Code/User/settings.json.tmpl` |
 | GlazeWM | `dot_glzr/glazewm/config.yaml` — see [Tiling Manager](./tiling-manager/README.md) |
 | YASB | `dot_config/yasb/` |

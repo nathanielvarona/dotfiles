@@ -147,9 +147,6 @@ if (Get-Module -ListAvailable Terminal-Icons)
 }
 
 # Environment Variables
-# NeoVim Default
-$env:NVIM_APPNAME = "lazyvim"
-
 # LazyGit config (multiple files via comma, same as Zsh)
 $env:LG_CONFIG_FILE = "$env:XDG_CONFIG_HOME/lazygit/config.yml,$env:XDG_CONFIG_HOME/lazygit/themes/mocha/blue.yml"
 
@@ -161,7 +158,7 @@ $env:BAT_CONFIG_PATH = "$env:XDG_CONFIG_HOME/bat/config"
 $env:Path = "$env:USERPROFILE/.local/bin;$env:Path"
 
 # LazyVim Mason Path
-$env:Path = "$env:LOCALAPPDATA/$env:NVIM_APPNAME-data/mason/bin;$env:Path"
+$env:Path = "$env:LOCALAPPDATA/lazyvim-data/mason/bin;$env:Path"
 
 # Rust Cargo Path
 $env:Path = "$env:USERPROFILE/.cargo/bin;$env:Path"

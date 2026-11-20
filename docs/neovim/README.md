@@ -3,6 +3,7 @@
 ## Configurations
 
 - [Kickstart Modular (`kickvim`)](./kickstart-modular.md) — isolated kickstart setup with its own `NVIM_APPNAME`, plugins, keymaps, and GitHub Dark High Contrast theme.
+- [Kickstart Single File](./kickstart-single-file.md) — default `nvim` config in one `init.lua`, with a `curl | sh` installer for remote servers.
 
 ## Troubleshooting
 

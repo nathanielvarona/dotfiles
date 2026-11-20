@@ -11,7 +11,6 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR="nvim"
-export NVIM_APPNAME="lazyvim"
 
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -409,7 +408,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Mason (Neovim/LazyVim) Binaries
-export PATH="${XDG_DATA_HOME:-$HOME}/${NVIM_APPNAME}/mason/bin:$PATH"
+export PATH="${XDG_DATA_HOME:-$HOME}/lazyvim/mason/bin:$PATH"
 
 {{ if eq .chezmoi.os "darwin" }}
 # Define the directory to search (change as needed)
@@ -559,7 +558,7 @@ export LG_CONFIG_FILE="$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazy
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/.asdfrc"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
-# Neovim launcher
+# LazyVim launcher (plain `nvim` uses the default kickstart config)
 lazyvim() {
   NVIM_APPNAME=lazyvim nvim "$@"
 }
