@@ -122,6 +122,32 @@ do
   --  Schedule the setting after `UiEnter` because it can increase startup-time.
   --  Remove this option if you want your OS clipboard to remain independent.
   --  See `:help 'clipboard'`
+  --
+  -- Over SSH the remote host has no clipboard tool, so copy through OSC 52:
+  --  Neovim emits an escape sequence that your local terminal turns into a
+  --  write to the real clipboard. Paste from the local clipboard with the
+  --  terminal's paste shortcut (Ctrl+Shift+V): Windows Terminal blocks OSC 52
+  --  clipboard reads for security reasons, so Neovim cannot fetch it.
+  --  See `:help clipboard-osc52`.
+  if vim.env.SSH_CONNECTION or vim.env.SSH_TTY then
+    local osc52 = require 'vim.ui.clipboard.osc52'
+    local paste_hint = function()
+      vim.notify('Over SSH, paste with your terminal shortcut (Ctrl+Shift+V)', vim.log.levels.INFO)
+      return {}
+    end
+    vim.g.clipboard = {
+      name = 'OSC 52',
+      copy = {
+        ['+'] = osc52.copy '+',
+        ['*'] = osc52.copy '*',
+      },
+      paste = {
+        ['+'] = paste_hint,
+        ['*'] = paste_hint,
+      },
+    }
+  end
+
   vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
   -- Enable break indent
