@@ -216,6 +216,17 @@ function ls_alias {
 }
 Set-Alias -Name ls -Value ls_alias -Option AllScope -Force
 
+# Kickstart modular Neovim (isolated NVIM_APPNAME)
+function kickvim {
+    $previousAppName = $env:NVIM_APPNAME
+    $env:NVIM_APPNAME = "kickmodvim"
+    try {
+        nvim @args
+    } finally {
+        $env:NVIM_APPNAME = $previousAppName
+    }
+}
+
 function psmux-load {
     param(
         [string]$Path = ".psmux.ps1"
