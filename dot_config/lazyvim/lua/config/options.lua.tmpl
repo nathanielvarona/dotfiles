@@ -129,3 +129,16 @@ vim.opt.fileformats = "unix,dos"
 
 -- Default fallback format for entirely new files
 vim.opt.fileformat = "unix"
+
+-- Mason-installed language servers (tailwindcss, vtsls, bashls, ...) are Node
+-- scripts (`#!/usr/bin/env node`). When Neovim is started from a context that
+-- never sourced the shell profile -- a GUI launcher, a tmux server started
+-- earlier, or `wsl.exe` from Windows -- `node` is missing from PATH and the
+-- servers fail to spawn without any visible error. Add the mise shims only
+-- when `node` cannot be resolved through the inherited PATH.
+if vim.fn.has("win32") == 0 and vim.fn.executable("node") == 0 then
+  local mise_shims = vim.fn.expand("~/.local/share/mise/shims")
+  if (vim.uv or vim.loop).fs_stat(mise_shims) then
+    vim.env.PATH = mise_shims .. ":" .. vim.env.PATH
+  end
+end
