@@ -1,5 +1,9 @@
 # Neovim
 
+## Configurations
+
+- [Kickstart Modular (`kickvim`)](./kickstart-modular.md) — isolated kickstart setup with its own `NVIM_APPNAME`, plugins, keymaps, and GitHub Dark High Contrast theme.
+
 ## Troubleshooting
 
 > [!NOTE]
