@@ -90,6 +90,7 @@ Enabled modules are required from `lua/plugins.lua`. All plugins are managed wit
 | `github-theme` | `projekt0n/github-nvim-theme` | GitHub Dark High Contrast colorscheme |
 | `guess-indent` | `NMAC427/guess-indent.nvim` | Detect and apply file indentation |
 | `gitsigns` | `lewis6991/gitsigns.nvim` | Git gutter signs, hunk staging/reset, blame, diff |
+| `lazygit` | `kdheepak/lazygit.nvim` | Full lazygit TUI inside Neovim |
 | `which-key` | `folke/which-key.nvim` | Show pending keybindings and groups |
 | `todo-comments` | `folke/todo-comments.nvim` | Highlight `TODO`, `FIXME`, `NOTE`, etc. |
 | `mini` | `nvim-mini/mini.nvim` | `mini.ai`, `mini.surround`, `mini.statusline`, optional `mini.icons` |
@@ -213,6 +214,9 @@ These are buffer-local and only exist after a language server attaches.
 | `<leader>tb` | Toggle current-line blame |
 | `<leader>tw` | Toggle intra-line word diff |
 | `ih` (operator/visual) | Select the hunk as a text object |
+| `<leader>gg` | Open LazyGit |
+
+LazyGit also exposes `:LazyGit`, `:LazyGitCurrentFile`, `:LazyGitFilter`, `:LazyGitFilterCurrentFile`, and `:LazyGitConfig`. It requires the `lazygit` binary on your `PATH`; close it with `q`.
 
 ### Editing (mini.nvim)
 
@@ -269,7 +273,7 @@ These are buffer-local and only exist after a language server attaches.
 :Telescope               " discover pickers
 ```
 
-External requirements: `git`, `make`, `unzip`, a C compiler, `ripgrep`, `fd`, the Tree-sitter CLI, and a clipboard tool for your platform. A Nerd Font is optional.
+External requirements: `git`, `make`, `unzip`, a C compiler, `ripgrep`, `fd`, `lazygit`, the Tree-sitter CLI, and a clipboard tool for your platform. A Nerd Font is optional.
 
 To reset only this setup (Linux/macOS/WSL):
 
